@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="6" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
+	<ext_resource path="res://character.gd" type="Script" index="1"></ext_resource>
 	<ext_resource path="res://pastelgreen.jpg" type="Texture" index="2"></ext_resource>
 	<ext_resource path="res://pixel.jpg" type="Texture" index="0"></ext_resource>
-	<ext_resource path="res://character.gd" type="Script" index="1"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 10, 10 </vector2>
@@ -72,9 +72,9 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="163"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 12, 4, 1, 5, 2, 6, 3, 7, 4, 8, 2, 9, 5, 10, 5, 11, 6, 12, 7, 13, 8, 14, 7, 1, 9, 0, 1, 0, 18, 15, -1, 4, 4, 10, 16, 11, 17, 12, 1, 13, 0, 1, 0, 23, 19, -1, 6, 4, 14, 16, 15, 20, 3, 21, 2, 22, 16, 1, 17, 0, 0, 0, 24, 24, -1, 24, 4, 18, 5, 2, 6, 19, 7, 20, 8, 2, 9, 5, 10, 5, 25, 16, 26, 8, 13, 8, 14, 7, 27, 8, 28, 2, 29, 16, 30, 16, 31, 2, 32, 2, 33, 21, 34, 6, 35, 7, 36, 7, 37, 7, 38, 22, 1, 23, 0, 4, 0, 18, 39, -1, 4, 4, 24, 16, 25, 17, 26, 1, 27, 0, 4, 0, 23, 40, -1, 6, 4, 28, 16, 29, 20, 19, 21, 2, 22, 16, 1, 30, 0 </int_array>
+			<int_array  len="163"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 12, 4, 1, 5, 2, 6, 3, 7, 4, 8, 2, 9, 5, 10, 5, 11, 6, 12, 7, 13, 8, 14, 7, 1, 9, 0, 1, 0, 18, 15, -1, 4, 4, 10, 16, 11, 17, 12, 1, 13, 0, 1, 0, 23, 19, -1, 6, 4, 10, 16, 14, 20, 3, 21, 2, 22, 15, 1, 16, 0, 0, 0, 24, 24, -1, 24, 4, 17, 5, 2, 6, 18, 7, 19, 8, 2, 9, 5, 10, 5, 25, 15, 26, 8, 13, 8, 14, 7, 27, 8, 28, 2, 29, 15, 30, 15, 31, 2, 32, 2, 33, 20, 34, 6, 35, 7, 36, 7, 37, 7, 38, 21, 1, 22, 0, 4, 0, 18, 39, -1, 4, 4, 23, 16, 24, 17, 25, 1, 26, 0, 4, 0, 23, 40, -1, 6, 4, 27, 16, 28, 20, 18, 21, 2, 22, 15, 1, 29, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="31" shared="false">
+			<array  len="30" shared="false">
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
 					<string> "2D" </string>
@@ -98,7 +98,6 @@
 					<string> "_edit_lock_" </string>
 					<bool> True </bool>
 				</dictionary>
-				<vector2> 511.63, 485.572 </vector2>
 				<vector2> 51.163, 11.5572 </vector2>
 				<int> 0 </int>
 				<dictionary  shared="false">
