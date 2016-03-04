@@ -3,6 +3,7 @@ extends RigidBody2D
 
 var pos_x
 var pos_y
+var bomb_scn = preload("res://bomb.xscn")
 
 var is_jumping = true
 
@@ -26,4 +27,8 @@ func _on_RigidBody2D_body_enter( body ):
 	
 func _input(event):
 	if(event.is_action_pressed("throw")):
-		print("kaboom")
+		var bomb = bomb_scn.instance()
+		bomb.set_pos(Vector2(pos_x, pos_y))
+		bomb.set_linear_velocity(Vector2(100, -200))
+		get_parent().add_child(bomb)
+	
