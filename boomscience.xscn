@@ -79,7 +79,7 @@
 			<array  len="32" shared="false">
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 				</dictionary>
 				<vector2> 0, -2 </vector2>
 				<bool> False </bool>

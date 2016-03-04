@@ -22,13 +22,13 @@ func _fixed_process(delta):
 		is_jumping = true
 		self.set_linear_velocity(Vector2(0, -300))
 
-func _on_RigidBody2D_body_enter( body ):
+func _on_RigidBody2D_body_enter(body):
 	is_jumping = false
 	
 func _input(event):
 	if(event.is_action_pressed("throw")):
 		var bomb = bomb_scn.instance()
 		bomb.set_pos(Vector2(pos_x, pos_y))
-		bomb.set_linear_velocity(Vector2(100, -200))
+		bomb.set_linear_velocity(Vector2(200, -300))
 		get_parent().add_child(bomb)
 	
