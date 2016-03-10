@@ -39,14 +39,16 @@ func _on_RigidBody2D_body_enter(body):
 	
 func _input(event):
 	if(event.is_action_pressed("throw")):
+		var screen_size = OS.get_screen_size()
+		
 		var bomb = bomb_scn.instance()
-		var bomb_direction = get_viewport().get_mouse_pos() - get_pos()
-		var vel_limit = 250
-		bomb.set_pos(Vector2(pos_x, pos_y))
-		if (bomb_direction.length() <= vel_limit):
-			bomb.set_linear_velocity(3 * bomb_direction)
+		var bomb_direction = Vector2( 0, 0 )
+		if get_viewport().get_mouse_pos().x >= screen_size.x/2:
+			bomb_direction.x = get_viewport().get_mouse_pos().x/2
+			bomb_direction.y = get_viewport().get_mouse_pos().y
 		else:
-			bomb.set_linear_velocity(3 * bomb_direction * vel_limit/bomb_direction.length())
-		#bomb.set_linear_velocity(Vector2(200 * direction + get_linear_velocity().x/2, -500))
+			bomb_direction.x = -screen_size.x/2 + get_viewport().get_mouse_pos().x
+			bomb_direction.y = get_viewport().get_mouse_pos().y
+		bomb.set_pos(get_pos())
+		bomb.set_linear_velocity(Vector2(bomb_direction.x, -screen_size.y + bomb_direction.y))
 		get_parent().add_child(bomb)
-	

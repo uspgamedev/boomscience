@@ -5,7 +5,7 @@
 	<ext_resource path="res://gecko_single.png" type="Texture" index="2"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
-		<vector2 name="extents"> 10, 10 </vector2>
+		<vector2 name="extents"> 22.1244, 10 </vector2>
 
 	</resource>
 	<resource type="RectangleShape2D" path="local://2">
@@ -18,12 +18,12 @@
 			<string> "conn_count" </string>
 			<int> 1 </int>
 			<string> "conns" </string>
-			<int_array  len="6"> 				4, 4, 42, 41, 2, 0 </int_array>
+			<int_array  len="6"> 				4, 4, 59, 58, 2, 0 </int_array>
 			<string> "editable_instances" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="43">
+			<string_array  len="60">
 				<string> "SceneRoot" </string>
 				<string> "__meta__" </string>
 				<string> "Node" </string>
@@ -65,18 +65,35 @@
 				<string> "script/script" </string>
 				<string> "character" </string>
 				<string> "hitbox_character" </string>
+				<string> "Camera2D" </string>
+				<string> "anchor_mode" </string>
+				<string> "rotating" </string>
+				<string> "current" </string>
+				<string> "zoom" </string>
+				<string> "limit/left" </string>
+				<string> "limit/top" </string>
+				<string> "limit/right" </string>
+				<string> "limit/bottom" </string>
+				<string> "drag_margin/h_enabled" </string>
+				<string> "drag_margin/v_enabled" </string>
+				<string> "smoothing/enable" </string>
+				<string> "smoothing/speed" </string>
+				<string> "drag_margin/left" </string>
+				<string> "drag_margin/top" </string>
+				<string> "drag_margin/right" </string>
+				<string> "drag_margin/bottom" </string>
 				<string> "_on_RigidBody2D_body_enter" </string>
 				<string> "body_enter" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 7 </int>
+			<int> 8 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="162"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 12, 4, 1, 5, 2, 6, 3, 7, 4, 8, 2, 9, 5, 10, 6, 11, 7, 12, 8, 13, 9, 14, 8, 1, 10, 1, 15, 1, 0, 18, 15, -1, 4, 4, 11, 16, 12, 17, 13, 1, 14, 0, 1, 0, 23, 19, -1, 6, 4, 11, 16, 15, 20, 3, 21, 2, 22, 16, 1, 17, 0, 0, 0, 24, 24, -1, 24, 4, 18, 5, 2, 6, 19, 7, 20, 8, 2, 9, 5, 10, 5, 25, 21, 26, 9, 13, 9, 14, 8, 27, 9, 28, 2, 29, 16, 30, 5, 31, 22, 32, 2, 33, 22, 34, 7, 35, 8, 36, 8, 37, 8, 38, 23, 1, 24, 0, 4, 0, 18, 39, -1, 3, 4, 25, 17, 26, 1, 27, 0, 4, 0, 23, 40, -1, 6, 4, 28, 16, 29, 20, 19, 21, 2, 22, 16, 1, 30, 0 </int_array>
+			<int_array  len="203"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 12, 4, 1, 5, 2, 6, 3, 7, 4, 8, 2, 9, 5, 10, 6, 11, 7, 12, 8, 13, 9, 14, 8, 1, 10, 1, 15, 1, 0, 18, 15, -1, 4, 4, 11, 16, 12, 17, 13, 1, 14, 0, 1, 0, 23, 19, -1, 6, 4, 11, 16, 15, 20, 3, 21, 2, 22, 16, 1, 17, 0, 0, 0, 24, 24, -1, 24, 4, 18, 5, 2, 6, 19, 7, 20, 8, 2, 9, 5, 10, 5, 25, 21, 26, 9, 13, 9, 14, 8, 27, 9, 28, 2, 29, 16, 30, 5, 31, 22, 32, 2, 33, 22, 34, 7, 35, 8, 36, 8, 37, 8, 38, 23, 1, 24, 0, 4, 0, 18, 39, -1, 3, 4, 25, 17, 26, 1, 27, 0, 4, 0, 23, 40, -1, 6, 4, 28, 16, 29, 20, 19, 21, 2, 22, 16, 1, 30, 0, 4, 0, 41, 41, -1, 17, 42, 5, 43, 2, 44, 22, 45, 31, 46, 32, 47, 32, 48, 33, 49, 33, 50, 22, 51, 22, 52, 2, 53, 34, 54, 35, 55, 35, 56, 35, 57, 35, 1, 36, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="31" shared="false">
+			<array  len="37" shared="false">
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
 					<string> "Script" </string>
@@ -125,6 +142,15 @@
 				</dictionary>
 				<vector2> 0.00231091, -0.618788 </vector2>
 				<vector2> 1.65913, 1.67813 </vector2>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<vector2> 1, 1 </vector2>
+				<int> -10000000 </int>
+				<int> 10000000 </int>
+				<real> 5 </real>
+				<real> 0.2 </real>
 				<dictionary  shared="false">
 					<string> "_edit_lock_" </string>
 					<bool> True </bool>
