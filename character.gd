@@ -4,6 +4,7 @@ extends RigidBody2D
 var pos_x
 var pos_y
 var bomb_scn = preload("res://bomb.xscn")
+var enemy_scn = preload("res://enemy.xscn")
 var direction = 1  #1 é direita e -1 é esquerda
 var sprite
 
@@ -52,3 +53,8 @@ func _input(event):
 		bomb.set_pos(get_pos())
 		bomb.set_linear_velocity(Vector2(bomb_direction.x, -screen_size.y + bomb_direction.y))
 		get_parent().add_child(bomb)
+	if(event.is_action_pressed("instance")):
+		var enemy = enemy_scn.instance()
+		enemy.set_pos(get_viewport().get_mouse_pos())
+		get_parent().add_child(enemy)
+	
