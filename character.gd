@@ -5,14 +5,21 @@ var pos_x
 var pos_y
 var bomb_scn = preload("res://bomb.xscn")
 var direction = 1  #1 é direita e -1 é esquerda
+var sprite
 
 var is_jumping = true
 
 func _ready():
 	set_fixed_process(true)
 	set_process_input(true)
+	sprite = get_node("character")
 	
 func _fixed_process(delta):
+	if direction == 1:
+		sprite.set_flip_h(true)
+	else:
+		sprite.set_flip_h(false)
+		
 	pos_x = get_pos().x
 	pos_y = get_pos().y
 	if (Input.is_key_pressed(KEY_D)):
