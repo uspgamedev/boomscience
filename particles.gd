@@ -6,6 +6,7 @@ var limit = 10
 
 func _ready():
 	set_fixed_process(true)
+	self.add_to_group("bomb_particles")
 
 func _fixed_process(delta):
 	timer += 1
