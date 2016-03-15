@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="7" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
-	<ext_resource path="res://character.gd" type="Script" index="1"></ext_resource>
+<resource_file type="PackedScene" subresource_count="6" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
 	<ext_resource path="res://pixel.jpg" type="Texture" index="0"></ext_resource>
+	<ext_resource path="res://character.gd" type="Script" index="1"></ext_resource>
 	<ext_resource path="res://gecko_single.png" type="Texture" index="2"></ext_resource>
-	<ext_resource path="res://enemy.xscn" type="PackedScene" index="3"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 22.1244, 10 </vector2>
@@ -21,8 +20,7 @@
 			<string> "conns" </string>
 			<int_array  len="6"> 				4, 4, 59, 58, 2, 0 </int_array>
 			<string> "editable_instances" </string>
-			<array  len="1" shared="false">
-				<node_path> "RigidBody2D 2" </node_path>
+			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
 			<string_array  len="60">
@@ -84,9 +82,6 @@
 				<string> "drag_margin/top" </string>
 				<string> "drag_margin/right" </string>
 				<string> "drag_margin/bottom" </string>
-				<string> "RigidBody2D 2" </string>
-				<string> "enemy" </string>
-				<string> "enemy_hitbox" </string>
 				<string> "_on_RigidBody2D_body_enter" </string>
 				<string> "body_enter" </string>
 			</string_array>

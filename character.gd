@@ -8,7 +8,7 @@ var enemy_scn = preload("res://enemy.xscn")
 var direction = 1  #1 é direita e -1 é esquerda
 var sprite
 
-var is_jumping = true
+var is_jumping = false
 
 func _ready():
 	set_fixed_process(true)
