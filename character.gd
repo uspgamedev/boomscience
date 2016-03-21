@@ -40,18 +40,13 @@ func _on_RigidBody2D_body_enter(body):
 	
 func _input(event):
 	if(event.is_action_pressed("throw")):
-		var erro = get_pos().x - get_node("Camera2D").get_camera_pos().x
-		var screen_size = Vector2(get_viewport_rect().size.width + 2*erro, get_viewport_rect().size.height)
+		var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
+		var mouse_dir = get_viewport().get_mouse_pos() - screen_center
+		var offset = get_pos() - get_node("Camera2D").get_camera_pos()
+		var bomb_direction = mouse_dir - offset
 		var bomb = bomb_scn.instance()
-		var bomb_direction = Vector2(0, 0)
-		if get_viewport().get_mouse_pos().x >= screen_size.x/2:
-			bomb_direction.x = get_viewport().get_mouse_pos().x
-			bomb_direction.y = get_viewport().get_mouse_pos().y
-		else:
-			bomb_direction.x = -get_viewport().get_mouse_pos().x
-			bomb_direction.y = get_viewport().get_mouse_pos().y
 		bomb.set_pos(get_pos())
-		bomb.set_linear_velocity(Vector2(bomb_direction.x, -screen_size.y + bomb_direction.y))
+		bomb.set_linear_velocity(Vector2(bomb_direction.x, -600 + bomb_direction.y))
 		get_parent().add_child(bomb)
 	if(event.is_action_pressed("instance")):
 		var enemy = enemy_scn.instance()
