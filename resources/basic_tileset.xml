@@ -6,12 +6,12 @@
 		<vector2_array name="points" len="4"> 			8, 0, 32, 0, 32, 32, 8, 32 </vector2_array>
 
 	</resource>
-	<resource type="ConvexPolygonShape2D" path="local://1">
+	<resource type="ConvexPolygonShape2D" path="local://3">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2_array name="points" len="4"> 			0, 0, 32, 0, 32, 32, 0, 32 </vector2_array>
 
 	</resource>
-	<resource type="ConvexPolygonShape2D" path="local://3">
+	<resource type="ConvexPolygonShape2D" path="local://4">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2_array name="points" len="4"> 			0, 0, 24, 0, 24, 32, 0, 32 </vector2_array>
 
@@ -62,7 +62,7 @@
 		<resource name="4/occluder"></resource>		<vector2 name="4/navigation_offset"> -0, -0 </vector2>
 		<resource name="4/navigation"></resource>		<vector2 name="4/shape_offset"> -0, -0 </vector2>
 		<array name="4/shapes" len="1" shared="false">
-			<resource  resource_type="Shape2D" path="local://1">  </resource>
+			<resource  resource_type="Shape2D" path="local://3">  </resource>
 		</array>
 		<string name="5/name"> "topright-lower" </string>
 		<resource name="5/texture" external="0">  </resource>
@@ -72,7 +72,7 @@
 		<resource name="5/occluder"></resource>		<vector2 name="5/navigation_offset"> -0, -0 </vector2>
 		<resource name="5/navigation"></resource>		<vector2 name="5/shape_offset"> -0, -0 </vector2>
 		<array name="5/shapes" len="1" shared="false">
-			<resource  resource_type="Shape2D" path="local://3">  </resource>
+			<resource  resource_type="Shape2D" path="local://4">  </resource>
 		</array>
 		<string name="6/name"> "bottomleft" </string>
 		<resource name="6/texture" external="0">  </resource>
