@@ -39,6 +39,7 @@ func _on_RigidBody2D_body_enter(body):
 	is_jumping = false
 	
 func _input(event):
+	# left button = throw
 	if(event.is_action_pressed("throw")):
 		var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
 		var mouse_dir = get_viewport().get_mouse_pos() - screen_center
@@ -48,8 +49,4 @@ func _input(event):
 		bomb.set_pos(get_pos())
 		bomb.set_linear_velocity(Vector2(bomb_direction.x, -600 + bomb_direction.y))
 		get_parent().add_child(bomb)
-	if(event.is_action_pressed("instance")):
-		var enemy = enemy_scn.instance()
-		enemy.set_pos(get_viewport().get_mouse_pos())
-		get_parent().add_child(enemy)
 	

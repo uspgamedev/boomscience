@@ -19,6 +19,6 @@ func _on_bomb_body_enter(body):
 	if(body.is_in_group("floor") or body.is_in_group("enemies")):
 		var particles = particles_scn.instance()
 		get_parent().add_child(particles)
-		particles.get_node("Area2D/particles").set_pos(self.get_pos())
+		particles.get_node("particles").set_pos(self.get_pos())
 		queue_free()
 	

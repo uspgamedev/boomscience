@@ -6,10 +6,10 @@ var limit = 10
 
 func _ready():
 	set_fixed_process(true)
-	self.add_to_group("bomb_particles")
 
 func _fixed_process(delta):
 	timer += 1
 	if(timer >= limit):
 		queue_free()
+		get_node("../RigidBody2D").queue_free()
 	
