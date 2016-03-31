@@ -21,13 +21,13 @@
 			<string> "conn_count" </string>
 			<int> 1 </int>
 			<string> "conns" </string>
-			<int_array  len="6"> 				5, 5, 75, 74, 2, 0 </int_array>
+			<int_array  len="6"> 				5, 5, 76, 75, 2, 0 </int_array>
 			<string> "editable_instances" </string>
 			<array  len="1" shared="false">
 				<node_path> "RigidBody2D 2" </node_path>
 			</array>
 			<string> "names" </string>
-			<string_array  len="76">
+			<string_array  len="77">
 				<string> "SceneRoot" </string>
 				<string> "__meta__" </string>
 				<string> "Node" </string>
@@ -102,6 +102,7 @@
 				<string> "RigidBody2D 2" </string>
 				<string> "enemy" </string>
 				<string> "enemy_hitbox" </string>
+				<string> "RayCast2D" </string>
 				<string> "_on_RigidBody2D_body_enter" </string>
 				<string> "body_enter" </string>
 			</string_array>

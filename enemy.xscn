@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="4" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
-	<ext_resource path="res://enemy.gd" type="Script" index="0"></ext_resource>
 	<ext_resource path="res://pixel.jpg" type="Texture" index="1"></ext_resource>
+	<ext_resource path="res://enemy.gd" type="Script" index="0"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 10, 10 </vector2>
@@ -12,12 +12,12 @@
 			<string> "conn_count" </string>
 			<int> 1 </int>
 			<string> "conns" </string>
-			<int_array  len="6"> 				0, 0, 36, 35, 2, 0 </int_array>
+			<int_array  len="6"> 				0, 0, 41, 40, 2, 0 </int_array>
 			<string> "editable_instances" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="37">
+			<string_array  len="42">
 				<string> "RigidBody2D" </string>
 				<string> "input/pickable" </string>
 				<string> "shapes/0/shape" </string>
@@ -53,26 +53,32 @@
 				<string> "trigger" </string>
 				<string> "_update_shape_index" </string>
 				<string> "CollisionShape2D" </string>
+				<string> "RayCast2D" </string>
+				<string> "enabled" </string>
+				<string> "cast_to" </string>
+				<string> "layer_mask" </string>
+				<string> "type_mask" </string>
 				<string> "_on_RigidBody2D_body_enter" </string>
 				<string> "body_enter" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 3 </int>
+			<int> 4 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="83"> 				-1, -1, 0, 0, -1, 23, 1, 0, 2, 1, 3, 2, 4, 0, 5, 3, 6, 4, 7, 5, 8, 6, 9, 6, 10, 7, 11, 6, 12, 0, 13, 5, 14, 3, 15, 8, 16, 0, 17, 8, 18, 9, 19, 7, 20, 10, 21, 10, 22, 11, 23, 12, 0, 0, 0, 28, 24, -1, 3, 25, 13, 26, 14, 27, 15, 0, 0, 0, 34, 29, -1, 5, 30, 16, 25, 17, 31, 1, 32, 0, 33, 5, 0 </int_array>
+			<int_array  len="102"> 				-1, -1, 0, 0, -1, 23, 1, 0, 2, 1, 3, 2, 4, 0, 5, 3, 6, 4, 7, 5, 8, 6, 9, 6, 10, 7, 11, 6, 12, 0, 13, 8, 14, 3, 15, 9, 16, 0, 17, 9, 18, 10, 19, 7, 20, 11, 21, 11, 22, 12, 23, 13, 0, 0, 0, 28, 24, -1, 3, 25, 14, 26, 15, 27, 16, 0, 0, 0, 34, 29, -1, 5, 30, 17, 25, 18, 31, 1, 32, 0, 33, 8, 0, 0, 0, 35, 35, -1, 6, 30, 19, 25, 20, 36, 9, 37, 21, 38, 3, 39, 22, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="18" shared="false">
+			<array  len="23" shared="false">
 				<bool> False </bool>
 				<resource  resource_type="Shape2D" path="local://1">  </resource>
 				<matrix32> 2.52097, -0, 0, 2.49808, 0.0994814, -0.0460914 </matrix32>
 				<int> 1 </int>
 				<int> 3 </int>
-				<int> 0 </int>
+				<int> 2 </int>
 				<real> 1 </real>
 				<real> 0 </real>
+				<int> 0 </int>
 				<bool> True </bool>
 				<vector2> 0, 0 </vector2>
 				<real> -1 </real>
@@ -86,6 +92,10 @@
 				<color> 0.258824, 0.45098, 0.545098, 1 </color>
 				<vector2> 0.0994814, -0.0460914 </vector2>
 				<vector2> 2.52097, 2.49808 </vector2>
+				<vector2> 0.315559, -0.315559 </vector2>
+				<vector2> 0.5, 1 </vector2>
+				<vector2> 50, 0 </vector2>
+				<int> 15 </int>
 			</array>
 			<string> "version" </string>
 			<int> 2 </int>
