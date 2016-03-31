@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="8" version="2.0" version_name="Godot Engine v2.0.stable.official">
+<resource_file type="PackedScene" subresource_count="8" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
 	<ext_resource path="res://assets/incomplete/platformer-tileset-template.tex" type="Texture" index="0"></ext_resource>
 	<resource type="ConvexPolygonShape2D" path="local://2">
 		<real name="custom_solver_bias"> 0 </real>
@@ -41,8 +41,9 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="35">
+			<string_array  len="34">
 				<string> "root" </string>
+				<string> "__meta__" </string>
 				<string> "Node2D" </string>
 				<string> "topleft-upper" </string>
 				<string> "texture" </string>
@@ -54,7 +55,6 @@
 				<string> "transform/pos" </string>
 				<string> "topright-upper" </string>
 				<string> "topleft-lower" </string>
-				<string> "__meta__" </string>
 				<string> "StaticBody2D" </string>
 				<string> "input/pickable" </string>
 				<string> "shapes/0/shape" </string>
@@ -72,7 +72,6 @@
 				<string> "shape_range" </string>
 				<string> "trigger" </string>
 				<string> "topcenterA-lower" </string>
-				<string> "transform/scale" </string>
 				<string> "topright-lower" </string>
 				<string> "bottomleft" </string>
 				<string> "bottomcenterA" </string>
@@ -84,9 +83,13 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="442"> 				-1, -1, 1, 0, -1, 0, 0, 0, 0, 7, 2, -1, 4, 3, 0, 4, 1, 5, 2, 6, 3, 0, 0, 0, 7, 8, -1, 5, 9, 4, 3, 0, 4, 1, 5, 2, 6, 5, 0, 0, 0, 7, 10, -1, 5, 9, 6, 3, 0, 4, 1, 5, 2, 6, 7, 0, 0, 0, 7, 11, -1, 6, 9, 8, 3, 0, 4, 1, 5, 2, 6, 9, 12, 10, 0, 4, 0, 13, 13, -1, 11, 14, 1, 15, 11, 16, 12, 17, 1, 18, 13, 19, 13, 20, 14, 21, 15, 22, 16, 23, 15, 12, 17, 0, 5, 0, 24, 24, -1, 4, 25, 18, 26, 19, 27, 14, 28, 1, 0, 0, 0, 7, 29, -1, 7, 9, 20, 30, 21, 3, 0, 4, 1, 5, 2, 6, 22, 12, 23, 0, 7, 0, 13, 13, -1, 10, 14, 1, 15, 24, 16, 12, 17, 1, 18, 13, 19, 13, 20, 14, 21, 15, 22, 16, 23, 15, 0, 8, 0, 24, 24, -1, 4, 25, 18, 26, 25, 27, 14, 28, 1, 0, 0, 0, 7, 31, -1, 7, 9, 26, 30, 21, 3, 0, 4, 1, 5, 2, 6, 27, 12, 28, 0, 10, 0, 13, 13, -1, 11, 30, 29, 14, 1, 15, 30, 16, 31, 17, 1, 18, 13, 19, 13, 20, 14, 21, 15, 22, 16, 23, 15, 0, 11, 0, 24, 24, -1, 4, 25, 18, 26, 32, 27, 14, 28, 1, 0, 0, 0, 7, 32, -1, 7, 9, 33, 30, 21, 3, 0, 4, 1, 5, 2, 6, 34, 12, 35, 0, 13, 0, 13, 13, -1, 11, 30, 29, 14, 1, 15, 36, 16, 31, 17, 1, 18, 13, 19, 13, 20, 14, 21, 15, 22, 16, 23, 15, 0, 14, 0, 24, 24, -1, 4, 25, 18, 26, 37, 27, 14, 28, 1, 0, 0, 0, 7, 33, -1, 7, 9, 38, 30, 21, 3, 0, 4, 1, 5, 2, 6, 39, 12, 40, 0, 16, 0, 13, 13, -1, 11, 30, 29, 14, 1, 15, 41, 16, 31, 17, 1, 18, 13, 19, 13, 20, 14, 21, 15, 22, 16, 23, 15, 0, 17, 0, 24, 24, -1, 4, 25, 18, 26, 42, 27, 14, 28, 1, 0, 0, 0, 7, 34, -1, 7, 9, 43, 30, 21, 3, 0, 4, 1, 5, 2, 6, 44, 12, 45, 0, 19, 0, 13, 13, -1, 11, 30, 29, 14, 1, 15, 46, 16, 31, 17, 1, 18, 13, 19, 13, 20, 14, 21, 15, 22, 16, 23, 15, 0, 20, 0, 24, 24, -1, 4, 25, 18, 26, 47, 27, 14, 28, 1, 0 </int_array>
+			<int_array  len="420"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 8, 3, -1, 4, 4, 1, 5, 2, 6, 3, 7, 4, 0, 0, 0, 8, 9, -1, 5, 10, 5, 4, 1, 5, 2, 6, 3, 7, 6, 0, 0, 0, 8, 11, -1, 5, 10, 7, 4, 1, 5, 2, 6, 3, 7, 8, 0, 0, 0, 8, 12, -1, 5, 10, 9, 4, 1, 5, 2, 6, 3, 7, 10, 0, 4, 0, 13, 13, -1, 10, 14, 2, 15, 11, 16, 12, 17, 2, 18, 13, 19, 13, 20, 14, 21, 15, 22, 16, 23, 15, 0, 5, 0, 24, 24, -1, 4, 25, 17, 26, 18, 27, 14, 28, 2, 0, 0, 0, 8, 29, -1, 5, 10, 19, 4, 1, 5, 2, 6, 3, 7, 20, 0, 7, 0, 13, 13, -1, 10, 14, 2, 15, 21, 16, 12, 17, 2, 18, 13, 19, 13, 20, 14, 21, 15, 22, 16, 23, 15, 0, 8, 0, 24, 24, -1, 4, 25, 17, 26, 22, 27, 14, 28, 2, 0, 0, 0, 8, 30, -1, 6, 10, 23, 4, 1, 5, 2, 6, 3, 7, 24, 1, 25, 0, 10, 0, 13, 13, -1, 10, 14, 2, 15, 26, 16, 27, 17, 2, 18, 13, 19, 13, 20, 14, 21, 15, 22, 16, 23, 15, 0, 11, 0, 24, 24, -1, 4, 25, 17, 26, 28, 27, 14, 28, 2, 0, 0, 0, 8, 31, -1, 6, 10, 29, 4, 1, 5, 2, 6, 3, 7, 30, 1, 31, 0, 13, 0, 13, 13, -1, 10, 14, 2, 15, 32, 16, 27, 17, 2, 18, 13, 19, 13, 20, 14, 21, 15, 22, 16, 23, 15, 0, 14, 0, 24, 24, -1, 4, 25, 17, 26, 33, 27, 14, 28, 2, 0, 0, 0, 8, 32, -1, 6, 10, 34, 4, 1, 5, 2, 6, 3, 7, 35, 1, 36, 0, 16, 0, 13, 13, -1, 10, 14, 2, 15, 37, 16, 27, 17, 2, 18, 13, 19, 13, 20, 14, 21, 15, 22, 16, 23, 15, 0, 17, 0, 24, 24, -1, 4, 25, 17, 26, 38, 27, 14, 28, 2, 0, 0, 0, 8, 33, -1, 6, 10, 39, 4, 1, 5, 2, 6, 3, 7, 40, 1, 41, 0, 19, 0, 13, 13, -1, 10, 14, 2, 15, 42, 16, 27, 17, 2, 18, 13, 19, 13, 20, 14, 21, 15, 22, 16, 23, 15, 0, 20, 0, 24, 24, -1, 4, 25, 17, 26, 43, 27, 14, 28, 2, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="48" shared="false">
+			<array  len="44" shared="false">
+				<dictionary  shared="false">
+					<string> "__editor_plugin_screen__" </string>
+					<string> "2D" </string>
+				</dictionary>
 				<resource  external="0">  </resource>
 				<bool> False </bool>
 				<bool> True </bool>
@@ -97,29 +100,16 @@
 				<rect2> 96, 0, 32, 32 </rect2>
 				<vector2> 0, 40 </vector2>
 				<rect2> 0, 32, 32, 32 </rect2>
-				<dictionary  shared="false">
-					<string> "_editor_collapsed" </string>
-					<bool> True </bool>
-				</dictionary>
 				<resource  resource_type="Shape2D" path="local://2">  </resource>
 				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
 				<int> 1 </int>
 				<vector2> 0, 0 </vector2>
 				<real> 0 </real>
 				<real> 1 </real>
-				<dictionary  shared="false">
-					<string> "_editor_collapsed" </string>
-					<bool> True </bool>
-				</dictionary>
 				<int> 0 </int>
 				<vector2_array  len="4"> 					8, 0, 32, 0, 32, 32, 8, 32 </vector2_array>
 				<vector2> 40, 40 </vector2>
-				<vector2> 1, 1 </vector2>
 				<rect2> 32, 32, 32, 32 </rect2>
-				<dictionary  shared="false">
-					<string> "_editor_collapsed" </string>
-					<bool> True </bool>
-				</dictionary>
 				<resource  resource_type="Shape2D" path="local://8">  </resource>
 				<vector2_array  len="4"> 					0, 0, 32, 0, 32, 32, 0, 32 </vector2_array>
 				<vector2> 80, 40 </vector2>
@@ -128,7 +118,6 @@
 					<string> "_editor_collapsed" </string>
 					<bool> True </bool>
 				</dictionary>
-				<vector2> 1, 1 </vector2>
 				<resource  resource_type="Shape2D" path="local://4">  </resource>
 				<matrix32> 1, -0, 0, 1, 0, 0 </matrix32>
 				<vector2_array  len="4"> 					0, 0, 24, 0, 24, 32, 0, 32 </vector2_array>
