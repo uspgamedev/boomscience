@@ -7,10 +7,12 @@ var bomb_scn = preload("res://bomb.xscn")
 var enemy_scn = preload("res://enemy.xscn")
 var direction = 1  #1 é direita e -1 é esquerda
 var sprite
+var life = 100
 
 var is_jumping = false
 
 func _ready():
+	get_node("RayCast2D").add_exception(self)
 	set_fixed_process(true)
 	set_process_input(true)
 	sprite = get_node("character")
@@ -24,19 +26,33 @@ func _fixed_process(delta):
 	pos_x = get_pos().x
 	pos_y = get_pos().y
 	if (Input.is_key_pressed(KEY_D)):
-		set_linear_velocity(Vector2(200, get_linear_velocity().y))
+		move(220, 10, delta)
 		direction = 1
 	elif (Input.is_key_pressed(KEY_A)):
-		set_linear_velocity(Vector2(-200, get_linear_velocity().y))
+		move(-220, 10, delta)
 		direction = -1
 	else:
-		set_linear_velocity(Vector2(0, get_linear_velocity().y))
+		move(0, 10, delta)
+	if (get_node("RayCast2D").is_colliding()):
+		is_jumping = false
 	if (Input.is_key_pressed(KEY_W) and is_jumping == false):
 		is_jumping = true
-		self.set_linear_velocity(Vector2(0, -500))
+		set_linear_velocity(Vector2(get_linear_velocity().x, -500))
+	if (life <= 0):
+		get_tree().change_scene("res://boomscience.xscn")
+
+func move(speed, acceleration, delta):
+	var current_speed_x = get_linear_velocity().x
+	current_speed_x = lerp(current_speed_x, speed, acceleration * delta)
+	set_linear_velocity(Vector2(current_speed_x, get_linear_velocity().y))
 
 func _on_RigidBody2D_body_enter(body):
-	is_jumping = false
+	if (body.is_in_group("enemies")):
+		life -= 35
+		if (body.get_pos() <= self.get_pos()):
+			apply_impulse(Vector2(0, 0), Vector2(1000, -200))
+		else:
+			apply_impulse(Vector2(0, 0), Vector2(-1000, -200))
 	
 func _input(event):
 	if(event.is_action_pressed("throw")):
