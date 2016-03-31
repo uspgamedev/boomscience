@@ -12,8 +12,6 @@ var ray_cast
 var sprite
 
 func _ready():
-	#get_node("../ParticlesRoot/Area2D").connect("body_enter", self, "_on_Area2D_body_enter")
-	self.add_to_group("enemies")
 	set_fixed_process(true)
 	ray_cast = get_node("RayCast2D")
 	sprite = get_node("enemy")

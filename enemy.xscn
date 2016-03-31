@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="4" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
-	<ext_resource path="res://pixel.jpg" type="Texture" index="1"></ext_resource>
 	<ext_resource path="res://enemy.gd" type="Script" index="0"></ext_resource>
+	<ext_resource path="res://pixel.jpg" type="Texture" index="1"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 10, 10 </vector2>
@@ -12,12 +12,12 @@
 			<string> "conn_count" </string>
 			<int> 1 </int>
 			<string> "conns" </string>
-			<int_array  len="6"> 				0, 0, 41, 40, 2, 0 </int_array>
+			<int_array  len="6"> 				0, 0, 42, 41, 2, 0 </int_array>
 			<string> "editable_instances" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="42">
+			<string_array  len="43">
 				<string> "RigidBody2D" </string>
 				<string> "input/pickable" </string>
 				<string> "shapes/0/shape" </string>
@@ -42,6 +42,7 @@
 				<string> "damp_override/angular" </string>
 				<string> "script/script" </string>
 				<string> "__meta__" </string>
+				<string> "enemies" </string>
 				<string> "enemy" </string>
 				<string> "transform/scale" </string>
 				<string> "texture" </string>
@@ -67,7 +68,7 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="102"> 				-1, -1, 0, 0, -1, 23, 1, 0, 2, 1, 3, 2, 4, 0, 5, 3, 6, 4, 7, 5, 8, 6, 9, 6, 10, 7, 11, 6, 12, 0, 13, 8, 14, 3, 15, 9, 16, 0, 17, 9, 18, 10, 19, 7, 20, 11, 21, 11, 22, 12, 23, 13, 0, 0, 0, 28, 24, -1, 3, 25, 14, 26, 15, 27, 16, 0, 0, 0, 34, 29, -1, 5, 30, 17, 25, 18, 31, 1, 32, 0, 33, 8, 0, 0, 0, 35, 35, -1, 6, 30, 19, 25, 20, 36, 9, 37, 21, 38, 3, 39, 22, 0 </int_array>
+			<int_array  len="103"> 				-1, -1, 0, 0, -1, 23, 1, 0, 2, 1, 3, 2, 4, 0, 5, 3, 6, 4, 7, 5, 8, 6, 9, 6, 10, 7, 11, 6, 12, 0, 13, 8, 14, 3, 15, 9, 16, 0, 17, 9, 18, 10, 19, 7, 20, 11, 21, 11, 22, 12, 23, 13, 1, 24, 0, 0, 29, 25, -1, 3, 26, 14, 27, 15, 28, 16, 0, 0, 0, 35, 30, -1, 5, 31, 17, 26, 18, 32, 1, 33, 0, 34, 8, 0, 0, 0, 36, 36, -1, 6, 31, 19, 26, 20, 37, 9, 38, 21, 39, 3, 40, 22, 0 </int_array>
 			<string> "variants" </string>
 			<array  len="23" shared="false">
 				<bool> False </bool>
@@ -85,7 +86,7 @@
 				<resource  external="0">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "Script" </string>
+					<string> "2D" </string>
 				</dictionary>
 				<vector2> 0.1, 0.1 </vector2>
 				<resource  external="1">  </resource>
