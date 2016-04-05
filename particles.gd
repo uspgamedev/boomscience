@@ -16,3 +16,4 @@ func _fixed_process(delta):
 func _on_Area2D_body_enter( body ):
 	if body.is_in_group("enemies"):
 		body.bomb_collision()
+	

@@ -115,7 +115,7 @@
 			<array  len="42" shared="false">
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 				</dictionary>
 				<vector2> -139.281, 0 </vector2>
 				<int> 0 </int>

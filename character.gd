@@ -61,8 +61,22 @@ func _input(event):
 		var offset = get_pos() - get_node("Camera2D").get_camera_pos()
 		var bomb_direction = mouse_dir - offset
 		var bomb = bomb_scn.instance()
+		var angulation_y = max(bomb_direction.length() * -1 * 2.5, -500)
+		var angulation_x = max(bomb_direction.length()/150, 1.5)
+		var vel_x = angulation_x * bomb_direction.x
+		var vel_y = angulation_y + bomb_direction.y
+		var limit = 500
 		bomb.set_pos(get_pos())
-		bomb.set_linear_velocity(Vector2(bomb_direction.x, -600 + bomb_direction.y))
+		if (vel_x > limit):
+			vel_x = limit
+		elif (vel_x <= -limit):
+			vel_x = -limit
+		if (vel_y > limit):
+			vel_y = limit
+		elif (vel_y <= -limit):
+			vel_y = -limit
+		bomb.set_linear_velocity(Vector2(vel_x,vel_y))
+		print(bomb.get_linear_velocity())
 		get_parent().add_child(bomb)
 	if(event.is_action_pressed("instance")):
 		var enemy = enemy_scn.instance()
