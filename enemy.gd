@@ -35,9 +35,11 @@ func _fixed_process(delta):
 	if (ray_cast.is_colliding()):
 		direction *= -1
 		ray_cast.set_scale(Vector2(ray_cast.get_scale().x * -1, 1))
+		ray_cast2.set_pos(Vector2(ray_cast2.get_pos().x * -1, ray_cast2.get_pos().y))
 		count = 0
 	if (!ray_cast2.is_colliding()):
 		direction *= -1
+		ray_cast.set_scale(Vector2(ray_cast.get_scale().x * -1, 1))
 		ray_cast2.set_pos(Vector2(ray_cast2.get_pos().x * -1, ray_cast2.get_pos().y))
 		count = 0
 

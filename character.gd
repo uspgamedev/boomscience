@@ -76,7 +76,6 @@ func _input(event):
 		elif (vel_y <= -limit):
 			vel_y = -limit
 		bomb.set_linear_velocity(Vector2(vel_x,vel_y))
-		print(bomb.get_linear_velocity())
 		get_parent().add_child(bomb)
 	if(event.is_action_pressed("instance")):
 		var enemy = enemy_scn.instance()
