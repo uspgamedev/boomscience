@@ -11,6 +11,7 @@ var next_tile
 var ray_cast
 var ray_cast2
 var sprite
+var life = 100
 
 func _ready():
 	set_fixed_process(true)
@@ -43,9 +44,15 @@ func _fixed_process(delta):
 		ray_cast2.set_pos(Vector2(ray_cast2.get_pos().x * -1, ray_cast2.get_pos().y))
 		count = 0
 
+	if life <= 0:
+		var particles = enemy_particles_scn.instance()
+		get_parent().add_child(particles)
+		particles.get_node("enemy_particles").set_pos(get_pos())
+		queue_free()
+		queue_free()
+
 func bomb_collision():
 	var particles = enemy_particles_scn.instance()
 	get_parent().add_child(particles)
 	particles.get_node("enemy_particles").set_pos(get_pos())
 	queue_free()
-	

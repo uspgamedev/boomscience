@@ -4,6 +4,8 @@ extends Particles2D
 var timer = 0
 var limit = 10
 
+var damage = 20
+
 func _ready():
 	add_to_group("bomb_particles")
 	set_fixed_process(true)
