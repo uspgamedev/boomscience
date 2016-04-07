@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <resource_file type="PackedScene" subresource_count="7" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
 	<ext_resource path="res://enemy.xscn" type="PackedScene" index="3"></ext_resource>
 	<ext_resource path="res://moving_tileset.gd" type="Script" index="1"></ext_resource>
@@ -19,6 +20,13 @@
 		<vector2 name="extents"> 22.1244, 10 </vector2>
 
 	</resource>
+=======
+<resource_file type="PackedScene" subresource_count="6" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
+	<ext_resource path="res://gecko_single.png" type="Texture" index="2"></ext_resource>
+	<ext_resource path="res://resources/sample_test_tileset.xml" type="TileSet" index="0"></ext_resource>
+	<ext_resource path="res://enemy.xscn" type="PackedScene" index="3"></ext_resource>
+	<ext_resource path="res://character.gd" type="Script" index="1"></ext_resource>
+>>>>>>> Tileset working
 	<resource type="CapsuleShape2D" path="local://2">
 		<real name="custom_solver_bias"> 0 </real>
 		<real name="radius"> 10 </real>
@@ -32,16 +40,21 @@
 			<int> 0 </int>
 			<string> "conns" </string>
 <<<<<<< HEAD
+<<<<<<< HEAD
 			<int_array  len="0"> 				 </int_array>
 =======
 			<int_array  len="6"> 				5, 5, 76, 75, 2, 0 </int_array>
 >>>>>>> I fucked up, but did some tiles
+=======
+			<int_array  len="6"> 				2, 2, 70, 69, 2, 0 </int_array>
+>>>>>>> Tileset working
 			<string> "editable_instances" </string>
 			<array  len="2" shared="false">
 				<node_path> "RayCast2D" </node_path>
 				<node_path> "lava" </node_path>
 			</array>
 			<string> "names" </string>
+<<<<<<< HEAD
 <<<<<<< HEAD
 			<string_array  len="42">
 =======
@@ -51,6 +64,14 @@
 				<string> "__meta__" </string>
 				<string> "Node" </string>
 				<string> "TileMap" </string>
+=======
+			<string_array  len="71">
+				<string> "SceneRoot" </string>
+				<string> "__meta__" </string>
+				<string> "Node" </string>
+				<string> "TileMap 2" </string>
+				<string> "transform/pos" </string>
+>>>>>>> Tileset working
 				<string> "mode" </string>
 				<string> "tile_set" </string>
 				<string> "cell/size" </string>
@@ -66,6 +87,7 @@
 				<string> "collision/mask" </string>
 				<string> "occluder/light_mask" </string>
 				<string> "tile_data" </string>
+<<<<<<< HEAD
 				<string> "floor" </string>
 				<string> "Moving_TileMap" </string>
 				<string> "script/script" </string>
@@ -95,16 +117,72 @@
 			<int> 16 </int>
 =======
 				<string> "custom tilemap" </string>
+=======
+				<string> "TileMap" </string>
+				<string> "RigidBody2D" </string>
+				<string> "input/pickable" </string>
+				<string> "shapes/0/shape" </string>
+				<string> "shapes/0/transform" </string>
+				<string> "shapes/0/trigger" </string>
+				<string> "mass" </string>
+				<string> "friction" </string>
+				<string> "bounce" </string>
+				<string> "gravity_scale" </string>
+				<string> "custom_integrator" </string>
+				<string> "continuous_cd" </string>
+				<string> "contacts_reported" </string>
+				<string> "contact_monitor" </string>
+				<string> "sleeping" </string>
+				<string> "can_sleep" </string>
+				<string> "velocity/linear" </string>
+				<string> "velocity/angular" </string>
+				<string> "damp_override/linear" </string>
+				<string> "damp_override/angular" </string>
+				<string> "script/script" </string>
+				<string> "character" </string>
+				<string> "texture" </string>
+				<string> "Sprite" </string>
+				<string> "hitbox_character" </string>
+				<string> "shape" </string>
+				<string> "trigger" </string>
+				<string> "_update_shape_index" </string>
+				<string> "CollisionShape2D" </string>
+				<string> "Camera2D" </string>
+				<string> "anchor_mode" </string>
+				<string> "rotating" </string>
+				<string> "current" </string>
+				<string> "zoom" </string>
+				<string> "limit/left" </string>
+				<string> "limit/top" </string>
+				<string> "limit/right" </string>
+				<string> "limit/bottom" </string>
+				<string> "drag_margin/h_enabled" </string>
+				<string> "drag_margin/v_enabled" </string>
+				<string> "smoothing/enable" </string>
+				<string> "smoothing/speed" </string>
+				<string> "drag_margin/left" </string>
+				<string> "drag_margin/top" </string>
+				<string> "drag_margin/right" </string>
+				<string> "drag_margin/bottom" </string>
+				<string> "RigidBody2D 2" </string>
+				<string> "enemy" </string>
+				<string> "enemy_hitbox" </string>
+>>>>>>> Tileset working
 				<string> "_on_RigidBody2D_body_enter" </string>
 				<string> "body_enter" </string>
 			</string_array>
 			<string> "node_count" </string>
+<<<<<<< HEAD
 			<int> 11 </int>
 >>>>>>> I fucked up, but did some tiles
+=======
+			<int> 7 </int>
+>>>>>>> Tileset working
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
+<<<<<<< HEAD
 <<<<<<< HEAD
 			<int_array  len="204"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 16, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 1, 11, 7, 12, 7, 13, 8, 14, 9, 15, 10, 16, 11, 17, 10, 18, 12, 1, 13, 1, 19, 0, 0, 3, 20, -1, 17, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 1, 11, 7, 12, 14, 13, 8, 14, 9, 15, 10, 16, 11, 17, 10, 18, 15, 21, 16, 1, 17, 1, 19, 0, 0, 2147483647, 22, 18, 0, 0, 0, 0, 2147483647, 23, 19, 1, 24, 20, 0, 0, 0, 2147483647, 29, 19, 1, 24, 21, 0, 0, 0, 2147483647, 30, 19, 1, 24, 22, 0, 0, 0, 2147483647, 31, 19, 1, 24, 23, 0, 0, 0, 2147483647, 32, 19, 1, 24, 24, 0, 0, 0, 2147483647, 33, 19, 1, 24, 25, 0, 0, 0, 2147483647, 34, 19, 1, 24, 26, 0, 0, 0, 2147483647, 35, 19, 1, 24, 27, 0, 0, 0, 2147483647, 36, 28, 0, 0, 0, 0, 2147483647, 37, 29, 1, 24, 30, 0, 13, -1, 2147483647, 38, -1, 1, 39, 31, 0, 14, -1, 2147483647, 40, -1, 1, 41, 32, 0 </int_array>
 			<string> "variants" </string>
@@ -114,10 +192,19 @@
 			<string> "variants" </string>
 			<array  len="47" shared="false">
 >>>>>>> I fucked up, but did some tiles
+=======
+			<int_array  len="181"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 20, 3, -1, 16, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 2, 12, 8, 13, 8, 14, 9, 15, 10, 16, 11, 17, 11, 18, 11, 19, 12, 0, 0, 0, 21, 21, -1, 24, 4, 13, 22, 8, 23, 14, 24, 15, 25, 8, 16, 11, 17, 11, 5, 7, 26, 9, 27, 9, 28, 10, 29, 9, 30, 8, 31, 2, 32, 11, 33, 16, 34, 8, 35, 16, 36, 17, 37, 10, 38, 10, 39, 10, 40, 18, 1, 19, 0, 2, 0, 43, 41, -1, 3, 4, 20, 42, 21, 1, 22, 0, 2, 0, 48, 44, -1, 5, 4, 23, 45, 14, 46, 8, 47, 2, 1, 24, 0, 2, 0, 49, 49, -1, 17, 50, 11, 51, 8, 52, 16, 53, 25, 54, 26, 55, 26, 56, 27, 57, 27, 58, 16, 59, 16, 60, 8, 61, 28, 62, 29, 63, 29, 64, 29, 65, 29, 1, 30, 0, 0, 0, 2147483647, 66, 31, 0, 0 </int_array>
+			<string> "variants" </string>
+			<array  len="32" shared="false">
+>>>>>>> Tileset working
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
 					<string> "2D" </string>
 				</dictionary>
+<<<<<<< HEAD
+=======
+				<vector2> 1.22772, -1.22766 </vector2>
+>>>>>>> Tileset working
 				<int> 0 </int>
 				<resource  external="0">  </resource>
 				<vector2> 32, 32 </vector2>
@@ -128,19 +215,49 @@
 				<real> 1 </real>
 				<real> 0 </real>
 				<int> 1 </int>
+<<<<<<< HEAD
 				<int> 3 </int>
 				<int_array  len="602"> 					45, 1, 46, 1, 47, 1, 48, 1, 49, 1, 50, 1, 51, 1, 52, 1, 53, 1, 54, 2, 62, 0, 63, 1, 64, 1, 65, 1, 66, 1, 67, 1, 68, 1, 69, 1, 70, 1, 71, 2, 65579, 1, 65580, 1, 65581, 4, 65582, 4, 65583, 4, 65584, 4, 65585, 4, 65586, 4, 65587, 4, 65588, 4, 65589, 4, 65590, 5, 65598, 3, 65599, 4, 65600, 4, 65601, 4, 65602, 4, 65603, 4, 65604, 4, 65605, 4, 65606, 4, 65607, 5, 196599, 1, 131113, 1, 131114, 1, 131115, 4, 131116, 4, 131117, 7, 131118, 7, 131119, 7, 131120, 7, 131121, 7, 131122, 7, 131123, 7, 131124, 7, 131125, 7, 131126, 8, 131134, 6, 131135, 7, 131136, 7, 131137, 7, 131138, 7, 131139, 7, 131140, 7, 131141, 7, 131142, 7, 131143, 8, 262130, 0, 262131, 1, 262132, 1, 262133, 1, 262134, 1, 262135, 4, 262136, 1, 262137, 1, 262138, 1, 262139, 1, 262140, 1, 262141, 2, 196647, 1, 196648, 1, 196649, 4, 196650, 4, 196651, 7, 196652, 7, 327666, 3, 327667, 4, 327668, 4, 327669, 4, 327670, 4, 327671, 4, 327672, 4, 327673, 4, 327674, 4, 327675, 4, 327676, 4, 327677, 5, 262181, 1, 262182, 1, 262183, 4, 262184, 4, 262185, 7, 262186, 7, 393202, 6, 393203, 7, 393204, 7, 393205, 7, 393206, 7, 393207, 7, 393208, 7, 393209, 7, 393210, 7, 393211, 7, 393212, 7, 393213, 8, 327708, 0, 327709, 1, 327710, 1, 327711, 1, 327712, 1, 327713, 1, 327714, 1, 327715, 1, 327716, 1, 327717, 4, 327718, 4, 327719, 7, 327720, 7, 393244, 3, 393245, 4, 393246, 4, 393247, 4, 393248, 4, 393249, 4, 393250, 4, 393251, 4, 393252, 4, 393253, 7, 393254, 7, 458780, 6, 458781, 7, 458782, 7, 458783, 7, 458784, 7, 458785, 7, 458786, 7, 458787, 7, 458788, 7, 589810, 0, 589811, 1, 589812, 1, 589813, 1, 589814, 1, 589815, 1, 589816, 1, 589817, 1, 589818, 1, 589819, 1, 589820, 1, 589821, 1, 589822, 1, 589823, 1, 524288, 1, 524289, 1, 524290, 1, 524291, 1, 524310, 0, 524311, 1, 524312, 1, 524313, 1, 524314, 2, 524362, 0, 524363, 1, 524364, 1, 524365, 1, 524366, 1, 524367, 1, 524368, 1, 524369, 1, 524370, 1, 524371, 1, 524372, 1, 524373, 1, 524374, 1, 524375, 1, 524376, 2, 655346, 3, 655347, 4, 655348, 4, 655349, 4, 655350, 4, 655351, 4, 655352, 4, 655353, 4, 655354, 4, 655355, 4, 655356, 4, 655357, 4, 655358, 4, 655359, 4, 589824, 4, 589825, 4, 589826, 4, 589827, 4, 589828, 1, 589833, 0, 589834, 1, 589835, 1, 589836, 1, 589837, 1, 589838, 1, 589839, 1, 589840, 1, 589841, 1, 589842, 1, 589843, 2, 589846, 3, 589847, 4, 589848, 4, 589849, 4, 589850, 5, 589898, 3, 589899, 4, 589900, 4, 589901, 4, 589902, 4, 589903, 4, 589904, 4, 589905, 4, 589906, 4, 589907, 4, 589908, 4, 589909, 4, 589910, 4, 589911, 4, 589912, 5, 720882, 6, 720883, 7, 720884, 7, 720885, 7, 720886, 7, 720887, 7, 720888, 7, 720889, 7, 720890, 7, 720891, 7, 720892, 7, 720893, 7, 720894, 7, 720895, 7, 655360, 7, 655361, 7, 655362, 7, 655363, 7, 655364, 4, 655365, 1, 655369, 3, 655370, 4, 655371, 4, 655372, 4, 655373, 4, 655374, 4, 655375, 4, 655376, 4, 655377, 4, 655378, 4, 655379, 5, 655382, 6, 655383, 7, 655384, 7, 655385, 7, 655386, 8, 655434, 6, 655435, 7, 655436, 7, 655437, 7, 655438, 7, 655439, 7, 655440, 7, 655441, 7, 655442, 7, 655443, 7, 655444, 7, 655445, 7, 655446, 7, 655447, 7, 655448, 8, 720900, 7, 720901, 4, 720905, 6, 720906, 7, 720907, 7, 720908, 7, 720909, 7, 720910, 7, 720911, 7, 720912, 7, 720913, 7, 720914, 7, 720915, 8, 786437, 7 </int_array>
+=======
+				<int_array  len="116"> 					327675, 0, 327676, 1, 327677, 1, 327678, 1, 327679, 1, 262144, 1, 262145, 1, 262146, 1, 262147, 2, 393211, 3, 393212, 4, 393213, 4, 393214, 4, 393215, 4, 327680, 4, 327681, 4, 327682, 4, 327683, 5, 393222, 0, 393223, 2, 458758, 3, 458759, 5, 589829, 0, 589830, 1, 589831, 1, 589832, 1, 589833, 1, 589834, 1, 589835, 1, 589836, 1, 589837, 1, 589838, 1, 589839, 1, 589840, 2, 655365, 6, 655366, 7, 655367, 7, 655368, 7, 655369, 7, 655370, 7, 655371, 7, 655372, 7, 655373, 7, 655374, 7, 655375, 7, 655376, 8, 720901, 11, 720902, 10, 720903, 10, 720904, 10, 720905, 10, 720906, 10, 720907, 10, 720908, 10, 720909, 10, 720910, 10, 720911, 10, 720912, 9 </int_array>
+				<vector2> 346, 210 </vector2>
+				<resource  resource_type="Shape2D" path="local://2">  </resource>
+				<matrix32> 1, -0, 0, 1, 0, 2 </matrix32>
+				<bool> True </bool>
+				<vector2> 0, 0 </vector2>
+				<resource  external="1">  </resource>
+>>>>>>> Tileset working
 				<dictionary  shared="false">
 					<string> "_edit_lock_" </string>
 					<bool> True </bool>
 				</dictionary>
+<<<<<<< HEAD
 				<bool> True </bool>
 				<int_array  len="36"> 					917506, 1, 917507, 1, 917508, 1, 917509, 1, 917510, 1, 917511, 1, 917512, 1, 917513, 1, 917514, 1, 983042, 4, 983043, 4, 983044, 4, 983045, 4, 983046, 4, 983047, 4, 983048, 4, 983049, 4, 983050, 4 </int_array>
 				<resource  external="1">  </resource>
+=======
+				<vector2> 0.13049, -0.428007 </vector2>
+				<resource  external="2">  </resource>
 				<dictionary  shared="false">
 					<string> "_edit_lock_" </string>
 					<bool> True </bool>
 				</dictionary>
+				<vector2> 0, 2 </vector2>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<vector2> 1, 1 </vector2>
+				<int> -10000000 </int>
+				<int> 10000000 </int>
+				<real> 5 </real>
+				<real> 0.2 </real>
+>>>>>>> Tileset working
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+<<<<<<< HEAD
 				<resource  external="2">  </resource>
 				<resource  external="3">  </resource>
 				<vector2> 538.049, 261.344 </vector2>
@@ -161,6 +278,9 @@
 				<resource name=""></resource>				<vector2> 64, 64 </vector2>
 				<int_array  len="0"> 					 </int_array>
 >>>>>>> I fucked up, but did some tiles
+=======
+				<resource  external="3">  </resource>
+>>>>>>> Tileset working
 			</array>
 			<string> "version" </string>
 			<int> 2 </int>
