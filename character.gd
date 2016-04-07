@@ -61,9 +61,9 @@ func _input(event):
 		var offset = get_pos() - get_node("Camera2D").get_camera_pos()
 		var bomb_direction = mouse_dir - offset
 		var bomb = bomb_scn.instance()
-		var angulation_y = max(bomb_direction.length() * -1 * 2.5, -500)
+		var angulation_y = max(bomb_direction.length() * -1 * 1.5, -500)
 		var angulation_x = max(bomb_direction.length()/150, 1.5)
-		var vel_x = angulation_x * bomb_direction.x
+		var vel_x = angulation_x * bomb_direction.x + 100
 		var vel_y = angulation_y + bomb_direction.y
 		var limit = 500
 		bomb.set_pos(get_pos())
