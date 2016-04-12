@@ -7,15 +7,24 @@ var bomb_scn = preload("res://bomb.xscn")
 var enemy_scn = preload("res://enemy.xscn")
 var direction = 1  #1 é direita e -1 é esquerda
 var sprite
+
+var life_bar
 var life = 100
+
+var state = {
+	trans = Tween.TRANS_LINEAR,
+	eases = Tween.EASE_IN,
+}
 
 var is_jumping = false
 
 func _ready():
 	get_node("RayCast2D").add_exception(self)
+
 	set_fixed_process(true)
 	set_process_input(true)
 	sprite = get_node("character")
+
 	
 func _fixed_process(delta):
 	if direction == 1:
@@ -41,6 +50,7 @@ func _fixed_process(delta):
 	if (life <= 0):
 		get_tree().change_scene("res://boomscience.xscn")
 
+
 func move(speed, acceleration, delta):
 	var current_speed_x = get_linear_velocity().x
 	current_speed_x = lerp(current_speed_x, speed, acceleration * delta)
@@ -49,6 +59,7 @@ func move(speed, acceleration, delta):
 func _on_RigidBody2D_body_enter(body):
 	if (body.is_in_group("enemies")):
 		life -= 35
+		
 		if (body.get_pos() <= self.get_pos()):
 			apply_impulse(Vector2(0, 0), Vector2(1000, -200))
 		else:
@@ -81,4 +92,19 @@ func _input(event):
 		var enemy = enemy_scn.instance()
 		enemy.set_pos(get_viewport().get_mouse_pos())
 		get_parent().add_child(enemy)
+
+func color_change (before, after, t):
+	var tween = get_node("lifebar/Tween")
+	var sprite = get_node("character")
+
+	get_node("lifebar/VBoxContainer/color_from").set_color(before)
 	
+	get_node("lifebar/VBoxContainer/color_to").set_color(after)
+	
+	var color_from = get_node("lifebar/VBoxContainer/color_from").get_color()
+	var color_to = get_node("lifebar/VBoxContainer/color_to").get_color()
+	
+	tween.interpolate_method(sprite, "set_modulate", color_from, color_to, t, state.trans, state.eases)
+	
+	tween.set_repeat(false)
+	tween.start()

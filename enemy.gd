@@ -12,11 +12,18 @@ var ray_cast
 var ray_cast2
 var sprite
 
+var life = 100
+var life_bar
+
 func _ready():
 	set_fixed_process(true)
 	ray_cast = get_node("RayCast2D")
 	ray_cast2 = get_node("RayCast2D 2")
 	sprite = get_node("enemy")
+
+	life_bar = get_node("lifebar")
+	life_bar.set_max(life)
+
 	ray_cast.add_exception(self)
 	ray_cast2.add_exception(self)
 
@@ -31,7 +38,7 @@ func _fixed_process(delta):
 		direction *= -1
 		ray_cast.set_scale(Vector2(ray_cast.get_scale().x * -1, 1))
 		count = 0
-	set_pos(get_pos() + Vector2(direction * speed*delta, 0))
+	set_pos(get_pos() + Vector2(direction * speed*delta, 0)) # criando errors
 	if (ray_cast.is_colliding()):
 		direction *= -1
 		ray_cast.set_scale(Vector2(ray_cast.get_scale().x * -1, 1))
@@ -43,9 +50,12 @@ func _fixed_process(delta):
 		ray_cast2.set_pos(Vector2(ray_cast2.get_pos().x * -1, ray_cast2.get_pos().y))
 		count = 0
 
-func bomb_collision():
-	var particles = enemy_particles_scn.instance()
-	get_parent().add_child(particles)
-	particles.get_node("enemy_particles").set_pos(get_pos())
-	queue_free()
-	
+	life_bar.set_value(life)
+	if life <= 0:
+		var particles = enemy_particles_scn.instance()
+		get_parent().add_child(particles)
+		particles.get_node("enemy_particles").set_pos(get_pos())
+		queue_free()
+
+func bomb_collision(damage):
+	life -= damage
