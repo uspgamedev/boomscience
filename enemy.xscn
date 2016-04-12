@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="4" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
+<resource_file type="PackedScene" subresource_count="6" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
 	<ext_resource path="res://enemy.gd" type="Script" index="0"></ext_resource>
 	<ext_resource path="res://pixel.jpg" type="Texture" index="1"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
-		<vector2 name="extents"> 10, 10 </vector2>
+		<vector2 name="extents"> 25, 25 </vector2>
+
+	</resource>
+	<resource type="StyleBoxFlat" path="local://2">
+		<real name="content_margin/left"> -1 </real>
+		<real name="content_margin/right"> -1 </real>
+		<real name="content_margin/top"> -1 </real>
+		<real name="content_margin/bottom"> -1 </real>
+		<color name="bg_color"> 0.761719, 0.151749, 0.666411, 1 </color>
+		<color name="light_color"> 0.8, 0.8, 0.8, 1 </color>
+		<color name="dark_color"> 0.8, 0.8, 0.8, 1 </color>
+		<int name="border_size"> 0 </int>
+		<bool name="border_blend"> True </bool>
+		<bool name="draw_bg"> True </bool>
+
+	</resource>
+	<resource type="StyleBoxFlat" path="local://3">
+		<real name="content_margin/left"> -1 </real>
+		<real name="content_margin/right"> -1 </real>
+		<real name="content_margin/top"> -1 </real>
+		<real name="content_margin/bottom"> -1 </real>
+		<color name="bg_color"> 0.6, 0.6, 0.6, 1 </color>
+		<color name="light_color"> 0.8, 0.8, 0.8, 1 </color>
+		<color name="dark_color"> 0.8, 0.8, 0.8, 1 </color>
+		<int name="border_size"> 0 </int>
+		<bool name="border_blend"> True </bool>
+		<bool name="draw_bg"> True </bool>
 
 	</resource>
 	<main_resource>
@@ -12,13 +38,13 @@
 			<string> "conn_count" </string>
 			<int> 1 </int>
 			<string> "conns" </string>
-			<int_array  len="6"> 				0, 0, 43, 42, 2, 0 </int_array>
+			<int_array  len="6"> 				0, 0, 63, 62, 2, 0 </int_array>
 			<string> "editable_instances" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="44">
-				<string> "RigidBody2D" </string>
+			<string_array  len="64">
+				<string> "Enemy" </string>
 				<string> "input/pickable" </string>
 				<string> "shapes/0/shape" </string>
 				<string> "shapes/0/transform" </string>
@@ -43,38 +69,58 @@
 				<string> "script/script" </string>
 				<string> "__meta__" </string>
 				<string> "enemies" </string>
+				<string> "RigidBody2D" </string>
 				<string> "enemy" </string>
 				<string> "transform/scale" </string>
 				<string> "texture" </string>
 				<string> "modulate" </string>
 				<string> "Sprite" </string>
 				<string> "enemy_hitbox" </string>
-				<string> "transform/pos" </string>
 				<string> "shape" </string>
 				<string> "trigger" </string>
 				<string> "_update_shape_index" </string>
 				<string> "CollisionShape2D" </string>
 				<string> "RayCast2D" </string>
+				<string> "transform/pos" </string>
 				<string> "enabled" </string>
 				<string> "cast_to" </string>
 				<string> "layer_mask" </string>
 				<string> "type_mask" </string>
 				<string> "RayCast2D 2" </string>
+				<string> "lifebar" </string>
+				<string> "margin/left" </string>
+				<string> "margin/top" </string>
+				<string> "margin/right" </string>
+				<string> "margin/bottom" </string>
+				<string> "focus/ignore_mouse" </string>
+				<string> "focus/stop_mouse" </string>
+				<string> "size_flags/horizontal" </string>
+				<string> "custom_styles/fg" </string>
+				<string> "custom_styles/bg" </string>
+				<string> "range/min" </string>
+				<string> "range/max" </string>
+				<string> "range/step" </string>
+				<string> "range/page" </string>
+				<string> "range/value" </string>
+				<string> "range/exp_edit" </string>
+				<string> "range/rounded" </string>
+				<string> "percent/visible" </string>
+				<string> "ProgressBar" </string>
 				<string> "_on_RigidBody2D_body_enter" </string>
 				<string> "body_enter" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 5 </int>
+			<int> 6 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="120"> 				-1, -1, 0, 0, -1, 23, 1, 0, 2, 1, 3, 2, 4, 0, 5, 3, 6, 4, 7, 5, 8, 6, 9, 6, 10, 7, 11, 6, 12, 0, 13, 8, 14, 3, 15, 9, 16, 0, 17, 9, 18, 10, 19, 7, 20, 11, 21, 11, 22, 12, 23, 13, 1, 24, 0, 0, 29, 25, -1, 3, 26, 14, 27, 15, 28, 16, 0, 0, 0, 35, 30, -1, 5, 31, 17, 26, 18, 32, 1, 33, 0, 34, 8, 0, 0, 0, 36, 36, -1, 6, 31, 19, 26, 20, 37, 9, 38, 21, 39, 3, 40, 22, 0, 0, 0, 36, 41, -1, 5, 31, 23, 37, 9, 38, 24, 39, 3, 40, 22, 0 </int_array>
+			<int_array  len="157"> 				-1, -1, 25, 0, -1, 23, 1, 0, 2, 1, 3, 2, 4, 0, 5, 3, 6, 4, 7, 5, 8, 6, 9, 6, 10, 7, 11, 6, 12, 0, 13, 8, 14, 3, 15, 9, 16, 0, 17, 9, 18, 10, 19, 7, 20, 11, 21, 11, 22, 12, 23, 13, 1, 24, 0, 0, 30, 26, -1, 3, 27, 14, 28, 15, 29, 16, 0, 0, 0, 35, 31, -1, 3, 32, 1, 33, 0, 34, 8, 0, 0, 0, 36, 36, -1, 6, 37, 17, 27, 18, 38, 9, 39, 19, 40, 3, 41, 20, 0, 0, 0, 36, 42, -1, 5, 37, 21, 38, 9, 39, 22, 40, 3, 41, 20, 0, 0, 0, 61, 43, -1, 17, 44, 23, 45, 24, 46, 25, 47, 26, 48, 0, 49, 9, 50, 5, 51, 27, 52, 28, 53, 7, 54, 29, 55, 6, 56, 7, 57, 6, 58, 0, 59, 0, 60, 0, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="25" shared="false">
+			<array  len="30" shared="false">
 				<bool> False </bool>
 				<resource  resource_type="Shape2D" path="local://1">  </resource>
-				<matrix32> 2.52097, -0, 0, 2.49808, 0.0994814, -0.0460914 </matrix32>
+				<matrix32> 1, -0, 0, 1, 0, 0 </matrix32>
 				<int> 1 </int>
 				<int> 3 </int>
 				<int> 2 </int>
@@ -87,19 +133,24 @@
 				<resource  external="0">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "Script" </string>
+					<string> "2D" </string>
 				</dictionary>
 				<vector2> 0.1, 0.1 </vector2>
 				<resource  external="1">  </resource>
 				<color> 0.258824, 0.45098, 0.545098, 1 </color>
-				<vector2> 0.0994814, -0.0460914 </vector2>
-				<vector2> 2.52097, 2.49808 </vector2>
 				<vector2> 0.315559, -0.315559 </vector2>
 				<vector2> 0.5, 1 </vector2>
 				<vector2> 50, 0 </vector2>
 				<int> 15 </int>
 				<vector2> 30, 0 </vector2>
 				<vector2> 0, 50 </vector2>
+				<real> -25 </real>
+				<real> -50 </real>
+				<real> 25 </real>
+				<real> -34 </real>
+				<resource  resource_type="StyleBox" path="local://2">  </resource>
+				<resource  resource_type="StyleBox" path="local://3">  </resource>
+				<real> 100 </real>
 			</array>
 			<string> "version" </string>
 			<int> 2 </int>

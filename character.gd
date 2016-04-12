@@ -7,16 +7,28 @@ var bomb_scn = preload("res://bomb.xscn")
 var enemy_scn = preload("res://enemy.xscn")
 var direction = 1  #1 é direita e -1 é esquerda
 var sprite
+
+var life_bar
 var life = 100
 var bomb_select = 1
+
+var anim = "idle"
+var anim_new
+
+var state = {
+	trans = Tween.TRANS_LINEAR,
+	eases = Tween.EASE_IN,
+}
 
 var is_jumping = false
 
 func _ready():
 	get_node("RayCast2D").add_exception(self)
+
 	set_fixed_process(true)
 	set_process_input(true)
 	sprite = get_node("character")
+
 	
 func _fixed_process(delta):
 	if direction == 1:
@@ -34,15 +46,29 @@ func _fixed_process(delta):
 		direction = -1
 	else:
 		move(0, 10, delta)
+		anim_new = "idle"
+		
+	if is_jumping:
+		anim_new = "jump"
+
 	if (get_node("RayCast2D").is_colliding()):
 		is_jumping = false
 	if (Input.is_key_pressed(KEY_W) and is_jumping == false):
 		is_jumping = true
+		anim_new = "jump"
 		set_linear_velocity(Vector2(get_linear_velocity().x, -500))
+
+	if anim != anim_new:
+		anim = anim_new
+		#get_node("character/anim").play(anim)
+
+
 	if (life <= 0):
 		get_tree().change_scene("res://boomscience.xscn")
 
+
 func move(speed, acceleration, delta):
+	anim_new = "walk"
 	var current_speed_x = get_linear_velocity().x
 	current_speed_x = lerp(current_speed_x, speed, acceleration * delta)
 	set_linear_velocity(Vector2(current_speed_x, get_linear_velocity().y))
@@ -50,6 +76,7 @@ func move(speed, acceleration, delta):
 func _on_RigidBody2D_body_enter(body):
 	if (body.is_in_group("enemies")):
 		life -= 35
+
 		if (body.get_pos() <= self.get_pos()):
 			apply_impulse(Vector2(0, 0), Vector2(1000, -200))
 		else:
@@ -93,3 +120,20 @@ func _input(event):
 
 func bomb_value():
 	return bomb_select
+
+func color_change (before, after, t):
+	var tween = get_node("lifebar/Tween")
+	var sprite = get_node("character")
+
+	get_node("lifebar/VBoxContainer/color_from").set_color(before)
+	
+	get_node("lifebar/VBoxContainer/color_to").set_color(after)
+	
+	var color_from = get_node("lifebar/VBoxContainer/color_from").get_color()
+	var color_to = get_node("lifebar/VBoxContainer/color_to").get_color()
+	
+	tween.interpolate_method(sprite, "set_modulate", color_from, color_to, t, state.trans, state.eases)
+	
+	tween.set_repeat(false)
+	tween.start()
+

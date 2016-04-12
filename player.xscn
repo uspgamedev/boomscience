@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resource_file type="PackedScene" subresource_count="7" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
+	<ext_resource path="res://character.gd" type="Script" index="0"></ext_resource>
+	<ext_resource path="res://assets/gecko_walkcycle.png" type="Texture" index="1"></ext_resource>
+	<resource type="CapsuleShape2D" path="local://2">
+		<real name="custom_solver_bias"> 0 </real>
+		<real name="radius"> 10 </real>
+		<real name="height"> 16 </real>
+
+	</resource>
+	<resource type="Animation" path="local://4">
+		<string name="resource/name"> "idle" </string>
+		<real name="length"> 0.01 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> ".:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 1 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://5">
+		<string name="resource/name"> "jump" </string>
+		<real name="length"> 0.01 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> ".:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 0 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://3">
+		<string name="resource/name"> "walk" </string>
+		<real name="length"> 1 </real>
+		<bool name="loop"> True </bool>
+		<real name="step"> 0.25 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> ".:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="4"> 				0, 0.25, 0.5, 0.75 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="4"> 				1, 1, 1, 1 </real_array>
+			<string> "values" </string>
+			<array  len="4" shared="false">
+				<int> 0 </int>
+				<int> 1 </int>
+				<int> 2 </int>
+				<int> 3 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<main_resource>
+		<dictionary name="_bundled" shared="false">
+			<string> "conn_count" </string>
+			<int> 1 </int>
+			<string> "conns" </string>
+			<int_array  len="6"> 				0, 0, 86, 85, 2, 0 </int_array>
+			<string> "editable_instances" </string>
+			<array  len="0" shared="false">
+			</array>
+			<string> "names" </string>
+			<string_array  len="87">
+				<string> "Player" </string>
+				<string> "transform/pos" </string>
+				<string> "input/pickable" </string>
+				<string> "shapes/0/shape" </string>
+				<string> "shapes/0/transform" </string>
+				<string> "shapes/0/trigger" </string>
+				<string> "collision/layers" </string>
+				<string> "collision/mask" </string>
+				<string> "mode" </string>
+				<string> "mass" </string>
+				<string> "friction" </string>
+				<string> "bounce" </string>
+				<string> "gravity_scale" </string>
+				<string> "custom_integrator" </string>
+				<string> "continuous_cd" </string>
+				<string> "contacts_reported" </string>
+				<string> "contact_monitor" </string>
+				<string> "sleeping" </string>
+				<string> "can_sleep" </string>
+				<string> "velocity/linear" </string>
+				<string> "velocity/angular" </string>
+				<string> "damp_override/linear" </string>
+				<string> "damp_override/angular" </string>
+				<string> "script/script" </string>
+				<string> "__meta__" </string>
+				<string> "RigidBody2D" </string>
+				<string> "character" </string>
+				<string> "texture" </string>
+				<string> "hframes" </string>
+				<string> "frame" </string>
+				<string> "Sprite" </string>
+				<string> "anim" </string>
+				<string> "playback/process_mode" </string>
+				<string> "playback/default_blend_time" </string>
+				<string> "root/root" </string>
+				<string> "anims/idle" </string>
+				<string> "anims/jump" </string>
+				<string> "anims/walk" </string>
+				<string> "playback/active" </string>
+				<string> "playback/speed" </string>
+				<string> "blend_times" </string>
+				<string> "autoplay" </string>
+				<string> "AnimationPlayer" </string>
+				<string> "hitbox_character" </string>
+				<string> "shape" </string>
+				<string> "trigger" </string>
+				<string> "_update_shape_index" </string>
+				<string> "CollisionShape2D" </string>
+				<string> "Camera2D" </string>
+				<string> "anchor_mode" </string>
+				<string> "rotating" </string>
+				<string> "current" </string>
+				<string> "zoom" </string>
+				<string> "limit/left" </string>
+				<string> "limit/top" </string>
+				<string> "limit/right" </string>
+				<string> "limit/bottom" </string>
+				<string> "drag_margin/h_enabled" </string>
+				<string> "drag_margin/v_enabled" </string>
+				<string> "smoothing/enable" </string>
+				<string> "smoothing/speed" </string>
+				<string> "drag_margin/left" </string>
+				<string> "drag_margin/top" </string>
+				<string> "drag_margin/right" </string>
+				<string> "drag_margin/bottom" </string>
+				<string> "RayCast2D" </string>
+				<string> "enabled" </string>
+				<string> "cast_to" </string>
+				<string> "layer_mask" </string>
+				<string> "type_mask" </string>
+				<string> "Tween" </string>
+				<string> "playback/repeat" </string>
+				<string> "VBoxContainer" </string>
+				<string> "visibility/visible" </string>
+				<string> "margin/top" </string>
+				<string> "margin/right" </string>
+				<string> "margin/bottom" </string>
+				<string> "focus/ignore_mouse" </string>
+				<string> "focus/stop_mouse" </string>
+				<string> "size_flags/horizontal" </string>
+				<string> "size_flags/vertical" </string>
+				<string> "alignment" </string>
+				<string> "color_to" </string>
+				<string> "ColorPicker" </string>
+				<string> "color_from" </string>
+				<string> "_on_RigidBody2D_body_enter" </string>
+				<string> "body_enter" </string>
+			</string_array>
+			<string> "node_count" </string>
+			<int> 10 </int>
+			<string> "node_paths" </string>
+			<array  len="0" shared="false">
+			</array>
+			<string> "nodes" </string>
+			<int_array  len="264"> 				-1, -1, 25, 0, -1, 24, 1, 0, 2, 1, 3, 2, 4, 3, 5, 1, 6, 4, 7, 4, 8, 5, 9, 6, 10, 7, 11, 7, 12, 6, 13, 1, 14, 8, 15, 4, 16, 9, 17, 1, 18, 9, 19, 10, 20, 7, 21, 7, 22, 7, 23, 11, 24, 12, 0, 0, 0, 30, 26, -1, 5, 1, 13, 27, 14, 28, 15, 29, 5, 24, 16, 0, 1, 0, 42, 31, -1, 10, 32, 4, 33, 7, 34, 17, 35, 18, 36, 19, 37, 20, 38, 9, 39, 6, 40, 21, 41, 22, 0, 0, 0, 47, 43, -1, 5, 1, 23, 44, 2, 45, 1, 46, 8, 24, 24, 0, 0, 0, 48, 48, -1, 17, 49, 4, 50, 1, 51, 9, 52, 25, 53, 26, 54, 26, 55, 27, 56, 27, 57, 9, 58, 9, 59, 1, 60, 28, 61, 29, 62, 29, 63, 29, 64, 29, 24, 30, 0, 0, 0, 65, 65, -1, 5, 66, 9, 67, 31, 68, 4, 69, 32, 24, 33, 0, 0, 0, 70, 70, -1, 4, 32, 4, 38, 1, 71, 1, 39, 6, 0, 0, 0, 72, 72, -1, 10, 73, 1, 74, 34, 75, 35, 76, 36, 77, 1, 78, 1, 79, 5, 80, 5, 81, 8, 24, 37, 0, 7, 0, 83, 82, -1, 8, 75, 35, 76, 38, 77, 1, 78, 1, 79, 5, 80, 5, 81, 8, 24, 39, 0, 7, 0, 83, 84, -1, 9, 74, 40, 75, 35, 76, 41, 77, 1, 78, 1, 79, 5, 80, 5, 81, 8, 24, 42, 0 </int_array>
+			<string> "variants" </string>
+			<array  len="43" shared="false">
+				<vector2> 346, 210 </vector2>
+				<bool> False </bool>
+				<resource  resource_type="Shape2D" path="local://2">  </resource>
+				<matrix32> 1, -0, 0, 1, 0, 2 </matrix32>
+				<int> 1 </int>
+				<int> 2 </int>
+				<real> 1 </real>
+				<real> 0 </real>
+				<int> 0 </int>
+				<bool> True </bool>
+				<vector2> 0, 0 </vector2>
+				<resource  external="0">  </resource>
+				<dictionary  shared="false">
+					<string> "__editor_plugin_screen__" </string>
+					<string> "Script" </string>
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<vector2> 0.13049, -0.428007 </vector2>
+				<resource  external="1">  </resource>
+				<int> 4 </int>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<node_path> ".." </node_path>
+				<resource  resource_type="Animation" path="local://4">  </resource>
+				<resource  resource_type="Animation" path="local://5">  </resource>
+				<resource  resource_type="Animation" path="local://3">  </resource>
+				<array  len="0" shared="false">
+				</array>
+				<string> "idle" </string>
+				<vector2> 0, 2 </vector2>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<vector2> 1, 1 </vector2>
+				<int> -10000000 </int>
+				<int> 10000000 </int>
+				<real> 5 </real>
+				<real> 0.2 </real>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<vector2> 0, 25 </vector2>
+				<int> 15 </int>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<real> -1 </real>
+				<real> 288 </real>
+				<real> 875 </real>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<real> 436 </real>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<real> 440 </real>
+				<real> 876 </real>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+			</array>
+			<string> "version" </string>
+			<int> 2 </int>
+		</dictionary>
+
+	</main_resource>
+</resource_file>
