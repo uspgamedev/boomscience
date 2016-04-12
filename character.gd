@@ -11,6 +11,9 @@ var sprite
 var life_bar
 var life = 100
 
+var anim = "idle"
+var anim_new
+
 var state = {
 	trans = Tween.TRANS_LINEAR,
 	eases = Tween.EASE_IN,
@@ -42,16 +45,29 @@ func _fixed_process(delta):
 		direction = -1
 	else:
 		move(0, 10, delta)
+		anim_new = "idle"
+		
+	if is_jumping:
+		anim_new = "jump"
+
 	if (get_node("RayCast2D").is_colliding()):
 		is_jumping = false
 	if (Input.is_key_pressed(KEY_W) and is_jumping == false):
 		is_jumping = true
+		anim_new = "jump"
 		set_linear_velocity(Vector2(get_linear_velocity().x, -500))
+
+	if anim != anim_new:
+		anim = anim_new
+		get_node("character/anim").play(anim)
+
+
 	if (life <= 0):
 		get_tree().change_scene("res://boomscience.xscn")
 
 
 func move(speed, acceleration, delta):
+	anim_new = "walk"
 	var current_speed_x = get_linear_velocity().x
 	current_speed_x = lerp(current_speed_x, speed, acceleration * delta)
 	set_linear_velocity(Vector2(current_speed_x, get_linear_velocity().y))
@@ -59,7 +75,7 @@ func move(speed, acceleration, delta):
 func _on_RigidBody2D_body_enter(body):
 	if (body.is_in_group("enemies")):
 		life -= 35
-		
+
 		if (body.get_pos() <= self.get_pos()):
 			apply_impulse(Vector2(0, 0), Vector2(1000, -200))
 		else:
