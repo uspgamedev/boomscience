@@ -8,6 +8,7 @@ var enemy_scn = preload("res://enemy.xscn")
 var direction = 1  #1 é direita e -1 é esquerda
 var sprite
 var life = 100
+var bomb_select = 1
 
 var is_jumping = false
 
@@ -81,4 +82,14 @@ func _input(event):
 		var enemy = enemy_scn.instance()
 		enemy.set_pos(get_viewport().get_mouse_pos())
 		get_parent().add_child(enemy)
-	
+	if(event.is_action_pressed("select_basic")):
+		bomb_select = 1
+	if(event.is_action_pressed("select_fire")):
+		bomb_select = 2
+	if(event.is_action_pressed("select_ice")):
+		bomb_select = 3
+	if(event.is_action_pressed("select_water")):
+		bomb_select = 4
+
+func bomb_value():
+	return bomb_select
