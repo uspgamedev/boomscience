@@ -5,7 +5,7 @@ var player
 var life_bar
 
 func _ready():
-	player = get_parent().get_node("Player")
+	player = get_parent().get_node("character")
 	
 	life_bar = get_node("lifebar")
 	life_bar.set_max(player.life)
@@ -15,3 +15,4 @@ func _ready():
 
 func _fixed_process(delta):
 	life_bar.set_value(player.life)
+	
