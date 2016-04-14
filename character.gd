@@ -29,7 +29,6 @@ func _ready():
 	set_process_input(true)
 	sprite = get_node("character")
 
-	
 func _fixed_process(delta):
 	if direction == 1:
 		sprite.set_flip_h(true)
@@ -62,10 +61,8 @@ func _fixed_process(delta):
 		anim = anim_new
 		#get_node("character/anim").play(anim)
 
-
 	if (life <= 0):
 		get_tree().change_scene("res://boomscience.xscn")
-
 
 func move(speed, acceleration, delta):
 	anim_new = "walk"
@@ -75,12 +72,11 @@ func move(speed, acceleration, delta):
 
 func _on_RigidBody2D_body_enter(body):
 	if (body.is_in_group("enemies")):
-		life -= 35
-
+		life -= 20
 		if (body.get_pos() <= self.get_pos()):
-			apply_impulse(Vector2(0, 0), Vector2(1000, -200))
+			apply_impulse(Vector2(0, 0), Vector2(600, -200))
 		else:
-			apply_impulse(Vector2(0, 0), Vector2(-1000, -200))
+			apply_impulse(Vector2(0, 0), Vector2(-600, -200))
 	
 func _input(event):
 	if(event.is_action_pressed("throw")):
@@ -136,4 +132,3 @@ func color_change (before, after, t):
 	
 	tween.set_repeat(false)
 	tween.start()
-
