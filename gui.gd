@@ -5,7 +5,7 @@ var player
 var life_bar
 
 func _ready():
-	player = get_parent().get_node("character")
+	player = get_parent().get_node("Player")
 	
 	life_bar = get_node("lifebar")
 	life_bar.set_max(player.life)

@@ -60,7 +60,7 @@ func _fixed_process(delta):
 
 	if anim != anim_new:
 		anim = anim_new
-		#get_node("character/anim").play(anim)
+		get_node("character/anim").play(anim)
 
 
 	if (life <= 0):
