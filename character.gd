@@ -38,10 +38,10 @@ func _fixed_process(delta):
 	pos_x = get_pos().x
 	pos_y = get_pos().y
 	if (Input.is_key_pressed(KEY_D)):
-		move(220, 10, delta)
+		move(40, 10, delta)
 		direction = 1
 	elif (Input.is_key_pressed(KEY_A)):
-		move(-220, 10, delta)
+		move(-40, 10, delta)
 		direction = -1
 	else:
 		move(0, 10, delta)
@@ -60,6 +60,11 @@ func _fixed_process(delta):
 	if anim != anim_new:
 		anim = anim_new
 		#get_node("character/anim").play(anim)
+		
+	if get_linear_velocity().x > 220:
+		set_linear_velocity(Vector2(220, get_linear_velocity().y))
+	elif get_linear_velocity().x < -220:
+		set_linear_velocity(Vector2(-220, get_linear_velocity().y))
 
 	if (life <= 0):
 		get_tree().change_scene("res://boomscience.xscn")
@@ -68,7 +73,7 @@ func move(speed, acceleration, delta):
 	anim_new = "walk"
 	var current_speed_x = get_linear_velocity().x
 	current_speed_x = lerp(current_speed_x, speed, acceleration * delta)
-	set_linear_velocity(Vector2(current_speed_x, get_linear_velocity().y))
+	apply_impulse(Vector2(0, 0), Vector2(speed, 0))
 
 func _on_RigidBody2D_body_enter(body):
 	if (body.is_in_group("enemies")):
