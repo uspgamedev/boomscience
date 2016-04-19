@@ -51,10 +51,10 @@ func _fixed_process(delta):
 		anim_new = "jump"
 
 	if (get_node("RayCast2D").is_colliding()):
-		set_friction(1)
+		self.set_friction(1)
 		is_jumping = false
 	else:
-		set_friction(0)
+		self.set_friction(0)
 	
 	if (Input.is_key_pressed(KEY_W) and is_jumping == false):
 		is_jumping = true

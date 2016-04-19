@@ -133,7 +133,7 @@
 				<resource  external="0">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 				</dictionary>
 				<vector2> 0.1, 0.1 </vector2>
 				<resource  external="1">  </resource>
