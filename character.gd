@@ -38,20 +38,24 @@ func _fixed_process(delta):
 	pos_x = get_pos().x
 	pos_y = get_pos().y
 	if (Input.is_key_pressed(KEY_D)):
-		move(40, 10, delta)
+		move(40)
 		direction = 1
 	elif (Input.is_key_pressed(KEY_A)):
-		move(-40, 10, delta)
+		move(-40)
 		direction = -1
 	else:
-		move(0, 10, delta)
+		move(0)
 		anim_new = "idle"
 		
 	if is_jumping:
 		anim_new = "jump"
 
 	if (get_node("RayCast2D").is_colliding()):
+		set_friction(1)
 		is_jumping = false
+	else:
+		set_friction(0)
+	
 	if (Input.is_key_pressed(KEY_W) and is_jumping == false):
 		is_jumping = true
 		anim_new = "jump"
@@ -69,10 +73,8 @@ func _fixed_process(delta):
 	if (life <= 0):
 		get_tree().change_scene("res://boomscience.xscn")
 
-func move(speed, acceleration, delta):
+func move(speed):
 	anim_new = "walk"
-	var current_speed_x = get_linear_velocity().x
-	current_speed_x = lerp(current_speed_x, speed, acceleration * delta)
 	apply_impulse(Vector2(0, 0), Vector2(speed, 0))
 
 func _on_RigidBody2D_body_enter(body):
