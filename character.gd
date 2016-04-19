@@ -12,6 +12,9 @@ var life_bar
 var life = 100
 var bomb_select = 1
 
+var cd_count = [0, 0, 0, 0]
+var cd_max = [0.5, 3, 0.1, 10]
+
 var anim = "idle"
 var anim_new
 
@@ -28,6 +31,9 @@ func _ready():
 	set_fixed_process(true)
 	set_process_input(true)
 	sprite = get_node("character")
+
+	for i in range(0,4):
+		cd_count[i] = cd_max[i]
 
 func _fixed_process(delta):
 	if direction == 1:
@@ -46,9 +52,6 @@ func _fixed_process(delta):
 	else:
 		move(0)
 		anim_new = "idle"
-		
-	if is_jumping:
-		anim_new = "jump"
 
 	if (get_node("RayCast2D").is_colliding()):
 		self.set_friction(1)
@@ -58,20 +61,28 @@ func _fixed_process(delta):
 	
 	if (Input.is_key_pressed(KEY_W) and is_jumping == false):
 		is_jumping = true
-		anim_new = "jump"
 		set_linear_velocity(Vector2(get_linear_velocity().x, -500))
+
+	if is_jumping:
+		anim_new = "jump"
 
 	if anim != anim_new:
 		anim = anim_new
-		#get_node("character/anim").play(anim)
+		get_node("character/anim").play(anim)
 		
 	if get_linear_velocity().x > 220:
 		set_linear_velocity(Vector2(220, get_linear_velocity().y))
 	elif get_linear_velocity().x < -220:
 		set_linear_velocity(Vector2(-220, get_linear_velocity().y))
 
+	for i in range(0,4):
+		cd_count[i] += delta
+
 	if (life <= 0):
-		get_tree().change_scene("res://boomscience.xscn")
+		death()
+
+func death():
+	get_tree().change_scene("res://boomscience.xscn")
 
 func move(speed):
 	anim_new = "walk"
@@ -87,27 +98,7 @@ func _on_RigidBody2D_body_enter(body):
 	
 func _input(event):
 	if(event.is_action_pressed("throw")):
-		var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
-		var mouse_dir = get_viewport().get_mouse_pos() - screen_center
-		var offset = get_pos() - get_node("Camera2D").get_camera_pos()
-		var bomb_direction = mouse_dir - offset
-		var bomb = bomb_scn.instance()
-		var angulation_y = max(bomb_direction.length() * -1 * 1.5, -500)
-		var angulation_x = max(bomb_direction.length()/150, 1.5)
-		var vel_x = angulation_x * bomb_direction.x + 100
-		var vel_y = angulation_y + bomb_direction.y
-		var limit = 500
-		bomb.set_pos(get_pos())
-		if (vel_x > limit):
-			vel_x = limit
-		elif (vel_x <= -limit):
-			vel_x = -limit
-		if (vel_y > limit):
-			vel_y = limit
-		elif (vel_y <= -limit):
-			vel_y = -limit
-		bomb.set_linear_velocity(Vector2(vel_x,vel_y))
-		get_parent().add_child(bomb)
+		throw(bomb_select, cd_max[bomb_select-1])
 	if(event.is_action_pressed("instance")):
 		var enemy = enemy_scn.instance()
 		enemy.set_pos(get_viewport().get_mouse_pos())
@@ -120,6 +111,23 @@ func _input(event):
 		bomb_select = 3
 	if(event.is_action_pressed("select_water")):
 		bomb_select = 4
+
+func throw(bomb_type, cooldown):
+	if cd_count[bomb_select-1] >= cooldown:
+		cd_count[bomb_select-1] = 0
+		var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
+		var mouse_dir = get_viewport().get_mouse_pos() - screen_center
+		var offset = get_pos() - get_node("Camera2D").get_camera_pos()
+		var bomb_direction = mouse_dir - offset
+		var bomb = bomb_scn.instance()
+		var angulation_y = max(bomb_direction.length() * -1 * 1.5, -500)
+		var angulation_x = max(bomb_direction.length()/150, 1.5)
+		var vel_x = angulation_x * bomb_direction.x + 100
+		var vel_y = angulation_y + bomb_direction.y
+
+		bomb.set_pos(get_pos())
+		bomb.set_linear_velocity(Vector2(vel_x,vel_y))
+		get_parent().add_child(bomb)
 
 func bomb_value():
 	return bomb_select
