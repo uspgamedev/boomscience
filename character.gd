@@ -46,9 +46,6 @@ func _fixed_process(delta):
 	else:
 		move(0)
 		anim_new = "idle"
-		
-	if is_jumping:
-		anim_new = "jump"
 
 	if (get_node("RayCast2D").is_colliding()):
 		set_friction(1)
@@ -58,17 +55,20 @@ func _fixed_process(delta):
 	
 	if (Input.is_key_pressed(KEY_W) and is_jumping == false):
 		is_jumping = true
-		anim_new = "jump"
 		set_linear_velocity(Vector2(get_linear_velocity().x, -500))
+
+	if is_jumping:
+		anim_new = "jump"
 
 	if anim != anim_new:
 		anim = anim_new
-		#get_node("character/anim").play(anim)
+		get_node("character/anim").play(anim)
 		
 	if get_linear_velocity().x > 220:
 		set_linear_velocity(Vector2(220, get_linear_velocity().y))
 	elif get_linear_velocity().x < -220:
 		set_linear_velocity(Vector2(-220, get_linear_velocity().y))
+
 
 	if (life <= 0):
 		get_tree().change_scene("res://boomscience.xscn")
@@ -96,16 +96,8 @@ func _input(event):
 		var angulation_x = max(bomb_direction.length()/150, 1.5)
 		var vel_x = angulation_x * bomb_direction.x + 100
 		var vel_y = angulation_y + bomb_direction.y
-		var limit = 500
+
 		bomb.set_pos(get_pos())
-		if (vel_x > limit):
-			vel_x = limit
-		elif (vel_x <= -limit):
-			vel_x = -limit
-		if (vel_y > limit):
-			vel_y = limit
-		elif (vel_y <= -limit):
-			vel_y = -limit
 		bomb.set_linear_velocity(Vector2(vel_x,vel_y))
 		get_parent().add_child(bomb)
 	if(event.is_action_pressed("instance")):

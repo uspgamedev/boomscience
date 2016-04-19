@@ -38,13 +38,9 @@ func _fixed_process(delta):
 		direction *= -1
 		ray_cast.set_scale(Vector2(ray_cast.get_scale().x * -1, 1))
 		count = 0
-	set_pos(get_pos() + Vector2(direction * speed*delta, 0)) # criando errors
-	if (ray_cast.is_colliding()):
-		direction *= -1
-		ray_cast.set_scale(Vector2(ray_cast.get_scale().x * -1, 1))
-		ray_cast2.set_pos(Vector2(ray_cast2.get_pos().x * -1, ray_cast2.get_pos().y))
-		count = 0
-	if (!ray_cast2.is_colliding()):
+	move(speed * direction, 5, delta)
+
+	if (ray_cast.is_colliding() or !ray_cast2.is_colliding() ):
 		direction *= -1
 		ray_cast.set_scale(Vector2(ray_cast.get_scale().x * -1, 1))
 		ray_cast2.set_pos(Vector2(ray_cast2.get_pos().x * -1, ray_cast2.get_pos().y))
@@ -52,10 +48,18 @@ func _fixed_process(delta):
 
 	life_bar.set_value(life)
 	if life <= 0:
-		var particles = enemy_particles_scn.instance()
-		get_parent().add_child(particles)
-		particles.get_node("enemy_particles").set_pos(get_pos())
-		queue_free()
+		death()
+
+func death():
+	var particles = enemy_particles_scn.instance()
+	get_parent().add_child(particles)
+	particles.get_node("enemy_particles").set_pos(get_pos())
+	queue_free()
 
 func bomb_collision(damage):
 	life -= damage
+
+func move(speed, acceleration, delta):
+	var current_speed_x = get_linear_velocity().x
+	current_speed_x = lerp(current_speed_x, speed, acceleration * delta)
+	set_linear_velocity(Vector2(current_speed_x, get_linear_velocity().y))
