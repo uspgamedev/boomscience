@@ -71,7 +71,10 @@ func _fixed_process(delta):
 
 
 	if (life <= 0):
-		get_tree().change_scene("res://boomscience.xscn")
+		death()
+
+func death():
+	get_tree().change_scene("res://boomscience.xscn")
 
 func move(speed):
 	anim_new = "walk"

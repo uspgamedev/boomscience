@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="3" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
-	<resource type="GDScript" path="local://2">
-		<string name="script/source"> "&#000a;extends Sprite&#000a;&#000a;var damage = 1&#000a;&#000a;var death_list = []&#000a;&#000a;func _ready():&#000a;&#0009;set_fixed_process(true)&#000a;&#000a;func _fixed_process(delta):&#000a;&#0009;for body in death_list:&#000a;&#0009;&#0009;body.life -= damage&#000a;&#000a;func _on_lava_box_body_enter( body ):&#000a;&#0009;if body.life != null:&#000a;&#0009;&#0009;death_list.append(body)" </string>
-
-	</resource>
+	<ext_resource path="res://lava.gd" type="Script" index="0"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
-		<vector2 name="extents"> 2000, 50 </vector2>
+		<vector2 name="extents"> 400, 100 </vector2>
 
 	</resource>
 	<main_resource>
@@ -14,17 +11,17 @@
 			<string> "conn_count" </string>
 			<int> 1 </int>
 			<string> "conns" </string>
-			<int_array  len="6"> 				1, 0, 19, 18, 2, 0 </int_array>
+			<int_array  len="6"> 				1, 0, 18, 17, 2, 0 </int_array>
 			<string> "editable_instances" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="20">
+			<string_array  len="19">
 				<string> "lava" </string>
 				<string> "script/script" </string>
 				<string> "__meta__" </string>
 				<string> "Sprite" </string>
-				<string> "lava_box" </string>
+				<string> "Area2D" </string>
 				<string> "input/pickable" </string>
 				<string> "shapes/0/shape" </string>
 				<string> "shapes/0/transform" </string>
@@ -33,12 +30,11 @@
 				<string> "gravity" </string>
 				<string> "linear_damp" </string>
 				<string> "angular_damp" </string>
-				<string> "Area2D" </string>
 				<string> "CollisionShape2D" </string>
 				<string> "shape" </string>
 				<string> "trigger" </string>
 				<string> "_update_shape_index" </string>
-				<string> "_on_lava_box_body_enter" </string>
+				<string> "_on_Area2D_body_enter" </string>
 				<string> "body_enter" </string>
 			</string_array>
 			<string> "node_count" </string>
@@ -47,13 +43,13 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="51"> 				-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 13, 4, -1, 9, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 8, 12, 9, 2, 10, 0, 1, 0, 14, 14, -1, 4, 15, 3, 16, 5, 17, 11, 2, 12, 0 </int_array>
+			<int_array  len="51"> 				-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 9, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 8, 12, 9, 2, 10, 0, 1, 0, 13, 13, -1, 4, 14, 3, 15, 5, 16, 11, 2, 12, 0 </int_array>
 			<string> "variants" </string>
 			<array  len="13" shared="false">
-				<resource  resource_type="Script" path="local://2">  </resource>
+				<resource  external="0">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 				</dictionary>
 				<bool> True </bool>
 				<resource  resource_type="Shape2D" path="local://1">  </resource>
