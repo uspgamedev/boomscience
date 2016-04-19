@@ -12,6 +12,9 @@ var life_bar
 var life = 100
 var bomb_select = 1
 
+var cd_count = [0, 0, 0, 0]
+var cd_max = [0.5, 3, 0.1, 10]
+
 var anim = "idle"
 var anim_new
 
@@ -28,6 +31,9 @@ func _ready():
 	set_fixed_process(true)
 	set_process_input(true)
 	sprite = get_node("character")
+
+	for i in range(0,4):
+		cd_count[i] = cd_max[i]
 
 func _fixed_process(delta):
 	if direction == 1:
@@ -69,6 +75,8 @@ func _fixed_process(delta):
 	elif get_linear_velocity().x < -220:
 		set_linear_velocity(Vector2(-220, get_linear_velocity().y))
 
+	for i in range(0,4):
+		cd_count[i] += delta
 
 	if (life <= 0):
 		death()
@@ -90,6 +98,23 @@ func _on_RigidBody2D_body_enter(body):
 	
 func _input(event):
 	if(event.is_action_pressed("throw")):
+		throw(bomb_select, cd_max[bomb_select-1])
+	if(event.is_action_pressed("instance")):
+		var enemy = enemy_scn.instance()
+		enemy.set_pos(get_viewport().get_mouse_pos())
+		get_parent().add_child(enemy)
+	if(event.is_action_pressed("select_basic")):
+		bomb_select = 1
+	if(event.is_action_pressed("select_fire")):
+		bomb_select = 2
+	if(event.is_action_pressed("select_ice")):
+		bomb_select = 3
+	if(event.is_action_pressed("select_water")):
+		bomb_select = 4
+
+func throw(bomb_type, cooldown):
+	if cd_count[bomb_select-1] >= cooldown:
+		cd_count[bomb_select-1] = 0
 		var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
 		var mouse_dir = get_viewport().get_mouse_pos() - screen_center
 		var offset = get_pos() - get_node("Camera2D").get_camera_pos()
@@ -103,18 +128,6 @@ func _input(event):
 		bomb.set_pos(get_pos())
 		bomb.set_linear_velocity(Vector2(vel_x,vel_y))
 		get_parent().add_child(bomb)
-	if(event.is_action_pressed("instance")):
-		var enemy = enemy_scn.instance()
-		enemy.set_pos(get_viewport().get_mouse_pos())
-		get_parent().add_child(enemy)
-	if(event.is_action_pressed("select_basic")):
-		bomb_select = 1
-	if(event.is_action_pressed("select_fire")):
-		bomb_select = 2
-	if(event.is_action_pressed("select_ice")):
-		bomb_select = 3
-	if(event.is_action_pressed("select_water")):
-		bomb_select = 4
 
 func bomb_value():
 	return bomb_select

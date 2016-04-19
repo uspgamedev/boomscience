@@ -3,9 +3,9 @@
 	<ext_resource path="res://enemy.xscn" type="PackedScene" index="3"></ext_resource>
 	<ext_resource path="res://resources/basic_tileset.xml" type="TileSet" index="0"></ext_resource>
 	<ext_resource path="res://moving_tileset.gd" type="Script" index="1"></ext_resource>
-	<ext_resource path="res://player.xscn" type="PackedScene" index="2"></ext_resource>
 	<ext_resource path="res://gui.xscn" type="PackedScene" index="4"></ext_resource>
 	<ext_resource path="res://lava.xscn" type="PackedScene" index="5"></ext_resource>
+	<ext_resource path="res://player.xscn" type="PackedScene" index="2"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "conn_count" </string>
@@ -101,7 +101,7 @@
 				<resource  external="3">  </resource>
 				<vector2> 536.049, 231.344 </vector2>
 				<vector2> 37.8793, 201.68 </vector2>
-				<vector2> 238.64, 405.865 </vector2>
+				<vector2> 802.171, 227.844 </vector2>
 				<vector2> 1527.16, -48.7244 </vector2>
 				<vector2> 2109.72, -38.6709 </vector2>
 				<vector2> 2508.05, 210.124 </vector2>
