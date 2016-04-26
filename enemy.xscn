@@ -6,7 +6,6 @@
 		<real name="custom_solver_bias"> 0 </real>
 		<real name="radius"> 24.5 </real>
 		<real name="height"> 1 </real>
-
 	</resource>
 	<resource type="StyleBoxFlat" path="local://2">
 		<real name="content_margin/left"> -1 </real>
@@ -121,7 +120,7 @@
 			<array  len="30" shared="false">
 				<bool> False </bool>
 				<resource  resource_type="Shape2D" path="local://4">  </resource>
-				<matrix32> 1, -0, 0, 1, 0, 0 </matrix32>
+				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
 				<int> 1 </int>
 				<int> 3 </int>
 				<int> 2 </int>
