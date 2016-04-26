@@ -99,10 +99,6 @@ func _on_RigidBody2D_body_enter(body):
 func _input(event):
 	if(event.is_action_pressed("throw")):
 		throw(bomb_select, cd_max[bomb_select-1])
-	if(event.is_action_pressed("instance")):
-		var enemy = enemy_scn.instance()
-		enemy.set_pos(get_viewport().get_mouse_pos())
-		get_parent().add_child(enemy)
 	if(event.is_action_pressed("select_basic")):
 		bomb_select = 1
 	if(event.is_action_pressed("select_fire")):
