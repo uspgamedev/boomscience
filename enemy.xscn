@@ -2,9 +2,10 @@
 <resource_file type="PackedScene" subresource_count="6" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
 	<ext_resource path="res://enemy.gd" type="Script" index="0"></ext_resource>
 	<ext_resource path="res://pixel.jpg" type="Texture" index="1"></ext_resource>
-	<resource type="RectangleShape2D" path="local://1">
+	<resource type="CapsuleShape2D" path="local://4">
 		<real name="custom_solver_bias"> 0 </real>
-		<vector2 name="extents"> 25, 25 </vector2>
+		<real name="radius"> 16 </real>
+		<real name="height"> 20 </real>
 
 	</resource>
 	<resource type="StyleBoxFlat" path="local://2">
@@ -119,8 +120,8 @@
 			<string> "variants" </string>
 			<array  len="30" shared="false">
 				<bool> False </bool>
-				<resource  resource_type="Shape2D" path="local://1">  </resource>
-				<matrix32> 1, -0, 0, 1, 0, 0 </matrix32>
+				<resource  resource_type="Shape2D" path="local://4">  </resource>
+				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
 				<int> 1 </int>
 				<int> 3 </int>
 				<int> 2 </int>
