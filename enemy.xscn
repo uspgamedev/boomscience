@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="6" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
-	<ext_resource path="res://enemy.gd" type="Script" index="0"></ext_resource>
 	<ext_resource path="res://pixel.jpg" type="Texture" index="1"></ext_resource>
+	<ext_resource path="res://enemy.gd" type="Script" index="0"></ext_resource>
 	<resource type="CapsuleShape2D" path="local://4">
 		<real name="custom_solver_bias"> 0 </real>
 		<real name="radius"> 24.5 </real>
@@ -132,7 +132,7 @@
 				<resource  external="0">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 				</dictionary>
 				<vector2> 0.1, 0.1 </vector2>
 				<resource  external="1">  </resource>

@@ -12,6 +12,7 @@ var sprite
 var player
 var life = 100
 var life_bar
+var passive = true
 
 func _ready():
 	set_fixed_process(true)
@@ -46,9 +47,14 @@ func _fixed_process(delta):
 		death()
 	
 func bomb_collision(damage):
-	life -= damage
+	if (passive):
+		life -= damage
+		#aggressive(delta)
+	else:
+		life -= damage/2
 	
 func passive(delta):
+	passive = true
 	move(speed * direction, 5, delta)
 	
 	if (ray_cast.is_colliding() or !ray_cast2.is_colliding()):
@@ -57,6 +63,7 @@ func passive(delta):
 		ray_cast2.set_pos(Vector2(ray_cast2.get_pos().x * -1, ray_cast2.get_pos().y))
 	
 func aggressive(delta):
+	passive = false
 	if ((player.get_pos().x > self.get_pos().x and direction == -1) or (player.get_pos().x <= self.get_pos().x and direction == 1)):
 		direction *= -1
 		ray_cast2.set_pos(Vector2(ray_cast2.get_pos().x * -1, ray_cast2.get_pos().y))

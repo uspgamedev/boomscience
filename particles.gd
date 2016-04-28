@@ -15,7 +15,7 @@ func _fixed_process(delta):
 	if(timer >= limit):
 		queue_free()
 
-func _on_Area2D_body_enter( body ):
+func _on_Area2D_body_enter(body):
 	if body.is_in_group("enemies"):
 		body.bomb_collision(damage)
 	
