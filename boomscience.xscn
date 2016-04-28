@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="7" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
+<resource_file type="PackedScene" subresource_count="7" version="2.0" version_name="Godot Engine v2.0.stable.official">
 	<ext_resource path="res://enemy.xscn" type="PackedScene" index="3"></ext_resource>
 	<ext_resource path="res://moving_tileset.gd" type="Script" index="1"></ext_resource>
-	<ext_resource path="res://resources/basic_tileset.xml" type="TileSet" index="0"></ext_resource>
+	<ext_resource path="res://resources/urban_tileset.xml" type="TileSet" index="0"></ext_resource>
+	<ext_resource path="res://gui.xscn" type="PackedScene" index="4"></ext_resource>
 	<ext_resource path="res://lava.xscn" type="PackedScene" index="5"></ext_resource>
 	<ext_resource path="res://player.xscn" type="PackedScene" index="2"></ext_resource>
-	<ext_resource path="res://gui.xscn" type="PackedScene" index="4"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "conn_count" </string>
