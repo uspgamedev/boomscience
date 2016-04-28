@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resource_file type="PackedScene" subresource_count="5" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
+	<ext_resource path="res://assets/urban_tileset.tex" type="Texture" index="0"></ext_resource>
+	<resource type="ConvexPolygonShape2D" path="local://1">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2_array name="points" len="4"> 			-16, 16, -16, 0, 16, 0, 16, 16 </vector2_array>
+
+	</resource>
+	<resource type="ConvexPolygonShape2D" path="local://2">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2_array name="points" len="4"> 			-16, 16, -16, 0, 16, 0, 16, 16 </vector2_array>
+
+	</resource>
+	<resource type="ConvexPolygonShape2D" path="local://3">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2_array name="points" len="4"> 			-16, -16, 16, -16, 16, 16, -16, 16 </vector2_array>
+
+	</resource>
+	<main_resource>
+		<dictionary name="_bundled" shared="false">
+			<string> "conn_count" </string>
+			<int> 0 </int>
+			<string> "conns" </string>
+			<int_array  len="0"> 				 </int_array>
+			<string> "editable_instances" </string>
+			<array  len="0" shared="false">
+			</array>
+			<string> "names" </string>
+			<string_array  len="43">
+				<string> "Node2D" </string>
+				<string> "__meta__" </string>
+				<string> "Floor Left" </string>
+				<string> "transform/pos" </string>
+				<string> "texture" </string>
+				<string> "region" </string>
+				<string> "region_rect" </string>
+				<string> "Sprite" </string>
+				<string> "StaticBody2D" </string>
+				<string> "input/pickable" </string>
+				<string> "shapes/0/shape" </string>
+				<string> "shapes/0/transform" </string>
+				<string> "shapes/0/trigger" </string>
+				<string> "collision/layers" </string>
+				<string> "collision/mask" </string>
+				<string> "constant_linear_velocity" </string>
+				<string> "constant_angular_velocity" </string>
+				<string> "friction" </string>
+				<string> "bounce" </string>
+				<string> "CollisionPolygon2D" </string>
+				<string> "build_mode" </string>
+				<string> "polygon" </string>
+				<string> "shape_range" </string>
+				<string> "trigger" </string>
+				<string> "Floor" </string>
+				<string> "StaticBody2D1" </string>
+				<string> "Floor Right" </string>
+				<string> "StaticBody2D2" </string>
+				<string> "Floor Float Left" </string>
+				<string> "StaticBody2D3" </string>
+				<string> "Floor Float" </string>
+				<string> "StaticBody2D4" </string>
+				<string> "Floor Float Right" </string>
+				<string> "StaticBody2D5" </string>
+				<string> "Floor Wall" </string>
+				<string> "Wall Left" </string>
+				<string> "Wall" </string>
+				<string> "Wall Right" </string>
+				<string> "Water 1" </string>
+				<string> "Water 2" </string>
+				<string> "Water Deep" </string>
+				<string> "Water Deeper" </string>
+				<string> "Door" </string>
+			</string_array>
+			<string> "node_count" </string>
+			<int> 30 </int>
+			<string> "node_paths" </string>
+			<array  len="0" shared="false">
+			</array>
+			<string> "nodes" </string>
+			<int_array  len="528"> 				-1, -1, 0, 0, -1, 1, 1, 0, 0, 0, 0, 7, 2, -1, 4, 3, 1, 4, 2, 5, 3, 6, 4, 0, 1, 0, 8, 8, -1, 10, 9, 5, 10, 6, 11, 7, 12, 5, 13, 8, 14, 8, 15, 9, 16, 10, 17, 11, 18, 10, 0, 2, 0, 19, 19, -1, 4, 20, 12, 21, 13, 22, 9, 23, 5, 0, 0, 0, 7, 24, -1, 4, 3, 14, 4, 2, 5, 3, 6, 15, 0, 4, 0, 8, 25, -1, 10, 9, 5, 10, 6, 11, 7, 12, 5, 13, 8, 14, 8, 15, 9, 16, 10, 17, 11, 18, 10, 0, 5, 0, 19, 19, -1, 4, 20, 12, 21, 13, 22, 9, 23, 5, 0, 0, 0, 7, 26, -1, 4, 3, 16, 4, 2, 5, 3, 6, 17, 0, 7, 0, 8, 27, -1, 10, 9, 5, 10, 6, 11, 7, 12, 5, 13, 8, 14, 8, 15, 9, 16, 10, 17, 11, 18, 10, 0, 8, 0, 19, 19, -1, 4, 20, 12, 21, 13, 22, 9, 23, 5, 0, 0, 0, 7, 28, -1, 4, 3, 18, 4, 2, 5, 3, 6, 19, 0, 10, 0, 8, 29, -1, 10, 9, 5, 10, 6, 11, 7, 12, 5, 13, 8, 14, 8, 15, 9, 16, 10, 17, 11, 18, 10, 0, 11, 0, 19, 19, -1, 4, 20, 12, 21, 13, 22, 9, 23, 5, 0, 0, 0, 7, 30, -1, 4, 3, 20, 4, 2, 5, 3, 6, 21, 0, 13, 0, 8, 31, -1, 10, 9, 5, 10, 22, 11, 23, 12, 5, 13, 8, 14, 8, 15, 9, 16, 10, 17, 11, 18, 10, 0, 14, 0, 19, 19, -1, 4, 20, 12, 21, 13, 22, 9, 23, 5, 0, 0, 0, 7, 32, -1, 4, 3, 24, 4, 2, 5, 3, 6, 25, 0, 16, 0, 8, 33, -1, 10, 9, 5, 10, 22, 11, 23, 12, 5, 13, 8, 14, 8, 15, 9, 16, 10, 17, 11, 18, 10, 0, 17, 0, 19, 19, -1, 4, 20, 12, 21, 13, 22, 9, 23, 5, 0, 0, 0, 7, 34, -1, 4, 3, 26, 4, 2, 5, 3, 6, 27, 0, 19, 0, 8, 8, -1, 10, 9, 5, 10, 28, 11, 7, 12, 5, 13, 8, 14, 8, 15, 9, 16, 10, 17, 11, 18, 10, 0, 20, 0, 19, 19, -1, 4, 20, 12, 21, 29, 22, 9, 23, 5, 0, 0, 0, 7, 35, -1, 4, 3, 30, 4, 2, 5, 3, 6, 31, 0, 0, 0, 7, 36, -1, 4, 3, 32, 4, 2, 5, 3, 6, 33, 0, 0, 0, 7, 37, -1, 4, 3, 34, 4, 2, 5, 3, 6, 35, 0, 0, 0, 7, 38, -1, 4, 3, 36, 4, 2, 5, 3, 6, 37, 0, 0, 0, 7, 39, -1, 4, 3, 38, 4, 2, 5, 3, 6, 39, 0, 0, 0, 7, 40, -1, 4, 3, 40, 4, 2, 5, 3, 6, 41, 0, 0, 0, 7, 41, -1, 4, 3, 42, 4, 2, 5, 3, 6, 43, 0, 0, 0, 7, 42, -1, 4, 3, 44, 4, 2, 5, 3, 6, 45, 0 </int_array>
+			<string> "variants" </string>
+			<array  len="46" shared="false">
+				<dictionary  shared="false">
+					<string> "__editor_plugin_screen__" </string>
+					<string> "2D" </string>
+				</dictionary>
+				<vector2> 16, 16 </vector2>
+				<resource  external="0">  </resource>
+				<bool> True </bool>
+				<rect2> 64, 32, 32, 32 </rect2>
+				<bool> False </bool>
+				<resource  resource_type="Shape2D" path="local://1">  </resource>
+				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
+				<int> 1 </int>
+				<vector2> 0, 0 </vector2>
+				<real> 0 </real>
+				<real> 1 </real>
+				<int> 0 </int>
+				<vector2_array  len="4"> 					-16, 16, -16, 0, 16, 0, 16, 16 </vector2_array>
+				<vector2> 56, 16 </vector2>
+				<rect2> 32, 32, 32, 32 </rect2>
+				<vector2> 96, 16 </vector2>
+				<rect2> 96, 32, 32, 32 </rect2>
+				<vector2> 136, 16 </vector2>
+				<rect2> 128, 0, 32, 32 </rect2>
+				<vector2> 176, 16 </vector2>
+				<rect2> 160, 32, 32, 32 </rect2>
+				<resource  resource_type="Shape2D" path="local://2">  </resource>
+				<matrix32> 1, -0, 0, 1, 0, 0 </matrix32>
+				<vector2> 216, 16 </vector2>
+				<rect2> 160, 0, 32, 32 </rect2>
+				<vector2> 16, 56 </vector2>
+				<rect2> 0, 32, 32, 32 </rect2>
+				<resource  resource_type="Shape2D" path="local://3">  </resource>
+				<vector2_array  len="4"> 					-16, -16, 16, -16, 16, 16, -16, 16 </vector2_array>
+				<vector2> 56, 56 </vector2>
+				<rect2> 64, 0, 32, 32 </rect2>
+				<vector2> 96, 56 </vector2>
+				<rect2> 32, 0, 32, 32 </rect2>
+				<vector2> 136, 56 </vector2>
+				<rect2> 96, 0, 32, 32 </rect2>
+				<vector2> 16, 96 </vector2>
+				<rect2> 192, 0, 32, 32 </rect2>
+				<vector2> 56, 96 </vector2>
+				<rect2> 224, 0, 32, 32 </rect2>
+				<vector2> 16, 136 </vector2>
+				<rect2> 192, 32, 32, 32 </rect2>
+				<vector2> 56, 136 </vector2>
+				<rect2> 224, 32, 32, 32 </rect2>
+				<vector2> 96, 132 </vector2>
+				<rect2> 256, 24, 32, 40 </rect2>
+			</array>
+			<string> "version" </string>
+			<int> 2 </int>
+		</dictionary>
+
+	</main_resource>
+</resource_file>

@@ -2,10 +2,16 @@
 <resource_file type="PackedScene" subresource_count="7" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
 	<ext_resource path="res://enemy.xscn" type="PackedScene" index="3"></ext_resource>
 	<ext_resource path="res://moving_tileset.gd" type="Script" index="1"></ext_resource>
-	<ext_resource path="res://resources/urban_tileset.xml" type="TileSet" index="0"></ext_resource>
-	<ext_resource path="res://gui.xscn" type="PackedScene" index="4"></ext_resource>
-	<ext_resource path="res://lava.xscn" type="PackedScene" index="5"></ext_resource>
+<<<<<<< HEAD
+	<ext_resource path="res://resources/basic_tileset.xml" type="TileSet" index="0"></ext_resource>
 	<ext_resource path="res://player.xscn" type="PackedScene" index="2"></ext_resource>
+	<ext_resource path="res://lava.xscn" type="PackedScene" index="5"></ext_resource>
+=======
+	<ext_resource path="res://resources/urban_tileset.xml" type="TileSet" index="0"></ext_resource>
+>>>>>>> d9e84a46d30b02419d525225942988fdf7ac4b4b
+	<ext_resource path="res://gui.xscn" type="PackedScene" index="4"></ext_resource>
+	<ext_resource path="res://player.xscn" type="PackedScene" index="2"></ext_resource>
+	<ext_resource path="res://lava.xscn" type="PackedScene" index="5"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "conn_count" </string>
@@ -18,7 +24,7 @@
 				<node_path> "lava" </node_path>
 			</array>
 			<string> "names" </string>
-			<string_array  len="41">
+			<string_array  len="40">
 				<string> "SceneRoot" </string>
 				<string> "__meta__" </string>
 				<string> "Node" </string>
@@ -58,18 +64,17 @@
 				<string> "CanvasLayer" </string>
 				<string> "lava" </string>
 				<string> "Area2D" </string>
-				<string> "linear_damp" </string>
 				<string> "CollisionShape2D" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 15 </int>
+			<int> 14 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="195"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 16, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 1, 11, 7, 12, 7, 13, 8, 14, 9, 15, 10, 16, 11, 17, 10, 18, 12, 1, 13, 1, 19, 0, 0, 3, 20, -1, 17, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 1, 11, 7, 12, 14, 13, 8, 14, 9, 15, 10, 16, 11, 17, 10, 18, 15, 21, 16, 1, 17, 1, 19, 0, 0, 2147483647, 22, 18, 0, 0, 0, 0, 2147483647, 23, 19, 1, 24, 20, 0, 0, 0, 2147483647, 29, 19, 1, 24, 21, 0, 0, 0, 2147483647, 30, 19, 1, 24, 22, 0, 0, 0, 2147483647, 31, 19, 1, 24, 23, 0, 0, 0, 2147483647, 32, 19, 1, 24, 24, 0, 0, 0, 2147483647, 33, 19, 1, 24, 25, 0, 0, 0, 2147483647, 34, 19, 1, 24, 26, 0, 0, 0, 2147483647, 35, 19, 1, 24, 27, 0, 0, 0, 2147483647, 36, 28, 0, 0, 0, 0, 2147483647, 37, 29, 1, 24, 30, 0, 13, -1, 2147483647, 38, -1, 1, 39, 31, 0 </int_array>
+			<int_array  len="186"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 16, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 1, 11, 7, 12, 7, 13, 8, 14, 9, 15, 10, 16, 11, 17, 10, 18, 12, 1, 13, 1, 19, 0, 0, 3, 20, -1, 17, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 1, 11, 7, 12, 14, 13, 8, 14, 9, 15, 10, 16, 11, 17, 10, 18, 15, 21, 16, 1, 17, 1, 19, 0, 0, 2147483647, 22, 18, 0, 0, 0, 0, 2147483647, 23, 19, 1, 24, 20, 0, 0, 0, 2147483647, 29, 19, 1, 24, 21, 0, 0, 0, 2147483647, 30, 19, 1, 24, 22, 0, 0, 0, 2147483647, 31, 19, 1, 24, 23, 0, 0, 0, 2147483647, 32, 19, 1, 24, 24, 0, 0, 0, 2147483647, 33, 19, 1, 24, 25, 0, 0, 0, 2147483647, 34, 19, 1, 24, 26, 0, 0, 0, 2147483647, 35, 19, 1, 24, 27, 0, 0, 0, 2147483647, 36, 28, 0, 0, 0, 0, 2147483647, 37, 29, 1, 24, 30, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="32" shared="false">
+			<array  len="31" shared="false">
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
 					<string> "2D" </string>
@@ -110,7 +115,6 @@
 				<resource  external="4">  </resource>
 				<resource  external="5">  </resource>
 				<vector2> 0, 800 </vector2>
-				<real> 0.1 </real>
 			</array>
 			<string> "version" </string>
 			<int> 2 </int>
