@@ -3,9 +3,9 @@
 	<ext_resource path="res://enemy.xscn" type="PackedScene" index="3"></ext_resource>
 	<ext_resource path="res://moving_tileset.gd" type="Script" index="1"></ext_resource>
 	<ext_resource path="res://resources/basic_tileset.xml" type="TileSet" index="0"></ext_resource>
+	<ext_resource path="res://lava.xscn" type="PackedScene" index="5"></ext_resource>
 	<ext_resource path="res://player.xscn" type="PackedScene" index="2"></ext_resource>
 	<ext_resource path="res://gui.xscn" type="PackedScene" index="4"></ext_resource>
-	<ext_resource path="res://lava.xscn" type="PackedScene" index="5"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "conn_count" </string>
@@ -73,7 +73,7 @@
 			<array  len="33" shared="false">
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 				</dictionary>
 				<int> 0 </int>
 				<resource  external="0">  </resource>

@@ -58,6 +58,7 @@ func _fixed_process(delta):
 		is_jumping = false
 	else:
 		self.set_friction(0)
+		is_jumping = true
 	
 	if (Input.is_key_pressed(KEY_W) and is_jumping == false):
 		is_jumping = true
@@ -92,9 +93,9 @@ func _on_RigidBody2D_body_enter(body):
 	if (body.is_in_group("enemies")):
 		life -= 20
 		if (body.get_pos() <= self.get_pos()):
-			apply_impulse(Vector2(0, 0), Vector2(600, -200))
+			set_linear_velocity(Vector2(600, -200))
 		else:
-			apply_impulse(Vector2(0, 0), Vector2(-600, -200))
+			set_linear_velocity(Vector2(-600, -200))
 	
 func _input(event):
 	if(event.is_action_pressed("throw")):
