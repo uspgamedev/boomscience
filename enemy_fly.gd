@@ -63,7 +63,7 @@ func _fixed_process(delta):
 		death()
 
 func bomb_collision(damage):
-	life -= 5
+	life -= damage
 
 func passive(delta):
 	lock_target = false

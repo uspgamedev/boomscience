@@ -24,6 +24,7 @@ var state = {
 }
 
 var is_jumping = false
+var stealth = false
 
 func _ready():
 	get_node("RayCast2D").add_exception(self)
@@ -36,6 +37,8 @@ func _ready():
 		cd_count[i] = cd_max[i]
 
 func _fixed_process(delta):
+	stealth = (Input.is_action_pressed("stealth") and !is_jumping)
+	
 	if direction == 1:
 		sprite.set_flip_h(true)
 	else:
@@ -44,10 +47,16 @@ func _fixed_process(delta):
 	pos_x = get_pos().x
 	pos_y = get_pos().y
 	if (Input.is_key_pressed(KEY_D)):
-		move(40)
+		if (!stealth):
+			move(40)
+		else:
+			move(20)
 		direction = 1
 	elif (Input.is_key_pressed(KEY_A)):
-		move(-40)
+		if (!stealth):
+			move(-40)
+		else:
+			move(-20)
 		direction = -1
 	else:
 		move(0)
@@ -71,10 +80,14 @@ func _fixed_process(delta):
 		anim = anim_new
 		get_node("character/anim").play(anim)
 		
-	if get_linear_velocity().x > 220:
+	if (get_linear_velocity().x > 220 and !stealth):
 		set_linear_velocity(Vector2(220, get_linear_velocity().y))
-	elif get_linear_velocity().x < -220:
+	elif (get_linear_velocity().x < -220 and !stealth):
 		set_linear_velocity(Vector2(-220, get_linear_velocity().y))
+	elif (get_linear_velocity().x > 110 and stealth):
+		set_linear_velocity(Vector2(110, get_linear_velocity().y))
+	elif (get_linear_velocity().x < -110 and stealth):
+		set_linear_velocity(Vector2(-110, get_linear_velocity().y))
 
 	for i in range(0,4):
 		cd_count[i] += delta
@@ -117,7 +130,7 @@ func throw(bomb_type, cooldown):
 		var offset = get_pos() - get_node("Camera2D").get_camera_pos()
 		var bomb_direction = mouse_dir - offset
 		var bomb = bomb_scn.instance()
-		var angulation_y = max(bomb_direction.length() * -1 * 1.5, -500)
+		var angulation_y = max(bomb_direction.length() * -1.5, -500)
 		var angulation_x = max(bomb_direction.length()/150, 1.5)
 		var vel_x = angulation_x * bomb_direction.x + 100
 		var vel_y = angulation_y + bomb_direction.y
