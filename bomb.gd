@@ -27,4 +27,3 @@ func _on_bomb_body_enter(body):
 		particles.set_color_phase_color(0, get_node("bomb").get_modulate())
 		particles.set_pos(get_pos())
 		queue_free()
-	
