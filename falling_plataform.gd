@@ -3,7 +3,7 @@ extends RigidBody2D
 
 var timer = 0.5
 var is_falling = false
-var epslon = 9
+export var epslon = 7
 
 
 func _fixed_process(delta):

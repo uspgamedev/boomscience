@@ -130,10 +130,26 @@ func throw(bomb_type, cooldown):
 		var offset = get_pos() - get_node("Camera2D").get_camera_pos()
 		var bomb_direction = mouse_dir - offset
 		var bomb = bomb_scn.instance()
-		var angulation_y = max(bomb_direction.length() * -1.5, -500)
-		var angulation_x = max(bomb_direction.length()/150, 1.5)
-		var vel_x = angulation_x * bomb_direction.x + 100
-		var vel_y = angulation_y + bomb_direction.y
+		
+		var vel_x = bomb_direction.x*bomb_direction.length()/50
+		var vel_y = bomb_direction.y*bomb_direction.length()/100
+		
+		if vel_y < 0:
+			vel_y -= 180
+		
+		if vel_y < -720:
+			vel_y = -720
+		elif vel_y > -120 and vel_y < 0:
+			vel_y = -120
+		elif vel_y < 120 and vel_y >= 0:
+			vel_y = 120
+		elif vel_y > 300:
+			vel_y = 300
+		
+		if vel_x < -3000:
+			vel_x = -3000
+		elif vel_x > 3000:
+			vel_x = 3000
 
 		bomb.set_pos(get_pos())
 		bomb.set_linear_velocity(Vector2(vel_x,vel_y))
