@@ -30,13 +30,20 @@ func _ready():
 	ray_cast2.add_exception(self)
 
 func _fixed_process(delta):
-	var dist = player.get_pos() - self.get_pos()
-	
-	if (dist.length() <= 150):
-		aggressive(delta)
+	var dist
+	if (player.get_stealth()):
+		dist = player.get_pos() - (self.get_pos() + Vector2(direction * 100,0))
+		if (dist.length() <= 50):
+			aggressive(delta)
+		else:
+			passive(delta)
 	else:
-		passive(delta)
-	
+		dist = player.get_pos() - self.get_pos()
+		
+		if (dist.length() <= 150):
+			aggressive(delta)
+		else:
+			passive(delta)
 	if direction == 1:
 		sprite.set_flip_h(true)
 	else:

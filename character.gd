@@ -157,3 +157,6 @@ func color_change (before, after, t):
 	
 	tween.set_repeat(false)
 	tween.start()
+
+func get_stealth():
+	return stealth
