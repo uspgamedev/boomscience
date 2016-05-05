@@ -14,6 +14,8 @@ var bomb_select = 1
 
 var cd_count = [0, 0, 0, 0]
 var cd_max = [0.5, 3, 0.1, 10]
+var invincible_timer = .5
+var invincible_count = invincible_timer
 
 var anim = "idle"
 var anim_new
@@ -25,6 +27,7 @@ var state = {
 
 var is_jumping = false
 var stealth = false
+var invincible = false
 
 func _ready():
 	get_node("RayCast2D").add_exception(self)
@@ -92,6 +95,18 @@ func _fixed_process(delta):
 	for i in range(0,4):
 		cd_count[i] += delta
 
+	if invincible:
+		var sprite = get_node("character")
+		invincible_count -= delta
+		if int(floor((invincible_count*10)))%2 == 1:
+			sprite.hide()
+		else:
+			sprite.show()
+		if invincible_count <= 0:
+			sprite.show()
+			invincible_count = invincible_timer
+			invincible = false
+
 	if (life <= 0):
 		death()
 
@@ -104,11 +119,7 @@ func move(speed):
 
 func _on_RigidBody2D_body_enter(body):
 	if (body.is_in_group("enemies")):
-		life -= 20
-		if (body.get_pos() <= self.get_pos()):
-			set_linear_velocity(Vector2(600, -200))
-		else:
-			set_linear_velocity(Vector2(-600, -200))
+		get_hit(body)
 	
 func _input(event):
 	if(event.is_action_pressed("throw")):
@@ -157,6 +168,15 @@ func throw(bomb_type, cooldown):
 
 func bomb_value():
 	return bomb_select
+
+func get_hit(body):
+	if !invincible:
+		life -= 20
+	invincible = true
+	if (body.get_pos() <= self.get_pos()):
+		set_linear_velocity(Vector2(600, -200))
+	else:
+		set_linear_velocity(Vector2(-600, -200))
 
 func color_change (before, after, t):
 	var tween = get_node("lifebar/Tween")

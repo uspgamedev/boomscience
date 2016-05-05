@@ -202,8 +202,6 @@
 					<string> "Script" </string>
 					<string> "_edit_lock_" </string>
 					<bool> True </bool>
-					<string> "_editor_collapsed" </string>
-					<bool> True </bool>
 				</dictionary>
 				<vector2> 0.13049, -0.428007 </vector2>
 				<resource  external="1">  </resource>
