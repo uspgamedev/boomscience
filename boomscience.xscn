@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="9" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
 	<ext_resource path="res://enemy.xscn" type="PackedScene" index="3"></ext_resource>
-	<ext_resource path="res://gui.xscn" type="PackedScene" index="5"></ext_resource>
-	<ext_resource path="res://player.xscn" type="PackedScene" index="2"></ext_resource>
-	<ext_resource path="res://enemy_fly.xscn" type="PackedScene" index="4"></ext_resource>
 	<ext_resource path="res://moving_tileset.gd" type="Script" index="1"></ext_resource>
 	<ext_resource path="res://resources/urban_tileset.xml" type="TileSet" index="0"></ext_resource>
-	<ext_resource path="res://falling_platform.xscn" type="PackedScene" index="7"></ext_resource>
+	<ext_resource path="res://gui.xscn" type="PackedScene" index="5"></ext_resource>
 	<ext_resource path="res://lava.xscn" type="PackedScene" index="6"></ext_resource>
+	<ext_resource path="res://player.xscn" type="PackedScene" index="2"></ext_resource>
+	<ext_resource path="res://enemy_fly.xscn" type="PackedScene" index="4"></ext_resource>
+	<ext_resource path="res://falling_platform.xscn" type="PackedScene" index="7"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "conn_count" </string>
@@ -15,13 +15,10 @@
 			<string> "conns" </string>
 			<int_array  len="0"> 				 </int_array>
 			<string> "editable_instances" </string>
-			<array  len="3" shared="false">
-				<node_path> "RayCast2D" </node_path>
-				<node_path> "Enemy" </node_path>
-				<node_path> "lava" </node_path>
+			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="46">
+			<string_array  len="37">
 				<string> "SceneRoot" </string>
 				<string> "__meta__" </string>
 				<string> "Node" </string>
@@ -47,10 +44,6 @@
 				<string> "Player" </string>
 				<string> "RayCast2D" </string>
 				<string> "transform/pos" </string>
-				<string> "enemy" </string>
-				<string> "enemy_hitbox" </string>
-				<string> "RayCast2D 2" </string>
-				<string> "lifebar" </string>
 				<string> "RigidBody2D2" </string>
 				<string> "RigidBody2D3" </string>
 				<string> "RigidBody2D4" </string>
@@ -62,22 +55,17 @@
 				<string> "gravity_scale" </string>
 				<string> "CanvasLayer" </string>
 				<string> "lava" </string>
-				<string> "Area2D" </string>
-				<string> "linear_damp" </string>
-				<string> "CollisionShape2D" </string>
 				<string> "falling_plataform" </string>
-				<string> "falling_plataform1" </string>
-				<string> "falling_plataform2" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 19 </int>
+			<int> 16 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="234"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 16, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 1, 11, 7, 12, 7, 13, 8, 14, 9, 15, 10, 16, 11, 17, 10, 18, 12, 1, 13, 1, 19, 0, 0, 3, 20, -1, 17, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 1, 11, 7, 12, 14, 13, 8, 14, 9, 15, 10, 16, 11, 17, 10, 18, 15, 21, 16, 1, 17, 1, 19, 0, 0, 2147483647, 22, 18, 0, 1, 22, 0, 0, 2147483647, 23, 19, 1, 24, 20, 0, 0, 0, 2147483647, 29, 19, 1, 24, 21, 0, 0, 0, 2147483647, 30, 19, 1, 24, 22, 0, 0, 0, 2147483647, 31, 19, 1, 24, 23, 0, 0, 0, 2147483647, 32, 19, 1, 24, 24, 0, 0, 0, 2147483647, 33, 19, 1, 24, 25, 0, 0, 0, 2147483647, 34, 19, 1, 24, 26, 0, 0, 0, 2147483647, 35, 19, 1, 24, 27, 0, 0, 0, 2147483647, 36, 28, 2, 24, 29, 37, 30, 0, 0, 0, 2147483647, 38, 31, 0, 0, 0, 0, 2147483647, 39, 32, 1, 24, 33, 0, 14, -1, 2147483647, 40, -1, 1, 41, 34, 0, 0, 0, 2147483647, 43, 35, 1, 24, 36, 0, 0, 0, 2147483647, 44, 35, 1, 24, 37, 0, 0, 0, 2147483647, 45, 35, 1, 24, 38, 0 </int_array>
+			<int_array  len="207"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 16, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 1, 11, 7, 12, 7, 13, 8, 14, 9, 15, 10, 16, 11, 17, 10, 18, 12, 1, 13, 1, 19, 0, 0, 3, 20, -1, 17, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 1, 11, 7, 12, 14, 13, 8, 14, 9, 15, 10, 16, 11, 17, 10, 18, 15, 21, 16, 1, 17, 1, 19, 0, 0, 2147483647, 22, 18, 0, 1, 22, 0, 0, 2147483647, 23, 19, 1, 24, 20, 0, 0, 0, 2147483647, 25, 19, 1, 24, 21, 0, 0, 0, 2147483647, 26, 19, 1, 24, 22, 0, 0, 0, 2147483647, 27, 19, 1, 24, 23, 0, 0, 0, 2147483647, 28, 19, 1, 24, 24, 0, 0, 0, 2147483647, 29, 19, 1, 24, 25, 0, 0, 0, 2147483647, 30, 19, 1, 24, 26, 0, 0, 0, 2147483647, 31, 19, 1, 24, 27, 0, 0, 0, 2147483647, 32, 28, 2, 24, 29, 33, 30, 0, 0, 0, 2147483647, 34, 31, 0, 0, 0, 0, 2147483647, 35, 32, 1, 24, 33, 0, 0, 0, 2147483647, 36, 34, 1, 24, 35, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="39" shared="false">
+			<array  len="36" shared="false">
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
 					<string> "2D" </string>
@@ -121,11 +109,8 @@
 				<resource  external="5">  </resource>
 				<resource  external="6">  </resource>
 				<vector2> 0, 800 </vector2>
-				<real> 0.1 </real>
 				<resource  external="7">  </resource>
-				<vector2> 475.725, 213.256 </vector2>
-				<vector2> 563.898, 215.307 </vector2>
-				<vector2> 643.869, 215.307 </vector2>
+				<vector2> 582.112, 245.85 </vector2>
 			</array>
 			<string> "version" </string>
 			<int> 2 </int>
