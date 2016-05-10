@@ -17,7 +17,7 @@ var passive = true
 func _ready():
 	set_fixed_process(true)
 	
-	player = get_node("../Player")
+	player = get_parent().get_node("../Player")
 	
 	ray_cast = get_node("RayCast2D")
 	ray_cast2 = get_node("RayCast2D 2")
