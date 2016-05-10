@@ -42,6 +42,11 @@ func _ready():
 func _fixed_process(delta):
 	stealth = (Input.is_action_pressed("stealth") and !is_jumping)
 	
+	if (stealth):
+		stealth()
+	else:
+		get_node("character").set_modulate(Color(1, 1, 1, 1))
+	
 	if direction == 1:
 		sprite.set_flip_h(true)
 	else:
@@ -109,6 +114,9 @@ func _fixed_process(delta):
 
 	if (life <= 0):
 		death()
+
+func stealth():
+	get_node("character").set_modulate(Color(1, 1, 1, .5))
 
 func death():
 	get_tree().change_scene("res://boomscience.xscn")
