@@ -12,8 +12,8 @@ var life_bar
 var life = 100
 var bomb_select = 1
 
-var cd_count = [0, 0, 0, 0]
-var cd_max = [0.5, 3, 0.1, 10]
+var cd_count = [0, 0, 0, 0, 0]
+var cd_max = [0.5, 3, 0.1, 10, 20]
 var invincible_timer = 1
 var invincible_count = invincible_timer
 
@@ -36,7 +36,7 @@ func _ready():
 	set_process_input(true)
 	sprite = get_node("character")
 
-	for i in range(0,4):
+	for i in range(0,5):
 		cd_count[i] = cd_max[i]
 
 func _fixed_process(delta):
@@ -97,7 +97,7 @@ func _fixed_process(delta):
 	elif (get_linear_velocity().x < -110 and stealth):
 		set_linear_velocity(Vector2(-110, get_linear_velocity().y))
 
-	for i in range(0,4):
+	for i in range(0,5):
 		cd_count[i] += delta
 
 	if invincible:
@@ -140,9 +140,11 @@ func _input(event):
 		bomb_select = 3
 	if(event.is_action_pressed("select_water")):
 		bomb_select = 4
+	if(event.is_action_pressed("select_smoke")):
+		bomb_select = 5
 
 func throw(bomb_type, cooldown):
-	if cd_count[bomb_select-1] >= cooldown:
+	if (cd_count[bomb_select-1] >= cooldown):
 		cd_count[bomb_select-1] = 0
 		var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
 		var mouse_dir = get_viewport().get_mouse_pos() - screen_center
