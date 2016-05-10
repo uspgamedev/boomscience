@@ -11,7 +11,7 @@ func _ready():
 			set_linear_velocity( Vector2( vel_limit, get_linear_velocity().y))
 		else:
 			set_linear_velocity( Vector2( -vel_limit, get_linear_velocity().y))
-	var character_path = get_tree().get_root().get_node("SceneRoot/Player")
+	var character_path = get_parent().get_node("Player")
 
 	if (character_path.bomb_value() == 2):
 		get_node("bomb").set_modulate(Color(.7, .3, .3))

@@ -11,7 +11,7 @@ func _ready():
 
 
 func _on_Play_pressed():
-	get_node("/root/global").goto_scene("res://boomscience.xscn")
+	get_node("/root/global").goto_scene("res://main.xscn")
 
 
 func _on_Settings_pressed():
