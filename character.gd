@@ -14,7 +14,7 @@ var bomb_select = 1
 
 var cd_count = [0, 0, 0, 0]
 var cd_max = [0.5, 3, 0.1, 10]
-var invincible_timer = .5
+var invincible_timer = 1
 var invincible_count = invincible_timer
 
 var anim = "idle"
