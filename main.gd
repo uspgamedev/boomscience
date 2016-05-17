@@ -23,7 +23,7 @@ func _input(event):
 		if (!get_tree().is_paused()):
 			get_tree().set_pause(true)
 			current_level.set_fixed_process(false)
-			bg.set_scale( screen_size / Vector2( 800, 600 ) )
+			bg.set_scale(screen_size/Vector2(800, 600))
 			bg.show()
 		else:
 			get_tree().set_pause(false)

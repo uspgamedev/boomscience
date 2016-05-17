@@ -81,7 +81,7 @@
 				<resource  external="0">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "Script" </string>
+					<string> "2D" </string>
 				</dictionary>
 				<vector2> 385, 280 </vector2>
 				<int> -1 </int>
@@ -118,7 +118,7 @@
 				<vector2> -180.666, 71.2375 </vector2>
 				<vector2> -388.292, 69.1532 </vector2>
 				<resource  external="4">  </resource>
-				<vector2> 943.708, 50.939 </vector2>
+				<vector2> 951.245, 81.0858 </vector2>
 				<real> 0.3 </real>
 				<resource  external="5">  </resource>
 				<vector2> 0, 800 </vector2>

@@ -29,7 +29,10 @@ var is_jumping = false
 var stealth = false
 var invincible = false
 
+var fx
+
 func _ready():
+	fx = get_node("../../SamplePlayer")
 	get_node("RayCast2D").add_exception(self)
 
 	set_fixed_process(true)
@@ -132,6 +135,7 @@ func _on_RigidBody2D_body_enter(body):
 func _input(event):
 	if(event.is_action_pressed("throw")):
 		throw(bomb_select, cd_max[bomb_select-1])
+	var current_bomb = bomb_select
 	if(event.is_action_pressed("select_basic")):
 		bomb_select = 1
 	if(event.is_action_pressed("select_fire")):
@@ -142,8 +146,11 @@ func _input(event):
 		bomb_select = 4
 	if(event.is_action_pressed("select_smoke")):
 		bomb_select = 5
+	if (current_bomb != bomb_select):
+		fx.play("bomb_switch")
 
 func throw(bomb_type, cooldown):
+	fx.play("bomb_throw")
 	if (cd_count[bomb_select-1] >= cooldown):
 		cd_count[bomb_select-1] = 0
 		var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
