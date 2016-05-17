@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="4" version="2.0" version_name="Godot Engine v2.0.stable.official">
+<resource_file type="PackedScene" subresource_count="7" version="2.0" version_name="Godot Engine v2.0.stable.official">
 	<ext_resource path="res://assets/animated-tileset.tex" type="Texture" index="0"></ext_resource>
+	<resource type="ConvexPolygonShape2D" path="local://6">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2_array name="points" len="4"> 			6.4, -25.6, 6.4, 6.4, -25.6, 6.4, -25.6, -25.6 </vector2_array>
+
+	</resource>
+	<resource type="ConvexPolygonShape2D" path="local://4">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2_array name="points" len="4"> 			-22.4, -22.4, 9.60001, -22.4, 9.60001, 9.6, -22.4, 9.6 </vector2_array>
+
+	</resource>
 	<resource type="ConvexPolygonShape2D" path="local://2">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2_array name="points" len="4"> 			-22.4, -22.4, 9.60001, -22.4, 9.60001, 9.6, -22.4, 9.6 </vector2_array>
 
 	</resource>
 	<resource type="ConvexPolygonShape2D" path="local://1">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2_array name="points" len="4"> 			-12.8, -12.8, 3.2, -12.8, 3.2, 3.2, -12.8, 3.2 </vector2_array>
+
+	</resource>
+	<resource type="ConvexPolygonShape2D" path="local://5">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2_array name="points" len="4"> 			-12.8, -12.8, 3.2, -12.8, 3.2, 3.2, -12.8, 3.2 </vector2_array>
 
@@ -21,21 +36,15 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="56">
+			<string_array  len="58">
 				<string> "Node2D" </string>
-				<string> "grass1" </string>
+				<string> "basic black block" </string>
 				<string> "transform/pos" </string>
 				<string> "texture" </string>
 				<string> "region" </string>
 				<string> "region_rect" </string>
 				<string> "Sprite" </string>
-				<string> "grass2" </string>
-				<string> "ground grass1" </string>
-				<string> "ground grass2" </string>
-				<string> "ground grass3" </string>
-				<string> "ground grass4" </string>
-				<string> "purpleblock1" </string>
-				<string> "StaticBody2D2" </string>
+				<string> "StaticBody2D" </string>
 				<string> "input/pickable" </string>
 				<string> "shapes/0/shape" </string>
 				<string> "shapes/0/transform" </string>
@@ -46,13 +55,21 @@
 				<string> "constant_angular_velocity" </string>
 				<string> "friction" </string>
 				<string> "bounce" </string>
-				<string> "StaticBody2D" </string>
 				<string> "CollisionPolygon2D" </string>
-				<string> "transform/scale" </string>
 				<string> "build_mode" </string>
 				<string> "polygon" </string>
 				<string> "shape_range" </string>
 				<string> "trigger" </string>
+				<string> "grass1" </string>
+				<string> "grass2" </string>
+				<string> "ground grass1" </string>
+				<string> "ground grass2" </string>
+				<string> "ground grass3" </string>
+				<string> "ground grass4" </string>
+				<string> "ground grass5" </string>
+				<string> "ground grass6" </string>
+				<string> "purpleblock1" </string>
+				<string> "StaticBody2D2" </string>
 				<string> "purpleblock2" </string>
 				<string> "greyblock1" </string>
 				<string> "StaticBody2D3" </string>
@@ -80,17 +97,29 @@
 				<string> "small block dark1" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 38 </int>
+			<int> 43 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="630"> 				-1, -1, 0, 0, -1, 0, 0, 0, 0, 6, 1, -1, 4, 2, 0, 3, 1, 4, 2, 5, 3, 0, 0, 0, 6, 7, -1, 4, 2, 4, 3, 1, 4, 2, 5, 5, 0, 0, 0, 6, 8, -1, 4, 2, 6, 3, 1, 4, 2, 5, 7, 0, 0, 0, 6, 9, -1, 4, 2, 8, 3, 1, 4, 2, 5, 9, 0, 0, 0, 6, 10, -1, 4, 2, 10, 3, 1, 4, 2, 5, 11, 0, 0, 0, 6, 11, -1, 4, 2, 12, 3, 1, 4, 2, 5, 13, 0, 0, 0, 6, 12, -1, 4, 2, 14, 3, 1, 4, 2, 5, 15, 0, 7, 0, 24, 13, -1, 10, 14, 16, 15, 17, 16, 18, 17, 16, 18, 19, 19, 19, 20, 20, 21, 21, 22, 22, 23, 21, 0, 8, 0, 25, 25, -1, 6, 2, 23, 26, 24, 27, 25, 28, 26, 29, 20, 30, 16, 0, 0, 0, 6, 31, -1, 4, 2, 27, 3, 1, 4, 2, 5, 28, 0, 0, 0, 6, 32, -1, 4, 2, 29, 3, 1, 4, 2, 5, 30, 0, 11, 0, 24, 33, -1, 10, 14, 16, 15, 17, 16, 18, 17, 16, 18, 19, 19, 19, 20, 20, 21, 21, 22, 22, 23, 21, 0, 12, 0, 25, 25, -1, 6, 2, 23, 26, 24, 27, 25, 28, 26, 29, 20, 30, 16, 0, 0, 0, 6, 34, -1, 4, 2, 31, 3, 1, 4, 2, 5, 32, 0, 0, 0, 6, 35, -1, 4, 2, 33, 3, 1, 4, 2, 5, 34, 0, 0, 0, 6, 36, -1, 4, 2, 35, 3, 1, 4, 2, 5, 36, 0, 0, 0, 6, 37, -1, 4, 2, 37, 3, 1, 4, 2, 5, 38, 0, 0, 0, 6, 38, -1, 4, 2, 39, 3, 1, 4, 2, 5, 40, 0, 0, 0, 6, 39, -1, 4, 2, 41, 3, 1, 4, 2, 5, 42, 0, 0, 0, 6, 40, -1, 4, 2, 43, 3, 1, 4, 2, 5, 44, 0, 0, 0, 6, 41, -1, 4, 2, 45, 3, 1, 4, 2, 5, 46, 0, 0, 0, 6, 42, -1, 4, 2, 47, 3, 1, 4, 2, 5, 48, 0, 0, 0, 6, 43, -1, 4, 2, 49, 3, 1, 4, 2, 5, 50, 0, 0, 0, 6, 44, -1, 4, 2, 51, 3, 1, 4, 2, 5, 52, 0, 0, 0, 6, 45, -1, 4, 2, 53, 3, 1, 4, 2, 5, 54, 0, 0, 0, 6, 46, -1, 4, 2, 55, 3, 1, 4, 2, 5, 56, 0, 0, 0, 6, 47, -1, 4, 2, 57, 3, 1, 4, 2, 5, 58, 0, 0, 0, 6, 48, -1, 4, 2, 59, 3, 1, 4, 2, 5, 60, 0, 0, 0, 6, 49, -1, 4, 2, 61, 3, 1, 4, 2, 5, 62, 0, 0, 0, 6, 50, -1, 4, 2, 63, 3, 1, 4, 2, 5, 64, 0, 30, 0, 24, 24, -1, 11, 14, 16, 15, 65, 16, 66, 17, 16, 18, 19, 19, 19, 20, 20, 21, 21, 22, 22, 23, 21, 51, 67, 0, 31, 0, 25, 25, -1, 6, 2, 68, 26, 24, 27, 25, 28, 69, 29, 20, 30, 16, 0, 0, 0, 6, 52, -1, 4, 2, 70, 3, 1, 4, 2, 5, 71, 0, 0, 0, 6, 53, -1, 4, 2, 72, 3, 1, 4, 2, 5, 73, 0, 34, 0, 24, 54, -1, 11, 14, 16, 15, 65, 16, 66, 17, 16, 18, 19, 19, 19, 20, 20, 21, 21, 22, 22, 23, 21, 51, 67, 0, 35, 0, 25, 25, -1, 6, 2, 68, 26, 24, 27, 25, 28, 69, 29, 20, 30, 16, 0, 0, 0, 6, 55, -1, 4, 2, 74, 3, 1, 4, 2, 5, 75, 0 </int_array>
+			<int_array  len="711"> 				-1, -1, 0, 0, -1, 0, 0, 0, 0, 6, 1, -1, 4, 2, 0, 3, 1, 4, 2, 5, 3, 0, 1, 0, 7, 7, -1, 10, 8, 4, 9, 5, 10, 6, 11, 4, 12, 7, 13, 7, 14, 8, 15, 9, 16, 10, 17, 9, 0, 2, 0, 18, 18, -1, 5, 2, 11, 19, 12, 20, 13, 21, 8, 22, 4, 0, 0, 0, 6, 23, -1, 4, 2, 14, 3, 1, 4, 2, 5, 15, 0, 0, 0, 6, 24, -1, 4, 2, 16, 3, 1, 4, 2, 5, 17, 0, 0, 0, 6, 25, -1, 4, 2, 18, 3, 1, 4, 2, 5, 19, 0, 0, 0, 6, 26, -1, 4, 2, 20, 3, 1, 4, 2, 5, 21, 0, 0, 0, 6, 27, -1, 4, 2, 22, 3, 1, 4, 2, 5, 23, 0, 0, 0, 6, 28, -1, 4, 2, 24, 3, 1, 4, 2, 5, 25, 0, 0, 0, 6, 29, -1, 4, 2, 26, 3, 1, 4, 2, 5, 27, 0, 0, 0, 6, 30, -1, 4, 2, 28, 3, 1, 4, 2, 5, 29, 0, 0, 0, 6, 31, -1, 4, 2, 30, 3, 1, 4, 2, 5, 31, 0, 12, 0, 7, 32, -1, 10, 8, 4, 9, 32, 10, 33, 11, 4, 12, 7, 13, 7, 14, 8, 15, 9, 16, 10, 17, 9, 0, 13, 0, 18, 18, -1, 5, 2, 34, 19, 12, 20, 35, 21, 8, 22, 4, 0, 0, 0, 6, 33, -1, 4, 2, 36, 3, 1, 4, 2, 5, 37, 0, 0, 0, 6, 34, -1, 4, 2, 38, 3, 1, 4, 2, 5, 39, 0, 16, 0, 7, 35, -1, 10, 8, 4, 9, 40, 10, 33, 11, 4, 12, 7, 13, 7, 14, 8, 15, 9, 16, 10, 17, 9, 0, 17, 0, 18, 18, -1, 5, 2, 34, 19, 12, 20, 35, 21, 8, 22, 4, 0, 0, 0, 6, 36, -1, 4, 2, 41, 3, 1, 4, 2, 5, 42, 0, 0, 0, 6, 37, -1, 4, 2, 43, 3, 1, 4, 2, 5, 44, 0, 0, 0, 6, 38, -1, 4, 2, 45, 3, 1, 4, 2, 5, 46, 0, 0, 0, 6, 39, -1, 4, 2, 47, 3, 1, 4, 2, 5, 48, 0, 0, 0, 6, 40, -1, 4, 2, 49, 3, 1, 4, 2, 5, 50, 0, 0, 0, 6, 41, -1, 4, 2, 51, 3, 1, 4, 2, 5, 52, 0, 0, 0, 6, 42, -1, 4, 2, 53, 3, 1, 4, 2, 5, 54, 0, 0, 0, 6, 43, -1, 4, 2, 55, 3, 1, 4, 2, 5, 56, 0, 0, 0, 6, 44, -1, 4, 2, 57, 3, 1, 4, 2, 5, 58, 0, 0, 0, 6, 45, -1, 4, 2, 59, 3, 1, 4, 2, 5, 60, 0, 0, 0, 6, 46, -1, 4, 2, 61, 3, 1, 4, 2, 5, 62, 0, 0, 0, 6, 47, -1, 4, 2, 63, 3, 1, 4, 2, 5, 64, 0, 0, 0, 6, 48, -1, 4, 2, 65, 3, 1, 4, 2, 5, 66, 0, 0, 0, 6, 49, -1, 4, 2, 67, 3, 1, 4, 2, 5, 68, 0, 0, 0, 6, 50, -1, 4, 2, 69, 3, 1, 4, 2, 5, 70, 0, 0, 0, 6, 51, -1, 4, 2, 71, 3, 1, 4, 2, 5, 72, 0, 0, 0, 6, 52, -1, 4, 2, 73, 3, 1, 4, 2, 5, 74, 0, 35, 0, 7, 7, -1, 11, 8, 4, 9, 75, 10, 76, 11, 4, 12, 7, 13, 7, 14, 8, 15, 9, 16, 10, 17, 9, 53, 77, 0, 36, 0, 18, 18, -1, 5, 2, 78, 19, 12, 20, 79, 21, 8, 22, 4, 0, 0, 0, 6, 54, -1, 4, 2, 80, 3, 1, 4, 2, 5, 81, 0, 0, 0, 6, 55, -1, 4, 2, 82, 3, 1, 4, 2, 5, 83, 0, 39, 0, 7, 56, -1, 11, 8, 4, 9, 84, 10, 76, 11, 4, 12, 7, 13, 7, 14, 8, 15, 9, 16, 10, 17, 9, 53, 77, 0, 40, 0, 18, 18, -1, 5, 2, 78, 19, 12, 20, 79, 21, 8, 22, 4, 0, 0, 0, 6, 57, -1, 4, 2, 85, 3, 1, 4, 2, 5, 86, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="76" shared="false">
-				<vector2> 16, 16 </vector2>
+			<array  len="87" shared="false">
+				<vector2> -32, 16 </vector2>
 				<resource  external="0">  </resource>
 				<bool> True </bool>
+				<rect2> 0, 128, 32, 32 </rect2>
+				<bool> False </bool>
+				<resource  resource_type="Shape2D" path="local://6">  </resource>
+				<matrix32> 1, -0, 0, 1, 9.6, 9.6 </matrix32>
+				<int> 1 </int>
+				<vector2> 0, 0 </vector2>
+				<real> 0 </real>
+				<real> 1 </real>
+				<vector2> 9.6, 9.6 </vector2>
+				<int> 0 </int>
+				<vector2_array  len="4"> 					-25.6, -25.6, -25.6, 6.4, 6.4, 6.4, 6.4, -25.6 </vector2_array>
+				<vector2> 16, 16 </vector2>
 				<rect2> 0, 0, 32, 32 </rect2>
 				<vector2> 64, 16 </vector2>
 				<rect2> 64, 0, 32, 32 </rect2>
@@ -102,23 +131,21 @@
 				<rect2> 64, 32, 32, 32 </rect2>
 				<vector2> 160, 64 </vector2>
 				<rect2> 192, 32, 32, 32 </rect2>
+				<vector2> 104, 24 </vector2>
+				<rect2> 128, 0, 16, 16 </rect2>
+				<vector2> 120, 24 </vector2>
+				<rect2> 144, 0, 16, 16 </rect2>
 				<vector2> 16, 112 </vector2>
 				<rect2> 0, 64, 32, 32 </rect2>
-				<bool> False </bool>
-				<resource  resource_type="Shape2D" path="local://2">  </resource>
+				<resource  resource_type="Shape2D" path="local://4">  </resource>
 				<matrix32> 1, -0, 0, 1, 6.39999, 6.4 </matrix32>
-				<int> 1 </int>
-				<vector2> 0, 0 </vector2>
-				<real> 0 </real>
-				<real> 1 </real>
 				<vector2> 6.39999, 6.4 </vector2>
-				<vector2> 1, 1 </vector2>
-				<int> 0 </int>
 				<vector2_array  len="4"> 					-22.4, -22.4, 9.60001, -22.4, 9.60001, 9.6, -22.4, 9.6 </vector2_array>
 				<vector2> 16, 160 </vector2>
 				<rect2> 64, 64, 32, 32 </rect2>
 				<vector2> 64, 112 </vector2>
 				<rect2> 128, 64, 32, 32 </rect2>
+				<resource  resource_type="Shape2D" path="local://2">  </resource>
 				<vector2> 64, 160 </vector2>
 				<rect2> 192, 64, 32, 32 </rect2>
 				<vector2> 112, 112 </vector2>
@@ -165,6 +192,7 @@
 				<rect2> 64, 64, 16, 16 </rect2>
 				<vector2> -56, 104 </vector2>
 				<rect2> 128, 64, 16, 16 </rect2>
+				<resource  resource_type="Shape2D" path="local://5">  </resource>
 				<vector2> -56, 136 </vector2>
 				<rect2> 192, 64, 16, 16 </rect2>
 			</array>
