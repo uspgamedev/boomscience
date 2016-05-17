@@ -119,7 +119,7 @@ func stealth():
 	get_node("character").set_modulate(Color(1, 1, 1, .5))
 
 func death():
-	get_tree().change_scene("res://boomscience.xscn")
+	get_tree().change_scene("res://main.xscn")
 
 func move(speed):
 	anim_new = "walk"
