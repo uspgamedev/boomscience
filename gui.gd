@@ -7,8 +7,8 @@ var life_bar
 var cd_max = [0.5, 3, 0.1, 10, 20]
 var cd_bar = [0, 0, 0, 0, 0]
 
-func _ready():
-	player = get_parent().get_node("Player")
+func activate(body):
+	player = body
 	
 	life_bar = get_node("lifebar")
 	life_bar.set_max(player.life)

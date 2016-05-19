@@ -33,11 +33,15 @@ var fx
 
 func _ready():
 	fx = get_node("../../SamplePlayer")
+	sprite = get_node("character")
 	get_node("RayCast2D").add_exception(self)
+
+	add_to_group("Player")
+
+	get_parent().get_parent().get_node("GUI").activate(self)
 
 	set_fixed_process(true)
 	set_process_input(true)
-	sprite = get_node("character")
 
 	for i in range(0,5):
 		cd_count[i] = cd_max[i]
@@ -150,8 +154,8 @@ func _input(event):
 		fx.play("bomb_switch")
 
 func throw(bomb_type, cooldown):
-	fx.play("bomb_throw")
 	if (cd_count[bomb_select-1] >= cooldown):
+		fx.play("bomb_throw")
 		cd_count[bomb_select-1] = 0
 		var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
 		var mouse_dir = get_viewport().get_mouse_pos() - screen_center

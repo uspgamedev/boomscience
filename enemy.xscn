@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="6" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
-	<ext_resource path="res://pixel.jpg" type="Texture" index="1"></ext_resource>
+<resource_file type="PackedScene" subresource_count="7" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
 	<ext_resource path="res://enemy.gd" type="Script" index="0"></ext_resource>
+	<ext_resource path="res://pixel.jpg" type="Texture" index="1"></ext_resource>
 	<resource type="CapsuleShape2D" path="local://4">
 		<real name="custom_solver_bias"> 0 </real>
 		<real name="radius"> 24.5 </real>
@@ -34,17 +34,22 @@
 		<bool name="draw_bg"> True </bool>
 
 	</resource>
+	<resource type="CircleShape2D" path="local://5">
+		<real name="custom_solver_bias"> 0 </real>
+		<real name="radius"> 150 </real>
+
+	</resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "conn_count" </string>
-			<int> 0 </int>
+			<int> 2 </int>
 			<string> "conns" </string>
-			<int_array  len="0"> 				 </int_array>
+			<int_array  len="12"> 				6, 0, 69, 68, 2, 0, 6, 0, 71, 70, 2, 0 </int_array>
 			<string> "editable_instances" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="62">
+			<string_array  len="72">
 				<string> "Enemy" </string>
 				<string> "input/pickable" </string>
 				<string> "shapes/0/shape" </string>
@@ -107,16 +112,26 @@
 				<string> "range/rounded" </string>
 				<string> "percent/visible" </string>
 				<string> "ProgressBar" </string>
+				<string> "detection_box" </string>
+				<string> "gravity_vec" </string>
+				<string> "gravity" </string>
+				<string> "linear_damp" </string>
+				<string> "angular_damp" </string>
+				<string> "Area2D" </string>
+				<string> "_on_detection_box_body_enter" </string>
+				<string> "body_enter" </string>
+				<string> "_on_detection_box_body_exit" </string>
+				<string> "body_exit" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 6 </int>
+			<int> 8 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="157"> 				-1, -1, 25, 0, -1, 23, 1, 0, 2, 1, 3, 2, 4, 0, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 7, 11, 6, 12, 0, 13, 8, 14, 3, 15, 9, 16, 0, 17, 9, 18, 10, 19, 7, 20, 11, 21, 11, 22, 12, 23, 13, 1, 24, 0, 0, 30, 26, -1, 3, 27, 14, 28, 15, 29, 16, 0, 0, 0, 35, 31, -1, 3, 32, 1, 33, 0, 34, 8, 0, 0, 0, 36, 36, -1, 6, 37, 17, 27, 18, 38, 9, 39, 19, 40, 3, 41, 20, 0, 0, 0, 36, 42, -1, 5, 37, 21, 38, 9, 39, 22, 40, 3, 41, 20, 0, 0, 0, 61, 43, -1, 17, 44, 23, 45, 24, 46, 25, 47, 26, 48, 0, 49, 9, 50, 5, 51, 27, 52, 28, 53, 7, 54, 29, 55, 6, 56, 7, 57, 6, 58, 0, 59, 0, 60, 0, 0 </int_array>
+			<int_array  len="195"> 				-1, -1, 25, 0, -1, 23, 1, 0, 2, 1, 3, 2, 4, 0, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 7, 11, 6, 12, 0, 13, 8, 14, 3, 15, 9, 16, 0, 17, 9, 18, 10, 19, 7, 20, 11, 21, 11, 22, 12, 23, 13, 1, 24, 0, 0, 30, 26, -1, 3, 27, 14, 28, 15, 29, 16, 0, 0, 0, 35, 31, -1, 3, 32, 1, 33, 0, 34, 8, 0, 0, 0, 36, 36, -1, 6, 37, 17, 27, 18, 38, 9, 39, 19, 40, 3, 41, 20, 0, 0, 0, 36, 42, -1, 5, 37, 21, 38, 9, 39, 22, 40, 3, 41, 20, 0, 0, 0, 61, 43, -1, 17, 44, 23, 45, 24, 46, 25, 47, 26, 48, 0, 49, 9, 50, 5, 51, 27, 52, 28, 53, 7, 54, 29, 55, 6, 56, 7, 57, 6, 58, 0, 59, 0, 60, 0, 0, 0, 0, 67, 62, -1, 9, 1, 9, 2, 30, 3, 2, 4, 0, 63, 31, 64, 32, 65, 33, 66, 6, 23, 34, 0, 6, 0, 35, 35, -1, 3, 32, 30, 33, 0, 34, 8, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="30" shared="false">
+			<array  len="35" shared="false">
 				<bool> False </bool>
 				<resource  resource_type="Shape2D" path="local://4">  </resource>
 				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
@@ -132,7 +147,7 @@
 				<resource  external="0">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "Script" </string>
+					<string> "2D" </string>
 				</dictionary>
 				<vector2> 0.1, 0.1 </vector2>
 				<resource  external="1">  </resource>
@@ -150,6 +165,14 @@
 				<resource  resource_type="StyleBox" path="local://2">  </resource>
 				<resource  resource_type="StyleBox" path="local://3">  </resource>
 				<real> 100 </real>
+				<resource  resource_type="Shape2D" path="local://5">  </resource>
+				<vector2> 0, 1 </vector2>
+				<real> 98 </real>
+				<real> 0.1 </real>
+				<dictionary  shared="false">
+					<string> "_editor_collapsed" </string>
+					<bool> True </bool>
+				</dictionary>
 			</array>
 			<string> "version" </string>
 			<int> 2 </int>

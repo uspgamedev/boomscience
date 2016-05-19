@@ -2,9 +2,9 @@
 <resource_file type="PackedScene" subresource_count="8" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
 	<ext_resource path="res://enemy.xscn" type="PackedScene" index="3"></ext_resource>
 	<ext_resource path="res://moving_tileset.gd" type="Script" index="2"></ext_resource>
-	<ext_resource path="res://falling_platform.xscn" type="PackedScene" index="6"></ext_resource>
 	<ext_resource path="res://level.gd" type="Script" index="0"></ext_resource>
-	<ext_resource path="res://lava.xscn" type="PackedScene" index="5"></ext_resource>
+	<ext_resource path="res://falling_platform.xscn" type="PackedScene" index="5"></ext_resource>
+	<ext_resource path="res://lava.xscn" type="PackedScene" index="6"></ext_resource>
 	<ext_resource path="res://resources/urban_tileset.xml" type="TileSet" index="1"></ext_resource>
 	<ext_resource path="res://enemy_fly.xscn" type="PackedScene" index="4"></ext_resource>
 	<main_resource>
@@ -59,7 +59,6 @@
 				<string> "enemy_hitbox" </string>
 				<string> "RayCast2D 2" </string>
 				<string> "lifebar" </string>
-				<string> "lava" </string>
 				<string> "falling_plataform" </string>
 				<string> "epslon" </string>
 				<string> "falling_plataform1" </string>
@@ -68,6 +67,7 @@
 				<string> "falling_plataform4" </string>
 				<string> "falling_plataform5" </string>
 				<string> "falling_plataform6" </string>
+				<string> "lava" </string>
 			</string_array>
 			<string> "node_count" </string>
 			<int> 20 </int>
@@ -75,7 +75,7 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="268"> 				-1, -1, 4, 0, -1, 3, 1, 0, 2, 1, 3, 2, 0, 0, 0, 5, 5, -1, 17, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 8, 12, 9, 13, 4, 14, 10, 15, 10, 16, 11, 17, 12, 18, 13, 19, 14, 20, 13, 21, 15, 2, 16, 1, 22, 0, 0, 5, 23, -1, 18, 24, 13, 7, 4, 8, 5, 9, 6, 10, 7, 11, 8, 12, 9, 13, 4, 14, 10, 15, 17, 16, 11, 17, 12, 18, 13, 19, 14, 20, 13, 21, 18, 1, 19, 2, 20, 1, 22, 0, 0, 2147483647, 25, 21, 1, 26, 22, 0, 0, 0, 2147483647, 27, 21, 1, 26, 23, 0, 0, 0, 2147483647, 28, 21, 1, 26, 24, 0, 0, 0, 2147483647, 29, 21, 1, 26, 25, 0, 0, 0, 2147483647, 30, 21, 1, 26, 26, 0, 0, 0, 2147483647, 31, 21, 1, 26, 27, 0, 0, 0, 2147483647, 32, 21, 1, 26, 28, 0, 0, 0, 2147483647, 33, 21, 1, 26, 29, 0, 0, 0, 2147483647, 34, 30, 2, 26, 31, 35, 32, 0, 0, 0, 2147483647, 40, 33, 1, 26, 34, 0, 0, 0, 2147483647, 41, 35, 2, 26, 36, 42, 37, 0, 0, 0, 2147483647, 43, 35, 2, 26, 38, 42, 37, 0, 0, 0, 2147483647, 44, 35, 2, 26, 39, 42, 37, 0, 0, 0, 2147483647, 45, 35, 2, 26, 40, 42, 37, 0, 0, 0, 2147483647, 46, 35, 2, 26, 41, 42, 37, 0, 0, 0, 2147483647, 47, 35, 2, 26, 42, 42, 37, 0, 0, 0, 2147483647, 48, 35, 2, 26, 43, 42, 37, 0 </int_array>
+			<int_array  len="268"> 				-1, -1, 4, 0, -1, 3, 1, 0, 2, 1, 3, 2, 0, 0, 0, 5, 5, -1, 17, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 8, 12, 9, 13, 4, 14, 10, 15, 10, 16, 11, 17, 12, 18, 13, 19, 14, 20, 13, 21, 15, 2, 16, 1, 22, 0, 0, 5, 23, -1, 18, 24, 13, 7, 4, 8, 5, 9, 6, 10, 7, 11, 8, 12, 9, 13, 4, 14, 10, 15, 17, 16, 11, 17, 12, 18, 13, 19, 14, 20, 13, 21, 18, 1, 19, 2, 20, 1, 22, 0, 0, 2147483647, 25, 21, 1, 26, 22, 0, 0, 0, 2147483647, 27, 21, 1, 26, 23, 0, 0, 0, 2147483647, 28, 21, 1, 26, 24, 0, 0, 0, 2147483647, 29, 21, 1, 26, 25, 0, 0, 0, 2147483647, 30, 21, 1, 26, 26, 0, 0, 0, 2147483647, 31, 21, 1, 26, 27, 0, 0, 0, 2147483647, 32, 21, 1, 26, 28, 0, 0, 0, 2147483647, 33, 21, 1, 26, 29, 0, 0, 0, 2147483647, 34, 30, 2, 26, 31, 35, 32, 0, 0, 0, 2147483647, 40, 33, 2, 26, 34, 41, 35, 0, 0, 0, 2147483647, 42, 33, 2, 26, 36, 41, 35, 0, 0, 0, 2147483647, 43, 33, 2, 26, 37, 41, 35, 0, 0, 0, 2147483647, 44, 33, 2, 26, 38, 41, 35, 0, 0, 0, 2147483647, 45, 33, 2, 26, 39, 41, 35, 0, 0, 0, 2147483647, 46, 33, 2, 26, 40, 41, 35, 0, 0, 0, 2147483647, 47, 33, 2, 26, 41, 41, 35, 0, 0, 0, 2147483647, 48, 42, 1, 26, 43, 0 </int_array>
 			<string> "variants" </string>
 			<array  len="44" shared="false">
 				<resource  external="0">  </resource>
@@ -121,8 +121,6 @@
 				<vector2> 951.245, 81.0858 </vector2>
 				<real> 0.3 </real>
 				<resource  external="5">  </resource>
-				<vector2> 0, 800 </vector2>
-				<resource  external="6">  </resource>
 				<vector2> 582.112, 245.85 </vector2>
 				<int> 6 </int>
 				<vector2> -508.772, 266.355 </vector2>
@@ -131,6 +129,8 @@
 				<vector2> -746.633, 254.052 </vector2>
 				<vector2> -830.705, 249.951 </vector2>
 				<vector2> -609.248, 159.728 </vector2>
+				<resource  external="6">  </resource>
+				<vector2> 0, 800 </vector2>
 			</array>
 			<string> "version" </string>
 			<int> 2 </int>

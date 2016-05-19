@@ -4,14 +4,13 @@ extends Node
 var level1_scn = preload("res://boomscience.xscn")
 var level2_scn = preload("res://level2.xscn")
 var current_level
-var player
+var player = preload("res://player.xscn")
 
 func _ready():
 	current_level = level1_scn.instance()
 	add_child(current_level)
 
-	player = get_node("Player")
-	remove_child(player)
+	player = player.instance()
 	current_level.add_child(player)
 
 	set_process_input(true)
@@ -34,13 +33,12 @@ func _input(event):
 		change_scene()
 
 func change_scene():
-	player = current_level.get_node("Player")
-	remove_child(player)
-	remove_child(current_level)
+	current_level.queue_free()
 
 	
 	current_level = level2_scn.instance()
 	add_child(current_level)
-	current_level.add_child(player)
-	print(current_level.get_node("Player"))
+	player = preload("res://player.xscn")
+	player = player.instance()
 	player.set_pos(current_level.player_pos)
+	current_level.add_child(player)

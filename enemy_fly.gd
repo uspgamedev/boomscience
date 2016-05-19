@@ -9,6 +9,7 @@ var next_tile
 var ray_cast
 var ray_cast2
 var sprite
+var detection_box
 var player
 var life = 100
 var life_bar
@@ -17,6 +18,8 @@ var count = 0
 var lowest_height = 500
 var fly_count = 0
 var aggro_count = 0
+var detected = false
+var attacking = false
 
 var lock_target = false
 var lock_pos
@@ -24,11 +27,10 @@ var lock_pos
 func _ready():
 	set_fixed_process(true)
 	
-	player = get_parent().get_node("../Player")
-	
 	ray_cast = get_node("RayCast2D")
 	ray_cast2 = get_node("RayCast2D 2")
 	sprite = get_node("enemy")
+	detection_box = get_node("detection_box")
 
 	life_bar = get_node("lifebar")
 	life_bar.set_max(life)
@@ -37,13 +39,20 @@ func _ready():
 	ray_cast2.add_exception(self)
 	
 func _fixed_process(delta):	
-	var dist = player.get_pos() - get_pos()
-
-	if (dist.length() <= 200):
+	if detected:
 		aggressive(10, delta)
-		aggro_count += delta
+		if (player.get_stealth()):
+			var dist
+			dist = player.get_pos() - (get_pos() + Vector2(direction_h * 100,0))
+			if (dist.length() <= 50):
+				aggressive(15, delta)
+			else:
+				passive(delta)
 	else:
 		passive(delta)
+
+	if attacking:
+		aggro_count += delta
 	
 	
 	count += delta
@@ -66,6 +75,7 @@ func bomb_collision(damage):
 	life -= damage
 
 func passive(delta):
+	attacking = false
 	lock_target = false
 	move(200, speed * direction_h, 1, delta)
 	
@@ -79,6 +89,7 @@ func passive(delta):
 	
 
 func aggressive(acceleration, delta):
+	attacking = true
 	if !lock_target:
 		lock_pos = player.get_pos()
 		if lock_pos.x < get_pos().x:
@@ -119,7 +130,15 @@ func move_horizontal(speed, acceleration, delta):
 	current_speed = lerp(current_speed, speed, acceleration * delta)
 	set_linear_velocity(Vector2(current_speed, get_linear_velocity().y))
 
-# Colocar um "chão" e um "teto" que determinará a altura do inimigo.
-# Quando o inimigo chegar no "chão", aplicar pequenos impulsos continuamente até chegar no teto
-# Quando o inimigo chegar no "teto" ou passar, parar de aplicar impulso
-# Alternativamente, utilizar o mesmo algoritmo do move_horizontal, só que adaptado para vertical
+
+
+func _on_detection_box_body_enter( body ):
+	if body.is_in_group("Player"):
+		player = body
+		detected = true
+
+
+func _on_detection_box_body_exit( body ):
+	if body.is_in_group("Player"):
+		detected = false
+		player = null

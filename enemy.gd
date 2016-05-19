@@ -9,41 +9,39 @@ var next_tile
 var ray_cast
 var ray_cast2
 var sprite
+var detection_box
 var player
 var life = 100
 var life_bar
 var passive = true
+var detected = false
 
 func _ready():
 	set_fixed_process(true)
 	
-	player = get_parent().get_node("../Player")
-	
 	ray_cast = get_node("RayCast2D")
 	ray_cast2 = get_node("RayCast2D 2")
 	sprite = get_node("enemy")
+	detection_box = get_node("detection_box")
 
 	life_bar = get_node("lifebar")
 	life_bar.set_max(life)
 
 	ray_cast.add_exception(self)
-	ray_cast2.add_exception(self)
 
 func _fixed_process(delta):
-	var dist
-	if (player.get_stealth()):
-		dist = player.get_pos() - (self.get_pos() + Vector2(direction * 100,0))
-		if (dist.length() <= 50):
-			aggressive(delta)
-		else:
-			passive(delta)
+	if detected:
+		aggressive(delta)
+		if (player.get_stealth()):
+			var dist
+			dist = player.get_pos() - (get_pos() + Vector2(direction * 100,0))
+			if (dist.length() <= 50):
+				aggressive(delta)
+			else:
+				passive(delta)
 	else:
-		dist = player.get_pos() - self.get_pos()
-		
-		if (dist.length() <= 150):
-			aggressive(delta)
-		else:
-			passive(delta)
+		passive(delta)
+
 	if direction == 1:
 		sprite.set_flip_h(true)
 	else:
@@ -92,3 +90,13 @@ func move(speed, acceleration, delta):
 	var current_speed_x = get_linear_velocity().x
 	current_speed_x = lerp(current_speed_x, speed, acceleration * delta)
 	set_linear_velocity(Vector2(current_speed_x, get_linear_velocity().y)) 
+
+func _on_detection_box_body_enter(body):
+	if body.is_in_group("Player"):
+		player = body
+		detected = true
+
+func _on_detection_box_body_exit( body ):
+	if body.is_in_group("Player"):
+		detected = false
+		player = null
