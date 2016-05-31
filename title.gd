@@ -1,13 +1,18 @@
 
 extends Panel
 
-# member variables here, example:
-# var a=2
-# var b="textvar"
 
 func _ready():
 	get_node("/root/global").current_scene = self
-	pass
+
+	set_fixed_process(true)
+
+func _fixed_process(delta):
+	var window_size = OS.get_window_size()
+
+	set_size(window_size)
+	get_node("TitleBackground").set_size(window_size)
+	get_node("MainMenu").set_size(window_size)
 
 
 func _on_Play_pressed():

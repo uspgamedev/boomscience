@@ -22,15 +22,22 @@ func _input(event):
 		if (!get_tree().is_paused()):
 			get_tree().set_pause(true)
 			current_level.set_fixed_process(false)
-			bg.set_scale(screen_size/Vector2(800, 600))
+			set_fixed_process(true)
 			bg.show()
 		else:
 			get_tree().set_pause(false)
 			current_level.set_fixed_process(true)
+			set_fixed_process(false)
 			bg.hide()
 	
 	elif (event.is_action("change")):
 		change_scene()
+
+
+func _fixed_process(delta):
+	var window_size = OS.get_window_size()
+	get_node("CanvasLayer/pause_bg").set_scale(window_size/Vector2(800,600))
+
 
 func change_scene():
 	current_level.queue_free()

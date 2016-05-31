@@ -23,6 +23,10 @@ func activate(body):
 	set_fixed_process(true)
 
 func _fixed_process(delta):
+	var window_size = OS.get_window_size()
+	print(window_size.x)
+	life_bar.set_pos(Vector2(window_size.x/2 - 100, 0))
+
 	life_bar.set_value(player.life)
 
 	for i in range(0, 5):

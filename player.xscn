@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="7" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
-	<ext_resource path="res://assets/gecko_walkcycle.png" type="Texture" index="1"></ext_resource>
 	<ext_resource path="res://character.gd" type="Script" index="0"></ext_resource>
+	<ext_resource path="res://assets/gecko_walkcycle.png" type="Texture" index="1"></ext_resource>
 	<resource type="CapsuleShape2D" path="local://2">
 		<real name="custom_solver_bias"> 0 </real>
 		<real name="radius"> 10 </real>
@@ -202,6 +202,8 @@
 					<string> "__editor_plugin_screen__" </string>
 					<string> "Script" </string>
 					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+					<string> "_editor_collapsed" </string>
 					<bool> True </bool>
 				</dictionary>
 				<vector2> 0.13049, -0.428007 </vector2>
