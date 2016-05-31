@@ -2,8 +2,8 @@
 <resource_file type="PackedScene" subresource_count="8" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
 	<ext_resource path="res://enemy.xscn" type="PackedScene" index="2"></ext_resource>
 	<ext_resource path="res://level.gd" type="Script" index="0"></ext_resource>
-	<ext_resource path="res://falling_platform.xscn" type="PackedScene" index="4"></ext_resource>
 	<ext_resource path="res://lava.xscn" type="PackedScene" index="5"></ext_resource>
+	<ext_resource path="res://falling_platform.xscn" type="PackedScene" index="4"></ext_resource>
 	<ext_resource path="res://resources/urban_tileset.xml" type="TileSet" index="1"></ext_resource>
 	<ext_resource path="res://enemy_fly.xscn" type="PackedScene" index="3"></ext_resource>
 	<ext_resource path="res://moving_platform.xscn" type="PackedScene" index="6"></ext_resource>
@@ -69,7 +69,7 @@
 				<string> "falling_plataform5" </string>
 				<string> "falling_plataform6" </string>
 				<string> "lava" </string>
-				<string> "RigidBody2D" </string>
+				<string> "moving_platform" </string>
 			</string_array>
 			<string> "node_count" </string>
 			<int> 21 </int>
@@ -83,7 +83,7 @@
 				<resource  external="0">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 				</dictionary>
 				<vector2> 385, 280 </vector2>
 				<int> -1 </int>
@@ -128,7 +128,7 @@
 				<resource  external="5">  </resource>
 				<vector2> 0, 800 </vector2>
 				<resource  external="6">  </resource>
-				<vector2> 286.533, 435.281 </vector2>
+				<vector2> 297.134, 437.966 </vector2>
 			</array>
 			<string> "version" </string>
 			<int> 2 </int>
