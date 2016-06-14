@@ -16,6 +16,9 @@ var life_bar
 var passive = true
 var detected = false
 
+var anim = "idle"
+var anim_new = "walk"
+
 func _ready():
 	set_fixed_process(true)
 	
@@ -30,6 +33,11 @@ func _ready():
 	ray_cast.add_exception(self)
 
 func _fixed_process(delta):
+	
+	if anim != anim_new:
+		anim = anim_new
+		get_node("enemy/anim").play(anim)
+	
 	if detected:
 		aggressive(delta)
 		if (player.get_stealth()):

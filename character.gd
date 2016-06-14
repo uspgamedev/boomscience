@@ -89,7 +89,7 @@ func _fixed_process(delta):
 		is_jumping = true
 		on_platform = false
 	
-	if (Input.is_key_pressed(KEY_W) and is_jumping == false):
+	if ((Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_SPACE)) and is_jumping == false):
 		is_jumping = true
 		set_linear_velocity(Vector2(get_linear_velocity().x, -500))
 
