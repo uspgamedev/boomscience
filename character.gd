@@ -29,6 +29,9 @@ var is_jumping = false
 var stealth = false
 var invincible = false
 
+var on_platform
+var platform
+
 var fx
 
 func _ready():
@@ -63,30 +66,38 @@ func _fixed_process(delta):
 	pos_y = get_pos().y
 	if (Input.is_key_pressed(KEY_D)):
 		if (!stealth):
-			move(40)
+			if !on_platform:
+				move(200, 5, delta)
+			else:
+				move(200, 5, delta)
 		else:
-			move(20)
+			move(100, 3, delta)
 		direction = 1
 	elif (Input.is_key_pressed(KEY_A)):
 		if (!stealth):
-			move(-40)
+			move(-200, 5, delta)
 		else:
-			move(-20)
+			move(-100, 3, delta)
 		direction = -1
 	else:
-		move(0)
+		move(0, 5, delta)
 		anim_new = "idle"
 
 	if (get_node("RayCast2D").is_colliding()):
-		self.set_friction(1)
 		is_jumping = false
 	else:
-		self.set_friction(0)
 		is_jumping = true
+		on_platform = false
 	
 	if ((Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_SPACE)) and is_jumping == false):
 		is_jumping = true
 		set_linear_velocity(Vector2(get_linear_velocity().x, -500))
+
+	if on_platform:
+#		set_linear_velocity(get_linear_velocity() + platform.get_linear_velocity()/10)
+#		print(platform.get_linear_velocity())
+		pass
+
 
 	if is_jumping:
 		anim_new = "jump"
@@ -128,13 +139,18 @@ func stealth():
 func death():
 	get_tree().change_scene("res://main.xscn")
 
-func move(speed):
+func move( speed, acceleration, delta ):
+	var current_speed = get_linear_velocity().x
+	current_speed = lerp( current_speed, speed, acceleration * delta )
+	set_linear_velocity( Vector2( current_speed, get_linear_velocity().y ) )
 	anim_new = "walk"
-	apply_impulse(Vector2(0, 0), Vector2(speed, 0))
 
 func _on_RigidBody2D_body_enter(body):
 	if (body.is_in_group("enemies")):
 		get_hit(body)
+	elif body.is_in_group("floor") and body.get_name() == "RigidBody2D":
+		on_platform = true
+		platform = body
 	
 func _input(event):
 	if(event.is_action_pressed("throw")):
