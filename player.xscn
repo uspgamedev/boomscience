@@ -54,9 +54,9 @@
 	</resource>
 	<resource type="Animation" path="local://3">
 		<string name="resource/name"> "walk" </string>
-		<real name="length"> 0.8 </real>
+		<real name="length"> 0.6 </real>
 		<bool name="loop"> True </bool>
-		<real name="step"> 0.2 </real>
+		<real name="step"> 0.15 </real>
 		<string name="tracks/0/type"> "value" </string>
 		<node_path name="tracks/0/path"> ".:frame" </node_path>
 		<int name="tracks/0/interp"> 1 </int>
@@ -64,7 +64,7 @@
 			<string> "cont" </string>
 			<bool> False </bool>
 			<string> "times" </string>
-			<real_array  len="4"> 				0, 0.2, 0.4, 0.6 </real_array>
+			<real_array  len="4"> 				0, 0.15, 0.3, 0.45 </real_array>
 			<string> "transitions" </string>
 			<real_array  len="4"> 				1, 1, 1, 1 </real_array>
 			<string> "values" </string>
@@ -205,10 +205,7 @@
 				</dictionary>
 				<resource  external="1">  </resource>
 				<int> 5 </int>
-				<dictionary  shared="false">
-					<string> "_edit_lock_" </string>
-					<bool> True </bool>
-				</dictionary>
+				<int> 4 </int>
 				<node_path> ".." </node_path>
 				<resource  resource_type="Animation" path="local://6">  </resource>
 				<resource  resource_type="Animation" path="local://5">  </resource>
