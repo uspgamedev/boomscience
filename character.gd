@@ -61,10 +61,16 @@ func _fixed_process(delta):
 		sprite.set_flip_h(true)
 	else:
 		sprite.set_flip_h(false)
+
+	if on_platform:
+		set_friction(1)
+		set_linear_velocity(get_linear_velocity() + platform.get_linear_velocity()/10)
+		print(platform.get_linear_velocity())
 		
 	pos_x = get_pos().x
 	pos_y = get_pos().y
 	if (Input.is_key_pressed(KEY_D)):
+		set_friction(0)
 		if (!stealth):
 			if !on_platform:
 				move(200, 5, delta)
@@ -74,6 +80,7 @@ func _fixed_process(delta):
 			move(100, 3, delta)
 		direction = 1
 	elif (Input.is_key_pressed(KEY_A)):
+		set_friction(0)
 		if (!stealth):
 			move(-200, 5, delta)
 		else:
@@ -92,11 +99,6 @@ func _fixed_process(delta):
 	if ((Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_SPACE)) and is_jumping == false):
 		is_jumping = true
 		set_linear_velocity(Vector2(get_linear_velocity().x, -500))
-
-	if on_platform:
-#		set_linear_velocity(get_linear_velocity() + platform.get_linear_velocity()/10)
-#		print(platform.get_linear_velocity())
-		pass
 
 
 	if is_jumping:
