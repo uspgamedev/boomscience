@@ -20,13 +20,9 @@ func activate(body):
 		cd_bar[i].set_value(cd_max[i])
 		cd_bar[i].hide()
 
-	set_fixed_process(true)
+	set_process(true)
 
-func _fixed_process(delta):
-	var window_size = OS.get_window_size()
-
-	life_bar.set_pos(Vector2(window_size.x/2 - 100, 0))
-
+func _process(delta):
 	life_bar.set_value(player.life)
 
 	for i in range(0, 5):

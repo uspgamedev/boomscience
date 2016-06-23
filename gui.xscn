@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="4" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
+<resource_file type="PackedScene" subresource_count="4" version="2.0" version_name="Godot Engine v2.0.stable.official">
 	<ext_resource path="res://gui.gd" type="Script" index="0"></ext_resource>
 	<resource type="StyleBoxFlat" path="local://3">
 		<real name="content_margin/left"> -1 </real>
@@ -47,6 +47,7 @@
 				<string> "__meta__" </string>
 				<string> "lifebar" </string>
 				<string> "margin/left" </string>
+				<string> "margin/top" </string>
 				<string> "margin/right" </string>
 				<string> "margin/bottom" </string>
 				<string> "focus/ignore_mouse" </string>
@@ -66,7 +67,6 @@
 				<string> "bomb_cd0" </string>
 				<string> "rect/min_size" </string>
 				<string> "bomb_cd1" </string>
-				<string> "margin/top" </string>
 				<string> "bomb_cd2" </string>
 				<string> "bomb_cd3" </string>
 				<string> "bomb_cd4" </string>
@@ -77,9 +77,9 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="261"> 				-1, -1, 0, 0, -1, 6, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 0, 0, 0, 24, 7, -1, 16, 8, 6, 9, 7, 10, 8, 11, 9, 12, 10, 13, 11, 14, 12, 15, 13, 16, 2, 17, 14, 18, 15, 19, 2, 20, 15, 21, 9, 22, 9, 23, 10, 0, 0, 0, 24, 25, -1, 16, 9, 8, 10, 16, 26, 17, 11, 9, 12, 10, 13, 11, 14, 12, 15, 13, 16, 2, 17, 14, 18, 15, 19, 2, 20, 15, 21, 9, 22, 9, 23, 9, 0, 0, 0, 24, 27, -1, 17, 28, 18, 9, 8, 10, 19, 26, 17, 11, 9, 12, 10, 13, 11, 14, 12, 15, 13, 16, 2, 17, 14, 18, 15, 19, 2, 20, 15, 21, 9, 22, 9, 23, 9, 0, 0, 0, 24, 29, -1, 17, 28, 8, 9, 8, 10, 20, 26, 17, 11, 9, 12, 10, 13, 11, 14, 12, 15, 13, 16, 2, 17, 14, 18, 15, 19, 2, 20, 15, 21, 9, 22, 9, 23, 9, 0, 0, 0, 24, 30, -1, 17, 28, 21, 9, 8, 10, 22, 26, 17, 11, 9, 12, 10, 13, 11, 14, 12, 15, 13, 16, 2, 17, 14, 18, 15, 19, 2, 20, 15, 21, 9, 22, 9, 23, 9, 0, 0, 0, 24, 31, -1, 17, 28, 14, 9, 8, 10, 23, 26, 17, 11, 9, 12, 10, 13, 11, 14, 12, 15, 13, 16, 2, 17, 14, 18, 15, 19, 2, 20, 15, 21, 9, 22, 9, 23, 9, 0 </int_array>
+			<int_array  len="263"> 				-1, -1, 0, 0, -1, 6, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 0, 0, 0, 25, 7, -1, 17, 8, 6, 9, 7, 10, 8, 11, 9, 12, 10, 13, 11, 14, 12, 15, 13, 16, 14, 17, 2, 18, 15, 19, 16, 20, 2, 21, 16, 22, 10, 23, 10, 24, 11, 0, 0, 0, 25, 26, -1, 16, 10, 17, 11, 18, 27, 19, 12, 10, 13, 11, 14, 12, 15, 13, 16, 14, 17, 2, 18, 15, 19, 16, 20, 2, 21, 16, 22, 10, 23, 10, 24, 10, 0, 0, 0, 25, 28, -1, 17, 9, 20, 10, 17, 11, 21, 27, 19, 12, 10, 13, 11, 14, 12, 15, 13, 16, 14, 17, 2, 18, 15, 19, 16, 20, 2, 21, 16, 22, 10, 23, 10, 24, 10, 0, 0, 0, 25, 29, -1, 17, 9, 17, 10, 17, 11, 22, 27, 19, 12, 10, 13, 11, 14, 12, 15, 13, 16, 14, 17, 2, 18, 15, 19, 16, 20, 2, 21, 16, 22, 10, 23, 10, 24, 10, 0, 0, 0, 25, 30, -1, 17, 9, 23, 10, 17, 11, 24, 27, 19, 12, 10, 13, 11, 14, 12, 15, 13, 16, 14, 17, 2, 18, 15, 19, 16, 20, 2, 21, 16, 22, 10, 23, 10, 24, 10, 0, 0, 0, 25, 31, -1, 17, 9, 15, 10, 17, 11, 25, 27, 19, 12, 10, 13, 11, 14, 12, 15, 13, 16, 14, 17, 2, 18, 15, 19, 16, 20, 2, 21, 16, 22, 10, 23, 10, 24, 10, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="24" shared="false">
+			<array  len="26" shared="false">
 				<int> 1 </int>
 				<vector2> 0, 0 </vector2>
 				<real> 0 </real>
@@ -89,9 +89,10 @@
 					<string> "__editor_plugin_screen__" </string>
 					<string> "Script" </string>
 				</dictionary>
-				<real> 400 </real>
-				<real> 600 </real>
-				<real> 50 </real>
+				<real> 192 </real>
+				<real> 16 </real>
+				<real> 448 </real>
+				<real> 32 </real>
 				<bool> False </bool>
 				<bool> True </bool>
 				<int> 2 </int>
@@ -99,6 +100,7 @@
 				<resource  resource_type="StyleBox" path="local://2">  </resource>
 				<real> 100 </real>
 				<real> 1 </real>
+				<real> 50 </real>
 				<real> 20 </real>
 				<vector2> 50, 20 </vector2>
 				<real> 25 </real>
