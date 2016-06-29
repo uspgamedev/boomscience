@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="TileSet" subresource_count="7" version="2.0" version_name="Godot Engine v2.0.stable.official">
 	<ext_resource path="res://assets/animated-tileset.tex" type="Texture" index="0"></ext_resource>
-	<resource type="ConvexPolygonShape2D" path="local://6">
+	<resource type="RectangleShape2D" path="local://6">
 		<real name="custom_solver_bias"> 0 </real>
-		<vector2_array name="points" len="4"> 			6.4, -25.6, 6.4, 6.4, -25.6, 6.4, -25.6, -25.6 </vector2_array>
+		<vector2 name="extents"> 16, 16 </vector2>
 
 	</resource>
 	<resource type="ConvexPolygonShape2D" path="local://2">
