@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-const G = 9.8 # Gravity
+const G = 200 # Gravity
+const EPSILON = 1
 var v = Vector2() # Velocity
 var hp # Health points
 var direction # 1 = right, -1 = left
@@ -12,8 +13,10 @@ func _ready():
 
 func _fixed_process(delta):
 	set_gravitational_force(delta)
+	move(v)
+	deaccelerate()
 
-func set_gravitational_force():
+func set_gravitational_force(delta):
 	# This is from Godot tutorials: Kinematic Character (2D)
 	v.y += delta * G
 	
@@ -25,4 +28,10 @@ func set_gravitational_force():
 		motion = normal.slide(motion)
 		v = normal.slide(v)
 		move(motion)
-	
+
+func deaccelerate():
+	if (v.x < EPSILON):
+		v.x = 0
+	else:
+		v.x *= .8
+	v.y *= .8
