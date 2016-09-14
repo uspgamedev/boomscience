@@ -7,6 +7,7 @@ var hp # Health points
 var direction # 1 = right, -1 = left
 var normal # Normal force, perpendicular to the surface
 var motion # Displacement
+var dir
 
 func _ready():
 	set_fixed_process(true)

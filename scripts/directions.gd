@@ -25,4 +25,4 @@ func _init():
         self.__dirs[i] = self.__dirs[i].normalized()
 
 func get_dir(id):
-	return self.__dirs[id]
+    return self.__dirs[id]
