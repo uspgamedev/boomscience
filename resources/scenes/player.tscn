@@ -24,7 +24,7 @@ script/script = ExtResource( 1 )
 texture = ExtResource( 2 )
 hframes = 12
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="PlayerHitbox" type="CollisionShape2D" parent="."]
 
 transform/pos = Vector2( 0, 2 )
 shape = SubResource( 1 )
