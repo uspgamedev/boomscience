@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const G = 200 # Gravity
+const G = 20 # Gravity
 const EPSILON = 1
 var v = Vector2() # Velocity
 var hp # Health points
@@ -24,6 +24,7 @@ func set_gravitational_force(delta):
 	motion = move(motion)
 	
 	if (is_colliding()):
+		print("aa")
 		normal = get_collision_normal()
 		motion = normal.slide(motion)
 		v = normal.slide(v)
@@ -33,5 +34,5 @@ func deaccelerate():
 	if (v.x < EPSILON):
 		v.x = 0
 	else:
-		v.x *= .8
-	v.y *= .8
+		v.x *= .95
+	v.y *= .95
