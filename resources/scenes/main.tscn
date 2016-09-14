@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://resources/scenes/player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -320, -80, 320, -80, 320, 40, -320, 40 )
+
+[node name="Root" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 302, 72 )
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 320, 440 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="FloorSprite" type="Polygon2D" parent="Floor"]
+
+polygon = Vector2Array( -320, -80, 320, -80, 320, 40, -320, 40 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="FloorHitbox" type="CollisionPolygon2D" parent="Floor"]
+
+build_mode = 0
+polygon = Vector2Array( -320, -80, 320, -80, 320, 40, -320, 40 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+

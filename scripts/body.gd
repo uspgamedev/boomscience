@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const G = 200 # Gravity
+const G = 10 # Gravity
 const EPSILON = 1
 var v = Vector2() # Velocity
 var hp # Health points
@@ -34,4 +34,4 @@ func deaccelerate():
 		v.x = 0
 	else:
 		v.x *= .8
-	v.y *= .8
+	v.y *= .99
