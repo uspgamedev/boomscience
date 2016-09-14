@@ -5,13 +5,13 @@
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -320, -40, 320, -40, 320, 40, -320, 40 )
+points = Vector2Array( -320, -80, 320, -80, 320, 40, -320, 40 )
 
-[node name="Root" type="Node2D"]
+[node name="Root" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 320, 40 )
+transform/pos = Vector2( 302, 72 )
 
 [node name="Floor" type="StaticBody2D" parent="."]
 
@@ -29,7 +29,7 @@ bounce = 0.0
 
 [node name="FloorSprite" type="Polygon2D" parent="Floor"]
 
-polygon = Vector2Array( -320, -40, 320, -40, 320, 40, -320, 40 )
+polygon = Vector2Array( -320, -80, 320, -80, 320, 40, -320, 40 )
 uv = Vector2Array(  )
 color = Color( 1, 1, 1, 1 )
 vertex_colors = ColorArray(  )
@@ -44,7 +44,7 @@ invert/border = 100.0
 [node name="FloorHitbox" type="CollisionPolygon2D" parent="Floor"]
 
 build_mode = 0
-polygon = Vector2Array( -320, -40, 320, -40, 320, 40, -320, 40 )
+polygon = Vector2Array( -320, -80, 320, -80, 320, 40, -320, 40 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
