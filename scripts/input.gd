@@ -8,19 +8,21 @@ signal press_direction(dir)
 signal press_action(act)
 signal press_quit
 
+var dir = -1
+
 func _ready():
-    set_process(true)
+    set_fixed_process(true)
     set_process_input(true)
 
 func _input(event):
-    var dir = self._get_direction(event)
+    dir = self._get_direction(event)
     var act = self._get_action(event)
     if dir != -1: emit_signal("press_direction", dir)
     if act != -1: emit_signal("press_action", act)
     if _get_quit(event): emit_signal("press_quit")
 
-func _process(delta):
-    var dir = self._get_direction(Input)
+func _fixed_process(delta):
+    dir = self._get_direction(Input)
     var act = self._get_action(Input)
     if dir != -1: emit_signal("hold_direction", dir)
     if act != -1: emit_signal("hold_action", act)
@@ -38,7 +40,7 @@ func _get_action(e):
     return act
 
 func _get_direction(e):
-    var dir = -1
+    dir = -1
     if e.is_action_pressed("ui_up") and not e.is_action_pressed("ui_down") \
         and not e.is_action_pressed("ui_left") and not e.is_action_pressed("ui_right"):
         dir = DIR.UP

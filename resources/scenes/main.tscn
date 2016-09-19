@@ -24,7 +24,7 @@ collision/layers = 1
 collision/mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
-friction = 1.0
+friction = 0.0
 bounce = 0.0
 
 [node name="FloorSprite" type="Polygon2D" parent="Floor"]

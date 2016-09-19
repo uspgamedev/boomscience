@@ -1,13 +1,13 @@
 extends KinematicBody2D
 
-const G = 10 # Gravity
+const G = 100 # Gravity
 const EPSILON = 1
 var v = Vector2() # Velocity
 var hp # Health points
-var direction # 1 = right, -1 = left
+#var direction # 1 = right, -1 = left
 var normal # Normal force, perpendicular to the surface
 var motion # Displacement
-var dir
+#var dir
 
 func _ready():
 	set_fixed_process(true)
@@ -31,8 +31,8 @@ func set_gravitational_force(delta):
 		move(motion)
 
 func deaccelerate():
-	if (v.x < EPSILON):
+	if (v.length_squared() < EPSILON):
 		v.x = 0
 	else:
-		v.x *= .8
-	v.y *= .99
+		v.x *= .5
+	v.y *= .8
