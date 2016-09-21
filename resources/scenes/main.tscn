@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 points = Vector2Array( -320, -80, 320, -80, 320, 40, -320, 40 )
 
-[node name="Root" type="Node"]
+[node name="Main" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
