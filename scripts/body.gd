@@ -1,38 +1,46 @@
 extends KinematicBody2D
 
-const G = 100 # Gravity
+const DIR = preload("directions.gd")
+const G = 5000 # Gravity
 const EPSILON = 1
-var v = Vector2() # Velocity
+const ACC = 2
+
+var speed = Vector2() # Velocity
 var hp # Health points
 #var direction # 1 = right, -1 = left
 var normal # Normal force, perpendicular to the surface
 var motion # Displacement
-#var dir
+var directions = DIR.new()
 
 func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
-	set_gravitational_force(delta)
-	move(v)
+	apply_gravity(delta)
+	apply_speed(delta)
 	deaccelerate()
 
-func set_gravitational_force(delta):
-	# This is from Godot tutorials: Kinematic Character (2D)
-	v.y += delta * G
-	
-	motion = v * delta
-	motion = move(motion)
-	
-	if (is_colliding()):
-		normal = get_collision_normal()
-		motion = normal.slide(motion)
-		v = normal.slide(v)
+func _add_speed(dir):
+	self.speed += directions.get_dir(dir) * ACC
+
+func apply_speed(delta):
+	var motion = move(self.speed * delta)
+	if is_colliding():
+		var collider = get_collider()
+		var normal = get_collision_normal()
+		motion = normal.slide(self.speed)
 		move(motion)
 
+func apply_gravity(delta):
+	speed.y += delta * G
+
+func jump(dir):
+	if dir == DIR.UP or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT:
+		speed = speed - Vector2(0, 0.4 * G)
+
 func deaccelerate():
-	if (v.length_squared() < EPSILON):
-		v.x = 0
+	if (speed.length_squared() < EPSILON):
+		speed.x = 0
 	else:
-		v.x *= .5
-	v.y *= .8
+		speed.x *= .5
+	speed.y *= .8
