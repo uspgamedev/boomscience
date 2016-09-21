@@ -21,7 +21,8 @@ func _fixed_process(delta):
 	deaccelerate()
 
 func _add_speed(dir):
-	self.speed += directions.get_dir(dir) * ACC
+	#self.speed += directions.get_dir(dir) * ACC
+	self.speed += DIR.VECTOR[dir] * ACC
 
 func apply_speed(delta):
 	var motion = move(self.speed * delta)
