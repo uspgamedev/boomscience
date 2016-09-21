@@ -9,20 +9,15 @@ const DOWN_RIGHT = 5
 const DOWN_LEFT = 6
 const UP_LEFT = 7
 
-var __dirs = [
-    Vector2(0, -1),
-    Vector2(1, 0),
-    Vector2(0, 1),
-    Vector2(-1, 0),
-    Vector2(1, -1),
-    Vector2(1, 1),
-    Vector2(-1, 1),
-    Vector2(-1, -1)
+
+const VECTOR = [
+    Vector2(cos( 2*PI/4 ), -sin( 2*PI/4 )),
+    Vector2(cos( 0*PI/4 ), -sin( 0*PI/4 )),
+    Vector2(cos(-2*PI/4 ), -sin(-2*PI/4 )),
+    Vector2(cos( 4*PI/4 ), -sin( 4*PI/4 )),
+
+    Vector2(cos( 1 * PI/4), -sin( 1 * PI/4)),
+    Vector2(cos(-1 * PI/4), -sin(-1 * PI/4)),
+    Vector2(cos(-3 * PI/4), -sin(-3 * PI/4)),
+    Vector2(cos( 3 * PI/4), -sin( 3 * PI/4)),
 ]
-
-func _init():
-    for i in range(8):
-        self.__dirs[i] = self.__dirs[i].normalized()
-
-func get_dir(id):
-    return self.__dirs[id]
