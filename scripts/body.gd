@@ -23,7 +23,6 @@ func _fixed_process(delta):
 func _add_speed(dir):
 	if (can_jump and (dir == DIR.UP or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT)):
 		speed -= Vector2(0, .5 * G)
-		can_jump = false
 	if (dir == DIR.LEFT or dir == DIR.UP_LEFT):
 		self.speed += DIR.VECTOR[DIR.LEFT] * ACC
 	if (dir == DIR.RIGHT or dir == DIR.UP_RIGHT):
@@ -40,6 +39,8 @@ func apply_speed(delta):
 		check_if_floor(collider, normal)
 		motion = .01 * normal.slide(self.speed)
 		move(motion)
+	else:
+		can_jump = false
 
 func check_if_floor(collider, normal):
 	if (collider extends StaticBody2D):
