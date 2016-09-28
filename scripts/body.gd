@@ -24,6 +24,8 @@ func _fixed_process(delta):
 	deaccelerate()
 
 func _jump(act):
+	if (jump_height >= 0):
+		jump_height = -1
 	if (can_jump and act == ACT.JUMP):
 		speed -= Vector2(0, .2 * G)
 		jump_height = 0
