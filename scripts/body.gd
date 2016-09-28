@@ -20,9 +20,11 @@ func _fixed_process(delta):
 	apply_speed(delta)
 	deaccelerate()
 
-func _add_speed(dir):
+func _jump(dir):
 	if (can_jump and (dir == DIR.UP or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT)):
-		speed -= Vector2(0, .5 * G)
+		speed -= Vector2(0, .3 * G)
+
+func _add_speed(dir):
 	if (dir == DIR.LEFT or dir == DIR.UP_LEFT):
 		self.speed += DIR.VECTOR[DIR.LEFT] * ACC
 	if (dir == DIR.RIGHT or dir == DIR.UP_RIGHT):
@@ -39,6 +41,7 @@ func apply_speed(delta):
 		check_if_floor(collider, normal)
 		motion = .01 * normal.slide(self.speed)
 		move(motion)
+		speed.y = 0 # AKIRA, PLEASE NOTICE THAT LINE
 	else:
 		can_jump = false
 
