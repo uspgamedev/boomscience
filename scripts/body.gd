@@ -11,6 +11,7 @@ var normal # Normal force, perpendicular to the surface
 var motion # Displacement
 var directions = DIR.new()
 var can_jump = false
+var jump_height = 0
 
 func _ready():
 	set_fixed_process(true)
@@ -22,9 +23,12 @@ func _fixed_process(delta):
 
 func _jump(dir):
 	if (can_jump and (dir == DIR.UP or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT)):
-		speed -= Vector2(0, .3 * G)
+		speed -= Vector2(0, .2 * G)
 
 func _add_speed(dir):
+	if (!can_jump and jump_height < 10 and (dir == DIR.UP or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT)):
+		speed -= Vector2(0, .02 * G)
+		jump_height += 1
 	if (dir == DIR.LEFT or dir == DIR.UP_LEFT):
 		self.speed += DIR.VECTOR[DIR.LEFT] * ACC
 	if (dir == DIR.RIGHT or dir == DIR.UP_RIGHT):
@@ -50,6 +54,7 @@ func check_if_floor(collider, normal):
 		var angle = atan2(normal.x, -normal.y)
 		if (angle > -PI/4 and angle < PI/4):
 			can_jump = true
+			jump_height = 0
 
 func deaccelerate():
 	if (speed.length_squared() < EPSILON):
