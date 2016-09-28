@@ -1,6 +1,8 @@
 extends KinematicBody2D	
 
 const DIR = preload("directions.gd")
+const ACT = preload("actions.gd")
+
 const G = 4000 # Gravity
 const EPSILON = 1
 const ACC = 200
@@ -21,14 +23,16 @@ func _fixed_process(delta):
 	apply_speed(delta)
 	deaccelerate()
 
-func _jump(dir):
-	if (can_jump and (dir == DIR.UP or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT)):
+func _jump(act):
+	if (can_jump and act == ACT.JUMP):
 		speed -= Vector2(0, .2 * G)
 
-func _add_speed(dir):
-	if (!can_jump and jump_height < 10 and (dir == DIR.UP or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT)):
+func _jumping(act):
+	if (!can_jump and jump_height < 10 and act == ACT.JUMP):
 		speed -= Vector2(0, .02 * G)
 		jump_height += 1
+
+func _add_speed(dir):
 	if (dir == DIR.LEFT or dir == DIR.UP_LEFT):
 		self.speed += DIR.VECTOR[DIR.LEFT] * ACC
 	if (dir == DIR.RIGHT or dir == DIR.UP_RIGHT):
