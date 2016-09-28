@@ -11,9 +11,8 @@ var speed = Vector2() # Velocity
 var hp # Health points
 var normal # Normal force, perpendicular to the surface
 var motion # Displacement
-var directions = DIR.new()
-var can_jump = false
-var jump_height = -1
+var can_jump = false # Is on air
+var jump_height = -1 # Holding jump modifies its height
 
 func _ready():
 	set_fixed_process(true)
@@ -24,14 +23,14 @@ func _fixed_process(delta):
 	deaccelerate()
 
 func _jump(act):
-	if (jump_height >= 0):
-		jump_height = -1
+	if (jump_height >= 0): # If already jumped
+		jump_height = -1 # Can't modify jump height
 	if (can_jump and act == ACT.JUMP):
 		speed -= Vector2(0, .2 * G)
-		jump_height = 0
+		jump_height = 0 # Can modify jump height
 
-func _jumping(act):
-	if (jump_height >= 0 and jump_height < 10 and act == ACT.JUMP):
+func _add_jump_height(act):
+	if (act == ACT.JUMP and jump_height >= 0 and jump_height < 10): # Limit jump height
 		speed -= Vector2(0, .02 * G)
 		jump_height += 1
 
@@ -54,13 +53,13 @@ func apply_speed(delta):
 		move(motion)
 	else:
 		can_jump = false
-	if (can_jump):
-		speed.y = 0 # AKIRA, PLEASE NOTICE THAT LINE
+	if (can_jump): # If on floor, there is no vertical speed
+		speed.y = 0
 
-func check_if_floor(collider, normal):
+func check_if_floor(collider, normal): # If body is stepping on floor
 	if (collider extends StaticBody2D):
 		var angle = atan2(normal.x, -normal.y)
-		if (angle > -PI/4 and angle < PI/4):
+		if (angle > -PI/4 and angle < PI/4): # From  45° to 135°
 			can_jump = true
 			jump_height = -1
 
