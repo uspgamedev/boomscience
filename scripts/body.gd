@@ -13,7 +13,7 @@ var normal # Normal force, perpendicular to the surface
 var motion # Displacement
 var directions = DIR.new()
 var can_jump = false
-var jump_height = 0
+var jump_height = -1
 
 func _ready():
 	set_fixed_process(true)
@@ -26,9 +26,10 @@ func _fixed_process(delta):
 func _jump(act):
 	if (can_jump and act == ACT.JUMP):
 		speed -= Vector2(0, .2 * G)
+		jump_height = 0
 
 func _jumping(act):
-	if (!can_jump and jump_height < 10 and act == ACT.JUMP):
+	if (jump_height >= 0 and jump_height < 10 and act == ACT.JUMP):
 		speed -= Vector2(0, .02 * G)
 		jump_height += 1
 
@@ -49,16 +50,17 @@ func apply_speed(delta):
 		check_if_floor(collider, normal)
 		motion = .01 * normal.slide(self.speed)
 		move(motion)
-		speed.y = 0 # AKIRA, PLEASE NOTICE THAT LINE
 	else:
 		can_jump = false
+	if (can_jump):
+		speed.y = 0 # AKIRA, PLEASE NOTICE THAT LINE
 
 func check_if_floor(collider, normal):
 	if (collider extends StaticBody2D):
 		var angle = atan2(normal.x, -normal.y)
 		if (angle > -PI/4 and angle < PI/4):
 			can_jump = true
-			jump_height = 0
+			jump_height = -1
 
 func deaccelerate():
 	if (speed.length_squared() < EPSILON):
