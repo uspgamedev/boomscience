@@ -3,33 +3,42 @@ extends Node
 
 const DIR = preload("directions.gd")
 
-onready var player = get_node('Player')
-onready var input = get_node('/root/input')
-var camera
+onready var player = get_node("Player")
+onready var input = get_node("/root/input")
+onready var camera = get_node("Player/Camera")
+
+const EPSILON = 1e-40
 
 func load_camera():
-	camera = Camera2D.new()
 	camera.set_enable_follow_smoothing(true)
 	camera.set_follow_smoothing(5)
-	player.add_child(camera)
 	camera.make_current()
 
 func _ready():
 	load_camera()
-	input.connect('press_quit', self, 'quit')
+	input.connect("press_quit", self, "quit")
 	set_fixed_process(true)
 
 func quit():
 	get_tree().quit()
 
 func _fixed_process(delta):
-	_move_camera()
+	_check_camera()
 
-func _move_camera():
+func _check_camera():
+	var tween = Tween.new()
+	player.add_child(tween)
 	var dir = input._get_direction(Input)
 	if (dir == DIR.UP or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT):
-		camera.set_offset(Vector2(0, -140))
+		move_camera(tween, Vector2(0, 0), Vector2(0, -220))
+		tween.start()
 	elif (dir == DIR.DOWN or dir == DIR.DOWN_LEFT or dir == DIR.DOWN_RIGHT):
-		camera.set_offset(Vector2(0, 160))
+		move_camera(tween, Vector2(0, 0), Vector2(0, 160))
+		tween.start()
 	elif (dir == -1 or dir == DIR.LEFT or dir == DIR.RIGHT):
-		camera.set_offset(Vector2(0, 0))
+		move_camera(tween, camera.get_pos(), Vector2(0, 0))
+		tween.start()
+
+func move_camera(tween, init, final):
+		tween.interpolate_property(get_node("Player/Camera"), "transform/pos", \
+		init, final, EPSILON, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
