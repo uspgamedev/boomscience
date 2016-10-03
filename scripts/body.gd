@@ -1,6 +1,8 @@
 extends KinematicBody2D	
 
 const DIR = preload("directions.gd")
+const ACT = preload("actions.gd")
+
 const G = 4000 # Gravity
 const EPSILON = 1
 const ACC = 200
@@ -9,8 +11,8 @@ var speed = Vector2() # Velocity
 var hp # Health points
 var normal # Normal force, perpendicular to the surface
 var motion # Displacement
-var directions = DIR.new()
-var can_jump = false
+var can_jump = false # Is on air
+var jump_height = -1 # Holding jump modifies its height
 
 func _ready():
 	set_fixed_process(true)
@@ -20,37 +22,50 @@ func _fixed_process(delta):
 	apply_speed(delta)
 	deaccelerate()
 
-func _add_speed(dir):
-	#self.speed += directions.get_dir(dir) * ACC
-	self.speed += DIR.VECTOR[dir] * ACC
+func _jump(act):
+	if (jump_height >= 0): # If already jumped
+		jump_height = -1 # Can't modify jump height
+	if (can_jump and act == ACT.JUMP):
+		speed -= Vector2(0, .2 * G)
+		jump_height = 0 # Can modify jump height
 
-func check_if_floor(collider, normal):
-	if collider extends StaticBody2D:
-		var angle = atan2( normal.x, -normal.y )
-		if angle > PI/4 and angle < 3*PI/4:
-			can_jump = true
+func _add_jump_height(act):
+	if (act == ACT.JUMP and jump_height >= 0 and jump_height < 10): # Limit jump height
+		speed -= Vector2(0, .02 * G)
+		jump_height += 1
+
+func _add_speed(dir):
+	if (dir == DIR.LEFT or dir == DIR.UP_LEFT):
+		self.speed += DIR.VECTOR[DIR.LEFT] * ACC
+	if (dir == DIR.RIGHT or dir == DIR.UP_RIGHT):
+		self.speed += DIR.VECTOR[DIR.RIGHT] * ACC
+
+func apply_gravity(delta):
+	speed.y += delta * G
 
 func apply_speed(delta):
 	var motion = move(self.speed * delta)
-	if is_colliding():
+	if (is_colliding()):
 		var collider = get_collider()
 		var normal = get_collision_normal()
 		check_if_floor(collider, normal)
 		motion = .01 * normal.slide(self.speed)
 		move(motion)
-
-func apply_gravity(delta):
-	speed.y += delta * G
-
-func jump(dir):
-	if !can_jump: return
-	if dir == DIR.UP or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT:
-		speed -= Vector2(0, 0.1 * G)
+	else:
 		can_jump = false
+	if (can_jump): # If on floor, there is no vertical speed
+		speed.y = 0
+
+func check_if_floor(collider, normal): # If body is stepping on floor
+	if (collider extends StaticBody2D):
+		var angle = atan2(normal.x, -normal.y)
+		if (angle > -PI/4 and angle < PI/4): # From  45° to 135°
+			can_jump = true
+			jump_height = -1
 
 func deaccelerate():
 	if (speed.length_squared() < EPSILON):
 		speed.x = 0
 	else:
 		speed.x *= .5
-	speed.y *= .8
+	speed.y *= .9

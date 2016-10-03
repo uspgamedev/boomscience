@@ -1,6 +1,7 @@
 extends Node
 
 const DIR = preload("directions.gd")
+const ACT = preload("actions.gd")
 
 signal hold_direction(dir)
 signal hold_action(act)
@@ -33,10 +34,12 @@ func _get_quit(e):
 
 func _get_action(e):
     var act = -1
-    if e.is_action_pressed("ui_accept"):
-        act = 0
+    if e.is_action_pressed("ui_jump"):
+        act = ACT.JUMP
+    elif e.is_action_pressed("ui_accept"):
+        act = ACT.ACCEPT
     elif e.is_action_pressed("ui_cancel"):
-        act = 1
+        act = ACT.CANCEL
     return act
 
 func _get_direction(e):
