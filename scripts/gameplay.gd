@@ -11,7 +11,7 @@ const EPSILON = 1e-40
 
 func load_camera():
 	camera.set_enable_follow_smoothing(true)
-	camera.set_follow_smoothing(5)
+	camera.set_follow_smoothing(7)
 	camera.make_current()
 
 func _ready():
@@ -30,7 +30,7 @@ func _check_camera():
 	player.add_child(tween)
 	var dir = input._get_direction(Input)
 	if (dir == DIR.UP or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT):
-		move_camera(tween, Vector2(0, 0), Vector2(0, -220))
+		move_camera(tween, Vector2(0, 0), Vector2(0, -140))
 		tween.start()
 	elif (dir == DIR.DOWN or dir == DIR.DOWN_LEFT or dir == DIR.DOWN_RIGHT):
 		move_camera(tween, Vector2(0, 0), Vector2(0, 160))
