@@ -42,6 +42,8 @@ func _get_action(e):
         act = ACT.CANCEL
     elif e.is_action_pressed("ui_camera"):
         act = ACT.CAMERA
+    elif e.is_action_pressed("ui_stealth"):
+        act = ACT.STEALTH
     return act
 
 func _get_direction(e):
