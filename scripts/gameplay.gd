@@ -34,20 +34,24 @@ func check_camera():
 	if (act == ACT.CAMERA):
 		if (dir == DIR.RIGHT):
 			move_camera(tween, Vector2(0, 0), Vector2(140, 0))
-			tween.start()
 		if (dir == DIR.LEFT):
 			move_camera(tween, Vector2(0, 0), Vector2(-140, 0))
-			tween.start()
-	if (dir == DIR.UP or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT):
+		if (dir == DIR.UP_RIGHT):
+			move_camera(tween, Vector2(0, 0), Vector2(140, -140))
+		if (dir == DIR.UP_LEFT):
+			move_camera(tween, Vector2(0, 0), Vector2(-140, -140))
+		if (dir == DIR.DOWN_RIGHT):
+			move_camera(tween, Vector2(0, 0), Vector2(140, 160))
+		if (dir == DIR.DOWN_LEFT):
+			move_camera(tween, Vector2(0, 0), Vector2(-140, 160))
+	if (dir == DIR.UP or (act != ACT.CAMERA and (dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT))):
 		move_camera(tween, Vector2(0, 0), Vector2(0, -140))
-		tween.start()
-	elif (dir == DIR.DOWN or dir == DIR.DOWN_LEFT or dir == DIR.DOWN_RIGHT):
+	elif (dir == DIR.DOWN or (act != ACT.CAMERA and (dir == DIR.DOWN_LEFT or dir == DIR.DOWN_RIGHT))):
 		move_camera(tween, Vector2(0, 0), Vector2(0, 160))
-		tween.start()
-	elif (dir == -1):
+	elif (act != ACT.CAMERA and (dir == -1 or dir == DIR.RIGHT or dir == DIR.LEFT)):
 		move_camera(tween, camera.get_pos(), Vector2(0, 0))
-		tween.start()
 
 func move_camera(tween, init, final):
 	tween.interpolate_property(get_node("Player/Camera"), "transform/pos", \
 		init, final, EPSILON, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
