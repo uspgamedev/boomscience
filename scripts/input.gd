@@ -40,21 +40,19 @@ func _get_action(e):
         act = ACT.ACCEPT
     elif e.is_action_pressed("ui_cancel"):
         act = ACT.CANCEL
+    elif e.is_action_pressed("ui_camera"):
+        act = ACT.CAMERA
     return act
 
 func _get_direction(e):
     dir = -1
-    if e.is_action_pressed("ui_up") and not e.is_action_pressed("ui_down") \
-        and not e.is_action_pressed("ui_left") and not e.is_action_pressed("ui_right"):
+    if e.is_action_pressed("ui_up") and not e.is_action_pressed("ui_down"):
         dir = DIR.UP
-    elif e.is_action_pressed("ui_down") and not e.is_action_pressed("ui_up") \
-        and not e.is_action_pressed("ui_left") and not e.is_action_pressed("ui_right"):
+    elif e.is_action_pressed("ui_down") and not e.is_action_pressed("ui_up"):
         dir = DIR.DOWN
-    if e.is_action_pressed("ui_right") and not e.is_action_pressed("ui_left") \
-        and not e.is_action_pressed("ui_down") and not e.is_action_pressed("ui_up"):
+    if e.is_action_pressed("ui_right") and not e.is_action_pressed("ui_left"):
         dir = DIR.RIGHT
-    elif e.is_action_pressed("ui_left") and not e.is_action_pressed("ui_right") \
-        and not e.is_action_pressed("ui_down") and not e.is_action_pressed("ui_up"):
+    elif e.is_action_pressed("ui_left") and not e.is_action_pressed("ui_right"):
         dir = DIR.LEFT
     if e.is_action_pressed("ui_up") and e.is_action_pressed("ui_right") \
         and not e.is_action_pressed("ui_down") and not e.is_action_pressed("ui_left"):

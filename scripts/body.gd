@@ -1,4 +1,4 @@
-extends KinematicBody2D	
+extends KinematicBody2D
 
 const DIR = preload("directions.gd")
 const ACT = preload("actions.gd")
@@ -26,18 +26,18 @@ func _jump(act):
 	if (jump_height >= 0): # If already jumped
 		jump_height = -1 # Can't modify jump height
 	if (can_jump and act == ACT.JUMP):
-		speed -= Vector2(0, .2 * G)
+		speed -= Vector2(0, .15 * G)
 		jump_height = 0 # Can modify jump height
 
 func _add_jump_height(act):
 	if (act == ACT.JUMP and jump_height >= 0 and jump_height < 10): # Limit jump height
-		speed -= Vector2(0, .02 * G)
+		speed -= Vector2(0, .03 * G)
 		jump_height += 1
 
 func _add_speed(dir):
-	if (dir == DIR.LEFT or dir == DIR.UP_LEFT):
+	if (dir == DIR.LEFT or dir == DIR.UP_LEFT or dir == DIR.DOWN_LEFT):
 		self.speed += DIR.VECTOR[DIR.LEFT] * ACC
-	if (dir == DIR.RIGHT or dir == DIR.UP_RIGHT):
+	if (dir == DIR.RIGHT or dir == DIR.UP_RIGHT or dir == DIR.DOWN_RIGHT):
 		self.speed += DIR.VECTOR[DIR.RIGHT] * ACC
 
 func apply_gravity(delta):
