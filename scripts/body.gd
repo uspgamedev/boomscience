@@ -25,7 +25,6 @@ func _fixed_process(delta):
 func _jump(act):
 	if (jump_height >= 0): # If already jumped
 		jump_height = -1 # Can't modify jump height
-	print(act)
 	if (can_jump and act == ACT.JUMP):
 		speed -= Vector2(0, .15 * G)
 		jump_height = 0 # Can modify jump height
