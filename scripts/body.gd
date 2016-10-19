@@ -5,7 +5,6 @@ const ACT = preload("actions.gd")
 
 const G = 4000 # Gravity
 const EPSILON = 1
-const ACC = 200
 
 var speed = Vector2() # Velocity
 var hp # Health points
@@ -13,6 +12,7 @@ var normal # Normal force, perpendicular to the surface
 var motion # Displacement
 var can_jump = false # Is on air
 var jump_height = -1 # Holding jump modifies its height
+var acc = 200
 
 func _ready():
 	set_fixed_process(true)
@@ -36,9 +36,9 @@ func _add_jump_height(act):
 
 func _add_speed(dir):
 	if (dir == DIR.LEFT or dir == DIR.UP_LEFT or dir == DIR.DOWN_LEFT):
-		self.speed += DIR.VECTOR[DIR.LEFT] * ACC
+		self.speed += DIR.VECTOR[DIR.LEFT] * acc
 	if (dir == DIR.RIGHT or dir == DIR.UP_RIGHT or dir == DIR.DOWN_RIGHT):
-		self.speed += DIR.VECTOR[DIR.RIGHT] * ACC
+		self.speed += DIR.VECTOR[DIR.RIGHT] * acc
 
 func apply_gravity(delta):
 	speed.y += delta * G
