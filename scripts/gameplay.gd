@@ -1,12 +1,12 @@
 
 extends Node
 
-const DIR = preload("directions.gd")
-const ACT = preload("actions.gd")
+const DIR = preload('directions.gd')
+const ACT = preload('actions.gd')
 
-onready var player = get_node("Player")
-onready var input = get_node("/root/input")
-onready var camera = get_node("Player/Camera")
+onready var player = get_node('Player')
+onready var input = get_node('/root/input')
+onready var camera = get_node('Player/Camera')
 
 const EPSILON = 1e-40
 
@@ -17,7 +17,7 @@ func load_camera():
 
 func _ready():
 	load_camera()
-	input.connect("press_quit", self, "quit")
+	input.connect('press_quit', self, 'quit')
 	set_fixed_process(true)
 
 func quit():
@@ -52,6 +52,6 @@ func check_camera():
 		move_camera(tween, camera.get_pos(), Vector2(0, 0))
 
 func move_camera(tween, init, final):
-	tween.interpolate_property(get_node("Player/Camera"), "transform/pos", \
+	tween.interpolate_property(get_node('Player/Camera'), 'transform/pos', \
 		init, final, EPSILON, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()

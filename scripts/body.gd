@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
-const DIR = preload("directions.gd")
-const ACT = preload("actions.gd")
+const DIR = preload('directions.gd')
+const ACT = preload('actions.gd')
 
 const G = 4000 # Gravity
 const EPSILON = 1
 
+onready var sprite = null
 var speed = Vector2() # Velocity
 var hp # Health points
 var normal # Normal force, perpendicular to the surface
@@ -39,6 +40,13 @@ func _add_speed(dir):
 		self.speed += DIR.VECTOR[DIR.LEFT] * acc
 	if (dir == DIR.RIGHT or dir == DIR.UP_RIGHT or dir == DIR.DOWN_RIGHT):
 		self.speed += DIR.VECTOR[DIR.RIGHT] * acc
+
+func _flip_sprite(dir):
+	if (sprite != null):
+		if (dir == DIR.RIGHT or dir == DIR.UP_RIGHT or dir == DIR.DOWN_RIGHT):
+			sprite.set_flip_h(true)
+		elif (dir == DIR.LEFT or dir == DIR.UP_LEFT or dir == DIR.DOWN_LEFT):
+			sprite.set_flip_h(false)
 
 func apply_gravity(delta):
 	speed.y += delta * G
