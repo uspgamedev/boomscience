@@ -65,7 +65,7 @@ func apply_speed(delta):
 		speed.y = 0
 
 func check_if_floor(collider, normal): # If body is stepping on floor
-	if (collider extends StaticBody2D):
+	if (collider extends TileMap):
 		var angle = atan2(normal.x, -normal.y)
 		if (angle > -PI/4 and angle < PI/4): # From  45° to 135°
 			can_jump = true
