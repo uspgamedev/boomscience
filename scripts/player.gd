@@ -38,11 +38,11 @@ func check_stealth():
 	if (act == ACT.STEALTH):
 		area.set_scale(Vector2(.3, .3))
 		sprite.set_modulate(Color(1, 1, 1, .5))
-		acc = 100
+		acc = ACC / 2
 	else:
 		area.set_scale(Vector2(1, 1))
 		sprite.set_modulate(Color(1, 1, 1, 1))
-		acc = 200
+		acc = ACC
 
 func check_animation():
 	if (can_jump and !speed.x):
