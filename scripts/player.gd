@@ -4,6 +4,7 @@ const ACT = preload('actions.gd')
 
 onready var input = get_node('/root/input')
 onready var area = get_node('AreaDetection')
+var key = Vector3(0, 0, 0)
 
 var anim = 'idle'
 var anim_new
@@ -23,6 +24,7 @@ func _fixed_process(delta):
 	check_camera()
 	check_stealth()
 	check_animation()
+	check_death()
 
 func check_camera():
 	var act = input._get_action(Input)
@@ -55,8 +57,28 @@ func check_animation():
 		anim = anim_new
 		get_node('PlayerSprite/PlayerAnimation').play(anim)
 
+func check_death():
+	if (self.get_pos().y > 1000):
+		get_tree().change_scene('res://resources/scenes/main.tscn')
+
 func _on_Area2D_area_enter(area):
-	get_node('../TestDetection/TriggerDetection').set_color(Color(1,0,0,1))
+	if (area.get_node('../').get_name() == 'Key1'):
+		key.x = 1
+		area.get_node('../').queue_free()
+	elif (area.get_node('../').get_name() == 'Key2'):
+		key.y = 1
+		area.get_node('../').queue_free()
+	elif (area.get_node('../').get_name() == 'Key3'):
+		key.z = 1
+		area.get_node('../').queue_free()
+	if (area.get_node('../').get_name() == 'Door1' and key.x == 1):
+		self.set_pos(Vector2(0, 0))
+	if (area.get_node('../').get_name() == 'Door2' and key.x == 1):
+		self.set_pos(Vector2(2863, 523))
+	if (area.get_node('../').get_name() == 'Door3' and key.z == 1):
+		print('Congratulations!')
+	#get_node('../TestDetection/TriggerDetection').set_color(Color(1,0,0,1))
 
 func _on_Area2D_area_exit(area):
-	get_node('../TestDetection/TriggerDetection').set_color(Color(0,1,0,1))
+	pass
+	#get_node('../TestDetection/TriggerDetection').set_color(Color(0,1,0,1))

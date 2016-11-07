@@ -116,7 +116,7 @@ __meta__ = { "_edit_lock_":true }
 
 input/pickable = true
 shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( 15, 0, 0, 15, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -127,7 +127,6 @@ __meta__ = { "_edit_lock_":true }
 [node name="CollisionDetection" type="CollisionShape2D" parent="AreaDetection"]
 
 visibility/visible = false
-transform/scale = Vector2( 15, 15 )
 shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
