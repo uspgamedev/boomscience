@@ -25,6 +25,9 @@ func _fixed_process(delta):
 	apply_speed(delta)
 	deaccelerate()
 
+func set_jump(flag):
+	self.can_jump = flag
+
 func _jump(act):
 	var dir = input._get_direction(Input)
 	if (jump_height >= 0): # If already jumped
@@ -72,7 +75,7 @@ func apply_speed(delta):
 		motion = .01 * normal.slide(self.speed)
 		move(motion)
 	else:
-		can_jump = false
+		set_jump(false)
 	if (can_jump): # If on floor, there is no vertical speed
 		speed.y = 0
 
@@ -82,10 +85,10 @@ func check_if_floor(collider, normal): # If body is stepping on floor
 	if (collider extends TileMap):
 		var angle = atan2(normal.x, -normal.y)
 		if (angle > -PI/4 and angle < PI/4): # From  45° to 135°
-			can_jump = true
+			set_jump(true)
 			jump_height = -1
 		else:
-			can_jump = false
+			set_jump(false)
 
 func deaccelerate():
 	if (speed.length_squared() < EPSILON):
