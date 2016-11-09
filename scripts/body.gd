@@ -84,6 +84,8 @@ func check_if_floor(collider, normal): # If body is stepping on floor
 		if (angle > -PI/4 and angle < PI/4): # From  45° to 135°
 			can_jump = true
 			jump_height = -1
+		else:
+			can_jump = false
 
 func deaccelerate():
 	if (speed.length_squared() < EPSILON):
