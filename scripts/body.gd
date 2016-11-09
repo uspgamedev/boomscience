@@ -36,6 +36,7 @@ func _jump(act):
 		speed -= Vector2(0, .2 * G)
 		impulse = dir
 		jump_height = 0 # Can modify jump height
+	set_jump(false)
 
 func _add_jump_height(act):
 	if (speed.y < EPSILON and speed.y > -EPSILON):
@@ -70,13 +71,13 @@ func apply_speed(delta):
 	var motion = move(self.speed * delta)
 	if (is_colliding()):
 		var collider = get_collider()
-		var normal = get_collision_normal()
+		normal = get_collision_normal()
 		check_if_floor(collider, normal)
 		motion = .01 * normal.slide(self.speed)
 		move(motion)
 	else:
 		set_jump(false)
-	if (can_jump): # If on floor, there is no vertical speed
+	if (can_jump and jump_height == -1): # If on floor, there is no vertical speed
 		speed.y = 0
 
 func check_if_floor(collider, normal): # If body is stepping on floor
@@ -87,8 +88,6 @@ func check_if_floor(collider, normal): # If body is stepping on floor
 		if (angle > -PI/4 and angle < PI/4): # From  45° to 135°
 			set_jump(true)
 			jump_height = -1
-		else:
-			set_jump(false)
 
 func deaccelerate():
 	if (speed.length_squared() < EPSILON):
