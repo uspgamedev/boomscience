@@ -1,121 +1,37 @@
 [gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://scripts/gameplay.gd" type="Script" id=1]
-[ext_resource path="res://resources/scenes/player.tscn" type="PackedScene" id=2]
-
-[sub_resource type="ConvexPolygonShape2D" id=1]
-
-custom_solver_bias = 0.0
-points = Vector2Array( -320, -80, 320, -80, 320, 40, -320, 40 )
-
-[sub_resource type="CircleShape2D" id=2]
-
-custom_solver_bias = 0.0
-radius = 10.0
-
-[sub_resource type="ConvexPolygonShape2D" id=3]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 100, -50, 100, 50, 0, 0 )
+[ext_resource path="res://resources/scenes/stage_1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/scenes/key.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/scenes/door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/scenes/player.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node"]
 
 script/script = ExtResource( 1 )
 
-[node name="Floor" type="StaticBody2D" parent="."]
+[node name="TileMap" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 320, 440 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = { "_edit_lock_":true }
+[node name="Key1" parent="." instance=ExtResource( 3 )]
 
-[node name="FloorSprite" type="Polygon2D" parent="Floor"]
+transform/pos = Vector2( -3024, -48 )
+transform/scale = Vector2( 0.5, 0.5 )
 
-polygon = Vector2Array( -320, -80, 320, -80, 320, 40, -320, 40 )
-uv = Vector2Array(  )
-color = Color( 1, 1, 1, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-__meta__ = { "_edit_lock_":true }
+[node name="Door1" parent="." instance=ExtResource( 4 )]
 
-[node name="FloorHitbox" type="CollisionPolygon2D" parent="Floor"]
+transform/pos = Vector2( -2288, -53 )
 
-build_mode = 0
-polygon = Vector2Array( -320, -80, 320, -80, 320, 40, -320, 40 )
-shape_range = Vector2( 0, 0 )
-trigger = false
-__meta__ = { "_edit_lock_":true }
+[node name="Key2" parent="." instance=ExtResource( 3 )]
 
-[node name="TestDetection" type="KinematicBody2D" parent="."]
+transform/pos = Vector2( -752, -49 )
+transform/scale = Vector2( 0.5, 0.5 )
 
-transform/pos = Vector2( 120, 340 )
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-__meta__ = { "_edit_lock_":true }
+[node name="Door2" parent="." instance=ExtResource( 4 )]
 
-[node name="TriggerDetection" type="Polygon2D" parent="TestDetection"]
+transform/pos = Vector2( 1520, 523 )
 
-polygon = Vector2Array( -20, -20, -20, 20, 20, 20, 20, -20 )
-uv = Vector2Array(  )
-color = Color( 0, 1, 0, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-__meta__ = { "_edit_lock_":true }
+[node name="Player" parent="." instance=ExtResource( 5 )]
 
-[node name="AreaDetection" type="Area2D" parent="TestDetection"]
-
-input/pickable = true
-shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 3, 0, 0, 3, 0, 0 )
-shapes/0/trigger = false
-shapes/1/shape = SubResource( 3 )
-shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/1/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-__meta__ = { "_edit_lock_":true }
-
-[node name="CircleDetection" type="CollisionShape2D" parent="TestDetection/AreaDetection"]
-
-transform/scale = Vector2( 3, 3 )
-shape = SubResource( 2 )
-trigger = false
-_update_shape_index = 0
-__meta__ = { "_edit_lock_":true }
-
-[node name="TriangleDetection" type="CollisionShape2D" parent="TestDetection/AreaDetection"]
-
-shape = SubResource( 3 )
-trigger = false
-_update_shape_index = 1
-__meta__ = { "_edit_lock_":true }
-
-[node name="Player" parent="." instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 302, 72 )
+transform/pos = Vector2( -2638, -78 )
 
 
