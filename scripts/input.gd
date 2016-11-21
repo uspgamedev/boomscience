@@ -44,6 +44,8 @@ func _get_action(e):
 		act = ACT.CAMERA
 	elif e.is_action_pressed('ui_stealth'):
 		act = ACT.STEALTH
+	elif e.is_action_pressed('ui_throw'):
+		act = ACT.THROW
 	return act
 
 func _get_direction(e):

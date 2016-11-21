@@ -12,6 +12,9 @@ script/script = ExtResource( 1 )
 
 [node name="TileMap" parent="." instance=ExtResource( 2 )]
 
+collision/layers = 3
+collision/mask = 3
+
 [node name="Key1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -3024, -48 )
