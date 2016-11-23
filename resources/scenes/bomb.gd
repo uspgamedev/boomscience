@@ -29,7 +29,7 @@ func adjust_speed():
 		speed.x = min(speed.x * 7, 500 * speed.normalized().x)
 	else:
 		speed.x = max(speed.x * 7, 500 * speed.normalized().x)
-	speed += player.speed
+	speed += player.speed / 3
 
 func apply_gravity(delta):
 	speed.y += delta * G

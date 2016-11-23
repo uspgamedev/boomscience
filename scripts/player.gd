@@ -94,7 +94,7 @@ func _on_Area2D_area_enter(area):
 		area.get_node('../').queue_free()
 	if (area.get_node('../').get_name() == 'Door1' and key.x == 1):
 		self.set_pos(Vector2(0, 0))
-	if (area.get_node('../').get_name() == 'Door2' and key.x == 1):
+	if (area.get_node('../').get_name() == 'Door2' and key.y == 1):
 		self.set_pos(Vector2(2863, 523))
 	if (area.get_node('../').get_name() == 'Door3' and key.z == 1):
 		print('Congratulations!')
