@@ -62,7 +62,7 @@ func check_animation():
 		get_node('PlayerSprite/PlayerAnimation').play(anim)
 
 func check_death():
-	if (self.get_pos().y > 1000):
+	if (self.get_pos().y > 800):
 		get_tree().change_scene('res://resources/scenes/main.tscn')
 
 func check_bomb_throw():
