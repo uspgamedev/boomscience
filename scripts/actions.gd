@@ -1,8 +1,8 @@
 extends Node
 
-const JUMP = 0
-const ACCEPT = 1
-const CANCEL = 2
-const CAMERA = 3
-const STEALTH = 4
+const ACCEPT = 0
+const CANCEL = 1
+const CAMERA = 2
+const STEALTH = 3
+const JUMP = 4
 const THROW = 5

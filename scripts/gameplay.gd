@@ -17,6 +17,7 @@ func load_camera():
 
 func _ready():
 	load_camera()
+	get_node('StreamPlayer').set_volume(2)
 	input.connect('press_quit', self, 'quit')
 	input.connect('press_reset', self, 'reset')
 	set_fixed_process(true)

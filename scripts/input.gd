@@ -40,17 +40,17 @@ func _get_quit(e):
 
 func _get_action(e):
 	var act = -1
+	if e.is_action_pressed('ui_accept'):
+		act = ACT.ACCEPT
+	if e.is_action_pressed('ui_cancel'):
+		act = ACT.CANCEL
+	if e.is_action_pressed('ui_camera'):
+		act = ACT.CAMERA
+	if e.is_action_pressed('ui_stealth'):
+		act = ACT.STEALTH
 	if e.is_action_pressed('ui_jump'):
 		act = ACT.JUMP
-	elif e.is_action_pressed('ui_accept'):
-		act = ACT.ACCEPT
-	elif e.is_action_pressed('ui_cancel'):
-		act = ACT.CANCEL
-	elif e.is_action_pressed('ui_camera'):
-		act = ACT.CAMERA
-	elif e.is_action_pressed('ui_stealth'):
-		act = ACT.STEALTH
-	elif e.is_action_pressed('ui_throw'):
+	if e.is_action_pressed('ui_throw'):
 		act = ACT.THROW
 	return act
 

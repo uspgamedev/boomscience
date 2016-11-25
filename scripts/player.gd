@@ -69,6 +69,9 @@ func check_bomb_throw():
 	if (bomb_cooldown == 0):
 		var act = input._get_action(Input)
 		if (act == ACT.THROW):
+			var fx = get_node('../SamplePlayer')
+			fx.set_default_volume(.2)
+			fx.play('throw')
 			bomb_cooldown = 1
 			var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
 			var mouse_dir = get_viewport().get_mouse_pos() - screen_center
