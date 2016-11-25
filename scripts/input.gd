@@ -8,6 +8,7 @@ signal hold_action(act)
 signal press_direction(dir)
 signal press_action(act)
 signal press_quit
+signal press_reset
 
 var dir = -1
 
@@ -21,6 +22,7 @@ func _input(event):
 	if dir != -1: emit_signal('press_direction', dir)
 	if act != -1: emit_signal('press_action', act)
 	if _get_quit(event): emit_signal('press_quit')
+	if _get_reset(event): emit_signal('press_reset')
 
 func _fixed_process(delta):
 	dir = self._get_direction(Input)
@@ -28,22 +30,28 @@ func _fixed_process(delta):
 	if dir != -1: emit_signal('hold_direction', dir)
 	if act != -1: emit_signal('hold_action', act)
 
+func _get_reset(e):
+	if e.is_action_pressed('ui_reset'):
+		return true
+
 func _get_quit(e):
 	if e.is_action_pressed('ui_quit'):
 		return true
 
 func _get_action(e):
 	var act = -1
+	if e.is_action_pressed('ui_accept'):
+		act = ACT.ACCEPT
+	if e.is_action_pressed('ui_cancel'):
+		act = ACT.CANCEL
+	if e.is_action_pressed('ui_camera'):
+		act = ACT.CAMERA
+	if e.is_action_pressed('ui_stealth'):
+		act = ACT.STEALTH
 	if e.is_action_pressed('ui_jump'):
 		act = ACT.JUMP
-	elif e.is_action_pressed('ui_accept'):
-		act = ACT.ACCEPT
-	elif e.is_action_pressed('ui_cancel'):
-		act = ACT.CANCEL
-	elif e.is_action_pressed('ui_camera'):
-		act = ACT.CAMERA
-	elif e.is_action_pressed('ui_stealth'):
-		act = ACT.STEALTH
+	if e.is_action_pressed('ui_throw'):
+		act = ACT.THROW
 	return act
 
 func _get_direction(e):

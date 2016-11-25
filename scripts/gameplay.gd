@@ -17,8 +17,13 @@ func load_camera():
 
 func _ready():
 	load_camera()
+	get_node('StreamPlayer').set_volume(2)
 	input.connect('press_quit', self, 'quit')
+	input.connect('press_reset', self, 'reset')
 	set_fixed_process(true)
+
+func reset():
+	get_tree().change_scene('res://resources/scenes/main.tscn')
 
 func quit():
 	get_tree().quit()
