@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="TileSet" subresource_count="8" version="2.1" version_name="Godot Engine v2.1.stable.official">
+<resource_file type="TileSet" subresource_count="9" version="2.1" version_name="Godot Engine v2.1.stable.official">
 	<ext_resource path="res://resources/assets/images/platformer_tileset_template.png" type="Texture" index="0"></ext_resource>
 	<resource type="ConvexPolygonShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
@@ -29,6 +29,11 @@
 	<resource type="ConvexPolygonShape2D" path="local://6">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2_array name="points" len="4"> 			0, 0, 24, 0, 24, 24, 0, 24 </vector2_array>
+
+	</resource>
+	<resource type="ConvexPolygonShape2D" path="local://7">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2_array name="points" len="4"> 			0, 0, 32, 0, 32, 32, 0, 32 </vector2_array>
 
 	</resource>
 	<main_resource>
@@ -118,6 +123,16 @@
 		<resource name="8/navigation"></resource>		<vector2 name="8/shape_offset"> -0, -0 </vector2>
 		<array name="8/shapes" len="1" shared="false">
 			<resource  resource_type="Shape2D" path="local://6">  </resource>
+		</array>
+		<string name="9/name"> "Destroyable" </string>
+		<resource name="9/texture" external="0">  </resource>
+		<vector2 name="9/tex_offset"> 0, 0 </vector2>
+		<resource name="9/material"></resource>		<rect2 name="9/region"> 64, 64, 32, 32 </rect2>
+		<vector2 name="9/occluder_offset"> -0, -0 </vector2>
+		<resource name="9/occluder"></resource>		<vector2 name="9/navigation_offset"> -0, -0 </vector2>
+		<resource name="9/navigation"></resource>		<vector2 name="9/shape_offset"> -0, -0 </vector2>
+		<array name="9/shapes" len="1" shared="false">
+			<resource  resource_type="Shape2D" path="local://7">  </resource>
 		</array>
 
 	</main_resource>

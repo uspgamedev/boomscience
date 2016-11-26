@@ -4,7 +4,8 @@ const ACT = preload('actions.gd')
 var bomb_scn = preload('../resources/scenes/bomb.tscn')
 
 onready var input = get_node('/root/input')
-onready var area = get_node('AreaDetection')
+onready var global = get_node('/root/global')
+onready var area = get_node('PlayerAreaDetection')
 var key = Vector3(0, 0, 0)
 
 var anim = 'idle'
@@ -21,6 +22,7 @@ func _ready():
 	area.connect('area_enter', self, '_on_Area2D_area_enter')
 	area.connect('area_exit',self,'_on_Area2D_area_exit')
 	sprite = get_node('PlayerSprite')
+	self.set_pos(global.respawn)
 	set_fixed_process(true)
 
 func _fixed_process(delta):
@@ -86,6 +88,10 @@ func check_bomb_throw():
 			bomb_cooldown = 0
 
 func _on_Area2D_area_enter(area):
+	check_keys(area)
+	check_doors(area)
+
+func check_keys(area):
 	if (area.get_node('../').get_name() == 'Key1'):
 		key.x = 1
 		area.get_node('../').queue_free()
@@ -95,14 +101,16 @@ func _on_Area2D_area_enter(area):
 	elif (area.get_node('../').get_name() == 'Key3'):
 		key.z = 1
 		area.get_node('../').queue_free()
+
+func check_doors(area):
 	if (area.get_node('../').get_name() == 'Door1' and key.x == 1):
-		self.set_pos(Vector2(0, 0))
+		global.respawn = Vector2(0, 0)
+		self.set_pos(global.respawn)
 	if (area.get_node('../').get_name() == 'Door2' and key.y == 1):
-		self.set_pos(Vector2(2863, 523))
+		global.respawn = Vector2(2863, 523)
+		self.set_pos(global.respawn)
 	if (area.get_node('../').get_name() == 'Door3' and key.z == 1):
-		print('Congratulations!')
-	#get_node('../TestDetection/TriggerDetection').set_color(Color(1,0,0,1))
+		get_node('Congratulations').set_scale(Vector2(1, 1))
 
 func _on_Area2D_area_exit(area):
 	pass
-	#get_node('../TestDetection/TriggerDetection').set_color(Color(0,1,0,1))
