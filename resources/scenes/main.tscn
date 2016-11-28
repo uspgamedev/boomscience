@@ -43,7 +43,6 @@ tile_data = IntArray( -327774, 16, -262238, 16, -196702, 16, -131166, 16, -65630
 [node name="Key1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -3024, -48 )
-transform/scale = Vector2( 0.5, 0.5 )
 
 [node name="Door1" parent="." instance=ExtResource( 5 )]
 
@@ -52,7 +51,6 @@ transform/pos = Vector2( -2288, -53 )
 [node name="Key2" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -496, -336 )
-transform/scale = Vector2( 0.5, 0.5 )
 
 [node name="Door2" parent="." instance=ExtResource( 5 )]
 
@@ -61,7 +59,6 @@ transform/pos = Vector2( 1520, 523 )
 [node name="Key3" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2800, 528 )
-transform/scale = Vector2( 0.5, 0.5 )
 
 [node name="Door3" parent="." instance=ExtResource( 5 )]
 
