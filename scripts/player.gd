@@ -69,7 +69,7 @@ func check_death():
 
 func check_bomb_throw():
 	if (bomb_cooldown == 0):
-		var act = input._get_action(Input)
+		var act = input._get_throw(Input)
 		if (act == ACT.THROW):
 			var fx = get_node('../SamplePlayer')
 			fx.set_default_volume(.2)

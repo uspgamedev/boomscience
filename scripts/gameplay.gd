@@ -20,9 +20,14 @@ func _ready():
 	get_node('StreamPlayer').set_volume(2)
 	input.connect('press_quit', self, 'quit')
 	input.connect('press_reset', self, 'reset')
+	input.connect('press_respawn', self, 'respawn')
 	set_fixed_process(true)
 
 func reset():
+	global.respawn = Vector2(-2658, -88)
+	get_tree().change_scene('res://resources/scenes/main.tscn')
+
+func respawn():
 	get_tree().change_scene('res://resources/scenes/main.tscn')
 
 func quit():
