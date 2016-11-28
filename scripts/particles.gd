@@ -13,5 +13,10 @@ func _fixed_process(delta):
 
 func _on_Area2D_body_enter(body):
 	if (body.is_in_group('breakable_block')):
-		body.queue_free()
-	
+		var pos = self.get_pos()
+		var exp_tile = body.world_to_map(pos)
+		for i in range(-2, 2):
+			for j in range(-2, 2):
+				var tile = exp_tile + Vector2(i, j)
+				if ((body.map_to_world(tile) - pos).length() < 80):
+					body.set_cellv(tile, -1)

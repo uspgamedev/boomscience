@@ -3,32 +3,32 @@
 [ext_resource path="res://resources/assets/images/platformer_tileset_template.png" type="Texture" id=1]
 [ext_resource path="res://resources/assets/images/breakable_block.png" type="Texture" id=2]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 8, 0, 32, 0, 32, 32, 8, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="ConvexPolygonShape2D" id=4]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=7]
+[sub_resource type="ConvexPolygonShape2D" id=5]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, 24, 0, 24, 32, 0, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
+[sub_resource type="ConvexPolygonShape2D" id=6]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 32, 24, 8, 24, 8, 0, 32, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=5]
+[sub_resource type="ConvexPolygonShape2D" id=7]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 24, 0, 0, 32, 0, 32, 24 )
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, 24, 0, 24, 24, 0, 24 )
@@ -38,12 +38,12 @@ points = Vector2Array( 0, 0, 24, 0, 24, 24, 0, 24 )
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, 24, 0, 24, 32, 0, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=8]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 8, 0, 32, 0, 32, 32, 8, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
+[sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -89,7 +89,7 @@ __meta__ = { "_edit_lock_":true }
 [node name="TopLeftLowerBody" type="StaticBody2D" parent="TopLeftLower"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -119,7 +119,7 @@ __meta__ = { "_edit_lock_":true }
 [node name="TopCenterLowerBody" type="StaticBody2D" parent="TopCenterLower"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -149,7 +149,7 @@ __meta__ = { "_edit_lock_":true }
 [node name="TopRightLowerBody" type="StaticBody2D" parent="TopRightLower"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -178,7 +178,7 @@ region_rect = Rect2( 0, 128, 32, 32 )
 [node name="BottomLeftBody" type="StaticBody2D" parent="BottomLeft"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 4 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -207,7 +207,7 @@ region_rect = Rect2( 32, 128, 32, 32 )
 [node name="BottomCenterBody" type="StaticBody2D" parent="BottomCenter"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -236,7 +236,7 @@ region_rect = Rect2( 96, 128, 32, 32 )
 [node name="BottomRightBody" type="StaticBody2D" parent="BottomRight"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -294,7 +294,7 @@ region_rect = Rect2( 160, 32, 32, 32 )
 [node name="CornerTopRightUpperBody" type="StaticBody2D" parent="CornerTopRightUpper"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 8 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -323,7 +323,7 @@ region_rect = Rect2( 128, 64, 32, 32 )
 [node name="CornerTopLeftLowerBody" type="StaticBody2D" parent="CornerTopLeftLower"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 10 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -352,7 +352,7 @@ region_rect = Rect2( 160, 64, 32, 32 )
 [node name="CornerTopLeftLowerBody" type="StaticBody2D" parent="CornerTopRightLower"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 10 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -381,7 +381,7 @@ region_rect = Rect2( 0, 64, 32, 32 )
 [node name="TopLeftLowerBody" type="StaticBody2D" parent="MidLeft"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -410,7 +410,7 @@ region_rect = Rect2( 32, 64, 32, 32 )
 [node name="TopCenterLowerBody" type="StaticBody2D" parent="MidCenter"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -439,7 +439,7 @@ region_rect = Rect2( 96, 64, 32, 32 )
 [node name="TopRightLowerBody" type="StaticBody2D" parent="MidRight"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -468,7 +468,7 @@ region_rect = Rect2( 0, 0, 32, 32 )
 [node name="TopCenterLowerBody" type="StaticBody2D" parent="BreakableBlock"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1

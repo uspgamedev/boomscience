@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://resources/assets/tilesets/platformer_tileset_template.xml" type="TileSet" id=1]
 [ext_resource path="res://resources/scenes/stairs.tscn" type="PackedScene" id=2]
-[ext_resource path="res://resources/scenes/breakable_block.tscn" type="PackedScene" id=3]
 
 [node name="BasicTileset" type="TileMap"]
 
@@ -66,25 +65,5 @@ transform/pos = Vector2( -2448, -184.2 )
 [node name="Stairs10" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( -2448, -200.2 )
-
-[node name="BreakableBlock" parent="." instance=ExtResource( 3 )]
-
-transform/pos = Vector2( -2992, -48 )
-
-[node name="BreakableBlock1" parent="." instance=ExtResource( 3 )]
-
-transform/pos = Vector2( -2992, -79 )
-
-[node name="BreakableBlock2" parent="." instance=ExtResource( 3 )]
-
-transform/pos = Vector2( -2992, -110 )
-
-[node name="BreakableBlock3" parent="." instance=ExtResource( 3 )]
-
-transform/pos = Vector2( -2992, -141 )
-
-[node name="BreakableBlock4" parent="." instance=ExtResource( 3 )]
-
-transform/pos = Vector2( -2992, -172 )
 
 
