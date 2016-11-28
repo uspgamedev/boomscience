@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://resources/assets/images/platformer_tileset_template.png" type="Texture" id=1]
+[ext_resource path="res://resources/assets/images/breakable_block.png" type="Texture" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -452,6 +453,35 @@ bounce = 0.0
 
 build_mode = 0
 polygon = Vector2Array( 0, 0, 24, 0, 24, 32, 0, 32 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="BreakableBlock" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 170.06, 99.412 )
+texture = ExtResource( 2 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="TopCenterLowerBody" type="StaticBody2D" parent="BreakableBlock"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="TopCenterLowerHitbox" type="CollisionPolygon2D" parent="BreakableBlock/TopCenterLowerBody"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
