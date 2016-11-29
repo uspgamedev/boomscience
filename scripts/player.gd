@@ -92,14 +92,21 @@ func _on_Area2D_area_enter(area):
 	check_doors(area)
 
 func check_keys(area):
+	var fx = get_node('../SamplePlayer')
 	if (area.get_node('../').get_name() == 'Key1'):
 		key.x = 1
+		fx.set_default_volume(.2)
+		fx.play('confirmation')
 		area.get_node('../').queue_free()
 	elif (area.get_node('../').get_name() == 'Key2'):
 		key.y = 1
+		fx.set_default_volume(.2)
+		fx.play('confirmation')
 		area.get_node('../').queue_free()
 	elif (area.get_node('../').get_name() == 'Key3'):
 		key.z = 1
+		fx.set_default_volume(.2)
+		fx.play('confirmation')
 		area.get_node('../').queue_free()
 
 func check_doors(area):
