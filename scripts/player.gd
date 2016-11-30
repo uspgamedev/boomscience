@@ -113,17 +113,13 @@ func check_keys(area):
 
 func check_doors(area):
 	var door = area.get_parent()
-	print("check door")
 	if (door.get_script() == Door):
 		var target = door.get_target()
-		printt("door detected", "target", target)
 		if (target != null):
 			global.respawn = target
 			self.set_pos(global.respawn)
 		else:
 			get_node('Congratulations').set_scale(Vector2(1, 1))
-	else:
-		print("nope")
 
 func _on_Area2D_area_exit(area):
 	pass
