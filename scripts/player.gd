@@ -1,5 +1,7 @@
 extends 'res://scripts/body.gd'
 
+const Door = preload("res://resources/scenes/door.gd")
+
 const ACT = preload('actions.gd')
 var bomb_scn = preload('../resources/scenes/bomb.tscn')
 
@@ -110,14 +112,18 @@ func check_keys(area):
 		area.get_node('../').queue_free()
 
 func check_doors(area):
-	if (area.get_node('../').get_name() == 'Door1' and key.x == 1):
-		global.respawn = Vector2(0, 0)
-		self.set_pos(global.respawn)
-	if (area.get_node('../').get_name() == 'Door2' and key.y == 1):
-		global.respawn = Vector2(2863, 523)
-		self.set_pos(global.respawn)
-	if (area.get_node('../').get_name() == 'Door3' and key.z == 1):
-		get_node('Congratulations').set_scale(Vector2(1, 1))
+	var door = area.get_parent()
+	print("check door")
+	if (door.get_script() == Door):
+		var target = door.get_target()
+		printt("door detected", "target", target)
+		if (target != null):
+			global.respawn = target
+			self.set_pos(global.respawn)
+		else:
+			get_node('Congratulations').set_scale(Vector2(1, 1))
+	else:
+		print("nope")
 
 func _on_Area2D_area_exit(area):
 	pass
