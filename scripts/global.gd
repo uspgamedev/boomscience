@@ -1,3 +1,3 @@
 extends Node
 
-var respawn = Vector2(6264, 0)
+var respawn = Vector2(0, 0)

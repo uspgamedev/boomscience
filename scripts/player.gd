@@ -8,7 +8,7 @@ var bomb_scn = preload('../resources/scenes/bomb.tscn')
 onready var input = get_node('/root/input')
 onready var global = get_node('/root/global')
 onready var area = get_node('PlayerAreaDetection')
-var key = Vector3(1, 1, 1)
+var key = Vector3(0, 0, 0)
 
 var anim = 'idle'
 var anim_new
