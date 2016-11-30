@@ -8,12 +8,13 @@ var bomb_scn = preload('../resources/scenes/bomb.tscn')
 onready var input = get_node('/root/input')
 onready var global = get_node('/root/global')
 onready var area = get_node('PlayerAreaDetection')
-var key = Vector3(0, 0, 0)
+var key = Vector3(1, 1, 1)
 
 var anim = 'idle'
 var anim_new
 var bomb_cooldown = 0
 var bomb_direction
+var stage = 1
 
 func _ready():
 	set_fixed_process(true)
@@ -81,7 +82,7 @@ func check_animation():
 		get_node('PlayerSprite/PlayerAnimation').play(anim)
 
 func check_death():
-	if (self.get_pos().y > 800):
+	if (self.get_pos().y > 8000):
 		get_tree().change_scene('res://resources/scenes/main.tscn')
 
 func check_bomb_throw():
@@ -128,13 +129,12 @@ func check_keys(area):
 
 func check_doors(area):
 	var door = area.get_parent()
-	if (door.get_script() == Door):
-		var target = door.get_target()
-		if (target != null):
-			global.respawn = target
-			self.set_pos(global.respawn)
-		else:
-			get_node('Congratulations').set_scale(Vector2(1, 1))
-
-func _on_Area2D_area_exit(area):
-	pass
+	if ((stage == 1 and key.x == 1) or (stage == 2 and key.y == 1) or (stage == 3 and key.z == 1)):
+		if (door.get_script() == Door):
+			var target = door.get_target()
+			if (target != null):
+				stage += 1
+				global.respawn = target
+				self.set_pos(global.respawn)
+			else:
+				get_node('Congratulations').set_scale(Vector2(1, 1))

@@ -24,7 +24,7 @@ func _ready():
 	set_fixed_process(true)
 
 func reset():
-	global.respawn = Vector2(-2658, -88)
+	global.respawn = Vector2(0, 0)
 	get_tree().change_scene('res://resources/scenes/main.tscn')
 
 func respawn():

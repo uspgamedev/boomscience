@@ -40,7 +40,8 @@ collision/bounce = 0.0
 collision/layers = 3
 collision/mask = 3
 occluder/light_mask = 1
-tile_data = IntArray( -327774, 16, -262238, 16, -196702, 16, -131166, 16, -65630, 16 )
+tile_data = IntArray( -917385, 16, -917384, 16, -851849, 16, -851848, 16, -786313, 16, -786312, 16, -131092, 16, -196498, 16, -65556, 16, -131043, 16, -131042, 16, -130963, 16, -130962, 16, -20, 16, -65507, 16, -65506, 16, -65428, 16, -65427, 16, -65426, 16, 65516, 16, 29, 16, 30, 16, 107, 16, 108, 16, 109, 16, 110, 16, 196714, 16, 196715, 16, 262250, 16, 262251, 16, 327694, 16, 327695, 16, 327884, 16, 327885, 16, 327886, 16, 393230, 16, 393231, 16, 393420, 16, 393422, 16, 458872, 16, 458949, 16, 458950, 16, 458951, 16, 458952, 16, 458953, 16, 458954, 16, 458955, 16, 458956, 16, 458958, 16, 524408, 16, 524494, 16, 589944, 16, 590030, 16, 655480, 16, 655566, 16, 721016, 16, 721102, 16, 851962, 16, 851963, 16, 786638, 16, 917498, 16, 917499, 16, 852174, 16, 852175, 16, 983067, 16, 1048603, 16, 1114139, 16, 1114237, 16, 1179773, 16, 1245309, 16, 1245334, 16, 1310845, 16, 1310870, 16, 1376393, 16, 1376406, 16, 1441942, 16, 1507478, 16, 1572995, 16 )
+__meta__ = { "_edit_lock_":true }
 
 [node name="Stairs" type="TileMap" parent="BasicTilemap" groups=[ "stairs" ]]
 
@@ -58,43 +59,44 @@ collision/bounce = 0.0
 collision/layers = 3
 collision/mask = 3
 occluder/light_mask = 1
-tile_data = IntArray( -327756, 17, -262220, 17, -196684, 17, -131148, 17, -65612, 17, -65574, 17, -38, 17 )
+tile_data = IntArray( -786315, 17, -655379, 17, -720779, 17, -589843, 17, -655243, 17, -524307, 17, -589707, 17, -458771, 17, -524171, 17, -393235, 17, -458635, 17, -327699, 17, -393099, 17, -262163, 17, -196627, 17, -131091, 17, -65555, 17, -19, 17, 65512, 17, 65517, 17, 96, 17, 198, 17, 131048, 17, 65632, 17, 65734, 17, 196584, 17, 131168, 17, 131270, 17, 262120, 17, 196704, 17, 196725, 17, 196806, 17, 327656, 17, 262240, 17, 262253, 17, 262261, 17, 262342, 17, 393192, 17, 327789, 17, 327797, 17, 327878, 17, 458728, 17, 393325, 17, 393333, 17, 393414, 17, 393421, 17, 524264, 17, 458861, 17, 458869, 17, 458957, 17, 589800, 17, 589806, 17, 524397, 17, 524405, 17, 524493, 17, 655342, 17, 589941, 17, 590029, 17, 720878, 17, 655477, 17, 655565, 17, 786414, 17, 721013, 17, 721020, 17, 721101, 17, 851950, 17, 786556, 17, 786637, 17, 917486, 17, 852092, 17, 852173, 17, 983022, 17, 917628, 17, 1048558, 17, 983164, 17, 983191, 17, 1114094, 17, 1048700, 17, 1048727, 17, 1114236, 17, 1114263, 17, 1179772, 17, 1179782, 17, 1179799, 17, 1245308, 17, 1245318, 17, 1245335, 17, 1310844, 17, 1310854, 17, 1310871, 17, 1376390, 17, 1376407, 17 )
+__meta__ = { "_edit_lock_":true }
 
 [node name="Key1" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( -3024, -48 )
+transform/pos = Vector2( -464, -333 )
 
 [node name="Door1" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( -2288, -53 )
+transform/pos = Vector2( 1488, 525 )
 target_path = NodePath("../Door1Target")
 
 [node name="Door1Target" type="Node2D" parent="."]
 
+transform/pos = Vector2( 3216, 0 )
+
 [node name="Key2" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( -496, -336 )
+transform/pos = Vector2( 3184, 147 )
 
 [node name="Door2" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 1520, 523 )
+transform/pos = Vector2( 5041, 493 )
 target_path = NodePath("../Door2Target")
 
 [node name="Door2Target" type="Node2D" parent="."]
 
-transform/pos = Vector2( 2863, 523 )
+transform/pos = Vector2( 6264, 0 )
 
 [node name="Key3" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 2800, 528 )
+transform/pos = Vector2( 424, -176 )
 
 [node name="Door3" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 3088, 524 )
+transform/pos = Vector2( 477, -181 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-
-transform/pos = Vector2( -2658, -88 )
 
 [node name="StreamPlayer" type="StreamPlayer" parent="."]
 
@@ -125,3 +127,4 @@ default/reverb_send = 0.0
 default/chorus_send = 0.0
 
 
+[editable path="BasicTilemap"]
