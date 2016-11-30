@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="TileSet" subresource_count="12" version="2.1" version_name="Godot Engine v2.1.stable.official">
+<resource_file type="TileSet" subresource_count="13" version="2.1" version_name="Godot Engine v2.1.stable.official">
 	<ext_resource path="res://resources/assets/images/platformer_tileset_template.png" type="Texture" index="0"></ext_resource>
 	<ext_resource path="res://resources/assets/images/breakable_block.png" type="Texture" index="1"></ext_resource>
+	<ext_resource path="res://resources/assets/images/stairs.png" type="Texture" index="2"></ext_resource>
 	<resource type="ConvexPolygonShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2_array name="points" len="4"> 			8, 0, 32, 0, 32, 32, 8, 32 </vector2_array>
@@ -214,6 +215,24 @@
 		<resource name="16/navigation"></resource>		<vector2 name="16/shape_offset"> -0, -0 </vector2>
 		<array name="16/shapes" len="1" shared="false">
 			<resource  resource_type="Shape2D" path="local://4">  </resource>
+		</array>
+		<string name="17/name"> "Stairs" </string>
+		<resource name="17/texture" external="2">  </resource>
+		<vector2 name="17/tex_offset"> 0, 0 </vector2>
+		<resource name="17/material"></resource>		<rect2 name="17/region"> 0, 0, 32, 32 </rect2>
+		<vector2 name="17/occluder_offset"> 16, 16 </vector2>
+		<resource name="17/occluder"></resource>		<vector2 name="17/navigation_offset"> 16, 16 </vector2>
+		<resource name="17/navigation"></resource>		<vector2 name="17/shape_offset"> 0, 0 </vector2>
+		<array name="17/shapes" len="0" shared="false">
+		</array>
+		<string name="18/name"> "BaseStairsTile" </string>
+		<resource name="18/texture" external="0">  </resource>
+		<vector2 name="18/tex_offset"> 0, 0 </vector2>
+		<resource name="18/material"></resource>		<rect2 name="18/region"> 32, 0, 32, 32 </rect2>
+		<vector2 name="18/occluder_offset"> 16, 16 </vector2>
+		<resource name="18/occluder"></resource>		<vector2 name="18/navigation_offset"> 16, 16 </vector2>
+		<resource name="18/navigation"></resource>		<vector2 name="18/shape_offset"> 0, 0 </vector2>
+		<array name="18/shapes" len="0" shared="false">
 		</array>
 
 	</main_resource>

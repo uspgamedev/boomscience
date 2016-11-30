@@ -54,10 +54,10 @@ func check_camera():
 			move_camera(tween, Vector2(0, 0), Vector2(140, 160))
 		if (dir == DIR.DOWN_LEFT):
 			move_camera(tween, Vector2(0, 0), Vector2(-140, 160))
-	if (dir == DIR.UP or (act != ACT.CAMERA and (dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT))):
-		move_camera(tween, Vector2(0, 0), Vector2(0, -140))
-	elif (dir == DIR.DOWN or (act != ACT.CAMERA and (dir == DIR.DOWN_LEFT or dir == DIR.DOWN_RIGHT))):
-		move_camera(tween, Vector2(0, 0), Vector2(0, 160))
+		if (dir == DIR.UP):
+			move_camera(tween, Vector2(0, 0), Vector2(0, -140))
+		if (dir == DIR.DOWN):
+			move_camera(tween, Vector2(0, 0), Vector2(0, 160))
 	elif (act != ACT.CAMERA and (dir == -1 or dir == DIR.RIGHT or dir == DIR.LEFT)):
 		move_camera(tween, camera.get_pos(), Vector2(0, 0))
 
