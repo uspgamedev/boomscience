@@ -31,6 +31,21 @@ func _fixed_process(delta):
 	check_animation()
 	check_death()
 	check_bomb_throw()
+	check_stairs()
+
+func check_stairs():
+	var stairs = get_node('../BasicTilemap/Stairs')
+	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1):
+		G = 0
+		var dir = input._get_direction(Input)
+		if (dir == DIR.UP):
+			speed.y -= 30
+		elif (dir == DIR.DOWN):
+			speed.y += 30
+		else:
+			speed.y = 0
+	else:
+		G = 3000
 
 func check_camera():
 	var act = input._get_action(Input)

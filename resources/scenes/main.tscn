@@ -42,6 +42,24 @@ collision/mask = 3
 occluder/light_mask = 1
 tile_data = IntArray( -327774, 16, -262238, 16, -196702, 16, -131166, 16, -65630, 16 )
 
+[node name="Stairs" type="TileMap" parent="BasicTilemap" groups=[ "stairs" ]]
+
+mode = 0
+tile_set = ExtResource( 3 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 3
+collision/mask = 3
+occluder/light_mask = 1
+tile_data = IntArray( -327756, 17, -262220, 17, -196684, 17, -131148, 17, -65612, 17, -65574, 17, -38, 17 )
+
 [node name="Key1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -3024, -48 )
