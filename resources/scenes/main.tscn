@@ -49,6 +49,9 @@ transform/pos = Vector2( -3024, -48 )
 [node name="Door1" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( -2288, -53 )
+target_path = NodePath("../Door1Target")
+
+[node name="Door1Target" type="Node2D" parent="."]
 
 [node name="Key2" parent="." instance=ExtResource( 4 )]
 
@@ -57,6 +60,11 @@ transform/pos = Vector2( -496, -336 )
 [node name="Door2" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1520, 523 )
+target_path = NodePath("../Door2Target")
+
+[node name="Door2Target" type="Node2D" parent="."]
+
+transform/pos = Vector2( 2863, 523 )
 
 [node name="Key3" parent="." instance=ExtResource( 4 )]
 
