@@ -14,7 +14,6 @@ var anim = 'idle'
 var anim_new
 var bomb_cooldown = 0
 var bomb_direction
-var stage = 1
 
 func _ready():
 	set_fixed_process(true)
@@ -32,23 +31,27 @@ func _fixed_process(delta):
 	check_camera()
 	check_stealth()
 	check_animation()
-	check_death()
 	check_bomb_throw()
 	check_stairs()
 
 func check_stairs():
 	var stairs = get_node('../BasicTilemap/Stairs')
+	var act = input._get_action(Input)
 	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1):
 		G = 0
+		acc = .4 * acc
 		var dir = input._get_direction(Input)
-		if (dir == DIR.UP):
-			speed.y -= 30
-		elif (dir == DIR.DOWN):
-			speed.y += 30
-		else:
-			speed.y = 0
+		if (act != ACT.CAMERA):
+			if (dir == DIR.UP):
+				speed.y -= 30
+			elif (dir == DIR.DOWN):
+				speed.y += 30
+			else:
+				speed.y = 0
 	else:
 		G = 3000
+		if (act != ACT.STEALTH):
+			acc = ACC
 
 func check_camera():
 	var act = input._get_action(Input)
@@ -64,7 +67,7 @@ func check_stealth():
 	if (act == ACT.STEALTH):
 		area.set_scale(Vector2(.3, .3))
 		sprite.set_modulate(Color(1, 1, 1, .5))
-		acc = ACC / 2
+		acc = .5 * ACC
 	else:
 		area.set_scale(Vector2(1, 1))
 		sprite.set_modulate(Color(1, 1, 1, 1))
@@ -81,16 +84,12 @@ func check_animation():
 		anim = anim_new
 		get_node('PlayerSprite/PlayerAnimation').play(anim)
 
-func check_death():
-	if (self.get_pos().y > 8000):
-		get_tree().change_scene('res://resources/scenes/main.tscn')
-
 func check_bomb_throw():
 	if (bomb_cooldown == 0):
 		var act = input._get_throw(Input)
 		if (act == ACT.THROW):
 			var fx = get_node('../SamplePlayer')
-			fx.set_default_volume(.2)
+			fx.set_default_volume(0)
 			fx.play('throw')
 			bomb_cooldown = 1
 			var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
@@ -108,33 +107,38 @@ func check_bomb_throw():
 func _on_Area2D_area_enter(area):
 	check_keys(area)
 	check_doors(area)
+	check_death(area)
 
 func check_keys(area):
 	var fx = get_node('../SamplePlayer')
 	if (area.get_node('../').get_name() == 'Key1'):
 		key.x = 1
-		fx.set_default_volume(.2)
+		fx.set_default_volume(0)
 		fx.play('confirmation')
 		area.get_node('../').queue_free()
 	elif (area.get_node('../').get_name() == 'Key2'):
 		key.y = 1
-		fx.set_default_volume(.2)
+		fx.set_default_volume(0)
 		fx.play('confirmation')
 		area.get_node('../').queue_free()
 	elif (area.get_node('../').get_name() == 'Key3'):
 		key.z = 1
-		fx.set_default_volume(.2)
+		fx.set_default_volume(0)
 		fx.play('confirmation')
 		area.get_node('../').queue_free()
 
 func check_doors(area):
 	var door = area.get_parent()
-	if ((stage == 1 and key.x == 1) or (stage == 2 and key.y == 1) or (stage == 3 and key.z == 1)):
+	if ((global.stage == 1 and key.x == 1) or (global.stage == 2 and key.y == 1) or (global.stage == 3 and key.z == 1)):
 		if (door.get_script() == Door):
 			var target = door.get_target()
 			if (target != null):
-				stage += 1
+				global.stage += 1
 				global.respawn = target
 				self.set_pos(global.respawn)
 			else:
 				get_node('Congratulations').set_scale(Vector2(1, 1))
+
+func check_death(area):
+	if (area.get_name() == 'Death'):
+		get_tree().change_scene('res://resources/scenes/main.tscn')
