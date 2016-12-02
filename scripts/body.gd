@@ -15,7 +15,6 @@ var motion # Displacement
 var can_jump = false # Is on air
 var jump_height = -1 # Holding jump modifies its height
 var acc = ACC
-var impulse
 
 func _ready():
 	set_fixed_process(true)
@@ -34,7 +33,6 @@ func _jump(act):
 		jump_height = -1 # Can't modify jump height
 	if (can_jump and act == ACT.JUMP):
 		speed -= Vector2(0, .2 * G)
-		impulse = dir
 		jump_height = 0 # Can modify jump height
 	set_jump(false)
 
@@ -47,11 +45,6 @@ func _add_jump_height(act):
 
 func _add_speed(dir):
 	var act = input._get_action(Input)
-	if (act != ACT.STEALTH):
-		if (can_jump or impulse == dir):
-			acc = ACC
-		else:
-			acc = .8 * ACC
 	if (dir == DIR.LEFT or dir == DIR.UP_LEFT or dir == DIR.DOWN_LEFT):
 		self.speed += DIR.VECTOR[DIR.LEFT] * acc
 	if (dir == DIR.RIGHT or dir == DIR.UP_RIGHT or dir == DIR.DOWN_RIGHT):

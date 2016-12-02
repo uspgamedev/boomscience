@@ -1,11 +1,14 @@
 extends 'res://scripts/body.gd'
 
+const Door = preload("res://scripts/door.gd")
+
 const ACT = preload('actions.gd')
 var bomb_scn = preload('../resources/scenes/bomb.tscn')
 
 onready var input = get_node('/root/input')
-onready var area = get_node('AreaDetection')
-var key = Vector3(0, 0, 0)
+onready var global = get_node('/root/global')
+onready var area = get_node('PlayerAreaDetection')
+var key = [0, 0, 0, 0]
 
 var anim = 'idle'
 var anim_new
@@ -21,14 +24,34 @@ func _ready():
 	area.connect('area_enter', self, '_on_Area2D_area_enter')
 	area.connect('area_exit',self,'_on_Area2D_area_exit')
 	sprite = get_node('PlayerSprite')
+	self.set_pos(global.respawn)
 	set_fixed_process(true)
 
 func _fixed_process(delta):
 	check_camera()
 	check_stealth()
 	check_animation()
-	check_death()
 	check_bomb_throw()
+	check_stairs()
+
+func check_stairs():
+	var stairs = get_node('../BasicTilemap/Stairs')
+	var act = input._get_action(Input)
+	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1):
+		G = 0
+		acc = .4 * acc
+		var dir = input._get_direction(Input)
+		if (act != ACT.CAMERA):
+			if (dir == DIR.UP):
+				speed.y -= 30
+			elif (dir == DIR.DOWN):
+				speed.y += 30
+			else:
+				speed.y = 0
+	else:
+		G = 3000
+		if (act != ACT.STEALTH):
+			acc = ACC
 
 func check_camera():
 	var act = input._get_action(Input)
@@ -44,7 +67,7 @@ func check_stealth():
 	if (act == ACT.STEALTH):
 		area.set_scale(Vector2(.3, .3))
 		sprite.set_modulate(Color(1, 1, 1, .5))
-		acc = ACC / 2
+		acc = .5 * ACC
 	else:
 		area.set_scale(Vector2(1, 1))
 		sprite.set_modulate(Color(1, 1, 1, 1))
@@ -61,13 +84,9 @@ func check_animation():
 		anim = anim_new
 		get_node('PlayerSprite/PlayerAnimation').play(anim)
 
-func check_death():
-	if (self.get_pos().y > 800):
-		get_tree().change_scene('res://resources/scenes/main.tscn')
-
 func check_bomb_throw():
 	if (bomb_cooldown == 0):
-		var act = input._get_action(Input)
+		var act = input._get_throw(Input)
 		if (act == ACT.THROW):
 			var fx = get_node('../SamplePlayer')
 			fx.set_default_volume(.2)
@@ -86,23 +105,42 @@ func check_bomb_throw():
 			bomb_cooldown = 0
 
 func _on_Area2D_area_enter(area):
-	if (area.get_node('../').get_name() == 'Key1'):
-		key.x = 1
-		area.get_node('../').queue_free()
-	elif (area.get_node('../').get_name() == 'Key2'):
-		key.y = 1
-		area.get_node('../').queue_free()
-	elif (area.get_node('../').get_name() == 'Key3'):
-		key.z = 1
-		area.get_node('../').queue_free()
-	if (area.get_node('../').get_name() == 'Door1' and key.x == 1):
-		self.set_pos(Vector2(0, 0))
-	if (area.get_node('../').get_name() == 'Door2' and key.y == 1):
-		self.set_pos(Vector2(2863, 523))
-	if (area.get_node('../').get_name() == 'Door3' and key.z == 1):
-		print('Congratulations!')
-	#get_node('../TestDetection/TriggerDetection').set_color(Color(1,0,0,1))
+	check_keys(area)
+	check_doors(area)
+	check_death(area)
 
-func _on_Area2D_area_exit(area):
-	pass
-	#get_node('../TestDetection/TriggerDetection').set_color(Color(0,1,0,1))
+func check_keys(area):
+	check_key_name(area, 'Key1', 0)
+	check_key_name(area, 'Key2', 1)
+	check_key_name(area, 'Key3', 2)
+	check_key_name(area, 'Key4', 3)
+
+func check_key_name(area, key_name, key_index):
+	if (area.get_node('../').get_name() == key_name):
+		var fx = get_node('../SamplePlayer')
+		key[key_index] = 1
+		fx.set_default_volume(.3)
+		fx.play('confirmation')
+		area.get_node('../').queue_free()
+
+func check_doors(area):
+	var door = area.get_parent()
+	if ((global.stage == 0 and key[0] == 1) or \
+		(global.stage == 1 and key[1] == 1) or \
+		(global.stage == 2 and key[2] == 1) or \
+		(global.stage == 3 and key[3] == 1)):
+		if (door.get_script() == Door):
+			var target = door.get_target()
+			if (target != null):
+				var fx = get_node('../SamplePlayer')
+				global.stage += 1
+				global.respawn = target
+				fx.set_default_volume(.3)
+				fx.play('confirmation')
+				self.set_pos(global.respawn)
+			else:
+				get_node('Congratulations').set_scale(Vector2(1, 1))
+
+func check_death(area):
+	if (area.get_name() == 'Death'):
+		get_tree().change_scene('res://resources/scenes/main.tscn')

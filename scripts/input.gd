@@ -9,6 +9,7 @@ signal press_direction(dir)
 signal press_action(act)
 signal press_quit
 signal press_reset
+signal press_respawn
 
 var dir = -1
 
@@ -21,8 +22,10 @@ func _input(event):
 	var act = self._get_action(event)
 	if dir != -1: emit_signal('press_direction', dir)
 	if act != -1: emit_signal('press_action', act)
+	if act != -1: emit_signal('press_respawn', act)
 	if _get_quit(event): emit_signal('press_quit')
 	if _get_reset(event): emit_signal('press_reset')
+	if _get_respawn(event): emit_signal('press_respawn')
 
 func _fixed_process(delta):
 	dir = self._get_direction(Input)
@@ -32,6 +35,10 @@ func _fixed_process(delta):
 
 func _get_reset(e):
 	if e.is_action_pressed('ui_reset'):
+		return true
+
+func _get_respawn(e):
+	if e.is_action_pressed('ui_respawn'):
 		return true
 
 func _get_quit(e):
@@ -50,6 +57,10 @@ func _get_action(e):
 		act = ACT.STEALTH
 	if e.is_action_pressed('ui_jump'):
 		act = ACT.JUMP
+	return act
+
+func _get_throw(e):
+	var act = -1
 	if e.is_action_pressed('ui_throw'):
 		act = ACT.THROW
 	return act

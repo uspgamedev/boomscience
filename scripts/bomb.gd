@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const G = 1000
 onready var player = get_parent().get_node('Player')
-onready var particles_scn = preload('../scenes/bomb_particles.tscn')
+onready var particles_scn = preload('../../resources/scenes/bomb_particles.tscn')
 var rotation
 var cur_rotation
 

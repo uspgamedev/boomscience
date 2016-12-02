@@ -65,7 +65,6 @@ __meta__ = { "_edit_lock_":true }
 
 texture = ExtResource( 2 )
 hframes = 12
-frame = 5
 region_rect = Rect2( 148, 19, 29, 52 )
 __meta__ = { "_edit_lock_":true }
 
@@ -112,7 +111,7 @@ drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 __meta__ = { "_edit_lock_":true }
 
-[node name="AreaDetection" type="Area2D" parent="."]
+[node name="PlayerAreaDetection" type="Area2D" parent="."]
 
 input/pickable = true
 shapes/0/shape = SubResource( 5 )
@@ -124,12 +123,29 @@ linear_damp = 0.1
 angular_damp = 1.0
 __meta__ = { "_edit_lock_":true }
 
-[node name="CollisionDetection" type="CollisionShape2D" parent="AreaDetection"]
+[node name="PlayerCollisionDetection" type="CollisionShape2D" parent="PlayerAreaDetection"]
 
 visibility/visible = false
 shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
+__meta__ = { "_edit_lock_":true }
+
+[node name="Congratulations" type="Label" parent="."]
+
+rect/scale = Vector2( 0, 0 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -50.0
+margin/top = -58.0
+margin/right = 62.0
+margin/bottom = -27.0
+text = "    Such game\nMuch awesome"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 __meta__ = { "_edit_lock_":true }
 
 

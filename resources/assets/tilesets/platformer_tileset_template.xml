@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="TileSet" subresource_count="8" version="2.1" version_name="Godot Engine v2.1.stable.official">
+<resource_file type="TileSet" subresource_count="13" version="2.1" version_name="Godot Engine v2.1.stable.official">
 	<ext_resource path="res://resources/assets/images/platformer_tileset_template.png" type="Texture" index="0"></ext_resource>
+	<ext_resource path="res://resources/assets/images/breakable_block.png" type="Texture" index="1"></ext_resource>
+	<ext_resource path="res://resources/assets/images/stairs.png" type="Texture" index="2"></ext_resource>
+	<resource type="ConvexPolygonShape2D" path="local://8">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2_array name="points" len="4"> 			8, 0, 32, 0, 32, 32, 8, 32 </vector2_array>
+
+	</resource>
+	<resource type="ConvexPolygonShape2D" path="local://9">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2_array name="points" len="4"> 			0, 0, 32, 0, 32, 32, 0, 32 </vector2_array>
+
+	</resource>
 	<resource type="ConvexPolygonShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2_array name="points" len="4"> 			8, 0, 32, 0, 32, 32, 8, 32 </vector2_array>
@@ -29,6 +41,11 @@
 	<resource type="ConvexPolygonShape2D" path="local://6">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2_array name="points" len="4"> 			0, 0, 24, 0, 24, 24, 0, 24 </vector2_array>
+
+	</resource>
+	<resource type="ConvexPolygonShape2D" path="local://7">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2_array name="points" len="4"> 			0, 0, 24, 0, 24, 32, 0, 32 </vector2_array>
 
 	</resource>
 	<main_resource>
@@ -118,6 +135,104 @@
 		<resource name="8/navigation"></resource>		<vector2 name="8/shape_offset"> -0, -0 </vector2>
 		<array name="8/shapes" len="1" shared="false">
 			<resource  resource_type="Shape2D" path="local://6">  </resource>
+		</array>
+		<string name="9/name"> "CornerTopLeftUpper" </string>
+		<resource name="9/texture" external="0">  </resource>
+		<vector2 name="9/tex_offset"> 0, 0 </vector2>
+		<resource name="9/material"></resource>		<rect2 name="9/region"> 128, 32, 32, 32 </rect2>
+		<vector2 name="9/occluder_offset"> -0, -0 </vector2>
+		<resource name="9/occluder"></resource>		<vector2 name="9/navigation_offset"> -0, -0 </vector2>
+		<resource name="9/navigation"></resource>		<vector2 name="9/shape_offset"> -0, -0 </vector2>
+		<array name="9/shapes" len="1" shared="false">
+			<resource  resource_type="Shape2D" path="local://7">  </resource>
+		</array>
+		<string name="10/name"> "CornerTopRightUpper" </string>
+		<resource name="10/texture" external="0">  </resource>
+		<vector2 name="10/tex_offset"> 0, 0 </vector2>
+		<resource name="10/material"></resource>		<rect2 name="10/region"> 160, 32, 32, 32 </rect2>
+		<vector2 name="10/occluder_offset"> -0, -0 </vector2>
+		<resource name="10/occluder"></resource>		<vector2 name="10/navigation_offset"> -0, -0 </vector2>
+		<resource name="10/navigation"></resource>		<vector2 name="10/shape_offset"> -0, -0 </vector2>
+		<array name="10/shapes" len="1" shared="false">
+			<resource  resource_type="Shape2D" path="local://8">  </resource>
+		</array>
+		<string name="11/name"> "CornerTopLeftLower" </string>
+		<resource name="11/texture" external="0">  </resource>
+		<vector2 name="11/tex_offset"> 0, 0 </vector2>
+		<resource name="11/material"></resource>		<rect2 name="11/region"> 128, 64, 32, 32 </rect2>
+		<vector2 name="11/occluder_offset"> -0, -0 </vector2>
+		<resource name="11/occluder"></resource>		<vector2 name="11/navigation_offset"> -0, -0 </vector2>
+		<resource name="11/navigation"></resource>		<vector2 name="11/shape_offset"> -0, -0 </vector2>
+		<array name="11/shapes" len="1" shared="false">
+			<resource  resource_type="Shape2D" path="local://9">  </resource>
+		</array>
+		<string name="12/name"> "CornerTopRightLower" </string>
+		<resource name="12/texture" external="0">  </resource>
+		<vector2 name="12/tex_offset"> 0, 0 </vector2>
+		<resource name="12/material"></resource>		<rect2 name="12/region"> 160, 64, 32, 32 </rect2>
+		<vector2 name="12/occluder_offset"> -0, -0 </vector2>
+		<resource name="12/occluder"></resource>		<vector2 name="12/navigation_offset"> -0, -0 </vector2>
+		<resource name="12/navigation"></resource>		<vector2 name="12/shape_offset"> -0, -0 </vector2>
+		<array name="12/shapes" len="1" shared="false">
+			<resource  resource_type="Shape2D" path="local://9">  </resource>
+		</array>
+		<string name="13/name"> "MidLeft" </string>
+		<resource name="13/texture" external="0">  </resource>
+		<vector2 name="13/tex_offset"> 0, 0 </vector2>
+		<resource name="13/material"></resource>		<rect2 name="13/region"> 0, 64, 32, 32 </rect2>
+		<vector2 name="13/occluder_offset"> -0, -0 </vector2>
+		<resource name="13/occluder"></resource>		<vector2 name="13/navigation_offset"> -0, -0 </vector2>
+		<resource name="13/navigation"></resource>		<vector2 name="13/shape_offset"> -0, -0 </vector2>
+		<array name="13/shapes" len="1" shared="false">
+			<resource  resource_type="Shape2D" path="local://1">  </resource>
+		</array>
+		<string name="14/name"> "MidCenter" </string>
+		<resource name="14/texture" external="0">  </resource>
+		<vector2 name="14/tex_offset"> 0, 0 </vector2>
+		<resource name="14/material"></resource>		<rect2 name="14/region"> 32, 64, 32, 32 </rect2>
+		<vector2 name="14/occluder_offset"> -0, -0 </vector2>
+		<resource name="14/occluder"></resource>		<vector2 name="14/navigation_offset"> -0, -0 </vector2>
+		<resource name="14/navigation"></resource>		<vector2 name="14/shape_offset"> -0, -0 </vector2>
+		<array name="14/shapes" len="1" shared="false">
+			<resource  resource_type="Shape2D" path="local://2">  </resource>
+		</array>
+		<string name="15/name"> "MidRight" </string>
+		<resource name="15/texture" external="0">  </resource>
+		<vector2 name="15/tex_offset"> 0, 0 </vector2>
+		<resource name="15/material"></resource>		<rect2 name="15/region"> 96, 64, 32, 32 </rect2>
+		<vector2 name="15/occluder_offset"> -0, -0 </vector2>
+		<resource name="15/occluder"></resource>		<vector2 name="15/navigation_offset"> -0, -0 </vector2>
+		<resource name="15/navigation"></resource>		<vector2 name="15/shape_offset"> -0, -0 </vector2>
+		<array name="15/shapes" len="1" shared="false">
+			<resource  resource_type="Shape2D" path="local://3">  </resource>
+		</array>
+		<string name="16/name"> "BreakableBlock" </string>
+		<resource name="16/texture" external="1">  </resource>
+		<vector2 name="16/tex_offset"> 0, 0 </vector2>
+		<resource name="16/material"></resource>		<rect2 name="16/region"> 0, 0, 32, 32 </rect2>
+		<vector2 name="16/occluder_offset"> -0, -0 </vector2>
+		<resource name="16/occluder"></resource>		<vector2 name="16/navigation_offset"> -0, -0 </vector2>
+		<resource name="16/navigation"></resource>		<vector2 name="16/shape_offset"> -0, -0 </vector2>
+		<array name="16/shapes" len="1" shared="false">
+			<resource  resource_type="Shape2D" path="local://2">  </resource>
+		</array>
+		<string name="17/name"> "Stairs" </string>
+		<resource name="17/texture" external="2">  </resource>
+		<vector2 name="17/tex_offset"> 0, 0 </vector2>
+		<resource name="17/material"></resource>		<rect2 name="17/region"> 0, 0, 32, 32 </rect2>
+		<vector2 name="17/occluder_offset"> 16, 16 </vector2>
+		<resource name="17/occluder"></resource>		<vector2 name="17/navigation_offset"> 16, 16 </vector2>
+		<resource name="17/navigation"></resource>		<vector2 name="17/shape_offset"> 0, 0 </vector2>
+		<array name="17/shapes" len="0" shared="false">
+		</array>
+		<string name="18/name"> "BaseStairsTile" </string>
+		<resource name="18/texture" external="0">  </resource>
+		<vector2 name="18/tex_offset"> 0, 0 </vector2>
+		<resource name="18/material"></resource>		<rect2 name="18/region"> 32, 0, 32, 32 </rect2>
+		<vector2 name="18/occluder_offset"> 16, 16 </vector2>
+		<resource name="18/occluder"></resource>		<vector2 name="18/navigation_offset"> 16, 16 </vector2>
+		<resource name="18/navigation"></resource>		<vector2 name="18/shape_offset"> 0, 0 </vector2>
+		<array name="18/shapes" len="0" shared="false">
 		</array>
 
 	</main_resource>
