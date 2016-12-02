@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=1]
+[gd_scene load_steps=32 format=1]
 
 [ext_resource path="res://scripts/gameplay.gd" type="Script" id=1]
 [ext_resource path="res://resources/scenes/stage_1.tscn" type="PackedScene" id=2]
@@ -38,57 +38,87 @@ points = Vector2Array( -850, 824, -670, 610, 140, 700 )
 [sub_resource type="ConvexPolygonShape2D" id=6]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 5470, 800, 5870, 310, 5510, 990 )
+points = Vector2Array( 5530, 770, 5870, 310, 5510, 990 )
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 3140, 760, 2530, 60, 3000, 380 )
+points = Vector2Array( 2860, 640, 2530, 60, 2880, 380 )
 
 [sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 3140, 760, 3000, 380, 3240, 490, 4090, 1030 )
+points = Vector2Array( 2860, 640, 2880, 380, 3200, 520, 4090, 1030 )
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 4090, 1030, 3240, 490, 3450, 540 )
+points = Vector2Array( 4090, 1030, 3200, 520, 3440, 570 )
 
 [sub_resource type="ConvexPolygonShape2D" id=10]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 4090, 1030, 3450, 540, 3690, 540 )
+points = Vector2Array( 4090, 1030, 3440, 570, 3690, 570, 3940, 590, 4080, 750 )
 
 [sub_resource type="ConvexPolygonShape2D" id=11]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 4090, 1030, 3690, 540, 3960, 540, 4110, 730 )
+points = Vector2Array( 4090, 1030, 4080, 750, 4250, 870 )
 
 [sub_resource type="ConvexPolygonShape2D" id=12]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 4090, 1030, 4110, 730, 4310, 860 )
+points = Vector2Array( 5240, 820, 5530, 770, 5510, 990, 5040, 910 )
 
 [sub_resource type="ConvexPolygonShape2D" id=13]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 5220, 800, 5470, 800, 5510, 990, 5020, 890 )
+points = Vector2Array( 5040, 910, 5510, 990, 4090, 1030, 4800, 930 )
 
 [sub_resource type="ConvexPolygonShape2D" id=14]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 4090, 1030, 4310, 860, 4620, 880, 4800, 930 )
+points = Vector2Array( 4620, 880, 4800, 930, 4090, 1030, 4250, 870 )
 
 [sub_resource type="ConvexPolygonShape2D" id=15]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 5510, 990, 4090, 1030, 4800, 930 )
+points = Vector2Array( 8940, 470, 9280, 60, 8950, 660 )
 
 [sub_resource type="ConvexPolygonShape2D" id=16]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 5510, 990, 4800, 930, 5020, 890 )
+points = Vector2Array( 6590, 570, 6330, 20, 6620, 350 )
+
+[sub_resource type="ConvexPolygonShape2D" id=17]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 6590, 570, 6620, 350, 6970, 520, 7500, 1030 )
+
+[sub_resource type="ConvexPolygonShape2D" id=18]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 7500, 1030, 6970, 520, 7250, 640, 7460, 850 )
+
+[sub_resource type="ConvexPolygonShape2D" id=19]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 7500, 1030, 7460, 850, 7710, 950 )
+
+[sub_resource type="ConvexPolygonShape2D" id=20]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 8030, 1030, 7500, 1030, 7710, 950, 8000, 950 )
+
+[sub_resource type="ConvexPolygonShape2D" id=21]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 8950, 660, 8030, 1030, 8000, 950, 8160, 790, 8360, 720 )
+
+[sub_resource type="ConvexPolygonShape2D" id=22]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 8950, 660, 8360, 720, 8460, 510, 8630, 470, 8940, 470 )
 
 [node name="Main" type="Node"]
 
@@ -115,7 +145,7 @@ collision/bounce = 0.0
 collision/layers = 3
 collision/mask = 3
 occluder/light_mask = 1
-tile_data = IntArray( -917401, 16, -917400, 16, -851865, 16, -851864, 16, -786329, 16, -786328, 16, -131092, 16, -196505, 16, -65556, 16, -131043, 16, -131042, 16, -130970, 16, -130969, 16, -20, 16, -65507, 16, -65506, 16, -65435, 16, -65434, 16, -65433, 16, 65516, 16, 29, 16, 30, 16, 100, 16, 101, 16, 102, 16, 103, 16, 131412, 16, 131413, 16, 131414, 16, 131415, 16, 131416, 16, 131417, 16, 131418, 16, 196707, 16, 196708, 16, 196938, 16, 196939, 16, 262243, 16, 262244, 16, 262474, 16, 262475, 16, 327694, 16, 327695, 16, 327961, 16, 327962, 16, 327963, 16, 393230, 16, 393231, 16, 393497, 16, 393499, 16, 393539, 16, 393540, 16, 458877, 16, 458878, 16, 458879, 16, 459026, 16, 459027, 16, 459028, 16, 459029, 16, 459030, 16, 459031, 16, 459032, 16, 459033, 16, 459035, 16, 459075, 16, 459076, 16, 524413, 16, 524415, 16, 524571, 16, 589949, 16, 589950, 16, 589951, 16, 590107, 16, 655643, 16, 655644, 16, 655645, 16, 851962, 16, 851963, 16, 917498, 16, 917499, 16, 852257, 16, 852258, 16, 852259, 16, 983067, 16, 1048603, 16, 1048911, 16, 1114139, 16, 1114248, 16, 1179784, 16, 1245320, 16, 1310856, 16, 1441949, 16, 1573014, 16, 1638706, 16, 1638707, 16, 1638708, 16, 1704249, 16 )
+tile_data = IntArray( -917401, 16, -917400, 16, -851865, 16, -851864, 16, -786329, 16, -786328, 16, -131092, 16, -196505, 16, -65556, 16, -131043, 16, -131042, 16, -130970, 16, -130969, 16, -20, 16, -65507, 16, -65506, 16, -65435, 16, -65434, 16, -65433, 16, 65516, 16, 29, 16, 30, 16, 100, 16, 101, 16, 102, 16, 103, 16, 196707, 16, 196708, 16, 262243, 16, 262244, 16, 327694, 16, 327695, 16, 393230, 16, 393231, 16, 393433, 16, 393434, 16, 393476, 16, 393477, 16, 458877, 16, 458878, 16, 458879, 16, 458963, 16, 458964, 16, 458965, 16, 458966, 16, 458967, 16, 458968, 16, 458969, 16, 458970, 16, 459012, 16, 459013, 16, 524413, 16, 524415, 16, 589949, 16, 589950, 16, 589951, 16, 590046, 16, 655582, 16, 721118, 16, 721119, 16, 851962, 16, 851963, 16, 917498, 16, 917499, 16, 983067, 16, 1048603, 16, 1114139, 16, 1114248, 16, 1179784, 16, 1245320, 16, 1310856, 16, 1441949, 16, 1573014, 16, 1638643, 16, 1638644, 16, 1638645, 16 )
 __meta__ = { "_edit_lock_":true }
 
 [node name="Stairs" type="TileMap" parent="BasicTilemap" groups=[ "stairs" ]]
@@ -134,7 +164,7 @@ collision/bounce = 0.0
 collision/layers = 3
 collision/mask = 3
 occluder/light_mask = 1
-tile_data = IntArray( -786325, 17, -655379, 17, -655362, 17, -720789, 17, -589843, 17, -589826, 17, -655253, 17, -524307, 17, -524290, 17, -589717, 17, -458771, 17, -458754, 17, -524181, 17, -393235, 17, -393218, 17, -458645, 17, -327699, 17, -327682, 17, -393109, 17, -262163, 17, -262146, 17, -196627, 17, -131091, 17, -65555, 17, -19, 17, 65512, 17, 65517, 17, 89, 17, 275, 17, 131048, 17, 65625, 17, 65811, 17, 196584, 17, 131161, 17, 131347, 17, 262120, 17, 196697, 17, 196718, 17, 196883, 17, 327656, 17, 262233, 17, 262246, 17, 262254, 17, 262419, 17, 262482, 17, 393192, 17, 327782, 17, 327790, 17, 327955, 17, 328018, 17, 458728, 17, 393318, 17, 393326, 17, 393491, 17, 393498, 17, 393554, 17, 524264, 17, 458854, 17, 458862, 17, 459034, 17, 459090, 17, 589800, 17, 589806, 17, 524390, 17, 524398, 17, 524570, 17, 524626, 17, 655342, 17, 589934, 17, 590106, 17, 590162, 17, 720878, 17, 655470, 17, 655675, 17, 655698, 17, 786414, 17, 721006, 17, 721031, 17, 721211, 17, 721234, 17, 851950, 17, 786567, 17, 786747, 17, 786763, 17, 786770, 17, 917486, 17, 852103, 17, 852132, 17, 852283, 17, 852299, 17, 852306, 17, 983022, 17, 917639, 17, 917668, 17, 917819, 17, 1048558, 17, 983175, 17, 983204, 17, 983355, 17, 1114094, 17, 1048711, 17, 1048740, 17, 1048891, 17, 1114247, 17, 1114276, 17, 1114409, 17, 1114421, 17, 1114427, 17, 1179783, 17, 1179801, 17, 1179812, 17, 1179945, 17, 1179957, 17, 1245319, 17, 1245337, 17, 1245348, 17, 1245493, 17, 1310855, 17, 1310873, 17, 1311020, 17, 1311029, 17, 1376409, 17, 1376556, 17, 1376565, 17, 1442095, 17, 1442101, 17, 1507631, 17, 1507637, 17 )
+tile_data = IntArray( -786325, 17, -655379, 17, -655362, 17, -720789, 17, -589843, 17, -589826, 17, -655253, 17, -524307, 17, -524290, 17, -589717, 17, -458771, 17, -458754, 17, -524181, 17, -393235, 17, -393218, 17, -458645, 17, -327699, 17, -327682, 17, -393109, 17, -262163, 17, -262146, 17, -196627, 17, -131091, 17, -65555, 17, -19, 17, 65512, 17, 65517, 17, 89, 17, 212, 17, 131048, 17, 65625, 17, 65748, 17, 196584, 17, 131161, 17, 131284, 17, 262120, 17, 196697, 17, 196718, 17, 196820, 17, 327656, 17, 262233, 17, 262246, 17, 262254, 17, 262356, 17, 262412, 17, 262418, 17, 393192, 17, 327782, 17, 327790, 17, 327892, 17, 327948, 17, 327954, 17, 458728, 17, 393318, 17, 393326, 17, 393428, 17, 393435, 17, 393484, 17, 393490, 17, 524264, 17, 458854, 17, 458862, 17, 458971, 17, 459026, 17, 589800, 17, 589806, 17, 524390, 17, 524398, 17, 524507, 17, 524562, 17, 655342, 17, 589934, 17, 590043, 17, 590098, 17, 720878, 17, 655470, 17, 655612, 17, 655634, 17, 786414, 17, 721006, 17, 721031, 17, 721148, 17, 851950, 17, 786567, 17, 786684, 17, 917486, 17, 852103, 17, 852132, 17, 852220, 17, 983022, 17, 917639, 17, 917668, 17, 917756, 17, 1048558, 17, 983175, 17, 983204, 17, 983292, 17, 1114094, 17, 1048711, 17, 1048740, 17, 1048828, 17, 1114247, 17, 1114276, 17, 1114358, 17, 1114364, 17, 1179783, 17, 1179801, 17, 1179812, 17, 1179894, 17, 1245319, 17, 1245337, 17, 1245348, 17, 1245430, 17, 1310855, 17, 1310873, 17, 1310956, 17, 1310966, 17, 1376409, 17, 1376492, 17, 1376502, 17, 1442032, 17, 1442038, 17, 1507568, 17, 1507574, 17 )
 __meta__ = { "_edit_lock_":true }
 
 [node name="Key1" parent="." instance=ExtResource( 4 )]
@@ -161,15 +191,15 @@ target_path = NodePath("../Door2Target")
 
 [node name="Door2Target" type="Node2D" parent="."]
 
-transform/pos = Vector2( 8689, 0 )
+transform/pos = Vector2( 6672, 0 )
 
 [node name="Key3" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 10032, 819 )
+transform/pos = Vector2( 7600, 467 )
 
 [node name="Door3" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 10992, 45 )
+transform/pos = Vector2( 8912, 141 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 
@@ -179,7 +209,7 @@ stream/stream = ExtResource( 7 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
-stream/autoplay = false
+stream/autoplay = true
 stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
@@ -249,6 +279,24 @@ shapes/13/trigger = false
 shapes/14/shape = SubResource( 16 )
 shapes/14/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/14/trigger = false
+shapes/15/shape = SubResource( 17 )
+shapes/15/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/15/trigger = false
+shapes/16/shape = SubResource( 18 )
+shapes/16/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/16/trigger = false
+shapes/17/shape = SubResource( 19 )
+shapes/17/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/17/trigger = false
+shapes/18/shape = SubResource( 20 )
+shapes/18/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/18/trigger = false
+shapes/19/shape = SubResource( 21 )
+shapes/19/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/19/trigger = false
+shapes/20/shape = SubResource( 22 )
+shapes/20/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/20/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
@@ -265,8 +313,15 @@ trigger = false
 [node name="DeathCollision2" type="CollisionPolygon2D" parent="Death"]
 
 build_mode = 0
-polygon = Vector2Array( 2530, 60, 3000, 380, 3240, 490, 3450, 540, 3690, 540, 3960, 540, 4110, 730, 4310, 860, 4620, 880, 4800, 930, 5020, 890, 5220, 800, 5470, 800, 5870, 310, 5510, 990, 4090, 1030, 3140, 760 )
-shape_range = Vector2( 4, 14 )
+polygon = Vector2Array( 2530, 60, 2880, 380, 3200, 520, 3440, 570, 3690, 570, 3940, 590, 4080, 750, 4250, 870, 4620, 880, 4800, 930, 5040, 910, 5240, 820, 5530, 770, 5870, 310, 5510, 990, 4090, 1030, 2860, 640 )
+shape_range = Vector2( 4, 12 )
+trigger = false
+
+[node name="DeathCollision3" type="CollisionPolygon2D" parent="Death"]
+
+build_mode = 0
+polygon = Vector2Array( 6330, 20, 6620, 350, 6970, 520, 7250, 640, 7460, 850, 7710, 950, 8000, 950, 8160, 790, 8360, 720, 8460, 510, 8630, 470, 8940, 470, 9280, 60, 8950, 660, 8030, 1030, 7500, 1030, 6590, 570 )
+shape_range = Vector2( 13, 20 )
 trigger = false
 
 

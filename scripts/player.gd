@@ -8,7 +8,7 @@ var bomb_scn = preload('../resources/scenes/bomb.tscn')
 onready var input = get_node('/root/input')
 onready var global = get_node('/root/global')
 onready var area = get_node('PlayerAreaDetection')
-var key = Vector3(0, 0, 0)
+var key = [0, 0, 0]
 
 var anim = 'idle'
 var anim_new
@@ -89,7 +89,7 @@ func check_bomb_throw():
 		var act = input._get_throw(Input)
 		if (act == ACT.THROW):
 			var fx = get_node('../SamplePlayer')
-			fx.set_default_volume(0)
+			fx.set_default_volume(.2)
 			fx.play('throw')
 			bomb_cooldown = 1
 			var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
@@ -112,24 +112,26 @@ func _on_Area2D_area_enter(area):
 func check_keys(area):
 	var fx = get_node('../SamplePlayer')
 	if (area.get_node('../').get_name() == 'Key1'):
-		key.x = 1
-		fx.set_default_volume(0)
+		key[0] = 1
+		fx.set_default_volume(.2)
 		fx.play('confirmation')
 		area.get_node('../').queue_free()
 	elif (area.get_node('../').get_name() == 'Key2'):
-		key.y = 1
-		fx.set_default_volume(0)
+		key[1] = 1
+		fx.set_default_volume(.2)
 		fx.play('confirmation')
 		area.get_node('../').queue_free()
 	elif (area.get_node('../').get_name() == 'Key3'):
-		key.z = 1
-		fx.set_default_volume(0)
+		key[2] = 1
+		fx.set_default_volume(.2)
 		fx.play('confirmation')
 		area.get_node('../').queue_free()
 
 func check_doors(area):
 	var door = area.get_parent()
-	if ((global.stage == 1 and key.x == 1) or (global.stage == 2 and key.y == 1) or (global.stage == 3 and key.z == 1)):
+	if ((global.stage == 1 and key[0] == 1) or \
+		(global.stage == 2 and key[1] == 1) or \
+		(global.stage == 3 and key[2] == 1)):
 		if (door.get_script() == Door):
 			var target = door.get_target()
 			if (target != null):
