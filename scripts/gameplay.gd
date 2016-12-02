@@ -25,6 +25,7 @@ func _ready():
 
 func reset():
 	global.respawn = Vector2(0, 0)
+	global.stage = 0
 	get_tree().change_scene('res://resources/scenes/main.tscn')
 
 func respawn():
