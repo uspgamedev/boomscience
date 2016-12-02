@@ -1,6 +1,6 @@
 extends 'res://scripts/body.gd'
 
-const Door = preload("res://resources/scenes/door.gd")
+const Door = preload("res://scripts/door.gd")
 
 const ACT = preload('actions.gd')
 var bomb_scn = preload('../resources/scenes/bomb.tscn')
@@ -8,7 +8,7 @@ var bomb_scn = preload('../resources/scenes/bomb.tscn')
 onready var input = get_node('/root/input')
 onready var global = get_node('/root/global')
 onready var area = get_node('PlayerAreaDetection')
-var key = [0, 0, 0]
+var key = [0, 0, 0, 0]
 
 var anim = 'idle'
 var anim_new
@@ -110,33 +110,33 @@ func _on_Area2D_area_enter(area):
 	check_death(area)
 
 func check_keys(area):
-	var fx = get_node('../SamplePlayer')
-	if (area.get_node('../').get_name() == 'Key1'):
-		key[0] = 1
-		fx.set_default_volume(.2)
-		fx.play('confirmation')
-		area.get_node('../').queue_free()
-	elif (area.get_node('../').get_name() == 'Key2'):
-		key[1] = 1
-		fx.set_default_volume(.2)
-		fx.play('confirmation')
-		area.get_node('../').queue_free()
-	elif (area.get_node('../').get_name() == 'Key3'):
-		key[2] = 1
-		fx.set_default_volume(.2)
+	check_key_name(area, 'Key1', 0)
+	check_key_name(area, 'Key2', 1)
+	check_key_name(area, 'Key3', 2)
+	check_key_name(area, 'Key4', 3)
+
+func check_key_name(area, key_name, key_index):
+	if (area.get_node('../').get_name() == key_name):
+		var fx = get_node('../SamplePlayer')
+		key[key_index] = 1
+		fx.set_default_volume(.3)
 		fx.play('confirmation')
 		area.get_node('../').queue_free()
 
 func check_doors(area):
 	var door = area.get_parent()
-	if ((global.stage == 1 and key[0] == 1) or \
-		(global.stage == 2 and key[1] == 1) or \
-		(global.stage == 3 and key[2] == 1)):
+	if ((global.stage == 0 and key[0] == 1) or \
+		(global.stage == 1 and key[1] == 1) or \
+		(global.stage == 2 and key[2] == 1) or \
+		(global.stage == 3 and key[3] == 1)):
 		if (door.get_script() == Door):
 			var target = door.get_target()
 			if (target != null):
+				var fx = get_node('../SamplePlayer')
 				global.stage += 1
 				global.respawn = target
+				fx.set_default_volume(.3)
+				fx.play('confirmation')
 				self.set_pos(global.respawn)
 			else:
 				get_node('Congratulations').set_scale(Vector2(1, 1))

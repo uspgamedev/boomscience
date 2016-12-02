@@ -17,7 +17,7 @@ func load_camera():
 
 func _ready():
 	load_camera()
-	get_node('StreamPlayer').set_volume(2)
+	get_node('StreamPlayer').set_volume(1)
 	input.connect('press_quit', self, 'quit')
 	input.connect('press_reset', self, 'reset')
 	input.connect('press_respawn', self, 'respawn')

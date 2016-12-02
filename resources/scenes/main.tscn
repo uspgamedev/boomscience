@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=1]
+[gd_scene load_steps=41 format=1]
 
 [ext_resource path="res://scripts/gameplay.gd" type="Script" id=1]
 [ext_resource path="res://resources/scenes/stage_1.tscn" type="PackedScene" id=2]
@@ -120,6 +120,51 @@ points = Vector2Array( 8950, 660, 8030, 1030, 8000, 950, 8160, 790, 8360, 720 )
 custom_solver_bias = 0.0
 points = Vector2Array( 8950, 660, 8360, 720, 8460, 510, 8630, 470, 8940, 470 )
 
+[sub_resource type="ConvexPolygonShape2D" id=23]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 12700, -900, 12960, -1520, 12880, -920 )
+
+[sub_resource type="ConvexPolygonShape2D" id=24]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 9760, 270, 9730, 0, 9840, 200 )
+
+[sub_resource type="ConvexPolygonShape2D" id=25]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 12700, -900, 12880, -920, 12230, 80, 12420, -420 )
+
+[sub_resource type="ConvexPolygonShape2D" id=26]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 12280, -220, 12420, -420, 12230, 80 )
+
+[sub_resource type="ConvexPolygonShape2D" id=27]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 12080, -140, 12280, -220, 12230, 80 )
+
+[sub_resource type="ConvexPolygonShape2D" id=28]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 12080, -140, 12230, 80, 11130, 100, 11020, -140 )
+
+[sub_resource type="ConvexPolygonShape2D" id=29]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 10180, 430, 9760, 270, 9840, 200, 10000, 280 )
+
+[sub_resource type="ConvexPolygonShape2D" id=30]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 10180, 430, 10000, 280, 10290, 280 )
+
+[sub_resource type="ConvexPolygonShape2D" id=31]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 11130, 100, 10180, 430, 10290, 280, 11020, -140 )
+
 [node name="Main" type="Node"]
 
 script/script = ExtResource( 1 )
@@ -145,7 +190,7 @@ collision/bounce = 0.0
 collision/layers = 3
 collision/mask = 3
 occluder/light_mask = 1
-tile_data = IntArray( -917401, 16, -917400, 16, -851865, 16, -851864, 16, -786329, 16, -786328, 16, -131092, 16, -196505, 16, -65556, 16, -131043, 16, -131042, 16, -130970, 16, -130969, 16, -20, 16, -65507, 16, -65506, 16, -65435, 16, -65434, 16, -65433, 16, 65516, 16, 29, 16, 30, 16, 100, 16, 101, 16, 102, 16, 103, 16, 196707, 16, 196708, 16, 262243, 16, 262244, 16, 327694, 16, 327695, 16, 393230, 16, 393231, 16, 393433, 16, 393434, 16, 393476, 16, 393477, 16, 458877, 16, 458878, 16, 458879, 16, 458963, 16, 458964, 16, 458965, 16, 458966, 16, 458967, 16, 458968, 16, 458969, 16, 458970, 16, 459012, 16, 459013, 16, 524413, 16, 524415, 16, 589949, 16, 589950, 16, 589951, 16, 590046, 16, 655582, 16, 721118, 16, 721119, 16, 851962, 16, 851963, 16, 917498, 16, 917499, 16, 983067, 16, 1048603, 16, 1114139, 16, 1114248, 16, 1179784, 16, 1245320, 16, 1310856, 16, 1441949, 16, 1573014, 16, 1638643, 16, 1638644, 16, 1638645, 16 )
+tile_data = IntArray( -917401, 16, -917400, 16, -851865, 16, -851864, 16, -786329, 16, -786328, 16, -655035, 16, -655025, 16, -589499, 16, -589489, 16, -523963, 16, -523953, 16, -458422, 16, -392886, 16, -327350, 16, -261819, 16, -131092, 16, -196505, 16, -196283, 16, -65556, 16, -131043, 16, -131042, 16, -130970, 16, -130969, 16, -130747, 16, -20, 16, -65507, 16, -65506, 16, -65435, 16, -65434, 16, -65433, 16, 65516, 16, 29, 16, 30, 16, 100, 16, 101, 16, 102, 16, 103, 16, 196707, 16, 196708, 16, 262243, 16, 262244, 16, 327694, 16, 327695, 16, 393230, 16, 393231, 16, 393433, 16, 393434, 16, 393476, 16, 393477, 16, 458877, 16, 458878, 16, 458879, 16, 458963, 16, 458964, 16, 458965, 16, 458966, 16, 458967, 16, 458968, 16, 458969, 16, 458970, 16, 459012, 16, 459013, 16, 524413, 16, 524415, 16, 589949, 16, 589950, 16, 589951, 16, 590046, 16, 655582, 16, 721118, 16, 721119, 16, 851962, 16, 851963, 16, 917498, 16, 917499, 16, 983067, 16, 1048603, 16, 1114139, 16, 1114248, 16, 1179784, 16, 1245320, 16, 1310856, 16, 1441949, 16, 1573014, 16, 1638643, 16, 1638644, 16, 1638645, 16 )
 __meta__ = { "_edit_lock_":true }
 
 [node name="Stairs" type="TileMap" parent="BasicTilemap" groups=[ "stairs" ]]
@@ -164,7 +209,7 @@ collision/bounce = 0.0
 collision/layers = 3
 collision/mask = 3
 occluder/light_mask = 1
-tile_data = IntArray( -786325, 17, -655379, 17, -655362, 17, -720789, 17, -589843, 17, -589826, 17, -655253, 17, -524307, 17, -524290, 17, -589717, 17, -458771, 17, -458754, 17, -524181, 17, -393235, 17, -393218, 17, -458645, 17, -327699, 17, -327682, 17, -393109, 17, -262163, 17, -262146, 17, -196627, 17, -131091, 17, -65555, 17, -19, 17, 65512, 17, 65517, 17, 89, 17, 212, 17, 131048, 17, 65625, 17, 65748, 17, 196584, 17, 131161, 17, 131284, 17, 262120, 17, 196697, 17, 196718, 17, 196820, 17, 327656, 17, 262233, 17, 262246, 17, 262254, 17, 262356, 17, 262412, 17, 262418, 17, 393192, 17, 327782, 17, 327790, 17, 327892, 17, 327948, 17, 327954, 17, 458728, 17, 393318, 17, 393326, 17, 393428, 17, 393435, 17, 393484, 17, 393490, 17, 524264, 17, 458854, 17, 458862, 17, 458971, 17, 459026, 17, 589800, 17, 589806, 17, 524390, 17, 524398, 17, 524507, 17, 524562, 17, 655342, 17, 589934, 17, 590043, 17, 590098, 17, 720878, 17, 655470, 17, 655612, 17, 655634, 17, 786414, 17, 721006, 17, 721031, 17, 721148, 17, 851950, 17, 786567, 17, 786684, 17, 917486, 17, 852103, 17, 852132, 17, 852220, 17, 983022, 17, 917639, 17, 917668, 17, 917756, 17, 1048558, 17, 983175, 17, 983204, 17, 983292, 17, 1114094, 17, 1048711, 17, 1048740, 17, 1048828, 17, 1114247, 17, 1114276, 17, 1114358, 17, 1114364, 17, 1179783, 17, 1179801, 17, 1179812, 17, 1179894, 17, 1245319, 17, 1245337, 17, 1245348, 17, 1245430, 17, 1310855, 17, 1310873, 17, 1310956, 17, 1310966, 17, 1376409, 17, 1376492, 17, 1376502, 17, 1442032, 17, 1442038, 17, 1507568, 17, 1507574, 17 )
+tile_data = IntArray( -3276428, 17, -3210892, 17, -3145356, 17, -3079820, 17, -3014284, 17, -2948748, 17, -2883212, 17, -2817676, 17, -2752140, 17, -2686604, 17, -2621068, 17, -2555532, 17, -2489996, 17, -2424460, 17, -2358924, 17, -2293388, 17, -2227852, 17, -2162316, 17, -2096780, 17, -2031244, 17, -1965708, 17, -1900172, 17, -1834636, 17, -1769100, 17, -1703564, 17, -1638028, 17, -1572492, 17, -1506956, 17, -1441420, 17, -1375884, 17, -1310348, 17, -1244812, 17, -1179276, 17, -1113740, 17, -1048204, 17, -982668, 17, -917132, 17, -851596, 17, -786325, 17, -786060, 17, -655379, 17, -655362, 17, -720789, 17, -589843, 17, -589826, 17, -655253, 17, -524307, 17, -524290, 17, -589717, 17, -458771, 17, -458754, 17, -524181, 17, -393235, 17, -393218, 17, -458645, 17, -327699, 17, -327682, 17, -393109, 17, -262163, 17, -262146, 17, -196627, 17, -131091, 17, -65555, 17, -19, 17, 65512, 17, 65517, 17, 89, 17, 212, 17, 131048, 17, 65625, 17, 65748, 17, 196584, 17, 131161, 17, 131284, 17, 262120, 17, 196697, 17, 196718, 17, 196820, 17, 327656, 17, 262233, 17, 262246, 17, 262254, 17, 262356, 17, 262412, 17, 262418, 17, 393192, 17, 327782, 17, 327790, 17, 327892, 17, 327948, 17, 327954, 17, 458728, 17, 393318, 17, 393326, 17, 393428, 17, 393435, 17, 393484, 17, 393490, 17, 524264, 17, 458854, 17, 458862, 17, 458971, 17, 459026, 17, 589800, 17, 589806, 17, 524390, 17, 524398, 17, 524507, 17, 524562, 17, 655342, 17, 589934, 17, 590043, 17, 590098, 17, 720878, 17, 655470, 17, 655612, 17, 655634, 17, 786414, 17, 721006, 17, 721031, 17, 721148, 17, 851950, 17, 786567, 17, 786684, 17, 917486, 17, 852103, 17, 852132, 17, 852220, 17, 983022, 17, 917639, 17, 917668, 17, 917756, 17, 1048558, 17, 983175, 17, 983204, 17, 983292, 17, 1114094, 17, 1048711, 17, 1048740, 17, 1048828, 17, 1114247, 17, 1114276, 17, 1114358, 17, 1114364, 17, 1179783, 17, 1179801, 17, 1179812, 17, 1179894, 17, 1245319, 17, 1245337, 17, 1245348, 17, 1245430, 17, 1310855, 17, 1310873, 17, 1310956, 17, 1310966, 17, 1376409, 17, 1376492, 17, 1376502, 17, 1442032, 17, 1442038, 17, 1507568, 17, 1507574, 17 )
 __meta__ = { "_edit_lock_":true }
 
 [node name="Key1" parent="." instance=ExtResource( 4 )]
@@ -179,6 +224,7 @@ target_path = NodePath("../Door1Target")
 [node name="Door1Target" type="Node2D" parent="."]
 
 transform/pos = Vector2( 3000, 0 )
+__meta__ = { "_edit_lock_":true }
 
 [node name="Key2" parent="." instance=ExtResource( 4 )]
 
@@ -192,6 +238,7 @@ target_path = NodePath("../Door2Target")
 [node name="Door2Target" type="Node2D" parent="."]
 
 transform/pos = Vector2( 6672, 0 )
+__meta__ = { "_edit_lock_":true }
 
 [node name="Key3" parent="." instance=ExtResource( 4 )]
 
@@ -200,6 +247,20 @@ transform/pos = Vector2( 7600, 467 )
 [node name="Door3" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 8912, 141 )
+target_path = NodePath("../Door3Target")
+
+[node name="Door3Target" type="Node2D" parent="."]
+
+transform/pos = Vector2( 10128, 0 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="Key4" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 10256, -301 )
+
+[node name="Door4" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 12048, -1587 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 
@@ -233,6 +294,7 @@ default/chorus_send = 0.0
 
 [node name="Death" type="Area2D" parent="."]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 96 )
@@ -297,10 +359,38 @@ shapes/19/trigger = false
 shapes/20/shape = SubResource( 22 )
 shapes/20/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/20/trigger = false
+shapes/21/shape = SubResource( 23 )
+shapes/21/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/21/trigger = false
+shapes/22/shape = SubResource( 24 )
+shapes/22/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/22/trigger = false
+shapes/23/shape = SubResource( 25 )
+shapes/23/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/23/trigger = false
+shapes/24/shape = SubResource( 26 )
+shapes/24/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/24/trigger = false
+shapes/25/shape = SubResource( 27 )
+shapes/25/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/25/trigger = false
+shapes/26/shape = SubResource( 28 )
+shapes/26/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/26/trigger = false
+shapes/27/shape = SubResource( 29 )
+shapes/27/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/27/trigger = false
+shapes/28/shape = SubResource( 30 )
+shapes/28/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/28/trigger = false
+shapes/29/shape = SubResource( 31 )
+shapes/29/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/29/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+__meta__ = { "_edit_lock_":true }
 
 [node name="DeathCollision1" type="CollisionPolygon2D" parent="Death"]
 
@@ -309,6 +399,7 @@ build_mode = 0
 polygon = Vector2Array( -1350, 340, -670, 610, 140, 700, 810, 640, 1630, 600, 2270, 470, 1500, 824, -850, 824 )
 shape_range = Vector2( 0, 3 )
 trigger = false
+__meta__ = { "_edit_lock_":true }
 
 [node name="DeathCollision2" type="CollisionPolygon2D" parent="Death"]
 
@@ -316,6 +407,7 @@ build_mode = 0
 polygon = Vector2Array( 2530, 60, 2880, 380, 3200, 520, 3440, 570, 3690, 570, 3940, 590, 4080, 750, 4250, 870, 4620, 880, 4800, 930, 5040, 910, 5240, 820, 5530, 770, 5870, 310, 5510, 990, 4090, 1030, 2860, 640 )
 shape_range = Vector2( 4, 12 )
 trigger = false
+__meta__ = { "_edit_lock_":true }
 
 [node name="DeathCollision3" type="CollisionPolygon2D" parent="Death"]
 
@@ -323,6 +415,15 @@ build_mode = 0
 polygon = Vector2Array( 6330, 20, 6620, 350, 6970, 520, 7250, 640, 7460, 850, 7710, 950, 8000, 950, 8160, 790, 8360, 720, 8460, 510, 8630, 470, 8940, 470, 9280, 60, 8950, 660, 8030, 1030, 7500, 1030, 6590, 570 )
 shape_range = Vector2( 13, 20 )
 trigger = false
+__meta__ = { "_edit_lock_":true }
+
+[node name="DeathCollision4" type="CollisionPolygon2D" parent="Death"]
+
+build_mode = 0
+polygon = Vector2Array( 9730, 0, 9840, 200, 10000, 280, 10290, 280, 11020, -140, 12080, -140, 12280, -220, 12420, -420, 12700, -900, 12960, -1520, 12880, -920, 12230, 80, 11130, 100, 10180, 430, 9760, 270 )
+shape_range = Vector2( 21, 29 )
+trigger = false
+__meta__ = { "_edit_lock_":true }
 
 
 [editable path="BasicTilemap"]
