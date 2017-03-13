@@ -55,6 +55,10 @@ func _get_action(e):
 		act = ACT.CAMERA
 	if e.is_action_pressed('ui_stealth'):
 		act = ACT.STEALTH
+	return act
+
+func _get_jump(e):
+	var act = -1
 	if e.is_action_pressed('ui_jump'):
 		act = ACT.JUMP
 	return act
