@@ -17,6 +17,8 @@ var bomb_direction
 
 func _ready():
 	set_fixed_process(true)
+	input.connect('press_action', self, '_jump')
+	input.connect('hold_action', self, '_add_jump_height')
 	input.connect('hold_direction', self, '_add_speed')
 	input.connect('hold_direction', self, '_flip_sprite')
 	area.connect('area_enter', self, '_on_Area2D_area_enter')
@@ -29,7 +31,6 @@ func _fixed_process(delta):
 	check_camera()
 	check_stealth()
 	check_animation()
-	check_jump()
 	check_bomb_throw()
 	check_stairs()
 
@@ -47,13 +48,6 @@ func check_stairs():
 				speed.y += 30
 			else:
 				speed.y = 0
-		set_jump(true)
-		act = input._get_jump(Input)
-		if (act == ACT.JUMP):
-			print('s')
-			G = 3000
-			_jump(act)
-			G = 0
 	else:
 		G = 3000
 		if (act != ACT.STEALTH):
@@ -89,16 +83,6 @@ func check_animation():
 	if (anim != anim_new):
 		anim = anim_new
 		get_node('PlayerSprite/PlayerAnimation').play(anim)
-
-func check_jump():
-	var act = input._get_jump(Input)
-	if (act == ACT.JUMP):
-		if (jump_height == -1):
-			_jump(act)
-		else:
-			_add_jump_height(act)
-	elif (jump_height >= 0):
-		_jump(act)
 
 func check_bomb_throw():
 	if (bomb_cooldown == 0):
