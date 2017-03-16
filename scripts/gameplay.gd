@@ -38,7 +38,7 @@ func _fixed_process(delta):
 	check_camera()
 
 func check_camera():
-	var tween = Tween.new()
+	var tween = Tween.new() # How to fix #41
 	player.add_child(tween)
 	var dir = input._get_direction(Input)
 	var act = input._get_action(Input)
