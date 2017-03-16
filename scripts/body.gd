@@ -65,6 +65,7 @@ func apply_speed(delta):
 	if (is_colliding()):
 		var collider = get_collider()
 		normal = get_collision_normal()
+		speed += 2 * ACC * normal
 		check_if_floor(collider, normal)
 		motion = .01 * normal.slide(self.speed)
 		move(motion)
