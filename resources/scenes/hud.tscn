@@ -10,6 +10,21 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 
+[node name="Background" type="Polygon2D" parent="."]
+
+visibility/visible = false
+polygon = Vector2Array( 0, 0, 640, 0, 640, 480, 0, 480 )
+uv = Vector2Array(  )
+color = Color( 0, 0, 0, 0.588235 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
 [node name="DeathCounter" type="Label" parent="."]
 
 focus/ignore_mouse = true
@@ -41,5 +56,45 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script/script = ExtResource( 2 )
+
+[node name="Hint" type="Label" parent="."]
+
+anchor/left = 3
+anchor/right = 3
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 77.0
+margin/top = 5.0
+margin/right = 77.0
+margin/bottom = 14.0
+text = "Press \'P\' for instructions"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Instructions" type="Label" parent="."]
+
+visibility/visible = false
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 130.0
+margin/top = 80.0
+margin/right = 280.0
+margin/bottom = 226.0
+custom_colors/font_color = Color( 0.863281, 0.832932, 0.377686, 1 )
+custom_colors/font_color_shadow = Color( 0.23714, 0.0921478, 0.238281, 1 )
+custom_constants/shadow_offset_x = 2
+text = "A, D - move\nSpace - jump\nMouse1 - throw bomb\nControl + WASD - move camera\nShift- stealth mode\nG [WARNING] - restart from last respawn\nBackspace [WARNING] - restart game\nEscape - quit game"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 

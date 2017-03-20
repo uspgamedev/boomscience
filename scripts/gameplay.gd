@@ -40,6 +40,7 @@ func quit():
 
 func _fixed_process(delta):
 	check_camera()
+	check_instructions()
 
 func check_camera():
 	var dir = input._get_direction(Input)
@@ -68,3 +69,14 @@ func move_camera(tween, init, final):
 	tween.interpolate_property(get_node('Player/Camera'), 'transform/pos', \
 		init, final, EPSILON, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
+	
+func check_instructions():
+	var hud = get_node('Hud/Instructions')
+	var background = get_node('Hud/Background')
+	var act = input._get_action(Input)
+	if (act == ACT.INST):
+		hud.show()
+		background.show()
+	else:
+		hud.hide()
+		background.hide()
