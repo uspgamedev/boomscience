@@ -13,7 +13,10 @@ func _ready():
 
 func _fixed_process(delta):
 	check_chronometer(delta)
-
+	
+func stop_chronometer():
+	set_fixed_process(false)
+	
 func check_chronometer(delta):
 	chronometer += delta
 	if (chronometer >= 1):
@@ -25,6 +28,7 @@ func check_chronometer(delta):
 	
 func reset():
 	init()
+	set_fixed_process(true)
 	
 func init():
 	respawn = Vector2(0, 0)
