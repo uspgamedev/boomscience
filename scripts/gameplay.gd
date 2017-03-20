@@ -7,6 +7,7 @@ const ACT = preload('actions.gd')
 onready var player = get_node('Player')
 onready var input = get_node('/root/input')
 onready var camera = get_node('Player/Camera')
+onready var tween = Tween.new()
 
 const EPSILON = 1e-40
 
@@ -18,6 +19,7 @@ func load_camera():
 func _ready():
 	load_camera()
 	get_node('StreamPlayer').set_volume(1)
+	player.add_child(tween)
 	input.connect('press_quit', self, 'quit')
 	input.connect('press_reset', self, 'reset')
 	input.connect('press_respawn', self, 'respawn')
@@ -38,8 +40,6 @@ func _fixed_process(delta):
 	check_camera()
 
 func check_camera():
-	var tween = Tween.new() # How to fix #41
-	player.add_child(tween)
 	var dir = input._get_direction(Input)
 	var act = input._get_action(Input)
 	if (act == ACT.CAMERA):
