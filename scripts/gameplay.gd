@@ -3,6 +3,7 @@ extends Node
 
 const DIR = preload('directions.gd')
 const ACT = preload('actions.gd')
+const HUD = preload('res://resources/scenes/hud.tscn')
 
 onready var player = get_node('Player')
 onready var input = get_node('/root/input')
@@ -19,18 +20,21 @@ func load_camera():
 func _ready():
 	load_camera()
 	get_node('StreamPlayer').set_volume(1)
-	player.add_child(tween)
 	input.connect('press_quit', self, 'quit')
 	input.connect('press_reset', self, 'reset')
 	input.connect('press_respawn', self, 'respawn')
+	player.add_child(tween)
+	self.add_child(HUD.instance())
 	set_fixed_process(true)
 
 func reset():
 	global.respawn = Vector2(0, 0)
 	global.stage = 0
+	global.death_count = 1
 	get_tree().change_scene('res://resources/scenes/main.tscn')
 
 func respawn():
+	global.death_count += 1
 	get_tree().change_scene('res://resources/scenes/main.tscn')
 
 func quit():

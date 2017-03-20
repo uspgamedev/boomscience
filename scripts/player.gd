@@ -143,4 +143,5 @@ func check_doors(area):
 
 func check_death(area):
 	if (area.get_name() == 'Death'):
+		global.death_count += 1
 		get_tree().change_scene('res://resources/scenes/main.tscn')
