@@ -57,6 +57,8 @@ func _get_action(e):
 		act = ACT.STEALTH
 	if e.is_action_pressed('ui_jump'):
 		act = ACT.JUMP
+	if e.is_action_pressed('ui_instructions'):
+		act = ACT.INST
 	return act
 
 func _get_throw(e):

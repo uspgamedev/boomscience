@@ -6,3 +6,4 @@ const CAMERA = 2
 const STEALTH = 3
 const JUMP = 4
 const THROW = 5
+const INST = 6

@@ -139,8 +139,10 @@ func check_doors(area):
 				fx.play('confirmation')
 				self.set_pos(global.respawn)
 			else:
+				global.stop_chronometer()
 				get_node('Congratulations').set_scale(Vector2(1, 1))
 
 func check_death(area):
 	if (area.get_name() == 'Death'):
+		global.death_count += 1
 		get_tree().change_scene('res://resources/scenes/main.tscn')

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=1]
+[gd_scene load_steps=42 format=1]
 
 [ext_resource path="res://scripts/gameplay.gd" type="Script" id=1]
 [ext_resource path="res://resources/scenes/stage_1.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://resources/assets/bgm/house.ogg" type="AudioStream" id=7]
 [ext_resource path="res://resources/assets/sfx/samples/confirmation.smp" type="Sample" id=8]
 [ext_resource path="res://resources/assets/sfx/samples/throw.smp" type="Sample" id=9]
+[ext_resource path="res://resources/scenes/hud.tscn" type="PackedScene" id=10]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -424,6 +425,8 @@ polygon = Vector2Array( 9730, 0, 9840, 200, 10000, 280, 10290, 280, 11020, -140,
 shape_range = Vector2( 21, 29 )
 trigger = false
 __meta__ = { "_edit_lock_":true }
+
+[node name="Hud" parent="." instance=ExtResource( 10 )]
 
 
 [editable path="BasicTilemap"]
