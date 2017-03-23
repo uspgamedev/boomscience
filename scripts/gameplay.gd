@@ -73,10 +73,13 @@ func move_camera(tween, init, final):
 func check_instructions():
 	var hud = get_node('Hud/Instructions')
 	var background = get_node('Hud/Background')
+	var objective = get_node('Hud/Objective')
 	var act = input._get_action(Input)
 	if (act == ACT.INST):
 		hud.show()
 		background.show()
+		objective.show()
 	else:
 		hud.hide()
 		background.hide()
+		objective.hide()
