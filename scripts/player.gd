@@ -89,7 +89,7 @@ func check_bomb_throw():
 		var act = input._get_throw(Input)
 		if (act == ACT.THROW):
 			var fx = get_node('../SamplePlayer')
-			fx.set_default_volume(.2)
+			fx.set_default_volume(.3)
 			fx.play('throw')
 			bomb_cooldown = 1
 			var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
@@ -131,14 +131,16 @@ func check_doors(area):
 		(global.stage == 3 and key[3] == 1)):
 		if (door.get_script() == Door):
 			var target = door.get_target()
+			var fx = get_node('../SamplePlayer')
+			fx.set_default_volume(.3)
 			if (target != null):
-				var fx = get_node('../SamplePlayer')
+				fx.play('confirmation')
 				global.stage += 1
 				global.respawn = target
-				fx.set_default_volume(.3)
-				fx.play('confirmation')
 				self.set_pos(global.respawn)
 			else:
+				if (get_node('Congratulations').get_scale() != Vector2(1, 1)):
+					fx.play('confirmation')
 				global.stop_chronometer()
 				get_node('Congratulations').set_scale(Vector2(1, 1))
 
