@@ -431,7 +431,7 @@ __meta__ = { "_edit_lock_":true }
 
 [node name="BasicEnemy" parent="." instance=ExtResource( 11 )]
 
-transform/pos = Vector2( 720, 104 )
+transform/pos = Vector2( 808, 104 )
 
 
 [editable path="BasicTilemap"]
