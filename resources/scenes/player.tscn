@@ -65,6 +65,7 @@ __meta__ = { "_edit_lock_":true }
 
 texture = ExtResource( 2 )
 hframes = 12
+frame = 4
 region_rect = Rect2( 148, 19, 29, 52 )
 __meta__ = { "_edit_lock_":true }
 
