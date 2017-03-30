@@ -27,14 +27,14 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.2 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ 0, 1 ] }
 
-[node name="BasicEnemy" type="KinematicBody2D"]
+[node name="BasicEnemy" type="KinematicBody2D" groups=[ "enemy" ]]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 2 )
 shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
+collision/layers = 2
+collision/mask = 2
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 __meta__ = { "_edit_lock_":true }
@@ -65,5 +65,23 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 __meta__ = { "_edit_lock_":true }
+
+[node name="BasicEnemyArea" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 2 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="BasicEnemtAreaHitbox" type="CollisionShape2D" parent="BasicEnemyArea"]
+
+transform/pos = Vector2( 0, 2 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
 
 

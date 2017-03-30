@@ -22,7 +22,9 @@ func _ready():
 	input.connect('hold_direction', self, '_add_speed')
 	input.connect('hold_direction', self, '_flip_sprite')
 	area.connect('area_enter', self, '_on_Area2D_area_enter')
+	area.connect('body_enter', self, '_on_Area2D_body_enter')
 	area.connect('area_exit',self,'_on_Area2D_area_exit')
+	hp = 500
 	sprite = get_node('PlayerSprite')
 	self.set_pos(global.respawn)
 	set_fixed_process(true)
@@ -108,6 +110,24 @@ func _on_Area2D_area_enter(area):
 	check_keys(area)
 	check_doors(area)
 	check_death(area)
+	check_damage(area)
+
+func _on_Area2D_body_enter(area):
+	pass
+
+func check_damage(area):
+	var area_node = area.get_node('../')
+	if (area_node.is_in_group('enemy')):
+		hp -= 100
+		knockback(area_node)
+	if (hp <= 0):
+		global.death_count += 1
+		get_tree().change_scene('res://resources/scenes/main.tscn')
+
+func knockback(area_node):
+	var vector = self.get_pos() - area_node.get_pos()
+	speed.x += .5 * ACC * vector.x
+	speed.y -= 5 * ACC - 20 * vector.y
 
 func check_keys(area):
 	check_key_name(area, 'Key1', 0)
