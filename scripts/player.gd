@@ -22,7 +22,6 @@ func _ready():
 	input.connect('hold_direction', self, '_add_speed')
 	input.connect('hold_direction', self, '_flip_sprite')
 	area.connect('area_enter', self, '_on_Area2D_area_enter')
-	area.connect('body_enter', self, '_on_Area2D_body_enter')
 	area.connect('area_exit',self,'_on_Area2D_area_exit')
 	hp = 500
 	sprite = get_node('PlayerSprite')
@@ -111,9 +110,6 @@ func _on_Area2D_area_enter(area):
 	check_doors(area)
 	check_death(area)
 	check_damage(area)
-
-func _on_Area2D_body_enter(area):
-	pass
 
 func check_damage(area):
 	var area_node = area.get_node('../')
