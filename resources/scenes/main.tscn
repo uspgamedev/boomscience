@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=1]
+[gd_scene load_steps=43 format=1]
 
 [ext_resource path="res://scripts/gameplay.gd" type="Script" id=1]
 [ext_resource path="res://resources/scenes/stage_1.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://resources/assets/sfx/samples/confirmation.smp" type="Sample" id=8]
 [ext_resource path="res://resources/assets/sfx/samples/throw.smp" type="Sample" id=9]
 [ext_resource path="res://resources/scenes/hud.tscn" type="PackedScene" id=10]
+[ext_resource path="res://resources/scenes/basic_enemy.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -427,6 +428,10 @@ trigger = false
 __meta__ = { "_edit_lock_":true }
 
 [node name="Hud" parent="." instance=ExtResource( 10 )]
+
+[node name="BasicEnemy" parent="." instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 808, 104 )
 
 
 [editable path="BasicTilemap"]
