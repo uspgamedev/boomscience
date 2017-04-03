@@ -36,7 +36,7 @@ func _fixed_process(delta):
 	check_stairs()
 
 func check_stairs():
-	var stairs = get_node('../BasicTilemap/Stairs')
+	var stairs = get_node('../Stage01/Stairs')
 	var act = input._get_action(Input)
 	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1):
 		G = 0
