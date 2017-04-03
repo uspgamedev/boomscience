@@ -5,12 +5,12 @@
 [ext_resource path="res://resources/assets/sfx/samples/confirmation.smp" type="Sample" id=3]
 [ext_resource path="res://resources/assets/sfx/samples/throw.smp" type="Sample" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="SampleLibrary" id=2]
+[sub_resource type="SampleLibrary" id=6]
 
 samples/confirmation = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
 samples/throw = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
@@ -18,7 +18,7 @@ samples/throw = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
 [node name="Bomb" type="KinematicBody2D"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 0.6, 0, 0, 0.8, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 2
@@ -35,14 +35,14 @@ texture = ExtResource( 2 )
 [node name="BombHitbox" type="CollisionShape2D" parent="."]
 
 transform/scale = Vector2( 0.6, 0.8 )
-shape = SubResource( 1 )
+shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 0
 
 [node name="SamplePlayer" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
-config/samples = SubResource( 2 )
+config/samples = SubResource( 6 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0

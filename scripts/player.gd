@@ -130,10 +130,8 @@ func check_keys(area):
 
 func check_key_name(area, key_name, key_index):
 	if (area.get_node('../').get_name() == key_name):
-		var fx = get_node('../SamplePlayer')
 		key[key_index] = 1
-		fx.set_default_volume(.3)
-		fx.play('confirmation')
+		get_node('SamplePlayer').play_confirmation()
 		area.get_node('../').queue_free()
 
 func check_doors(area):

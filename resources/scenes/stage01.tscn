@@ -6,7 +6,7 @@
 [ext_resource path="res://resources/scenes/key.tscn" type="PackedScene" id=4]
 [ext_resource path="res://resources/scenes/door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://resources/assets/bgm/house.ogg" type="AudioStream" id=6]
-[ext_resource path="res://stream_player.gd" type="Script" id=7]
+[ext_resource path="res://scripts/stream_player.gd" type="Script" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -235,7 +235,7 @@ target_path = NodePath("../Door2Target")
 transform/pos = Vector2( 8912, 141 )
 target_path = NodePath("../Door3Target")
 
-[node name="Door 4" parent="." instance=ExtResource( 5 )]
+[node name="Door4" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 12048, -1587 )
 
