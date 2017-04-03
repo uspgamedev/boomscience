@@ -10,9 +10,15 @@ var speed = Vector2()
 
 func _ready():
 	adjust_speed()
+	play_sound()
 	rotation = randf() - randf()
 	cur_rotation = rotation
 	set_fixed_process(true)
+
+func play_sound():
+	var fx = get_node('SamplePlayer')
+	fx.set_default_volume(.6)
+	fx.play('throw')
 
 func _fixed_process(delta):
 	apply_gravity(delta)

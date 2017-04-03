@@ -1,4 +1,4 @@
 extends StreamPlayer
 
 func _ready():
-	self.set_volume(1)
+	self.set_volume(2)

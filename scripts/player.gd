@@ -36,7 +36,7 @@ func _fixed_process(delta):
 	check_stairs()
 
 func check_stairs():
-	var stairs = get_node('../Stage01/Stairs')
+	var stairs = get_node('../Stairs')
 	var act = input._get_action(Input)
 	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1):
 		G = 0
@@ -89,9 +89,6 @@ func check_bomb_throw():
 	if (bomb_cooldown == 0):
 		var act = input._get_throw(Input)
 		if (act == ACT.THROW):
-			var fx = get_node('../SamplePlayer')
-			fx.set_default_volume(.3)
-			fx.play('throw')
 			bomb_cooldown = 1
 			var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
 			var mouse_dir = get_viewport().get_mouse_pos() - screen_center
