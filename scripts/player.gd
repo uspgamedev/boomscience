@@ -8,6 +8,7 @@ var bomb_scn = preload('../resources/scenes/bomb.tscn')
 onready var input = get_node('/root/input')
 onready var global = get_node('/root/global')
 onready var area = get_node('PlayerAreaDetection')
+onready var fx = get_node('SamplePlayer')
 var key = [0, 0, 0, 0]
 
 var anim = 'idle'
@@ -131,7 +132,7 @@ func check_keys(area):
 func check_key_name(area, key_name, key_index):
 	if (area.get_node('../').get_name() == key_name):
 		key[key_index] = 1
-		get_node('SamplePlayer').play_confirmation()
+		fx.play_confirmation()
 		area.get_node('../').queue_free()
 
 func check_doors(area):
@@ -142,8 +143,6 @@ func check_doors(area):
 		(global.stage == 3 and key[3] == 1)):
 		if (door.get_script() == Door):
 			var target = door.get_target()
-			var fx = get_node('../SamplePlayer')
-			fx.set_default_volume(.3)
 			if (target != null):
 				fx.play('confirmation')
 				global.stage += 1
