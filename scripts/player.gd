@@ -26,9 +26,7 @@ func _ready():
 	area.connect('area_exit',self,'_on_Area2D_area_exit')
 	hp = 500
 	sprite = get_node('PlayerSprite')
-	#print(global.respawn)
-	#self.set_pos(global.respawn)
-	set_fixed_process(true)
+	speed = Vector2(0, 0)
 
 func _fixed_process(delta):
 	check_camera()
@@ -116,9 +114,7 @@ func check_damage(area):
 		hp -= 100
 		knockback(area_node)
 	if (hp <= 0):
-		global.death_count += 1
-		get_node('../../Hud/DeathCounter').update_death_counter()
-		get_node('../..').reload_map()
+		die()
 
 func knockback(area_node):
 	var vector = self.get_pos() - area_node.get_pos()
@@ -158,6 +154,11 @@ func check_doors(area):
 
 func check_death(area):
 	if (area.get_name() == 'Death'):
-		global.death_count += 1
-		get_node('../../Hud/DeathCounter').update_death_counter()
-		get_node('../..').reload_map()
+		die()
+
+func die():
+	global.death_count += 1
+	get_node('../../Hud/DeathCounter').update_death_counter()
+	set_fixed_process(false)
+	get_node('../..').reload_map()
+	
