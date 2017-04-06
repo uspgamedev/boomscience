@@ -3,7 +3,6 @@ extends Node
 
 const ACT = preload('actions.gd')
 const DIR = preload('directions.gd')
-const STAGE = preload('res://resources/scenes/stage01.tscn')
 const PLAYER = preload ('res://resources/scenes/player.tscn')
 
 onready var input = get_node('/root/input')
@@ -14,7 +13,7 @@ func _ready():
 	input.connect('press_reset', self, 'reset')
 	input.connect('press_respawn', self, 'respawn')
 	player = PLAYER.instance()
-	get_node('Stage01').add_child(player)
+	reload_map()
 	set_fixed_process(true)
 
 func reset():
@@ -27,13 +26,14 @@ func respawn():
 	reload_map()
 
 func reload_map():
-	var current_stage = get_node('Stage01')
-	current_stage.remove_child(player)
-	current_stage.queue_free()
-	yield(get_tree(), 'fixed_frame')
-	yield(get_tree(), 'fixed_frame')
-	var tmp = STAGE.instance()
-	tmp.set_name('Stage01')
+	var current_stage = get_node('Stage')
+	if (current_stage != null):
+		current_stage.remove_child(player)
+		current_stage.queue_free()
+		yield(get_tree(), 'fixed_frame')
+		yield(get_tree(), 'fixed_frame')
+	var tmp = global.get_current_stage().instance()
+	tmp.set_name('Stage')
 	player.set_pos(global.respawn)
 	tmp.add_child(player)
 	self.add_child(tmp)

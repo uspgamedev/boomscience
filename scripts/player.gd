@@ -124,8 +124,6 @@ func knockback(area_node):
 func check_keys(area):
 	check_key_name(area, 'Key1', 0)
 	check_key_name(area, 'Key2', 1)
-	check_key_name(area, 'Key3', 2)
-	check_key_name(area, 'Key4', 3)
 
 func check_key_name(area, key_name, key_index):
 	if (area.get_node('../').get_name() == key_name):
@@ -136,17 +134,14 @@ func check_key_name(area, key_name, key_index):
 func check_doors(area):
 	var door = area.get_parent()
 	if ((global.stage == 0 and key[0] == 1) or \
-		(global.stage == 1 and key[1] == 1) or \
-		(global.stage == 2 and key[2] == 1) or \
-		(global.stage == 3 and key[3] == 1)):
+		(global.stage == 1 and key[1] == 1)):
 		if (door.get_script() == Door):
-			var target = door.get_target()
-			if (target != null):
+			if (global.stage == 0):
 				fx.play('confirmation')
 				global.stage += 1
-				global.respawn = target
 				self.set_pos(global.respawn)
-			else:
+				get_node('../..').reload_map()
+			elif (global.stage == 1):
 				if (get_node('Congratulations').get_scale() != Vector2(1, 1)):
 					fx.play('confirmation')
 				global.stop_chronometer()

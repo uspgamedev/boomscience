@@ -6,6 +6,10 @@ var death_count
 var chronometer
 var minute
 var second
+const STAGES = [
+	preload('res://resources/scenes/stage01.tscn'),
+	preload('res://resources/scenes/stage02.tscn')
+]
 
 func _ready():
 	init()
@@ -37,4 +41,6 @@ func init():
 	chronometer = 0
 	minute = 0
 	second = 0
-	
+
+func get_current_stage():
+	return STAGES[stage]
