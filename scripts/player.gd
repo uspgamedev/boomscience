@@ -26,7 +26,8 @@ func _ready():
 	area.connect('area_exit',self,'_on_Area2D_area_exit')
 	hp = 500
 	sprite = get_node('PlayerSprite')
-	self.set_pos(global.respawn)
+	#print(global.respawn)
+	#self.set_pos(global.respawn)
 	set_fixed_process(true)
 
 func _fixed_process(delta):
@@ -116,7 +117,8 @@ func check_damage(area):
 		knockback(area_node)
 	if (hp <= 0):
 		global.death_count += 1
-		get_tree().change_scene('res://resources/scenes/main.tscn')
+		get_node('../../Hud/DeathCounter').update_death_counter()
+		get_node('../..').reload_map()
 
 func knockback(area_node):
 	var vector = self.get_pos() - area_node.get_pos()
@@ -157,4 +159,5 @@ func check_doors(area):
 func check_death(area):
 	if (area.get_name() == 'Death'):
 		global.death_count += 1
-		get_tree().change_scene('res://resources/scenes/main.tscn')
+		get_node('../../Hud/DeathCounter').update_death_counter()
+		get_node('../..').reload_map()

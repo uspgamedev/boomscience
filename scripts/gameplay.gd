@@ -3,26 +3,41 @@ extends Node
 
 const ACT = preload('actions.gd')
 const DIR = preload('directions.gd')
-const HUD = preload('res://resources/scenes/hud.tscn')
+const STAGE = preload('res://resources/scenes/stage01.tscn')
+const PLAYER = preload ('res://resources/scenes/player.tscn')
 
-onready var player = get_node('Player')
 onready var input = get_node('/root/input')
+var player
 
 func _ready():
 	input.connect('press_quit', self, 'quit')
 	input.connect('press_reset', self, 'reset')
 	input.connect('press_respawn', self, 'respawn')
-	self.add_child(HUD.instance())
+	player = PLAYER.instance()
+	get_node('Stage01').add_child(player)
 	set_fixed_process(true)
 
 func reset():
 	global.reset()
-	get_tree().change_scene('res://resources/scenes/main.tscn')
+	reload_map()
 
 func respawn():
 	global.death_count += 1
-	get_tree().change_scene('res://resources/scenes/main.tscn')
+	get_node('Hud/DeathCounter').update_death_counter()
+	reload_map()
 
+func reload_map():
+	var current_stage = get_node('Stage01')
+	current_stage.remove_child(player)
+	current_stage.queue_free()
+	yield(get_tree(), 'fixed_frame')
+	yield(get_tree(), 'fixed_frame')
+	var tmp = STAGE.instance()
+	tmp.set_name('Stage01')
+	player.set_pos(global.respawn)
+	tmp.add_child(player)
+	self.add_child(tmp)
+ 
 func quit():
 	get_tree().quit()
 
