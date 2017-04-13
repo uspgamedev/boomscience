@@ -8,6 +8,7 @@ var bomb_scn = preload('../resources/scenes/bomb.tscn')
 onready var input = get_node('/root/input')
 onready var global = get_node('/root/global')
 onready var area = get_node('PlayerAreaDetection')
+onready var fx = get_node('SamplePlayer')
 var key = [0, 0, 0, 0]
 
 var anim = 'idle'
@@ -22,12 +23,10 @@ func _ready():
 	input.connect('hold_direction', self, '_add_speed')
 	input.connect('hold_direction', self, '_flip_sprite')
 	area.connect('area_enter', self, '_on_Area2D_area_enter')
-	area.connect('body_enter', self, '_on_Area2D_body_enter')
 	area.connect('area_exit',self,'_on_Area2D_area_exit')
 	hp = 500
 	sprite = get_node('PlayerSprite')
-	self.set_pos(global.respawn)
-	set_fixed_process(true)
+	speed = Vector2(0, 0)
 
 func _fixed_process(delta):
 	check_camera()
@@ -37,7 +36,7 @@ func _fixed_process(delta):
 	check_stairs()
 
 func check_stairs():
-	var stairs = get_node('../BasicTilemap/Stairs')
+	var stairs = get_node('../Stairs')
 	var act = input._get_action(Input)
 	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1):
 		G = 0
@@ -90,9 +89,6 @@ func check_bomb_throw():
 	if (bomb_cooldown == 0):
 		var act = input._get_throw(Input)
 		if (act == ACT.THROW):
-			var fx = get_node('../SamplePlayer')
-			fx.set_default_volume(.3)
-			fx.play('throw')
 			bomb_cooldown = 1
 			var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
 			var mouse_dir = get_viewport().get_mouse_pos() - screen_center
@@ -112,17 +108,13 @@ func _on_Area2D_area_enter(area):
 	check_death(area)
 	check_damage(area)
 
-func _on_Area2D_body_enter(area):
-	pass
-
 func check_damage(area):
 	var area_node = area.get_node('../')
 	if (area_node.is_in_group('enemy')):
 		hp -= 100
 		knockback(area_node)
 	if (hp <= 0):
-		global.death_count += 1
-		get_tree().change_scene('res://resources/scenes/main.tscn')
+		die()
 
 func knockback(area_node):
 	var vector = self.get_pos() - area_node.get_pos()
@@ -132,33 +124,24 @@ func knockback(area_node):
 func check_keys(area):
 	check_key_name(area, 'Key1', 0)
 	check_key_name(area, 'Key2', 1)
-	check_key_name(area, 'Key3', 2)
-	check_key_name(area, 'Key4', 3)
 
 func check_key_name(area, key_name, key_index):
 	if (area.get_node('../').get_name() == key_name):
-		var fx = get_node('../SamplePlayer')
 		key[key_index] = 1
-		fx.set_default_volume(.3)
-		fx.play('confirmation')
+		fx.play_confirmation()
 		area.get_node('../').queue_free()
 
 func check_doors(area):
 	var door = area.get_parent()
 	if ((global.stage == 0 and key[0] == 1) or \
-		(global.stage == 1 and key[1] == 1) or \
-		(global.stage == 2 and key[2] == 1) or \
-		(global.stage == 3 and key[3] == 1)):
+		(global.stage == 1 and key[1] == 1)):
 		if (door.get_script() == Door):
-			var target = door.get_target()
-			var fx = get_node('../SamplePlayer')
-			fx.set_default_volume(.3)
-			if (target != null):
+			if (global.stage == 0):
 				fx.play('confirmation')
 				global.stage += 1
-				global.respawn = target
 				self.set_pos(global.respawn)
-			else:
+				get_node('../..').reload_map()
+			elif (global.stage == 1):
 				if (get_node('Congratulations').get_scale() != Vector2(1, 1)):
 					fx.play('confirmation')
 				global.stop_chronometer()
@@ -166,5 +149,11 @@ func check_doors(area):
 
 func check_death(area):
 	if (area.get_name() == 'Death'):
-		global.death_count += 1
-		get_tree().change_scene('res://resources/scenes/main.tscn')
+		die()
+
+func die():
+	global.death_count += 1
+	get_node('../../Hud/DeathCounter').update_death_counter()
+	set_fixed_process(false)
+	get_node('../..').reload_map()
+	

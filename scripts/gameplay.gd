@@ -1,75 +1,49 @@
 
 extends Node
 
-const DIR = preload('directions.gd')
 const ACT = preload('actions.gd')
-const HUD = preload('res://resources/scenes/hud.tscn')
+const DIR = preload('directions.gd')
+const PLAYER = preload ('res://resources/scenes/player.tscn')
 
-onready var player = get_node('Player')
 onready var input = get_node('/root/input')
-onready var camera = get_node('Player/Camera')
-onready var tween = Tween.new()
-
-const EPSILON = 1e-40
-
-func load_camera():
-	camera.set_enable_follow_smoothing(true)
-	camera.set_follow_smoothing(7)
-	camera.make_current()
+var player
 
 func _ready():
-	load_camera()
-	get_node('StreamPlayer').set_volume(1)
 	input.connect('press_quit', self, 'quit')
 	input.connect('press_reset', self, 'reset')
 	input.connect('press_respawn', self, 'respawn')
-	player.add_child(tween)
-	self.add_child(HUD.instance())
+	player = PLAYER.instance()
+	reload_map()
 	set_fixed_process(true)
 
 func reset():
 	global.reset()
-	get_tree().change_scene('res://resources/scenes/main.tscn')
+	reload_map()
 
 func respawn():
 	global.death_count += 1
-	get_tree().change_scene('res://resources/scenes/main.tscn')
+	get_node('Hud/DeathCounter').update_death_counter()
+	reload_map()
 
+func reload_map():
+	var current_stage = get_node('Stage')
+	if (current_stage != null):
+		current_stage.remove_child(player)
+		current_stage.queue_free()
+		yield(get_tree(), 'fixed_frame')
+		yield(get_tree(), 'fixed_frame')
+	var tmp = global.get_current_stage().instance()
+	tmp.set_name('Stage')
+	player.set_pos(global.respawn)
+	tmp.add_child(player)
+	self.add_child(tmp)
+ 
 func quit():
 	get_tree().quit()
 
 func _fixed_process(delta):
-	check_camera()
 	check_instructions()
 
-func check_camera():
-	var dir = input._get_direction(Input)
-	var act = input._get_action(Input)
-	if (act == ACT.CAMERA):
-		if (dir == DIR.RIGHT):
-			move_camera(tween, Vector2(0, 0), Vector2(140, 0))
-		if (dir == DIR.LEFT):
-			move_camera(tween, Vector2(0, 0), Vector2(-140, 0))
-		if (dir == DIR.UP_RIGHT):
-			move_camera(tween, Vector2(0, 0), Vector2(140, -140))
-		if (dir == DIR.UP_LEFT):
-			move_camera(tween, Vector2(0, 0), Vector2(-140, -140))
-		if (dir == DIR.DOWN_RIGHT):
-			move_camera(tween, Vector2(0, 0), Vector2(140, 160))
-		if (dir == DIR.DOWN_LEFT):
-			move_camera(tween, Vector2(0, 0), Vector2(-140, 160))
-		if (dir == DIR.UP):
-			move_camera(tween, Vector2(0, 0), Vector2(0, -140))
-		if (dir == DIR.DOWN):
-			move_camera(tween, Vector2(0, 0), Vector2(0, 160))
-	elif (act != ACT.CAMERA and (dir == -1 or dir == DIR.RIGHT or dir == DIR.LEFT)):
-		move_camera(tween, camera.get_pos(), Vector2(0, 0))
-
-func move_camera(tween, init, final):
-	tween.interpolate_property(get_node('Player/Camera'), 'transform/pos', \
-		init, final, EPSILON, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
-	
 func check_instructions():
 	var hud = get_node('Hud/Instructions')
 	var background = get_node('Hud/Background')

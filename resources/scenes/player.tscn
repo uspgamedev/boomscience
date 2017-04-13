@@ -1,7 +1,11 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://resources/assets/images/gecko.png" type="Texture" id=2]
+[ext_resource path="res://scripts/player_camera.gd" type="Script" id=3]
+[ext_resource path="res://resources/assets/sfx/samples/confirmation.smp" type="Sample" id=4]
+[ext_resource path="res://resources/assets/sfx/samples/throw.smp" type="Sample" id=5]
+[ext_resource path="res://scripts/sample_player.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -48,6 +52,11 @@ tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ), "t
 
 custom_solver_bias = 0.0
 radius = 10.0
+
+[sub_resource type="SampleLibrary" id=6]
+
+samples/confirmation = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
+samples/throw = { "db":0.0, "pitch":1.0, "sample":ExtResource( 5 ) }
 
 [node name="Player" type="KinematicBody2D"]
 
@@ -110,7 +119,15 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
+script/script = ExtResource( 3 )
 __meta__ = { "_edit_lock_":true }
+
+[node name="Tween" type="Tween" parent="Camera"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 [node name="PlayerAreaDetection" type="Area2D" parent="."]
 
@@ -148,5 +165,23 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 __meta__ = { "_edit_lock_":true }
+
+[node name="SamplePlayer" type="SamplePlayer" parent="."]
+
+config/polyphony = 1
+config/samples = SubResource( 6 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
+script/script = ExtResource( 6 )
 
 

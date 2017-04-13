@@ -1,0 +1,164 @@
+[gd_scene load_steps=16 format=1]
+
+[ext_resource path="res://resources/scenes/basic_stage.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/assets/tilesets/platformer_tileset_template.xml" type="TileSet" id=2]
+[ext_resource path="res://resources/scenes/key.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/scenes/door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/assets/bgm/house.ogg" type="AudioStream" id=5]
+[ext_resource path="res://scripts/stream_player.gd" type="Script" id=6]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 12700, -900, 12960, -1520, 12880, -920 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 9760, 270, 9730, 0, 9840, 200 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 12700, -900, 12880, -920, 12230, 80, 12420, -420 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 12280, -220, 12420, -420, 12230, 80 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 12080, -140, 12280, -220, 12230, 80 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 12080, -140, 12230, 80, 11130, 100, 11020, -140 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 10180, 430, 9760, 270, 9840, 200, 10000, 280 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 10180, 430, 10000, 280, 10290, 280 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 11130, 100, 10180, 430, 10290, 280, 11020, -140 )
+
+[node name="Stage02" instance=ExtResource( 1 )]
+
+collision/layers = 3
+collision/mask = 3
+tile_data = IntArray( -3211208, 1, -3211207, 1, -3211206, 1, -3211205, 1, -3211204, 1, -3211203, 1, -3211202, 1, -3145672, 4, -3145671, 4, -3145670, 4, -3145669, 4, -3145668, 4, -3145667, 4, -3145666, 4, -720873, 1, -720872, 1, -720871, 1, -720870, 1, -720869, 1, -720868, 1, -720867, 1, -720866, 1, -720865, 1, -720864, 1, -720863, 1, -720862, 1, -720861, 1, -720860, 1, -720859, 1, -720858, 1, -720857, 1, -720856, 1, -720855, 1, -720854, 1, -720853, 1, -720852, 1, -720851, 1, -720850, 1, -720849, 1, -720848, 1, -720847, 1, -720846, 1, -720845, 1, -720844, 1, -720843, 1, -720842, 1, -720841, 1, -720840, 1, -655337, 4, -655336, 4, -655335, 4, -655334, 4, -655333, 4, -655332, 4, -655331, 4, -655330, 4, -655329, 4, -655328, 4, -655327, 4, -655326, 4, -655325, 4, -655324, 4, -655323, 4, -655322, 4, -655321, 4, -655320, 4, -655319, 4, -655318, 4, -655317, 4, -655316, 4, -655315, 4, -655314, 4, -655313, 4, -655312, 4, -655311, 4, -655310, 4, -655309, 4, -655308, 4, -655307, 4, -655306, 4, -655305, 4, -655304, 4, -589821, 1, -524285, 4, 131069, 1, 131070, 1, 131071, 1, 65536, 1, 65537, 1, 65538, 1, 65539, 1, 196605, 4, 196606, 4, 196607, 4, 131072, 4, 131073, 4, 131074, 4, 131075, 4 )
+
+[node name="Breakables" type="TileMap" parent="." groups=[ "breakable_block" ]]
+
+mode = 0
+tile_set = ExtResource( 2 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 3
+collision/mask = 3
+occluder/light_mask = 1
+tile_data = IntArray( -589816, 16, -589806, 16, -524280, 16, -524270, 16, -458744, 16, -458734, 16, -393203, 16, -327667, 16, -262131, 16, -196600, 16, -131064, 16, -65528, 16 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="Stairs" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 2 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 3
+collision/mask = 3
+occluder/light_mask = 1
+tile_data = IntArray( -3211209, 17, -3145673, 17, -3080137, 17, -3014601, 17, -2949065, 17, -2883529, 17, -2817993, 17, -2752457, 17, -2686921, 17, -2621385, 17, -2555849, 17, -2490313, 17, -2424777, 17, -2359241, 17, -2293705, 17, -2228169, 17, -2162633, 17, -2097097, 17, -2031561, 17, -1966025, 17, -1900489, 17, -1834953, 17, -1769417, 17, -1703881, 17, -1638345, 17, -1572809, 17, -1507273, 17, -1441737, 17, -1376201, 17, -1310665, 17, -1245129, 17, -1179593, 17, -1114057, 17, -1048521, 17, -982985, 17, -917449, 17, -851913, 17, -786377, 17, -720841, 17 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="Key2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 112, -272 )
+
+[node name="Door2" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1965, -1557 )
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 5 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+script/script = ExtResource( 6 )
+
+[node name="Death" type="Area2D" parent="."]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -10100, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, -10100, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 3 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, -10100, 0 )
+shapes/2/trigger = false
+shapes/3/shape = SubResource( 4 )
+shapes/3/transform = Matrix32( 1, 0, 0, 1, -10100, 0 )
+shapes/3/trigger = false
+shapes/4/shape = SubResource( 5 )
+shapes/4/transform = Matrix32( 1, 0, 0, 1, -10100, 0 )
+shapes/4/trigger = false
+shapes/5/shape = SubResource( 6 )
+shapes/5/transform = Matrix32( 1, 0, 0, 1, -10100, 0 )
+shapes/5/trigger = false
+shapes/6/shape = SubResource( 7 )
+shapes/6/transform = Matrix32( 1, 0, 0, 1, -10100, 0 )
+shapes/6/trigger = false
+shapes/7/shape = SubResource( 8 )
+shapes/7/transform = Matrix32( 1, 0, 0, 1, -10100, 0 )
+shapes/7/trigger = false
+shapes/8/shape = SubResource( 9 )
+shapes/8/transform = Matrix32( 1, 0, 0, 1, -10100, 0 )
+shapes/8/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_lock_":true }
+
+[node name="DeathCollision4" type="CollisionPolygon2D" parent="Death"]
+
+transform/pos = Vector2( -10100, 0 )
+build_mode = 0
+polygon = Vector2Array( 9730, 0, 9840, 200, 10000, 280, 10290, 280, 11020, -140, 12080, -140, 12280, -220, 12420, -420, 12700, -900, 12960, -1520, 12880, -920, 12230, 80, 11130, 100, 10180, 430, 9760, 270 )
+shape_range = Vector2( 0, 8 )
+trigger = false
+__meta__ = { "_edit_lock_":true }
+
+
