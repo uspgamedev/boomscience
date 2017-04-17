@@ -26,6 +26,7 @@ func _ready():
 	area.connect('area_exit',self,'_on_Area2D_area_exit')
 	hp = 500
 	sprite = get_node('PlayerSprite')
+	get_node('Congratulations').hide()
 	speed = Vector2(0, 0)
 
 func _fixed_process(delta):
@@ -142,10 +143,10 @@ func check_doors(area):
 				self.set_pos(global.respawn)
 				get_node('../..').reload_map()
 			elif (global.stage == 1):
-				if (get_node('Congratulations').get_scale() != Vector2(1, 1)):
+				if (get_node('Congratulations').is_hidden()):
 					fx.play('confirmation')
 				global.stop_chronometer()
-				get_node('Congratulations').set_scale(Vector2(1, 1))
+				get_node('Congratulations').show()
 
 func check_death(area):
 	if (area.get_name() == 'Death'):
@@ -156,4 +157,3 @@ func die():
 	get_node('../../Hud/DeathCounter').update_death_counter()
 	set_fixed_process(false)
 	get_node('../..').reload_map()
-	

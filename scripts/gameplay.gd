@@ -37,7 +37,7 @@ func reload_map():
 	player.set_pos(global.respawn)
 	tmp.add_child(player)
 	self.add_child(tmp)
- 
+
 func quit():
 	get_tree().quit()
 
