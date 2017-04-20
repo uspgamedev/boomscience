@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://scripts/hud.gd" type="Script" id=1]
 [ext_resource path="res://scripts/death_counter.gd" type="Script" id=2]
 [ext_resource path="res://scripts/chronometer.gd" type="Script" id=3]
 [ext_resource path="res://resources/assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://text.gd" type="Script" id=5]
+[ext_resource path="res://scripts/dialog_page.gd" type="Script" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -231,8 +233,19 @@ margin/right = 583.0
 margin/bottom = 83.0
 custom_fonts/normal_font = SubResource( 6 )
 bbcode/enabled = false
-bbcode/bbcode = "Hello World!"
+bbcode/bbcode = ""
 visible_characters = -1
+script/script = ExtResource( 5 )
+
+[node name="DialogPage1" type="Node" parent="DialogReader/TextPanel/Text"]
+
+script/script = ExtResource( 6 )
+text = "Hey bitch"
+
+[node name="DialogPage2" type="Node" parent="DialogReader/TextPanel/Text"]
+
+script/script = ExtResource( 6 )
+text = "what\'s up\?"
 
 [node name="ButtonPanel" type="HButtonArray" parent="DialogReader"]
 

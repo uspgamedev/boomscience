@@ -40,15 +40,18 @@ func _fixed_process(delta):
 	check_stairs()
 
 func _interact(act):
+	var text = hud.get_node('DialogReader/TextPanel/Text')
 	if (!hud.is_dialog_reader_hidden()):
 		player_freeze()
 		if (act == ACT.INTERACT):
-			player_unfreeze()
-			hud.hide_dialog_reader()
+			if (!text.next_page()):
+				player_unfreeze()
+				hud.hide_dialog_reader()
 	elif (nearby_npc != null):
 		if (act == ACT.INTERACT):
-			player_freeze()
-			hud.show_dialog_reader()
+			if (text.next_page()):
+				player_freeze()
+				hud.show_dialog_reader()
 
 func set_nearby_npc(npc):
 	nearby_npc = npc
@@ -88,7 +91,7 @@ func check_camera():
 	var act = input._get_action(Input)
 	if (act == ACT.CAMERA):
 		player_freeze()
-	elif (act == -1):
+	elif (act == -1 and hud.is_dialog_reader_hidden()):
 		player_unfreeze()
 
 func check_stealth():
