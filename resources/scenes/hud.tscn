@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
-[ext_resource path="res://scripts/death_counter.gd" type="Script" id=1]
-[ext_resource path="res://scripts/chronometer.gd" type="Script" id=2]
-[ext_resource path="res://resources/assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/hud.gd" type="Script" id=1]
+[ext_resource path="res://scripts/death_counter.gd" type="Script" id=2]
+[ext_resource path="res://scripts/chronometer.gd" type="Script" id=3]
+[ext_resource path="res://resources/assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -49,12 +50,12 @@ Panel/styles/panel = SubResource( 4 )
 Panel/styles/panelf = null
 Panel/styles/panelnc = null
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=6]
 
 font/size = 14
 font/use_mipmaps = false
 font/use_filter = false
-font/font = ExtResource( 3 )
+font/font = ExtResource( 4 )
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
@@ -75,6 +76,7 @@ layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
+script/script = ExtResource( 1 )
 
 [node name="Background" type="Polygon2D" parent="."]
 
@@ -104,7 +106,7 @@ margin/bottom = 14.0
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script/script = ExtResource( 1 )
+script/script = ExtResource( 2 )
 
 [node name="Chronometer" type="Label" parent="."]
 
@@ -121,7 +123,7 @@ margin/bottom = 19.0
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script/script = ExtResource( 2 )
+script/script = ExtResource( 3 )
 
 [node name="Hint" type="Label" parent="."]
 
@@ -189,6 +191,7 @@ max_lines_visible = -1
 
 [node name="DialogReader" type="Panel" parent="."]
 
+visibility/visible = false
 visibility/opacity = 0.8
 anchor/right = 1
 anchor/bottom = 1
@@ -226,9 +229,9 @@ margin/left = 5.0
 margin/top = 8.0
 margin/right = 583.0
 margin/bottom = 83.0
-custom_fonts/normal_font = SubResource( 9 )
+custom_fonts/normal_font = SubResource( 6 )
 bbcode/enabled = false
-bbcode/bbcode = "Hello World"
+bbcode/bbcode = "Hello World!"
 visible_characters = -1
 
 [node name="ButtonPanel" type="HButtonArray" parent="DialogReader"]
