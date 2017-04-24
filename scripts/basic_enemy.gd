@@ -10,6 +10,7 @@ var temp = 0
 func _ready():
 	sprite = get_node('BasicEnemySprite')
 	hp = 100
+	get_node('LifeBar').change_life(hp, 0)
 	set_fixed_process(true)
 	
 func _fixed_process(delta):

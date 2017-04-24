@@ -28,6 +28,8 @@ func _ready():
 	area.connect('area_enter', self, '_on_Area2D_area_enter')
 	area.connect('area_exit',self,'_on_Area2D_area_exit')
 	hp = 500
+	hud.get_node('LifeBar').set_max(500)
+	hud.get_node('LifeBar').change_life(hp, 0)
 	sprite = get_node('PlayerSprite')
 	get_node('Congratulations').hide()
 	speed = Vector2(0, 0)
@@ -142,6 +144,7 @@ func _on_Area2D_area_enter(area):
 func check_damage(area):
 	var area_node = area.get_node('../')
 	if (area_node.is_in_group('enemy')):
+		hud.get_node('LifeBar').change_life(hp, -100)
 		hp -= 100
 		knockback(area_node)
 	if (hp <= 0):
