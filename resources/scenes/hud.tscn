@@ -1,7 +1,76 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=15 format=1]
 
-[ext_resource path="res://scripts/death_counter.gd" type="Script" id=1]
-[ext_resource path="res://scripts/chronometer.gd" type="Script" id=2]
+[ext_resource path="res://scripts/hud.gd" type="Script" id=1]
+[ext_resource path="res://scripts/death_counter.gd" type="Script" id=2]
+[ext_resource path="res://scripts/chronometer.gd" type="Script" id=3]
+[ext_resource path="res://resources/assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://text.gd" type="Script" id=5]
+[ext_resource path="res://scripts/dialog_page.gd" type="Script" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+content_margin/left = 10.0
+content_margin/right = 10.0
+content_margin/top = 10.0
+content_margin/bottom = 10.0
+bg_color = Color( 0.0976563, 0.0900269, 0.0900269, 1 )
+light_color = Color( 0.8, 0.8, 0.8, 1 )
+dark_color = Color( 0.28125, 0.248291, 0.248291, 1 )
+border_size = 5
+border_blend = true
+draw_bg = true
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+content_margin/left = 10.0
+content_margin/right = 10.0
+content_margin/top = 10.0
+content_margin/bottom = 10.0
+bg_color = Color( 0.6, 0.6, 0.6, 1 )
+light_color = Color( 0.8, 0.8, 0.8, 1 )
+dark_color = Color( 0.8, 0.8, 0.8, 1 )
+border_size = 5
+border_blend = true
+draw_bg = true
+
+[sub_resource type="Theme" id=3]
+
+Panel/styles/panel = SubResource( 1 )
+Panel/styles/panelf = SubResource( 2 )
+Panel/styles/panelnc = null
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="Theme" id=5]
+
+Panel/styles/panel = SubResource( 4 )
+Panel/styles/panelf = null
+Panel/styles/panelnc = null
+
+[sub_resource type="DynamicFont" id=6]
+
+font/size = 14
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="Theme" id=8]
+
+Panel/styles/panel = SubResource( 7 )
+Panel/styles/panelf = null
+Panel/styles/panelnc = null
 
 [node name="Hud" type="CanvasLayer"]
 
@@ -9,6 +78,7 @@ layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
+script/script = ExtResource( 1 )
 
 [node name="Background" type="Polygon2D" parent="."]
 
@@ -38,7 +108,7 @@ margin/bottom = 14.0
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script/script = ExtResource( 1 )
+script/script = ExtResource( 2 )
 
 [node name="Chronometer" type="Label" parent="."]
 
@@ -55,7 +125,7 @@ margin/bottom = 19.0
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script/script = ExtResource( 2 )
+script/script = ExtResource( 3 )
 
 [node name="Hint" type="Label" parent="."]
 
@@ -120,5 +190,83 @@ text = "Find the keys to open each door!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="DialogReader" type="Panel" parent="."]
+
+visibility/visible = false
+visibility/opacity = 0.8
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = SubResource( 3 )
+margin/left = 10.0
+margin/top = 360.0
+margin/right = 10.0
+margin/bottom = 4.0
+
+[node name="TextPanel" type="Panel" parent="DialogReader"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = SubResource( 5 )
+margin/left = 10.0
+margin/top = 10.0
+margin/right = 10.0
+margin/bottom = 80.0
+
+[node name="Text" type="RichTextLabel" parent="DialogReader/TextPanel"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 5.0
+margin/top = 8.0
+margin/right = 583.0
+margin/bottom = 83.0
+custom_fonts/normal_font = SubResource( 6 )
+bbcode/enabled = false
+bbcode/bbcode = ""
+visible_characters = -1
+script/script = ExtResource( 5 )
+
+[node name="DialogPage1" type="Node" parent="DialogReader/TextPanel/Text"]
+
+script/script = ExtResource( 6 )
+text = "Hey bitch"
+
+[node name="DialogPage2" type="Node" parent="DialogReader/TextPanel/Text"]
+
+script/script = ExtResource( 6 )
+text = "what\'s up\?"
+
+[node name="ButtonPanel" type="HButtonArray" parent="DialogReader"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = SubResource( 8 )
+margin/left = 10.0
+margin/top = 90.0
+margin/right = 10.0
+margin/bottom = 10.0
+flat = false
+button/count = 1
+button/min_button_size = 60.0
+button/align = 4
+button/0/text = ""
+button/0/tooltip = ""
+button/0/icon = null
+button/selected = 0
 
 

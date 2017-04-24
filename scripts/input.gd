@@ -59,6 +59,8 @@ func _get_action(e):
 		act = ACT.JUMP
 	if e.is_action_pressed('ui_instructions'):
 		act = ACT.INST
+	if e.is_action_pressed('ui_interact'):
+		act = ACT.INTERACT
 	return act
 
 func _get_throw(e):

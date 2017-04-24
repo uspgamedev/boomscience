@@ -9,16 +9,19 @@ onready var input = get_node('/root/input')
 onready var global = get_node('/root/global')
 onready var area = get_node('PlayerAreaDetection')
 onready var fx = get_node('SamplePlayer')
+onready var hud = get_node('../../Hud')
 var key = [0, 0, 0, 0]
 
 var anim = 'idle'
 var anim_new
 var bomb_cooldown = 0
 var bomb_direction
+var nearby_npc
 
 func _ready():
 	set_fixed_process(true)
 	input.connect('press_action', self, '_jump')
+	input.connect('press_action', self, '_interact')
 	input.connect('hold_action', self, '_add_jump_height')
 	input.connect('hold_direction', self, '_add_speed')
 	input.connect('hold_direction', self, '_flip_sprite')
@@ -26,6 +29,7 @@ func _ready():
 	area.connect('area_exit',self,'_on_Area2D_area_exit')
 	hp = 500
 	sprite = get_node('PlayerSprite')
+	get_node('Congratulations').hide()
 	speed = Vector2(0, 0)
 
 func _fixed_process(delta):
@@ -34,6 +38,23 @@ func _fixed_process(delta):
 	check_animation()
 	check_bomb_throw()
 	check_stairs()
+
+func _interact(act):
+	var text = hud.get_node('DialogReader/TextPanel/Text')
+	if (!hud.is_dialog_reader_hidden()):
+		player_freeze()
+		if (act == ACT.INTERACT):
+			if (!text.next_page()):
+				player_unfreeze()
+				hud.hide_dialog_reader()
+	elif (nearby_npc != null):
+		if (act == ACT.INTERACT):
+			if (text.next_page()):
+				player_freeze()
+				hud.show_dialog_reader()
+
+func set_nearby_npc(npc):
+	nearby_npc = npc
 
 func check_stairs():
 	var stairs = get_node('../Stairs')
@@ -54,14 +75,24 @@ func check_stairs():
 		if (act != ACT.STEALTH):
 			acc = ACC
 
+func player_freeze():
+	if (input.is_connected('hold_direction', self, '_add_speed')):
+		input.disconnect('hold_direction', self, '_add_speed')
+	if (input.is_connected('press_action', self, '_jump')):
+		input.disconnect('press_action', self, '_jump')
+
+func player_unfreeze():
+	if (!input.is_connected('hold_direction', self, '_add_speed')):
+		input.connect('hold_direction', self, '_add_speed')
+	if (!input.is_connected('press_action', self, '_jump')):
+		input.connect('press_action', self, '_jump')
+
 func check_camera():
 	var act = input._get_action(Input)
 	if (act == ACT.CAMERA):
-		if (input.is_connected('hold_direction', self, '_add_speed')):
-			input.disconnect('hold_direction', self, '_add_speed')
-	elif (act == -1):
-		if (!input.is_connected('hold_direction', self, '_add_speed')):
-			input.connect('hold_direction', self, '_add_speed')
+		player_freeze()
+	elif (act == -1 and hud.is_dialog_reader_hidden()):
+		player_unfreeze()
 
 func check_stealth():
 	var act = input._get_action(Input)
@@ -142,10 +173,10 @@ func check_doors(area):
 				self.set_pos(global.respawn)
 				get_node('../..').reload_map()
 			elif (global.stage == 1):
-				if (get_node('Congratulations').get_scale() != Vector2(1, 1)):
+				if (get_node('Congratulations').is_hidden()):
 					fx.play('confirmation')
 				global.stop_chronometer()
-				get_node('Congratulations').set_scale(Vector2(1, 1))
+				get_node('Congratulations').show()
 
 func check_death(area):
 	if (area.get_name() == 'Death'):
@@ -156,4 +187,3 @@ func die():
 	get_node('../../Hud/DeathCounter').update_death_counter()
 	set_fixed_process(false)
 	get_node('../..').reload_map()
-	

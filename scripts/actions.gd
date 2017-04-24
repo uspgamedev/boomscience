@@ -7,3 +7,4 @@ const STEALTH = 3
 const JUMP = 4
 const THROW = 5
 const INST = 6
+const INTERACT = 7

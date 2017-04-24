@@ -151,7 +151,6 @@ __meta__ = { "_edit_lock_":true }
 
 [node name="Congratulations" type="Label" parent="."]
 
-rect/scale = Vector2( 0, 0 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2

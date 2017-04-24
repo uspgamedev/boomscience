@@ -13,7 +13,6 @@ extents = Vector2( 10, 10 )
 texture = ExtResource( 1 )
 script/script = ExtResource( 2 )
 __meta__ = { "_edit_lock_":true }
-target_path = null
 
 [node name="DoorArea" type="Area2D" parent="."]
 
