@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://scripts/basic_enemy.gd" type="Script" id=1]
 [ext_resource path="res://resources/assets/images/dog-scientist.png" type="Texture" id=2]
-
+[ext_resource path="res://scripts/life_bar.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -28,14 +28,40 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.2 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ 0, 1 ] }
 
+[sub_resource type="StyleBoxFlat" id=4]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0.875, 0.249512, 0.249512, 1 )
+light_color = Color( 0.921875, 0.417725, 0.417725, 1 )
+dark_color = Color( 0.691406, 0.329498, 0.329498, 1 )
+border_size = 3
+border_blend = true
+draw_bg = true
+
+[sub_resource type="StyleBoxFlat" id=5]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0.156863, 0.109804, 0.203922, 1 )
+light_color = Color( 0.0470588, 0.0313726, 0.0627451, 1 )
+dark_color = Color( 0.0470588, 0.0313726, 0.0627451, 1 )
+border_size = 2
+border_blend = true
+draw_bg = true
+
 [node name="BasicEnemy" type="KinematicBody2D" groups=[ "enemy" ]]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 2 )
 shapes/0/trigger = false
-collision/layers = 2
-collision/mask = 2
+collision/layers = 3
+collision/mask = 3
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 __meta__ = { "_edit_lock_":true }
@@ -84,5 +110,34 @@ transform/pos = Vector2( 0, 2 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+
+[node name="LifeBar" type="ProgressBar" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -32.0
+margin/top = -35.0
+margin/right = 32.0
+margin/bottom = -27.0
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 50.0
+range/exp_edit = false
+range/rounded = false
+percent/visible = false
+script/script = ExtResource( 3 )
+
+[node name="ChangeStatus" type="Tween" parent="LifeBar"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 

@@ -9,6 +9,7 @@ var temp = 0
 
 func _ready():
 	sprite = get_node('BasicEnemySprite')
+	hp = 100
 	set_fixed_process(true)
 	
 func _fixed_process(delta):
@@ -31,3 +32,12 @@ func routine(delta):
 		temp = 0
 		dir *= -1
 		sprite.set_flip_h(max(dir, 0))
+
+func take_damage(damage):
+	get_node('LifeBar').change_life(hp, -damage)
+	hp -= damage
+	if (hp <= 0):
+		die()
+
+func die():
+	self.queue_free()
