@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://scripts/hud.gd" type="Script" id=1]
 [ext_resource path="res://scripts/death_counter.gd" type="Script" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://resources/assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://text.gd" type="Script" id=5]
 [ext_resource path="res://scripts/dialog_page.gd" type="Script" id=6]
+[ext_resource path="res://scripts/life_bar.gd" type="Script" id=7]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=6]
 
 content_margin/left = 10.0
 content_margin/right = 10.0
@@ -20,7 +21,7 @@ border_size = 5
 border_blend = true
 draw_bg = true
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=7]
 
 content_margin/left = 10.0
 content_margin/right = 10.0
@@ -33,44 +34,70 @@ border_size = 5
 border_blend = true
 draw_bg = true
 
-[sub_resource type="Theme" id=3]
+[sub_resource type="Theme" id=8]
 
-Panel/styles/panel = SubResource( 1 )
-Panel/styles/panelf = SubResource( 2 )
+Panel/styles/panel = SubResource( 6 )
+Panel/styles/panelf = SubResource( 7 )
 Panel/styles/panelnc = null
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=9]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="Theme" id=5]
+[sub_resource type="Theme" id=10]
 
-Panel/styles/panel = SubResource( 4 )
+Panel/styles/panel = SubResource( 9 )
 Panel/styles/panelf = null
 Panel/styles/panelnc = null
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=11]
 
 font/size = 14
 font/use_mipmaps = false
 font/use_filter = false
 font/font = ExtResource( 4 )
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="StyleBoxEmpty" id=12]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="Theme" id=8]
+[sub_resource type="Theme" id=13]
 
-Panel/styles/panel = SubResource( 7 )
+Panel/styles/panel = SubResource( 12 )
 Panel/styles/panelf = null
 Panel/styles/panelnc = null
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0.875, 0.249512, 0.249512, 1 )
+light_color = Color( 0.921875, 0.417725, 0.417725, 1 )
+dark_color = Color( 0.691406, 0.329498, 0.329498, 1 )
+border_size = 3
+border_blend = true
+draw_bg = true
+
+[sub_resource type="StyleBoxFlat" id=5]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0.156863, 0.109804, 0.203922, 1 )
+light_color = Color( 0.0470588, 0.0313726, 0.0627451, 1 )
+dark_color = Color( 0.0470588, 0.0313726, 0.0627451, 1 )
+border_size = 2
+border_blend = true
+draw_bg = true
 
 [node name="Hud" type="CanvasLayer"]
 
@@ -201,7 +228,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = SubResource( 3 )
+theme/theme = SubResource( 8 )
 margin/left = 10.0
 margin/top = 360.0
 margin/right = 10.0
@@ -215,7 +242,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = SubResource( 5 )
+theme/theme = SubResource( 10 )
 margin/left = 10.0
 margin/top = 10.0
 margin/right = 10.0
@@ -231,7 +258,7 @@ margin/left = 5.0
 margin/top = 8.0
 margin/right = 583.0
 margin/bottom = 83.0
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 11 )
 bbcode/enabled = false
 bbcode/bbcode = ""
 visible_characters = -1
@@ -255,18 +282,45 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = SubResource( 8 )
+theme/theme = SubResource( 13 )
 margin/left = 10.0
 margin/top = 90.0
 margin/right = 10.0
 margin/bottom = 10.0
-flat = false
 button/count = 1
 button/min_button_size = 60.0
 button/align = 4
 button/0/text = ""
-button/0/tooltip = ""
 button/0/icon = null
 button/selected = 0
+
+[node name="LifeBar" type="ProgressBar" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 5.0
+margin/top = 25.0
+margin/right = 133.0
+margin/bottom = 37.0
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 50.0
+range/exp_edit = false
+range/rounded = false
+percent/visible = false
+script/script = ExtResource( 7 )
+
+[node name="ChangeStatus" type="Tween" parent="LifeBar"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 

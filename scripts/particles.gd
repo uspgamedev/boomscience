@@ -20,3 +20,5 @@ func _on_Area2D_body_enter(body):
 				var tile = exp_tile + Vector2(i, j)
 				if ((body.map_to_world(tile) - pos).length() < 80):
 					body.set_cellv(tile, -1)
+	if (body.is_in_group('enemy')):
+		body.take_damage(40)
