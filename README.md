@@ -1,5 +1,5 @@
 # BoomScience
-BoomScience is a steampunk metroidvania platformer set in an anthropomorphic universe. The main character is a scientist that had his research on sustainable energy stolen by a company and used for bellic/war purposes against his will. His objective is to retrieve his research and prevent caos.
+BoomScience is a steampunk metroidvania platformer set in an anthropomorphic universe. The main character is a scientist that had his research on sustainable energy stolen by a company and used for bellic/war purposes against his will. His objective is to retrieve his research and prevent chaos.
 ## Installation
 This game is developed using Godot Engine. Install the latest version on https://godotengine.org/download, or visit http://store.steampowered.com/app/404790/Godot_Engine/.
 ## Usage
@@ -34,5 +34,5 @@ A demo was released on March 24th, 2017.
 * Lívia Maki Yoshikawa
 * Eduardo Silva Araújo
 ## License
-Licensed under the MIT License.
+Licensed under the [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
 
