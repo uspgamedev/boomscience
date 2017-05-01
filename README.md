@@ -34,5 +34,6 @@ A demo was released on March 24th, 2017.
 * Lívia Maki Yoshikawa
 * Eduardo Silva Araújo
 ## License
-Licensed under the [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
+Code licensed under the MIT License.
+Everything else licensed under the [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
 
