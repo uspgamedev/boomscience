@@ -12,7 +12,7 @@ On Godot Engine Project Manager, import engine.cfg and run.
 5. Submit a pull request :D
 ## History
 This project was created on February 2016. A prototype was made on its first semester; the main development started on the second semester.
-On March 25th, 2017, a demo was released.
+A demo was released on March 24th, 2017.
 ## Credits
 ### Programming
 * Victor Domiciano Mendonça
@@ -29,6 +29,7 @@ On March 25th, 2017, a demo was released.
 * Willian Akira Mizutani
 * André Victor dos Santos Nakazawa
 * Victor Domiciano Mendonça
+* Renato Yoshio Eguti
 ### Music and Sound
 * Lívia Maki Yoshikawa
 * Eduardo Silva Araújo
