@@ -13,6 +13,7 @@ onready var global = get_node('/root/global')
 onready var area = get_node('PlayerAreaDetection')
 onready var fx = get_node('SamplePlayer')
 onready var hud = get_node('../../Hud')
+onready var invslot_view = hud.get_node('CharInfo/InvenventorySlot')
 var key = [0, 0, 0, 0]
 
 var anim = 'idle'
@@ -20,6 +21,8 @@ var anim_new
 var bomb_cooldown = 0
 var bomb_direction
 var nearby_npc
+
+signal equipped_bomb(texture)
 
 func _ready():
 	set_fixed_process(true)
@@ -30,6 +33,7 @@ func _ready():
 	input.connect('hold_direction', self, '_flip_sprite')
 	area.connect('area_enter', self, '_on_Area2D_area_enter')
 	area.connect('area_exit',self,'_on_Area2D_area_exit')
+	self.connect('equipped_bomb', invslot_view, '_change_icon')
 	hp = 500
 	equip_bomb(0)
 	var lifebar = hud.get_node('CharInfo/LifeBar')
@@ -141,6 +145,7 @@ func check_bomb_throw():
 			var bomb = bomb_scn.instance()
 			bomb.set_pos(self.get_pos())
 			get_parent().add_child(bomb)
+			equip_bomb(0)
 	elif (bomb_cooldown >= 1):
 		bomb_cooldown += 1
 		if (bomb_cooldown > 20):
