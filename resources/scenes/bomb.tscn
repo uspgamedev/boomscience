@@ -12,8 +12,18 @@ extents = Vector2( 10, 10 )
 
 [sub_resource type="SampleLibrary" id=2]
 
-samples/confirmation = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
-samples/throw = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
+samples/confirmation = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
+samples/throw = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 4 )
+}
 
 [node name="Bomb" type="KinematicBody2D"]
 
@@ -29,7 +39,6 @@ script/script = ExtResource( 1 )
 [node name="BombSprite" type="Sprite" parent="."]
 
 transform/pos = Vector2( 0, 3.57628e-07 )
-transform/scale = Vector2( 0.09, 0.09 )
 texture = ExtResource( 2 )
 
 [node name="BombHitbox" type="CollisionShape2D" parent="."]
