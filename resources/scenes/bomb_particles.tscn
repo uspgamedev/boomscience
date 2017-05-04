@@ -14,6 +14,7 @@ config/amount = 50
 config/lifetime = 1.0
 config/time_scale = 2.5
 config/preprocess = 0.1
+config/process_mode = 1
 config/explosiveness = 0.2
 params/direction = 180.0
 params/spread = 180.0
@@ -33,7 +34,9 @@ params/anim_speed_scale = 1.0
 params/anim_initial_pos = 0.0
 color/color = Color( 1, 0, 0, 1 )
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
 
 [node name="ParticlesRange" type="Area2D" parent="."]
 

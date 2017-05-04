@@ -3,13 +3,18 @@ extends 'res://scripts/body.gd'
 const Door = preload("res://scripts/door.gd")
 
 const ACT = preload('actions.gd')
-var bomb_scn = preload('../resources/scenes/bomb.tscn')
+var bombs = [
+	preload('../resources/scenes/bomb.tscn'),
+	preload('../resources/scenes/projectiles/gem_bomb.tscn')
+]
+var bomb_scn = null
 
 onready var input = get_node('/root/input')
 onready var global = get_node('/root/global')
 onready var area = get_node('PlayerAreaDetection')
 onready var fx = get_node('SamplePlayer')
 onready var hud = get_node('../../Hud')
+onready var invslot_view = hud.get_node('CharInfo/InventorySlot')
 var key = [0, 0, 0, 0]
 
 var anim = 'idle'
@@ -17,6 +22,8 @@ var anim_new
 var bomb_cooldown = 0
 var bomb_direction
 var nearby_npc
+
+signal equipped_bomb(texture)
 
 func _ready():
 	set_fixed_process(true)
@@ -27,9 +34,12 @@ func _ready():
 	input.connect('hold_direction', self, '_flip_sprite')
 	area.connect('area_enter', self, '_on_Area2D_area_enter')
 	area.connect('area_exit',self,'_on_Area2D_area_exit')
+	self.connect('equipped_bomb', invslot_view, '_change_icon')
 	hp = 500
-	hud.get_node('LifeBar').set_max(500)
-	hud.get_node('LifeBar').change_life(hp, 0)
+	equip_bomb(0)
+	var lifebar = hud.get_node('CharInfo/LifeBar')
+	lifebar.set_max(500)
+	lifebar.change_life(hp, 0)
 	sprite = get_node('PlayerSprite')
 	get_node('Congratulations').hide()
 	speed = Vector2(0, 0)
@@ -54,6 +64,12 @@ func _interact(act):
 			if (text.next_page()):
 				player_freeze()
 				hud.show_dialog_reader()
+
+func equip_bomb(idx):
+	bomb_scn = bombs[idx]
+	var temp = bomb_scn.instance()
+	var sprite = temp.get_node("BombSprite").get_texture()
+	emit_signal("equipped_bomb", sprite)
 
 func set_nearby_npc(npc):
 	nearby_npc = npc
@@ -130,6 +146,7 @@ func check_bomb_throw():
 			var bomb = bomb_scn.instance()
 			bomb.set_pos(self.get_pos())
 			get_parent().add_child(bomb)
+			equip_bomb(1)
 	elif (bomb_cooldown >= 1):
 		bomb_cooldown += 1
 		if (bomb_cooldown > 20):
@@ -144,7 +161,7 @@ func _on_Area2D_area_enter(area):
 func check_damage(area):
 	var area_node = area.get_node('../')
 	if (area_node.is_in_group('enemy')):
-		hud.get_node('LifeBar').change_life(hp, -100)
+		hud.get_node('CharInfo/LifeBar').change_life(hp, -100)
 		hp -= 100
 		knockback(area_node)
 	if (hp <= 0):

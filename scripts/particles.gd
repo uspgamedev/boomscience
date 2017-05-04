@@ -1,7 +1,7 @@
 extends Particles2D
 
 var timer = 0
-var limit = 11
+var limit = 6
 
 func _ready():
 	set_fixed_process(true)
