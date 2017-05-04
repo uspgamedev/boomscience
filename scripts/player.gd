@@ -4,7 +4,8 @@ const Door = preload("res://scripts/door.gd")
 
 const ACT = preload('actions.gd')
 var bombs = [
-	preload('../resources/scenes/bomb.tscn')
+	preload('../resources/scenes/bomb.tscn'),
+	preload('../resources/scenes/projectiles/gem_bomb.tscn')
 ]
 var bomb_scn = null
 
@@ -13,7 +14,7 @@ onready var global = get_node('/root/global')
 onready var area = get_node('PlayerAreaDetection')
 onready var fx = get_node('SamplePlayer')
 onready var hud = get_node('../../Hud')
-onready var invslot_view = hud.get_node('CharInfo/InvenventorySlot')
+onready var invslot_view = hud.get_node('CharInfo/InventorySlot')
 var key = [0, 0, 0, 0]
 
 var anim = 'idle'
@@ -68,7 +69,7 @@ func equip_bomb(idx):
 	bomb_scn = bombs[idx]
 	var temp = bomb_scn.instance()
 	var sprite = temp.get_node("BombSprite").get_texture()
-	emit_signal("equiped_bomb", sprite)
+	emit_signal("equipped_bomb", sprite)
 
 func set_nearby_npc(npc):
 	nearby_npc = npc
@@ -145,7 +146,7 @@ func check_bomb_throw():
 			var bomb = bomb_scn.instance()
 			bomb.set_pos(self.get_pos())
 			get_parent().add_child(bomb)
-			equip_bomb(0)
+			equip_bomb(1)
 	elif (bomb_cooldown >= 1):
 		bomb_cooldown += 1
 		if (bomb_cooldown > 20):

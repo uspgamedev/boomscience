@@ -363,16 +363,14 @@ script/script = ExtResource( 8 )
 
 [node name="TextureFrame" type="TextureFrame" parent="CharInfo/InventorySlot"]
 
-anchor/right = 1
-anchor/bottom = 1
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 7.0
 margin/top = 7.0
-margin/right = 7.0
-margin/bottom = 7.0
+margin/right = 41.0
+margin/bottom = 41.0
 texture = ExtResource( 9 )
 stretch_mode = 0
 
