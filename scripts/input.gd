@@ -10,6 +10,7 @@ signal press_action(act)
 signal press_quit
 signal press_reset
 signal press_respawn
+signal press_bomb_throw
 
 var dir = -1
 
@@ -20,8 +21,10 @@ func _ready():
 func _input(event):
 	dir = self._get_direction(event)
 	var act = self._get_action(event)
+	var throw = self._get_throw(event)
 	if dir != -1: emit_signal('press_direction', dir)
 	if act != -1: emit_signal('press_action', act)
+	if throw != -1: emit_signal('press_bomb_throw', throw)
 	if act != -1: emit_signal('press_respawn', act)
 	if _get_quit(event): emit_signal('press_quit')
 	if _get_reset(event): emit_signal('press_reset')
@@ -66,10 +69,10 @@ func _get_action(e):
 	return act
 
 func _get_throw(e):
-	var act = -1
+	var throw = -1
 	if e.is_action_pressed('ui_throw'):
-		act = ACT.THROW
-	return act
+		throw = ACT.THROW
+	return throw
 
 func _get_direction(e):
 	dir = -1
