@@ -61,6 +61,8 @@ func _get_action(e):
 		act = ACT.INST
 	if e.is_action_pressed('ui_interact'):
 		act = ACT.INTERACT
+	if e.is_action_pressed('ui_switch'):
+		act = ACT.SWITCH
 	return act
 
 func _get_throw(e):

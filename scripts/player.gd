@@ -22,6 +22,7 @@ var anim_new
 var bomb_cooldown = 0
 var bomb_direction
 var nearby_npc
+var equipped_bomb = 0
 
 signal equipped_bomb(texture)
 
@@ -29,6 +30,7 @@ func _ready():
 	set_fixed_process(true)
 	input.connect('press_action', self, '_jump')
 	input.connect('press_action', self, '_interact')
+	input.connect('press_action', self, '_switch_bomb')
 	input.connect('hold_action', self, '_add_jump_height')
 	input.connect('hold_direction', self, '_add_speed')
 	input.connect('hold_direction', self, '_flip_sprite')
@@ -65,8 +67,13 @@ func _interact(act):
 				player_freeze()
 				hud.show_dialog_reader()
 
+func _switch_bomb(act):
+	if (act == ACT.SWITCH):
+		equip_bomb((equipped_bomb + 1)%2)
+
 func equip_bomb(idx):
 	bomb_scn = bombs[idx]
+	equipped_bomb = idx
 	var temp = bomb_scn.instance()
 	var sprite = temp.get_node("BombSprite").get_texture()
 	emit_signal("equipped_bomb", sprite)
@@ -146,7 +153,6 @@ func check_bomb_throw():
 			var bomb = bomb_scn.instance()
 			bomb.set_pos(self.get_pos())
 			get_parent().add_child(bomb)
-			equip_bomb(1)
 	elif (bomb_cooldown >= 1):
 		bomb_cooldown += 1
 		if (bomb_cooldown > 20):

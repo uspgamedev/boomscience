@@ -22,7 +22,12 @@ tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.15, 0.3, 0.45 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 0, 1, 2, 3 ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 
 [sub_resource type="Animation" id=3]
 
@@ -34,7 +39,12 @@ tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.15, 0.3 ), "transitions":FloatArray( 1, 1, 1 ), "update":1, "values":[ 5, 6, 7 ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.15, 0.3 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7 ]
+}
 
 [sub_resource type="Animation" id=4]
 
@@ -46,7 +56,12 @@ tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "update":1, "values":[ 4, 5, 6, 7, 8, 9, 10, 11 ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
 
 [sub_resource type="CircleShape2D" id=5]
 
@@ -55,8 +70,18 @@ radius = 10.0
 
 [sub_resource type="SampleLibrary" id=6]
 
-samples/confirmation = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
-samples/throw = { "db":0.0, "pitch":1.0, "sample":ExtResource( 5 ) }
+samples/confirmation = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 4 )
+}
+samples/throw = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 5 )
+}
 
 [node name="Player" type="KinematicBody2D"]
 
@@ -68,7 +93,9 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 
@@ -76,7 +103,9 @@ texture = ExtResource( 2 )
 hframes = 12
 frame = 4
 region_rect = Rect2( 148, 19, 29, 52 )
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="PlayerSprite"]
 
@@ -98,7 +127,9 @@ transform/pos = Vector2( 0, 2 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Camera" type="Camera2D" parent="."]
 
@@ -120,7 +151,9 @@ drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 script/script = ExtResource( 3 )
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Tween" type="Tween" parent="Camera"]
 
@@ -139,7 +172,9 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="PlayerCollisionDetection" type="CollisionShape2D" parent="PlayerAreaDetection"]
 
@@ -147,7 +182,9 @@ visibility/visible = false
 shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Congratulations" type="Label" parent="."]
 
@@ -159,11 +196,14 @@ margin/left = -50.0
 margin/top = -58.0
 margin/right = 62.0
 margin/bottom = -27.0
-text = "    Such game\nMuch awesome"
+text = "    Such game
+Much awesome"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="SamplePlayer" type="SamplePlayer" parent="."]
 
