@@ -279,12 +279,12 @@ script/script = ExtResource( 5 )
 [node name="DialogPage1" type="Node" parent="DialogReader/TextPanel/Text"]
 
 script/script = ExtResource( 6 )
-text = "Hey bitch"
+text = "Regina: Hey bitch"
 
 [node name="DialogPage2" type="Node" parent="DialogReader/TextPanel/Text"]
 
 script/script = ExtResource( 6 )
-text = "what's up?"
+text = "Regina: What's up?"
 
 [node name="ButtonPanel" type="HButtonArray" parent="DialogReader"]
 

@@ -106,12 +106,16 @@ func player_freeze():
 		input.disconnect('hold_direction', self, '_add_speed')
 	if (input.is_connected('press_action', self, '_jump')):
 		input.disconnect('press_action', self, '_jump')
+	if (input.is_connected('press_bomb_throw', self, '_bomb_throw')):
+		input.disconnect('press_bomb_throw', self, '_bomb_throw')
 
 func player_unfreeze():
 	if (!input.is_connected('hold_direction', self, '_add_speed')):
 		input.connect('hold_direction', self, '_add_speed')
 	if (!input.is_connected('press_action', self, '_jump')):
 		input.connect('press_action', self, '_jump')
+	if (!input.is_connected('press_bomb_throw', self, '_bomb_throw')):
+		input.connect('press_bomb_throw', self, '_bomb_throw')
 
 func check_camera():
 	var act = input._get_action(Input)
