@@ -30,6 +30,7 @@ func _ready():
 	set_fixed_process(true)
 	input.connect('press_action', self, '_jump')
 	input.connect('press_action', self, '_interact')
+	input.connect('press_bomb_throw', self, '_bomb_throw')
 	input.connect('press_action', self, '_switch_bomb')
 	input.connect('hold_action', self, '_add_jump_height')
 	input.connect('hold_direction', self, '_add_speed')
@@ -50,8 +51,8 @@ func _fixed_process(delta):
 	check_camera()
 	check_stealth()
 	check_animation()
-	check_bomb_throw()
 	check_stairs()
+	update_bomb_cooldown()
 
 func _interact(act):
 	var text = hud.get_node('DialogReader/TextPanel/Text')
@@ -105,12 +106,16 @@ func player_freeze():
 		input.disconnect('hold_direction', self, '_add_speed')
 	if (input.is_connected('press_action', self, '_jump')):
 		input.disconnect('press_action', self, '_jump')
+	if (input.is_connected('press_bomb_throw', self, '_bomb_throw')):
+		input.disconnect('press_bomb_throw', self, '_bomb_throw')
 
 func player_unfreeze():
 	if (!input.is_connected('hold_direction', self, '_add_speed')):
 		input.connect('hold_direction', self, '_add_speed')
 	if (!input.is_connected('press_action', self, '_jump')):
 		input.connect('press_action', self, '_jump')
+	if (!input.is_connected('press_bomb_throw', self, '_bomb_throw')):
+		input.connect('press_bomb_throw', self, '_bomb_throw')
 
 func check_camera():
 	var act = input._get_action(Input)
@@ -141,10 +146,15 @@ func check_animation():
 		anim = anim_new
 		get_node('PlayerSprite/PlayerAnimation').play(anim)
 
-func check_bomb_throw():
+func update_bomb_cooldown():
+	if (bomb_cooldown >= 1):
+		bomb_cooldown += 1
+		if (bomb_cooldown > 20):
+			bomb_cooldown = 0
+
+func _bomb_throw(throw):
 	if (bomb_cooldown == 0):
-		var act = input._get_throw(Input)
-		if (act == ACT.THROW):
+		if (throw == ACT.THROW):
 			bomb_cooldown = 1
 			var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
 			var mouse_dir = get_viewport().get_mouse_pos() - screen_center
@@ -153,10 +163,6 @@ func check_bomb_throw():
 			var bomb = bomb_scn.instance()
 			bomb.set_pos(self.get_pos())
 			get_parent().add_child(bomb)
-	elif (bomb_cooldown >= 1):
-		bomb_cooldown += 1
-		if (bomb_cooldown > 20):
-			bomb_cooldown = 0
 
 func _on_Area2D_area_enter(area):
 	check_keys(area)
