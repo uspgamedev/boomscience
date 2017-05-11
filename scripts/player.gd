@@ -87,9 +87,10 @@ func check_stairs():
 	var stairs = get_node('../Stairs')
 	var act = input._get_action(Input)
 	var dir = input._get_direction(Input)
-	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1 and dir == DIR.UP):
+	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1 and (dir != -1 and dir != DIR.RIGHT and dir != DIR.LEFT)):
 		climbing = true
-	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) == -1 or act == ACT.JUMP):
+		align_stair_axis()
+	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) == -1 or act == ACT.JUMP or dir == DIR.RIGHT or dir == DIR.LEFT):
 		climbing = false
 		G = 3000
 		if (act != ACT.STEALTH):
@@ -98,12 +99,18 @@ func check_stairs():
 		G = 0
 		acc = .4 * acc
 		if (act != ACT.CAMERA):
-			if (dir == DIR.UP):
+			if (dir == DIR.UP or dir == DIR.UP_RIGHT or dir == DIR.UP_LEFT):
 				speed.y -= 30
-			elif (dir == DIR.DOWN):
+			elif (dir == DIR.DOWN or dir == DIR.DOWN_RIGHT or dir == DIR.DOWN_LEFT):
 				speed.y += 30
 			else:
 				speed.y = 0
+
+func align_stair_axis():
+	var stairs = get_node('../Stairs')
+	var stair_pos = stairs.map_to_world(stairs.world_to_map(self.get_pos()))
+	var stair_width = stairs.get_cell_size().x
+	self.set_pos(Vector2(stair_pos.x + stair_width/2, self.get_pos().y))
 
 func player_freeze():
 	if (input.is_connected('hold_direction', self, '_add_speed')):
