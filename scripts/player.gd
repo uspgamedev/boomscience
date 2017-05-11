@@ -23,6 +23,7 @@ var bomb_cooldown = 0
 var bomb_direction
 var nearby_npc
 var equipped_bomb = 0
+var climbing = false
 
 signal equipped_bomb(texture)
 
@@ -85,10 +86,17 @@ func set_nearby_npc(npc):
 func check_stairs():
 	var stairs = get_node('../Stairs')
 	var act = input._get_action(Input)
-	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1):
+	var dir = input._get_direction(Input)
+	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1 and dir == DIR.UP):
+		climbing = true
+	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) == -1 or act == ACT.JUMP):
+		climbing = false
+		G = 3000
+		if (act != ACT.STEALTH):
+			acc = ACC
+	elif (climbing):
 		G = 0
 		acc = .4 * acc
-		var dir = input._get_direction(Input)
 		if (act != ACT.CAMERA):
 			if (dir == DIR.UP):
 				speed.y -= 30
@@ -96,10 +104,6 @@ func check_stairs():
 				speed.y += 30
 			else:
 				speed.y = 0
-	else:
-		G = 3000
-		if (act != ACT.STEALTH):
-			acc = ACC
 
 func player_freeze():
 	if (input.is_connected('hold_direction', self, '_add_speed')):
