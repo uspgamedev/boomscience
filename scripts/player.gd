@@ -94,11 +94,8 @@ func check_stairs():
 	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) == -1 or act == ACT.JUMP or dir == DIR.RIGHT or dir == DIR.LEFT):
 		climbing = false
 		G = 3000
-		if (act != ACT.STEALTH):
-			acc = ACC
 	elif (climbing):
 		G = 0
-		acc = .4 * acc
 		if (act != ACT.CAMERA):
 			if (dir == DIR.UP or dir == DIR.UP_RIGHT or dir == DIR.UP_LEFT):
 				speed.y -= 20
