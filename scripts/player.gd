@@ -85,6 +85,7 @@ func set_nearby_npc(npc):
 
 func check_stairs():
 	var stairs = get_node('../Stairs')
+	var anim = get_node('PlayerSprite/PlayerAnimation')
 	var act = input._get_action(Input)
 	var dir = input._get_direction(Input)
 	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1 and (dir != -1 and dir != DIR.RIGHT and dir != DIR.LEFT)):
@@ -100,11 +101,16 @@ func check_stairs():
 		acc = .4 * acc
 		if (act != ACT.CAMERA):
 			if (dir == DIR.UP or dir == DIR.UP_RIGHT or dir == DIR.UP_LEFT):
-				speed.y -= 30
+				speed.y -= 20
+				if (!anim.is_playing()):
+					anim.play('climb')
 			elif (dir == DIR.DOWN or dir == DIR.DOWN_RIGHT or dir == DIR.DOWN_LEFT):
-				speed.y += 30
+				speed.y += 20
+				if (!anim.is_playing()):
+					anim.play('climb')
 			else:
 				speed.y = 0
+				anim.stop()
 
 func align_stair_axis():
 	var stairs = get_node('../Stairs')
@@ -149,6 +155,8 @@ func check_stealth():
 func check_animation():
 	if (can_jump and !speed.x):
 		anim_new = 'idle'
+	elif (climbing):
+		anim_new = 'climb'
 	elif (!can_jump):
 		anim_new = 'jump'
 	elif (speed.x):
