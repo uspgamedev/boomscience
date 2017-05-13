@@ -133,7 +133,7 @@ __meta__ = {
 
 [node name="Camera" type="Camera2D" parent="."]
 
-offset = Vector2( -320, -256 )
+offset = Vector2( -320, -192 )
 anchor_mode = 0
 rotating = false
 current = false
