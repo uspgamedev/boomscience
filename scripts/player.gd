@@ -92,12 +92,15 @@ func check_stairs():
 		align_stair_axis()
 	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1 and (dir != -1 and dir != DIR.RIGHT and dir != DIR.LEFT)):
 		climbing = true
+		if (!input.is_connected('press_action', self, '_release_stairs')):
+			input.connect('press_action', self, '_release_stairs')
+		set_jump(true)
+		jump_height = -1
 		if (speed.y < -180):
 			speed.y = -180
 		if (input.is_connected('hold_direction', self, '_flip_sprite')):
 			input.disconnect('hold_direction', self, '_flip_sprite')
-	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) == -1 or act == ACT.JUMP \
-	    or (dir == DIR.RIGHT or dir == DIR.LEFT)):
+	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) == -1):
 		climbing = false
 		if (!input.is_connected('hold_direction', self, '_flip_sprite')):
 			input.connect('hold_direction', self, '_flip_sprite')
@@ -118,6 +121,14 @@ func check_stairs():
 			else:
 				speed.y = 0
 				anim.stop()
+
+func _release_stairs(act):
+	if (climbing and act == ACT.JUMP):
+		climbing = false
+		if (!input.is_connected('hold_direction', self, '_flip_sprite')):
+			input.connect('hold_direction', self, '_flip_sprite')
+		G = 3000
+		input.disconnect('press_action', self, '_release_stairs')
 
 func align_stair_axis():
 	var stairs = get_node('../Stairs')
