@@ -123,12 +123,16 @@ func check_stairs():
 				anim.stop()
 
 func _release_stairs(act):
+	var dir = input._get_direction(Input)
 	if (climbing and act == ACT.JUMP):
 		climbing = false
 		if (!input.is_connected('hold_direction', self, '_flip_sprite')):
 			input.connect('hold_direction', self, '_flip_sprite')
 		G = 3000
 		input.disconnect('press_action', self, '_release_stairs')
+		if (dir == DIR.RIGHT or dir == DIR.LEFT):
+			set_jump(true)
+			_jump(act)
 
 func align_stair_axis():
 	var stairs = get_node('../Stairs')
