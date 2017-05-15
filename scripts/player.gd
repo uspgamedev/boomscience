@@ -88,23 +88,33 @@ func check_stairs():
 	var anim = get_node('PlayerSprite/PlayerAnimation')
 	var act = input._get_action(Input)
 	var dir = input._get_direction(Input)
+	if (climbing):
+		align_stair_axis()
 	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1 and (dir != -1 and dir != DIR.RIGHT and dir != DIR.LEFT)):
 		climbing = true
-		align_stair_axis()
-	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) == -1 or act == ACT.JUMP or dir == DIR.RIGHT or dir == DIR.LEFT):
+		if (speed.y < -180):
+			speed.y = -180
+		if (input.is_connected('hold_direction', self, '_flip_sprite')):
+			input.disconnect('hold_direction', self, '_flip_sprite')
+	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) == -1 or act == ACT.JUMP \
+	    or (dir == DIR.RIGHT or dir == DIR.LEFT)):
 		climbing = false
+		if (!input.is_connected('hold_direction', self, '_flip_sprite')):
+			input.connect('hold_direction', self, '_flip_sprite')
 		G = 3000
 	elif (climbing):
 		G = 0
 		if (act != ACT.CAMERA):
+			if (speed.y == 0):
+				anim.stop()
 			if (dir == DIR.UP or dir == DIR.UP_RIGHT or dir == DIR.UP_LEFT):
+				if (!anim.is_playing() and speed.y != 0):
+					anim.play('climb')
 				speed.y -= 20
-				if (!anim.is_playing()):
-					anim.play('climb')
 			elif (dir == DIR.DOWN or dir == DIR.DOWN_RIGHT or dir == DIR.DOWN_LEFT):
-				speed.y += 20
-				if (!anim.is_playing()):
+				if (!anim.is_playing() and speed.y != 0):
 					anim.play('climb')
+				speed.y += 20
 			else:
 				speed.y = 0
 				anim.stop()
@@ -113,6 +123,7 @@ func align_stair_axis():
 	var stairs = get_node('../Stairs')
 	var stair_pos = stairs.map_to_world(stairs.world_to_map(self.get_pos()))
 	var stair_width = stairs.get_cell_size().x
+	speed.x = 0
 	self.set_pos(Vector2(stair_pos.x + stair_width/2, self.get_pos().y))
 
 func player_freeze():
