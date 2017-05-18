@@ -13,6 +13,7 @@ onready var input = get_node('/root/input')
 onready var global = get_node('/root/global')
 onready var area = get_node('PlayerAreaDetection')
 onready var fx = get_node('SamplePlayer')
+onready var climb_cooldown = get_node('ClimbCooldown')
 onready var hud = get_node('../../Hud')
 onready var invslot_view = hud.get_node('CharInfo/InventorySlot')
 var key = [0, 0, 0, 0]
@@ -24,6 +25,7 @@ var bomb_direction
 var nearby_npc
 var equipped_bomb = 0
 var climbing = false
+var can_climb = true
 
 signal equipped_bomb(texture)
 
@@ -90,7 +92,8 @@ func check_stairs():
 	var dir = input._get_direction(Input)
 	if (climbing):
 		align_stair_axis()
-	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1 and (dir != -1 and dir != DIR.RIGHT and dir != DIR.LEFT)):
+	if (can_climb and stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1 \
+		and (dir != -1 and dir != DIR.RIGHT and dir != DIR.LEFT)):
 		climbing = true
 		if (!input.is_connected('press_action', self, '_release_stairs')):
 			input.connect('press_action', self, '_release_stairs')
@@ -130,9 +133,13 @@ func _release_stairs(act):
 			input.connect('hold_direction', self, '_flip_sprite')
 		G = 3000
 		input.disconnect('press_action', self, '_release_stairs')
-		if (dir == DIR.RIGHT or dir == DIR.LEFT):
+		if (dir == DIR.RIGHT or dir == DIR.LEFT or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT):
 			set_jump(true)
 			_jump(act)
+			can_climb = false
+			climb_cooldown.start()
+			yield(climb_cooldown, 'timeout')
+			can_climb = true
 
 func align_stair_axis():
 	var stairs = get_node('../Stairs')
