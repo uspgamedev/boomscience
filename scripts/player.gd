@@ -14,6 +14,7 @@ onready var global = get_node('/root/global')
 onready var area = get_node('PlayerAreaDetection')
 onready var fx = get_node('SamplePlayer')
 onready var climb_cooldown = get_node('ClimbCooldown')
+onready var ground = get_node("Ground")
 onready var hud = get_node('../../Hud')
 onready var invslot_view = hud.get_node('CharInfo/InventorySlot')
 var key = [0, 0, 0, 0]
@@ -85,6 +86,12 @@ func equip_bomb(idx):
 func set_nearby_npc(npc):
 	nearby_npc = npc
 
+func able_to_climb(stairs, dir):
+	return !climbing and can_climb and stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1 \
+		and (dir != -1 and dir != DIR.RIGHT and dir != DIR.LEFT) \
+		and not ((dir == DIR.DOWN or dir == DIR.DOWN_RIGHT or dir == DIR.DOWN_LEFT) \
+		and !ground.get_overlapping_bodies().empty())
+
 func check_stairs():
 	var stairs = get_node('../Stairs')
 	var anim = get_node('PlayerSprite/PlayerAnimation')
@@ -92,11 +99,13 @@ func check_stairs():
 	var dir = input._get_direction(Input)
 	if (climbing):
 		align_stair_axis()
-	if (can_climb and stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1 \
-		and (dir != -1 and dir != DIR.RIGHT and dir != DIR.LEFT)):
+	if (able_to_climb(stairs, dir)):
 		climbing = true
+		print("climbing")
 		if (!input.is_connected('press_action', self, '_release_stairs')):
 			input.connect('press_action', self, '_release_stairs')
+		if (!ground.is_connected('body_enter', self, '_touch_ground')):
+			ground.connect('body_enter', self, '_touch_ground')
 		set_jump(true)
 		jump_height = -1
 		if (speed.y < -180):
@@ -125,12 +134,20 @@ func check_stairs():
 				speed.y = 0
 				anim.stop()
 
+func _touch_ground(unused):
+	print(unused)
+	_release_stairs(ACT.JUMP)
+	pass
+
 func _release_stairs(act):
 	var dir = input._get_direction(Input)
 	if (climbing and act == ACT.JUMP):
+		print("release stairs")
 		climbing = false
 		if (!input.is_connected('hold_direction', self, '_flip_sprite')):
 			input.connect('hold_direction', self, '_flip_sprite')
+		if (ground.is_connected('body_enter', self, '_touch_ground')):
+			ground.disconnect('body_enter', self, '_touch_ground')
 		G = 3000
 		input.disconnect('press_action', self, '_release_stairs')
 		if (dir == DIR.RIGHT or dir == DIR.LEFT or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT):
