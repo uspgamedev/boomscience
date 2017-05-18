@@ -136,10 +136,10 @@ func _release_stairs(act):
 		if (dir == DIR.RIGHT or dir == DIR.LEFT or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT):
 			set_jump(true)
 			_jump(act)
-			can_climb = false
-			climb_cooldown.start()
-			yield(climb_cooldown, 'timeout')
-			can_climb = true
+		can_climb = false
+		climb_cooldown.start()
+		yield(climb_cooldown, 'timeout')
+		can_climb = true
 
 func align_stair_axis():
 	var stairs = get_node('../Stairs')
