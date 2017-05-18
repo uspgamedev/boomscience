@@ -101,13 +101,13 @@ func check_stairs():
 		align_stair_axis()
 	if (able_to_climb(stairs, dir)):
 		climbing = true
-		print("climbing")
 		if (!input.is_connected('press_action', self, '_release_stairs')):
 			input.connect('press_action', self, '_release_stairs')
 		if (!ground.is_connected('body_enter', self, '_touch_ground')):
 			ground.connect('body_enter', self, '_touch_ground')
 		set_jump(true)
 		jump_height = -1
+		anim.play('climb')
 		if (speed.y < -180):
 			speed.y = -180
 		if (input.is_connected('hold_direction', self, '_flip_sprite')):
@@ -135,14 +135,11 @@ func check_stairs():
 				anim.stop()
 
 func _touch_ground(unused):
-	print(unused)
 	_release_stairs(ACT.JUMP)
-	pass
 
 func _release_stairs(act):
 	var dir = input._get_direction(Input)
 	if (climbing and act == ACT.JUMP):
-		print("release stairs")
 		climbing = false
 		if (!input.is_connected('hold_direction', self, '_flip_sprite')):
 			input.connect('hold_direction', self, '_flip_sprite')
