@@ -125,11 +125,17 @@ func check_stairs():
 			if (dir == DIR.UP or dir == DIR.UP_RIGHT or dir == DIR.UP_LEFT):
 				if (!anim.is_playing() and speed.y != 0):
 					anim.play('climb')
-				speed.y -= 20
+				if (act != ACT.STEALTH):
+					speed.y -= 20
+				else:
+					speed.y -= 10
 			elif (dir == DIR.DOWN or dir == DIR.DOWN_RIGHT or dir == DIR.DOWN_LEFT):
 				if (!anim.is_playing() and speed.y != 0):
 					anim.play('climb')
-				speed.y += 20
+				if (act != ACT.STEALTH):
+					speed.y += 20
+				else:
+					speed.y += 10
 			else:
 				speed.y = 0
 				anim.stop()
