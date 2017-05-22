@@ -86,11 +86,11 @@ func equip_bomb(idx):
 func set_nearby_npc(npc):
 	nearby_npc = npc
 
-func able_to_climb(stairs, dir):
+func able_to_climb(stairs, dir, act):
 	return !climbing and can_climb and stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1 \
 		and (dir != -1 and dir != DIR.RIGHT and dir != DIR.LEFT) \
 		and not ((dir == DIR.DOWN or dir == DIR.DOWN_RIGHT or dir == DIR.DOWN_LEFT) \
-		and !ground.get_overlapping_bodies().empty())
+		and !ground.get_overlapping_bodies().empty()) and act != ACT.CAMERA
 
 func check_stairs():
 	var stairs = get_node('../Stairs')
@@ -99,7 +99,7 @@ func check_stairs():
 	var dir = input._get_direction(Input)
 	if (climbing):
 		align_stair_axis()
-	if (able_to_climb(stairs, dir)):
+	if (able_to_climb(stairs, dir, act)):
 		climbing = true
 		if (!input.is_connected('press_action', self, '_release_stairs')):
 			input.connect('press_action', self, '_release_stairs')
