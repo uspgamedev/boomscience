@@ -139,6 +139,9 @@ func check_stairs():
 			else:
 				speed.y = 0
 				anim.stop()
+		else:
+			speed.y = 0
+			anim.stop()
 
 func _touch_ground(unused):
 	_release_stairs(ACT.JUMP)
