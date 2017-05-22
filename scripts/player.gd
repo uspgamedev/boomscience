@@ -13,6 +13,8 @@ onready var input = get_node('/root/input')
 onready var global = get_node('/root/global')
 onready var area = get_node('PlayerAreaDetection')
 onready var fx = get_node('SamplePlayer')
+onready var climb_cooldown = get_node('ClimbCooldown')
+onready var ground = get_node("Ground")
 onready var hud = get_node('../../Hud')
 onready var invslot_view = hud.get_node('CharInfo/InventorySlot')
 var key = [0, 0, 0, 0]
@@ -23,6 +25,8 @@ var bomb_cooldown = 0
 var bomb_direction
 var nearby_npc
 var equipped_bomb = 0
+var climbing = false
+var can_climb = true
 
 signal equipped_bomb(texture)
 
@@ -82,24 +86,90 @@ func equip_bomb(idx):
 func set_nearby_npc(npc):
 	nearby_npc = npc
 
+func able_to_climb(stairs, dir, act):
+	return !climbing and can_climb and stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1 \
+		and (dir != -1 and dir != DIR.RIGHT and dir != DIR.LEFT) \
+		and not ((dir == DIR.DOWN or dir == DIR.DOWN_RIGHT or dir == DIR.DOWN_LEFT) \
+		and !ground.get_overlapping_bodies().empty()) and act != ACT.CAMERA
+
 func check_stairs():
 	var stairs = get_node('../Stairs')
+	var anim = get_node('PlayerSprite/PlayerAnimation')
 	var act = input._get_action(Input)
-	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1):
+	var dir = input._get_direction(Input)
+	if (climbing):
+		align_stair_axis()
+	if (able_to_climb(stairs, dir, act)):
+		climbing = true
+		if (!input.is_connected('press_action', self, '_release_stairs')):
+			input.connect('press_action', self, '_release_stairs')
+		if (!ground.is_connected('body_enter', self, '_touch_ground')):
+			ground.connect('body_enter', self, '_touch_ground')
+		set_jump(true)
+		jump_height = -1
+		anim.play('climb')
+		if (speed.y < -180):
+			speed.y = -180
+		if (input.is_connected('hold_direction', self, '_flip_sprite')):
+			input.disconnect('hold_direction', self, '_flip_sprite')
+	if (stairs.get_cellv(stairs.world_to_map(self.get_pos())) == -1):
+		climbing = false
+		if (!input.is_connected('hold_direction', self, '_flip_sprite')):
+			input.connect('hold_direction', self, '_flip_sprite')
+		G = 3000
+	elif (climbing):
 		G = 0
-		acc = .4 * acc
-		var dir = input._get_direction(Input)
 		if (act != ACT.CAMERA):
-			if (dir == DIR.UP):
-				speed.y -= 30
-			elif (dir == DIR.DOWN):
-				speed.y += 30
+			if (speed.y == 0):
+				anim.stop()
+			if (dir == DIR.UP or dir == DIR.UP_RIGHT or dir == DIR.UP_LEFT):
+				if (!anim.is_playing() and speed.y != 0):
+					anim.play('climb')
+				if (act != ACT.STEALTH):
+					speed.y -= 20
+				else:
+					speed.y -= 10
+			elif (dir == DIR.DOWN or dir == DIR.DOWN_RIGHT or dir == DIR.DOWN_LEFT):
+				if (!anim.is_playing() and speed.y != 0):
+					anim.play('climb')
+				if (act != ACT.STEALTH):
+					speed.y += 20
+				else:
+					speed.y += 10
 			else:
 				speed.y = 0
-	else:
+				anim.stop()
+		else:
+			speed.y = 0
+			anim.stop()
+
+func _touch_ground(unused):
+	_release_stairs(ACT.JUMP)
+
+func _release_stairs(act):
+	var dir = input._get_direction(Input)
+	if (climbing and act == ACT.JUMP):
+		climbing = false
+		if (!input.is_connected('hold_direction', self, '_flip_sprite')):
+			input.connect('hold_direction', self, '_flip_sprite')
+		if (ground.is_connected('body_enter', self, '_touch_ground')):
+			ground.disconnect('body_enter', self, '_touch_ground')
 		G = 3000
-		if (act != ACT.STEALTH):
-			acc = ACC
+		input.disconnect('press_action', self, '_release_stairs')
+		if (dir == DIR.RIGHT or dir == DIR.LEFT or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT):
+			set_jump(true)
+			_jump(act)
+		can_climb = false
+		climb_cooldown.start()
+		yield(climb_cooldown, 'timeout')
+		can_climb = true
+
+func align_stair_axis():
+	var stairs = get_node('../Stairs')
+	var stair_pos = stairs.map_to_world(stairs.world_to_map(self.get_pos()))
+	var stair_width = stairs.get_cell_size().x
+	speed.x = 0
+	self.set_pos(Vector2(stair_pos.x + stair_width/2, self.get_pos().y))
 
 func player_freeze():
 	if (input.is_connected('hold_direction', self, '_add_speed')):
@@ -138,6 +208,8 @@ func check_stealth():
 func check_animation():
 	if (can_jump and !speed.x):
 		anim_new = 'idle'
+	elif (climbing):
+		anim_new = 'climb'
 	elif (!can_jump):
 		anim_new = 'jump'
 	elif (speed.x):
