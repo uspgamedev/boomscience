@@ -10,6 +10,10 @@ const STAGES = [
 	preload('res://resources/scenes/stage01.tscn'),
 	preload('res://resources/scenes/stage02.tscn')
 ]
+const RESPAWN = [
+	Vector2(-800, -600), 
+	Vector2(0, 0)
+]
 
 func _ready():
 	init()

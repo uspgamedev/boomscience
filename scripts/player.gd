@@ -42,6 +42,7 @@ func _ready():
 	area.connect('area_enter', self, '_on_Area2D_area_enter')
 	area.connect('area_exit',self,'_on_Area2D_area_exit')
 	self.connect('equipped_bomb', invslot_view, '_change_icon')
+	self.set_pos(global.RESPAWN[global.stage])
 	hp = 500
 	equip_bomb(0)
 	var lifebar = hud.get_node('CharInfo/LifeBar')
@@ -211,6 +212,7 @@ func check_animation():
 	elif (climbing):
 		anim_new = 'climb'
 	elif (!can_jump):
+		yield(get_tree(), 'fixed_frame')
 		anim_new = 'jump'
 	elif (speed.x):
 		anim_new = 'walk'
