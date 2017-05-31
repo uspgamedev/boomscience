@@ -53,8 +53,6 @@ func _get_action(e, interaction):
 		check_action.set_function("is_action_released")
 	elif interaction == "held":
 		check_action.set_function("is_action_pressed")
-	else:
-		return
 
 	# check input with set interaction
 	if check_action.call_func('ui_accept'):
@@ -92,16 +90,10 @@ func _get_direction(e, interaction):
 	check_action.set_instance(e)
 	if interaction == "pressed":
 		check_action.set_function("is_action_pressed")
-		print("pressed!")
 	elif interaction == "released":
 		check_action.set_function("is_action_released")
-		print("released!")
 	elif interaction == "held":
 		check_action.set_function("is_action_pressed")
-		print(e.is_action_pressed("ui_down"))
-		print("held")
-	else:
-		return
 
 	# check input with set interaction
 	if check_action.call_func('ui_up') and not check_action.call_func('ui_down'):
