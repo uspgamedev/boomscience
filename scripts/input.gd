@@ -39,6 +39,14 @@ func _fixed_process(delta):
 	if held_dir != INVALID: emit_signal('hold_direction', held_dir)
 	if held_act != INVALID: emit_signal('hold_action', held_act)
 
+func is_action_held(action):
+	var held_act = _get_action(Input, "held")
+	return held_act == action
+
+func is_direction_held(direction):
+	var held_dir = _get_direction(Input, "held")
+	return held_dir == direction
+
 func _get_action(e, interaction):
 	var act = INVALID
 	var check_action = FuncRef.new()
