@@ -3,7 +3,6 @@ extends Node
 
 const DIR = preload('directions.gd')
 const ACT = preload('actions.gd')
-const INVALID = -1
 
 signal hold_direction(dir)
 signal hold_action(act)
@@ -27,17 +26,17 @@ func _input(event):
 	var pressed_act = _get_action(event, "pressed")
 	var released_dir = _get_direction(event, "released")
 	var released_act = _get_action(event, "released")
-	if pressed_dir != INVALID: emit_signal('press_direction', pressed_dir)
-	if pressed_act != INVALID: emit_signal('press_action', pressed_act)
-	if released_dir != INVALID: emit_signal('release_action', released_dir)
-	if released_act != INVALID: emit_signal('release_action', released_act)
+	if pressed_dir != DIR.INVALID: emit_signal('press_direction', pressed_dir)
+	if pressed_act != ACT.INVALID: emit_signal('press_action', pressed_act)
+	if released_dir != DIR.INVALID: emit_signal('release_action', released_dir)
+	if released_act != ACT.INVALID: emit_signal('release_action', released_act)
 	do_your_weird_thing(event, pressed_act)
 
 func _fixed_process(delta):
 	var held_dir = _get_direction(Input, "held")
 	var held_act = _get_action(Input, "held")
-	if held_dir != INVALID: emit_signal('hold_direction', held_dir)
-	if held_act != INVALID: emit_signal('hold_action', held_act)
+	if held_dir != ACT.INVALID: emit_signal('hold_direction', held_dir)
+	if held_act != ACT.INVALID: emit_signal('hold_action', held_act)
 
 func is_action_held(action):
 	var held_act = _get_action(Input, "held")
@@ -48,7 +47,7 @@ func is_direction_held(direction):
 	return held_dir == direction
 
 func _get_action(e, interaction):
-	var act = INVALID
+	var act = ACT.INVALID
 	var check_action = FuncRef.new()
 
 	if not interaction: return
@@ -89,7 +88,7 @@ func _get_throw(e):
 	return throw
 
 func _get_direction(e, interaction):
-	var dir = INVALID
+	var dir = DIR.INVALID
 	var check_action = FuncRef.new()
 
 	if not interaction: return
@@ -129,8 +128,8 @@ func _get_direction(e, interaction):
 
 func do_your_weird_thing(event, act):
 	var throw = _get_throw(event)
-	if throw != INVALID: emit_signal('press_bomb_throw', throw)
-	if act != INVALID: emit_signal('press_respawn', act)
+	if throw != ACT.INVALID: emit_signal('press_bomb_throw', throw)
+	if act != ACT.INVALID: emit_signal('press_respawn', act)
 	if _get_quit(event): emit_signal('press_quit')
 	if _get_reset(event): emit_signal('press_reset')
 	if _get_respawn(event): emit_signal('press_respawn')
