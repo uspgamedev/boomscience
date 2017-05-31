@@ -1,5 +1,6 @@
 extends Node
 
+const INVALID = -1
 const UP = 0
 const RIGHT = 1
 const DOWN = 2
