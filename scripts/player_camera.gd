@@ -20,29 +20,30 @@ func load_camera():
 	self.make_current()
 
 func check_camera():
-	var dir = input._get_direction(Input)
-	var act = input._get_action(Input)
-	if (act == ACT.CAMERA):
-		if (dir == DIR.RIGHT):
+	if input.is_action_held(ACT.CAMERA):
+		if input.is_direction_held(DIR.RIGHT):
 			move_camera(tween, Vector2(0, 0), Vector2(140, 0))
-		if (dir == DIR.LEFT):
+		if input.is_direction_held(DIR.LEFT):
 			move_camera(tween, Vector2(0, 0), Vector2(-140, 0))
-		if (dir == DIR.UP_RIGHT):
+		if input.is_direction_held(DIR.UP_RIGHT):
 			move_camera(tween, Vector2(0, 0), Vector2(140, -140))
-		if (dir == DIR.UP_LEFT):
+		if input.is_direction_held(DIR.UP_LEFT):
 			move_camera(tween, Vector2(0, 0), Vector2(-140, -140))
-		if (dir == DIR.DOWN_RIGHT):
+		if input.is_direction_held(DIR.DOWN_RIGHT):
 			move_camera(tween, Vector2(0, 0), Vector2(140, 160))
-		if (dir == DIR.DOWN_LEFT):
+		if input.is_direction_held(DIR.DOWN_LEFT):
 			move_camera(tween, Vector2(0, 0), Vector2(-140, 160))
-		if (dir == DIR.UP):
+		if input.is_direction_held(DIR.UP):
 			move_camera(tween, Vector2(0, 0), Vector2(0, -140))
-		if (dir == DIR.DOWN):
+		if input.is_direction_held(DIR.DOWN):
 			move_camera(tween, Vector2(0, 0), Vector2(0, 160))
-	elif (act != ACT.CAMERA and (dir == -1 or dir == DIR.RIGHT or dir == DIR.LEFT)):
+	elif input.is_direction_held(DIR.INVALID) or \
+			input.is_direction_held(DIR.RIGHT) or \
+			input.is_direction_held(DIR.LEFT):
 		move_camera(tween, self.get_pos(), Vector2(0, 0))
 
 func move_camera(tween, init, final):
 	tween.interpolate_property(self, 'transform/pos', \
 		init, final, EPSILON, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
+
