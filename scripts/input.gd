@@ -3,31 +3,43 @@ extends Node
 
 const DIR = preload('directions.gd')
 const ACT = preload('actions.gd')
+const ACTIONS = [
+	"ui_accept",
+	"ui_cancel",
+	"ui_camera",
+	"ui_stealth",
+	"ui_jump",
+	"ui_instructions",
+	"ui_interact",
+	"ui_switch"
+]
+const INVALID = -1
 
 signal hold_direction(dir)
 signal hold_action(act)
 signal press_direction(dir)
 signal press_action(act)
 signal release_direction(dir)
-signal release_action(dir)
+signal release_action(act)
 
-# WEIRD AS FUCK HARDCODED STUFF WHY WOULD YOU DO THIS
-signal press_quit
-signal press_reset
-signal press_respawn
-signal press_bomb_throw
+class InputHandler:
+	var input_object
+	func _init(e):
+		input_object = e
+	func handle(action_name):
+		pass
 
-class HoldInputHandler:
-	func handle(event, action_name):
-		return event.is_action_pressed(action_name)
+class HoldInputHandler extends InputHandler:
+	func handle(action_name):
+		return input_object.is_action_pressed(action_name)
 
-class PressInputHandler:
-	func handle(event, action_name):
-		return event.is_action_pressed(action_name)
+class PressInputHandler extends InputHandler:
+	func handle(action_name):
+		return input_object.is_action_pressed(action_name)
 
-class ReleaseInputHandler:
-	func handle(event, action_name):
-		return event.is_action_released(action_name)
+class ReleaseInputHandler extends InputHandler:
+	func handle(action_name):
+		return input_object.is_action_released(action_name)
 
 func _ready():
 	set_fixed_process(true)
@@ -64,31 +76,18 @@ func _get_action(e, interaction):
 
 	if not interaction: return
 
-	# configure funcref's target object and method
+	# configure action handler
 	if interaction == "pressed":
-		check_action = PressInputHandler.new()
+		check_action = PressInputHandler.new(e)
 	elif interaction == "released":
-		check_action = ReleaseInputHandler.new()
+		check_action = ReleaseInputHandler.new(e)
 	elif interaction == "held":
-		check_action = HoldInputHandler.new()
+		check_action = HoldInputHandler.new(e)
 
-	# check input with set interaction
-	if check_action.handle(e, 'ui_accept'):
-		act = ACT.ACCEPT
-	elif check_action.handle(e, 'ui_cancel'):
-		act = ACT.CANCEL
-	elif check_action.handle(e, 'ui_camera'):
-		act = ACT.CAMERA
-	elif check_action.handle(e, 'ui_stealth'):
-		act = ACT.STEALTH
-	elif check_action.handle(e, 'ui_jump'):
-		act = ACT.JUMP
-	elif check_action.handle(e, 'ui_instructions'):
-		act = ACT.INST
-	elif check_action.handle(e, 'ui_interact'):
-		act = ACT.INTERACT
-	elif check_action.handle(e, 'ui_switch'):
-		act = ACT.SWITCH
+	# check input with set handler
+	for idx in range(ACTIONS.len()):
+		if check_action.handle(ACTIONS[idx]):
+			return act
 
 	return act
 
@@ -100,40 +99,26 @@ func _get_throw(e):
 
 func _get_direction(e, interaction):
 	var dir = DIR.INVALID
-	var check_action = FuncRef.new()
 
 	if not interaction: return
 
-	# configure funcref's target object and method
+	# configure action handler
 	if interaction == "pressed":
-		check_action = PressInputHandler.new()
+		check_action = PressInputHandler.new(e)
 	elif interaction == "released":
-		check_action = ReleaseInputHandler.new()
+		check_action = ReleaseInputHandler.new(e)
 	elif interaction == "held":
-		check_action = HoldInputHandler.new()
+		check_action = HoldInputHandler.new(e)
 
-	# check input with set interaction
-	# we could use a bit mask but whatevss
-	if check_action.handle(e, 'ui_up') and not check_action.handle(e, 'ui_down'):
-		dir = DIR.UP
-	elif check_action.handle(e, 'ui_down') and not check_action.handle(e, 'ui_up'):
-		dir = DIR.DOWN
-	if check_action.handle(e, 'ui_right') and not check_action.handle(e, 'ui_left'):
-		dir = DIR.RIGHT
-	elif check_action.handle(e, 'ui_left') and not check_action.handle(e, 'ui_right'):
-		dir = DIR.LEFT
-	if check_action.handle(e, 'ui_up') and check_action.handle(e, 'ui_right') \
-		and not check_action.handle(e, 'ui_down') and not check_action.handle(e, 'ui_left'):
-		dir = DIR.UP_RIGHT
-	elif check_action.handle(e, 'ui_down') and check_action.handle(e, 'ui_left') \
-		and not check_action.handle(e, 'ui_up') and not check_action.handle(e, 'ui_right'):
-		dir = DIR.DOWN_LEFT
-	if check_action.handle(e, 'ui_down') and check_action.handle(e, 'ui_right') \
-		and not check_action.handle(e, 'ui_up') and not check_action.handle(e, 'ui_left'):
-		dir = DIR.DOWN_RIGHT
-	elif check_action.handle(e, 'ui_up') and check_action.handle(e, 'ui_left') \
-		and not check_action.handle(e, 'ui_down') and not check_action.handle(e, 'ui_right'):
-		dir = DIR.UP_LEFT
+	# check input with set handler
+	if check_action.handle('ui_up'):
+		dir += DIR.UP
+	if check_action.handle('ui_right'):
+		dir += DIR.RIGHT
+	if check_action.handle('ui_down'):
+		dir += DIR.DOWN
+	if check_action.handle('ui_left'):
+		dir += DIR.LEFT
 
 	return dir
 
