@@ -3,17 +3,7 @@ extends Node
 
 const DIR = preload('directions.gd')
 const ACT = preload('actions.gd')
-const ACTIONS = [
-	"ui_accept",
-	"ui_cancel",
-	"ui_camera",
-	"ui_stealth",
-	"ui_jump",
-	"ui_instructions",
-	"ui_interact",
-	"ui_switch"
-]
-const INVALID = -1
+const BUTTONS = preload('buttons.gd')
 
 signal hold_direction(dir)
 signal hold_action(act)
@@ -71,11 +61,8 @@ func is_direction_held(direction):
 	return held_dir == direction
 
 func _get_action(e, interaction):
-	var act = ACT.INVALID
 	var check_action
-
 	if not interaction: return
-
 	# configure action handler
 	if interaction == "pressed":
 		check_action = PressInputHandler.new(e)
@@ -83,13 +70,11 @@ func _get_action(e, interaction):
 		check_action = ReleaseInputHandler.new(e)
 	elif interaction == "held":
 		check_action = HoldInputHandler.new(e)
-
 	# check input with set handler
-	for idx in range(ACTIONS.len()):
-		if check_action.handle(ACTIONS[idx]):
-			return act
-
-	return act
+	for button_id in BUTTONS.COUNT:
+		if check_action(BUTTONS.ACTIONS[button_id]):
+			return button_id
+	return BUTTON.INVALID
 
 func _get_throw(e):
 	var throw = -1
@@ -99,9 +84,7 @@ func _get_throw(e):
 
 func _get_direction(e, interaction):
 	var dir = DIR.INVALID
-
 	if not interaction: return
-
 	# configure action handler
 	if interaction == "pressed":
 		check_action = PressInputHandler.new(e)
@@ -109,7 +92,6 @@ func _get_direction(e, interaction):
 		check_action = ReleaseInputHandler.new(e)
 	elif interaction == "held":
 		check_action = HoldInputHandler.new(e)
-
 	# check input with set handler
 	if check_action.handle('ui_up'):
 		dir += DIR.UP
@@ -119,7 +101,6 @@ func _get_direction(e, interaction):
 		dir += DIR.DOWN
 	if check_action.handle('ui_left'):
 		dir += DIR.LEFT
-
 	return dir
 
 func do_your_weird_thing(event, act):
