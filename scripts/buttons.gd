@@ -32,7 +32,7 @@ enum FPS_LIKE {
 	COUNT
 }
 
-const ACTIONS {
+const ACTIONS = {
 	KEY_Z:   "yes",
 	KEY_X:   "no",
 	KEY_C:   "attack",

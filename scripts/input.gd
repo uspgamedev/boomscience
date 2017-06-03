@@ -12,6 +12,10 @@ signal press_action(act)
 signal release_direction(dir)
 signal release_action(act)
 
+var hold_input_handler
+var press_input_handler
+var release_input_handler
+
 class InputHandler:
 	var input_object
 	func _init(e):
@@ -34,6 +38,9 @@ class ReleaseInputHandler extends InputHandler:
 func _ready():
 	set_fixed_process(true)
 	set_process_input(true)
+	hold_input_handler = HoldInputHandler.new(Input)
+	press_input_handler = PressInputHandler.new(InputEvent)
+	release_input_handler = ReleaseInputHandler.new(InputEvent)
 
 func _input(event):
 	var pressed_dir = _get_direction(event, "pressed")
@@ -65,16 +72,16 @@ func _get_action(e, interaction):
 	if not interaction: return
 	# configure action handler
 	if interaction == "pressed":
-		check_action = PressInputHandler.new(e)
+		check_action = press_input_handler
 	elif interaction == "released":
-		check_action = ReleaseInputHandler.new(e)
+		check_action = release_input_handler
 	elif interaction == "held":
-		check_action = HoldInputHandler.new(e)
+		check_action = hold_input_handler
 	# check input with set handler
 	for button_id in BUTTONS.COUNT:
 		if check_action(BUTTONS.ACTIONS[button_id]):
 			return button_id
-	return BUTTON.INVALID
+	return BUTTONS.INVALID
 
 func _get_throw(e):
 	var throw = -1
@@ -83,15 +90,16 @@ func _get_throw(e):
 	return throw
 
 func _get_direction(e, interaction):
+	var check_action
 	var dir = DIR.INVALID
 	if not interaction: return
 	# configure action handler
 	if interaction == "pressed":
-		check_action = PressInputHandler.new(e)
+		check_action = press_input_handler
 	elif interaction == "released":
-		check_action = ReleaseInputHandler.new(e)
+		check_action = release_input_handler
 	elif interaction == "held":
-		check_action = HoldInputHandler.new(e)
+		check_action = hold_input_handler
 	# check input with set handler
 	if check_action.handle('ui_up'):
 		dir += DIR.UP
