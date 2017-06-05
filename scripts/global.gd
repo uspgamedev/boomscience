@@ -11,7 +11,7 @@ const STAGES = [
 	preload('res://resources/scenes/stage02.tscn')
 ]
 const RESPAWN = [
-	Vector2(-800, -600), 
+	Vector2(5000, 200), 
 	Vector2(0, 0)
 ]
 
