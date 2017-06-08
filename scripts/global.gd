@@ -7,11 +7,11 @@ var chronometer
 var minute
 var second
 const STAGES = [
-	preload('res://resources/scenes/stage01.tscn'),
-	preload('res://resources/scenes/stage02.tscn')
+	preload('res://resources/scenes/sewers/entrance.tscn'),
+	preload('res://resources/scenes/stage01.tscn')
 ]
 const RESPAWN = [
-	Vector2(5000, 200), 
+	Vector2(0, 0), 
 	Vector2(0, 0)
 ]
 
