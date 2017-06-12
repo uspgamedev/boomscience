@@ -56,6 +56,7 @@ func _fixed_process(delta):
 	check_stealth()
 	check_animation()
 	check_stairs()
+	check_doors()
 	update_bomb_cooldown()
 
 func _interact(act):
@@ -238,7 +239,6 @@ func _bomb_throw(throw):
 			get_parent().add_child(bomb)
 
 func _on_Area2D_area_enter(area):
-	check_doors(area)
 	check_death(area)
 	check_damage(area)
 
@@ -256,11 +256,15 @@ func knockback(area_node):
 	speed.x += .5 * ACC * vector.x
 	speed.y -= 5 * ACC - 20 * vector.y
 
-func check_doors(area):
+func check_doors():
 	var act = input._get_action(Input)
-	var door = area.get_parent()
-	if (door.get_script() == Door):
-		get_node('../..').change_map(door.scene)
+	var areas = get_node('PlayerAreaDetection').get_overlapping_areas()
+	if (areas != null):
+		for i in range (0, areas.size()):
+			if (areas[i].get_parent().get_script() == Door):
+				var door = areas[i].get_parent()
+				if (act == ACT.INTERACT):
+					get_node('../..').change_map(door.scene)
 
 func check_death(area):
 	if (area.get_name() == 'Death'):
