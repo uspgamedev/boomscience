@@ -34,7 +34,21 @@ func reload_map():
 		yield(get_tree(), 'fixed_frame')
 	var tmp = global.get_current_stage().instance()
 	tmp.set_name('Stage')
-	player.set_pos(global.respawn)
+	player.set_pos(global.get_current_stage_respawn())
+	tmp.add_child(player)
+	self.add_child(tmp)
+
+func change_map(scene):
+	var current_stage = get_node('Stage')
+	if (current_stage != null):
+		current_stage.remove_child(player)
+		current_stage.queue_free()
+		yield(get_tree(), 'fixed_frame')
+		yield(get_tree(), 'fixed_frame')
+	global.stage = scene
+	var tmp = global.get_current_stage().instance()
+	tmp.set_name('Stage')
+	player.set_pos(global.get_current_stage_respawn())
 	tmp.add_child(player)
 	self.add_child(tmp)
 

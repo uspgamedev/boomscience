@@ -12,7 +12,10 @@ extents = Vector2( 10, 10 )
 
 texture = ExtResource( 1 )
 script/script = ExtResource( 2 )
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
+scene = null
 
 [node name="DoorArea" type="Area2D" parent="."]
 
@@ -26,16 +29,19 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="DoorCollision" type="CollisionShape2D" parent="DoorArea"]
 
-visibility/visible = false
 transform/pos = Vector2( 16, 8 )
 transform/scale = Vector2( 2.28571, 2.69823 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 
