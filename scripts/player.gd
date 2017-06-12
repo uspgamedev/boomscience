@@ -17,7 +17,6 @@ onready var climb_cooldown = get_node('ClimbCooldown')
 onready var ground = get_node("Ground")
 onready var hud = get_node('../../Hud')
 onready var invslot_view = hud.get_node('CharInfo/InventorySlot')
-var key = [0, 0, 0, 0]
 
 var anim = 'idle'
 var anim_new
@@ -42,7 +41,7 @@ func _ready():
 	area.connect('area_enter', self, '_on_Area2D_area_enter')
 	area.connect('area_exit',self,'_on_Area2D_area_exit')
 	self.connect('equipped_bomb', invslot_view, '_change_icon')
-	self.set_pos(global.RESPAWN[global.stage])
+	self.set_pos(global.get_current_stage_respawn())
 	hp = 500
 	equip_bomb(0)
 	var lifebar = hud.get_node('CharInfo/LifeBar')
@@ -239,7 +238,6 @@ func _bomb_throw(throw):
 			get_parent().add_child(bomb)
 
 func _on_Area2D_area_enter(area):
-	check_keys(area)
 	check_doors(area)
 	check_death(area)
 	check_damage(area)
@@ -258,31 +256,11 @@ func knockback(area_node):
 	speed.x += .5 * ACC * vector.x
 	speed.y -= 5 * ACC - 20 * vector.y
 
-func check_keys(area):
-	check_key_name(area, 'Key1', 0)
-	check_key_name(area, 'Key2', 1)
-
-func check_key_name(area, key_name, key_index):
-	if (area.get_node('../').get_name() == key_name):
-		key[key_index] = 1
-		fx.play_confirmation()
-		area.get_node('../').queue_free()
-
 func check_doors(area):
+	var act = input._get_action(Input)
 	var door = area.get_parent()
-	if ((global.stage == 0 and key[0] == 1) or \
-		(global.stage == 1 and key[1] == 1)):
-		if (door.get_script() == Door):
-			if (global.stage == 0):
-				fx.play('confirmation')
-				global.stage += 1
-				self.set_pos(global.respawn)
-				get_node('../..').reload_map()
-			elif (global.stage == 1):
-				if (get_node('Congratulations').is_hidden()):
-					fx.play('confirmation')
-				global.stop_chronometer()
-				get_node('Congratulations').show()
+	if (door.get_script() == Door):
+		get_node('../..').change_map(door.scene)
 
 func check_death(area):
 	if (area.get_name() == 'Death'):
