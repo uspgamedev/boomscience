@@ -1,6 +1,8 @@
 extends Node
 
-var respawn = Vector2(0, 0)
+const ENTRANCE = 0
+const WATER_PUZZLE = 1
+
 var stage
 var death_count
 var chronometer
@@ -8,10 +10,10 @@ var minute
 var second
 const STAGES = [
 	preload('res://resources/scenes/sewers/entrance.tscn'),
-	preload('res://resources/scenes/stage01.tscn')
+	preload('res://resources/scenes/sewers/water-puzzle.tscn')
 ]
 const RESPAWN = [
-	Vector2(0, 0), 
+	Vector2(-800, -600), 
 	Vector2(0, 0)
 ]
 
@@ -39,8 +41,7 @@ func reset():
 	set_fixed_process(true)
 	
 func init():
-	respawn = Vector2(0, 0)
-	stage = 0
+	stage = ENTRANCE
 	death_count = 1
 	chronometer = 0
 	minute = 0
@@ -48,3 +49,6 @@ func init():
 
 func get_current_stage():
 	return STAGES[stage]
+
+func get_current_stage_respawn():
+	return RESPAWN[stage]
