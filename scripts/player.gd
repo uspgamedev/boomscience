@@ -35,6 +35,7 @@ func _ready():
 	input.connect('press_action', self, '_interact')
 	input.connect('press_bomb_throw', self, '_bomb_throw')
 	input.connect('press_action', self, '_switch_bomb')
+	input.connect('press_action', self, '_check_doors')
 	input.connect('hold_action', self, '_add_jump_height')
 	input.connect('hold_direction', self, '_add_speed')
 	input.connect('hold_direction', self, '_flip_sprite')
@@ -56,7 +57,6 @@ func _fixed_process(delta):
 	check_stealth()
 	check_animation()
 	check_stairs()
-	check_doors()
 	update_bomb_cooldown()
 
 func _interact(act):
@@ -256,8 +256,7 @@ func knockback(area_node):
 	speed.x += .5 * ACC * vector.x
 	speed.y -= 5 * ACC - 20 * vector.y
 
-func check_doors():
-	var act = input._get_action(Input)
+func _check_doors(act):
 	var areas = get_node('PlayerAreaDetection').get_overlapping_areas()
 	if (areas != null):
 		for i in range (0, areas.size()):
