@@ -10,7 +10,7 @@ var minute
 var second
 const STAGES = [
 	preload('res://resources/scenes/sewers/water-puzzle.tscn'),
-	preload('res://resources/scenes/sewers/water-puzzle.tscn')
+	preload('res://resources/scenes/sewers/entrance.tscn'),
 ]
 const RESPAWN = [
 	#Vector2(-800, -600), 
