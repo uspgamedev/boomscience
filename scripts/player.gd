@@ -88,13 +88,10 @@ func set_nearby_npc(npc):
 
 func able_to_climb(stairs):
 	return !climbing and can_climb and stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1 \
-		and (!input.is_direction_held(DIR.INVALID) and !input.is_direction_held(DIR.RIGHT) and !input.is_direction_held(DIR.LEFT)) \
-		and not ( \
-				( \
-					input.is_direction_held(DIR.DOWN) or \
-					input.is_direction_held(DIR.DOWN_RIGHT) or \
-					input.is_direction_held(DIR.DOWN_LEFT) ) \
-				and !ground.get_overlapping_bodies().empty() ) \
+		and (!input.is_direction_held(DIR.INVALID) and !input.is_direction_held(DIR.RIGHT) and \
+			 !input.is_direction_held(DIR.LEFT)) \
+		and not ((input.is_direction_held(DIR.DOWN) or input.is_direction_held(DIR.DOWN_RIGHT) or \
+				  input.is_direction_held(DIR.DOWN_LEFT)) and !ground.get_overlapping_bodies().empty()) \
 		and not input.is_action_held(ACT.CAMERA)
 
 func check_stairs():
