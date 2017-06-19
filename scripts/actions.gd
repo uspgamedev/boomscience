@@ -1,5 +1,6 @@
 extends Node
 
+const INVALID = -1
 const ACCEPT = 0
 const CANCEL = 1
 const CAMERA = 2

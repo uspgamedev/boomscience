@@ -28,7 +28,6 @@ func set_jump(flag):
 	self.can_jump = flag
 
 func _jump(act):
-	var dir = input._get_direction(Input)
 	if (jump_height >= 0): # If already jumped
 		jump_height = -1 # Can't modify jump height
 	if (can_jump and act == ACT.JUMP):
@@ -44,7 +43,6 @@ func _add_jump_height(act):
 		jump_height += 1
 
 func _add_speed(dir):
-	var act = input._get_action(Input)
 	if (dir == DIR.LEFT or dir == DIR.UP_LEFT or dir == DIR.DOWN_LEFT):
 		self.speed += DIR.VECTOR[DIR.LEFT] * acc
 	if (dir == DIR.RIGHT or dir == DIR.UP_RIGHT or dir == DIR.DOWN_RIGHT):

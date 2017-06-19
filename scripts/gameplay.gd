@@ -6,15 +6,20 @@ const DIR = preload('directions.gd')
 const PLAYER = preload ('res://resources/scenes/player.tscn')
 
 onready var input = get_node('/root/input')
+onready var hud = get_node('Hud/Instructions')
+onready var background = get_node('Hud/Background')
+onready var objective = get_node('Hud/Objective')
+
 var player
 
 func _ready():
 	input.connect('press_quit', self, 'quit')
 	input.connect('press_reset', self, 'reset')
 	input.connect('press_respawn', self, 'respawn')
+	input.connect('press_action', self, 'on_press_action')
+	input.connect('release_action', self, 'on_press_action')
 	player = PLAYER.instance()
 	reload_map()
-	set_fixed_process(true)
 
 func reset():
 	global.reset()
@@ -41,19 +46,21 @@ func reload_map():
 func quit():
 	get_tree().quit()
 
-func _fixed_process(delta):
-	check_instructions()
+func on_press_action(action):
+	if action == ACT.INST:
+		show_instructions()
 
-func check_instructions():
-	var hud = get_node('Hud/Instructions')
-	var background = get_node('Hud/Background')
-	var objective = get_node('Hud/Objective')
-	var act = input._get_action(Input)
-	if (act == ACT.INST):
-		hud.show()
-		background.show()
-		objective.show()
-	else:
-		hud.hide()
-		background.hide()
-		objective.hide()
+func on_release_action(action):
+	if action == ACT.INST:
+		hide_instructions()
+
+func show_instructions():
+	hud.show()
+	background.show()
+	objective.show()
+
+func hide_instructions():
+	hud.hide()
+	background.hide()
+	objective.hide()
+
