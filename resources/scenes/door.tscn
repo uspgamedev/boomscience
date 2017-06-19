@@ -16,6 +16,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 scene = null
+target = null
 
 [node name="DoorArea" type="Area2D" parent="."]
 

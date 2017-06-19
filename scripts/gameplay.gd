@@ -43,8 +43,9 @@ func reload_map():
 	tmp.add_child(player)
 	self.add_child(tmp)
 
-func change_map(scene):
+func change_map(scene, target):
 	var current_stage = get_node('Stage')
+	var flag = false
 	if (current_stage != null):
 		current_stage.remove_child(player)
 		current_stage.queue_free()
@@ -53,7 +54,12 @@ func change_map(scene):
 	global.stage = scene
 	var tmp = global.get_current_stage().instance()
 	tmp.set_name('Stage')
-	player.set_pos(global.get_current_stage_respawn())
+	for i in tmp.get_children():
+		if (i.get_name() == target):
+			player.set_pos(i.get_pos())
+			flag = true
+	if (flag == false):
+		player.set_pos(global.get_current_stage_respawn())
 	tmp.add_child(player)
 	self.add_child(tmp)
 

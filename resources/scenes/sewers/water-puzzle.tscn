@@ -93,10 +93,12 @@ __meta__ = {
 
 transform/pos = Vector2( 79.1933, 46.1778 )
 scene = 0
+target = "Door2"
 
 [node name="Door2" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2001, 45 )
 scene = 0
+target = "Door2"
 
 

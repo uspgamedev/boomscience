@@ -42,7 +42,6 @@ func _ready():
 	area.connect('area_enter', self, '_on_Area2D_area_enter')
 	area.connect('area_exit',self,'_on_Area2D_area_exit')
 	self.connect('equipped_bomb', invslot_view, '_change_icon')
-	self.set_pos(global.get_current_stage_respawn())
 	hp = 500
 	equip_bomb(0)
 	var lifebar = hud.get_node('CharInfo/LifeBar')
@@ -263,7 +262,7 @@ func _check_doors(act):
 			if (areas[i].get_parent().get_script() == Door):
 				var door = areas[i].get_parent()
 				if (act == ACT.INTERACT):
-					get_node('../..').change_map(door.scene)
+					get_node('../..').change_map(door.scene, door.target)
 
 func check_death(area):
 	if (area.get_name() == 'Death'):
