@@ -1,6 +1,7 @@
 extends 'res://scripts/body.gd'
 
 const Door = preload("res://scripts/door.gd")
+const Valve = preload("res://scripts/valve.gd")
 
 const ACT = preload('actions.gd')
 var bombs = [
@@ -35,7 +36,7 @@ func _ready():
 	input.connect('press_action', self, '_interact')
 	input.connect('press_bomb_throw', self, '_bomb_throw')
 	input.connect('press_action', self, '_switch_bomb')
-	input.connect('press_action', self, '_check_doors')
+	input.connect('press_action', self, '_check_interactable')
 	input.connect('hold_action', self, '_add_jump_height')
 	input.connect('hold_direction', self, '_add_speed')
 	input.connect('hold_direction', self, '_flip_sprite')
@@ -255,14 +256,22 @@ func knockback(area_node):
 	speed.x += .5 * ACC * vector.x
 	speed.y -= 5 * ACC - 20 * vector.y
 
-func _check_doors(act):
+func _check_interactable(act):
 	var areas = get_node('PlayerAreaDetection').get_overlapping_areas()
 	if (areas != null):
 		for i in range (0, areas.size()):
 			if (areas[i].get_parent().get_script() == Door):
-				var door = areas[i].get_parent()
-				if (act == ACT.INTERACT):
-					get_node('../..').change_map(door.scene, door.target)
+				enter_door(areas[i], act)
+			elif (areas[i].get_parent().get_script() == Valve):
+				valve_interact()
+
+func valve_interact():
+	print("valve interaction")
+
+func enter_door(area, act):
+	var door = area.get_parent()
+	if (act == ACT.INTERACT):
+		get_node('../..').change_map(door.scene, door.target)
 
 func check_death(area):
 	if (area.get_name() == 'Death'):
