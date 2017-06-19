@@ -19,7 +19,6 @@ scene = null
 
 [node name="DoorArea" type="Area2D" parent="."]
 
-visibility/visible = false
 transform/pos = Vector2( -11, -6 )
 transform/scale = Vector2( 0.65625, 0.8125 )
 input/pickable = true
