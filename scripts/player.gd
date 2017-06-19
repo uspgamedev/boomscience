@@ -87,20 +87,20 @@ func equip_bomb(idx):
 func set_nearby_npc(npc):
 	nearby_npc = npc
 
-func able_to_climb(stairs, dir, act):
+func able_to_climb(stairs):
 	return !climbing and can_climb and stairs.get_cellv(stairs.world_to_map(self.get_pos())) != -1 \
-		and (dir != -1 and dir != DIR.RIGHT and dir != DIR.LEFT) \
-		and not ((dir == DIR.DOWN or dir == DIR.DOWN_RIGHT or dir == DIR.DOWN_LEFT) \
-		and !ground.get_overlapping_bodies().empty()) and act != ACT.CAMERA
+		and (!input.is_direction_held(DIR.INVALID) and !input.is_direction_held(DIR.RIGHT) and \
+			 !input.is_direction_held(DIR.LEFT)) \
+		and not ((input.is_direction_held(DIR.DOWN) or input.is_direction_held(DIR.DOWN_RIGHT) or \
+				  input.is_direction_held(DIR.DOWN_LEFT)) and !ground.get_overlapping_bodies().empty()) \
+		and not input.is_action_held(ACT.CAMERA)
 
 func check_stairs():
 	var stairs = get_node('../Stairs')
 	var anim = get_node('PlayerSprite/PlayerAnimation')
-	var act = input._get_action(Input)
-	var dir = input._get_direction(Input)
 	if (climbing):
 		align_stair_axis()
-	if (able_to_climb(stairs, dir, act)):
+	if (able_to_climb(stairs)):
 		climbing = true
 		if (!input.is_connected('press_action', self, '_release_stairs')):
 			input.connect('press_action', self, '_release_stairs')
@@ -120,23 +120,23 @@ func check_stairs():
 		G = 3000
 	elif (climbing):
 		G = 0
-		if (act != ACT.CAMERA):
+		if !input.is_action_held(ACT.CAMERA):
 			if (speed.y == 0):
 				anim.stop()
-			if (dir == DIR.UP or dir == DIR.UP_RIGHT or dir == DIR.UP_LEFT):
+			if input.is_direction_held(DIR.UP) or input.is_direction_held(DIR.UP_RIGHT) or input.is_direction_held(DIR.UP_LEFT):
 				if (!anim.is_playing() and speed.y != 0):
 					anim.play('climb')
-				if (act != ACT.STEALTH):
-					speed.y -= 20
-				else:
+				if input.is_action_held(ACT.STEALTH):
 					speed.y -= 10
-			elif (dir == DIR.DOWN or dir == DIR.DOWN_RIGHT or dir == DIR.DOWN_LEFT):
+				else:
+					speed.y -= 20
+			elif input.is_direction_held(DIR.DOWN) or input.is_direction_held(DIR.DOWN_RIGHT) or input.is_direction_held(DIR.DOWN_LEFT):
 				if (!anim.is_playing() and speed.y != 0):
 					anim.play('climb')
-				if (act != ACT.STEALTH):
-					speed.y += 20
-				else:
+				if input.is_action_held(ACT.STEALTH):
 					speed.y += 10
+				else:
+					speed.y += 20
 			else:
 				speed.y = 0
 				anim.stop()
@@ -144,11 +144,10 @@ func check_stairs():
 			speed.y = 0
 			anim.stop()
 
-func _touch_ground(unused):
+func _touch_ground(body_touched):
 	_release_stairs(ACT.JUMP)
 
 func _release_stairs(act):
-	var dir = input._get_direction(Input)
 	if (climbing and act == ACT.JUMP):
 		climbing = false
 		if (!input.is_connected('hold_direction', self, '_flip_sprite')):
@@ -157,7 +156,10 @@ func _release_stairs(act):
 			ground.disconnect('body_enter', self, '_touch_ground')
 		G = 3000
 		input.disconnect('press_action', self, '_release_stairs')
-		if (dir == DIR.RIGHT or dir == DIR.LEFT or dir == DIR.UP_LEFT or dir == DIR.UP_RIGHT):
+		if input.is_direction_held(DIR.RIGHT) or \
+				input.is_direction_held(DIR.LEFT) or \
+				input.is_direction_held(DIR.UP_LEFT) or \
+				input.is_direction_held(DIR.UP_RIGHT):
 			set_jump(true)
 			_jump(act)
 		can_climb = false
@@ -189,15 +191,13 @@ func player_unfreeze():
 		input.connect('press_bomb_throw', self, '_bomb_throw')
 
 func check_camera():
-	var act = input._get_action(Input)
-	if (act == ACT.CAMERA):
+	if input.is_action_held(ACT.CAMERA):
 		player_freeze()
-	elif (act == -1 and hud.is_dialog_reader_hidden()):
+	elif input.is_action_held(ACT.INVALID) and hud.is_dialog_reader_hidden():
 		player_unfreeze()
 
 func check_stealth():
-	var act = input._get_action(Input)
-	if (act == ACT.STEALTH):
+	if input.is_action_held(ACT.STEALTH):
 		area.set_scale(Vector2(.3, .3))
 		sprite.set_modulate(Color(1, 1, 1, .5))
 		acc = .5 * ACC
