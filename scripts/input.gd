@@ -42,7 +42,7 @@ func _input(event):
 	if pressed_act != ACT.INVALID: emit_signal('press_action', pressed_act)
 	if released_dir != DIR.INVALID: emit_signal('release_action', released_dir)
 	if released_act != ACT.INVALID: emit_signal('release_action', released_act)
-	do_your_weird_thing(event, pressed_act)
+	dispatch_game_events(event, pressed_act)
 
 func _fixed_process(delta):
 	var held_dir = _get_direction(Input, "held")
@@ -137,7 +137,7 @@ func _get_direction(e, interaction):
 
 	return dir
 
-func do_your_weird_thing(event, act):
+func dispatch_game_events(event, act):
 	var throw = _get_throw(event)
 	if throw != ACT.INVALID: emit_signal('press_bomb_throw', throw)
 	if act != ACT.INVALID: emit_signal('press_respawn', act)
