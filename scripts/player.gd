@@ -258,20 +258,20 @@ func knockback(area_node):
 
 func _check_interactable(act):
 	var areas = get_node('PlayerAreaDetection').get_overlapping_areas()
-	if (areas != null):
-		for i in range (0, areas.size()):
-			if (areas[i].get_parent().get_script() == Door):
-				enter_door(areas[i], act)
-			elif (areas[i].get_parent().get_script() == Valve):
-				valve_interact()
+	if (act == ACT.INTERACT):
+		if (areas != null):
+			for i in range (0, areas.size()):
+				if (areas[i].get_parent().get_script() == Door):
+					enter_door(areas[i])
+				elif (areas[i].get_parent().get_script() == Valve):
+					valve_interact()
 
 func valve_interact():
 	print("valve interaction")
 
-func enter_door(area, act):
+func enter_door(area):
 	var door = area.get_parent()
-	if (act == ACT.INTERACT):
-		get_node('../..').change_map(door.scene, door.target)
+	get_node('../..').change_map(door.scene, door.target)
 
 func check_death(area):
 	if (area.get_name() == 'Death'):

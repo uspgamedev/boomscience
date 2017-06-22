@@ -83,4 +83,3 @@ func hide_instructions():
 	hud.hide()
 	background.hide()
 	objective.hide()
-

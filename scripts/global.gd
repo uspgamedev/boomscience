@@ -2,6 +2,7 @@ extends Node
 
 const ENTRANCE = 0
 const WATER_PUZZLE = 1
+const VALVE_ROOM = 2
 
 var stage
 var death_count
@@ -9,11 +10,13 @@ var chronometer
 var minute
 var second
 const STAGES = [
-	preload('res://resources/scenes/sewers/water-puzzle.tscn'),
 	preload('res://resources/scenes/sewers/entrance.tscn'),
+	preload('res://resources/scenes/sewers/water-puzzle.tscn'),
+	preload('res://resources/scenes/sewers/valve_room.tscn'),
 ]
 const RESPAWN = [
-	#Vector2(-800, -600), 
+	Vector2(0, 0), 
+	Vector2(0, 0), 
 	Vector2(0, 0)
 ]
 
@@ -23,10 +26,10 @@ func _ready():
 
 func _fixed_process(delta):
 	check_chronometer(delta)
-	
+
 func stop_chronometer():
 	set_fixed_process(false)
-	
+
 func check_chronometer(delta):
 	chronometer += delta
 	if (chronometer >= 1):
@@ -35,13 +38,13 @@ func check_chronometer(delta):
 	if (second >= 60):
 		minute += 1
 		second = 0
-	
+
 func reset():
 	init()
 	set_fixed_process(true)
-	
+
 func init():
-	stage = ENTRANCE
+	stage = WATER_PUZZLE
 	death_count = 1
 	chronometer = 0
 	minute = 0
