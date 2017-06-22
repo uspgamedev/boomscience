@@ -3,6 +3,7 @@ extends Node
 const ENTRANCE = 0
 const WATER_PUZZLE = 1
 const VALVE_ROOM = 2
+const LEVER_PUZZLE = 3
 
 var stage
 var death_count
@@ -13,12 +14,11 @@ const STAGES = [
 	preload('res://resources/scenes/sewers/entrance.tscn'),
 	preload('res://resources/scenes/sewers/water-puzzle.tscn'),
 	preload('res://resources/scenes/sewers/valve_room.tscn'),
+	preload('res://resources/scenes/sewers/lever_puzzle.tscn'),
 ]
-const RESPAWN = [
-	Vector2(0, 0), 
-	Vector2(0, 0), 
-	Vector2(0, 0)
-]
+#const RESPAWN = [
+#	Vector2(0, 0), 
+#]
 
 func _ready():
 	init()
@@ -54,4 +54,4 @@ func get_current_stage():
 	return STAGES[stage]
 
 func get_current_stage_respawn():
-	return RESPAWN[stage]
+	return Vector2(0, 0)
