@@ -264,10 +264,19 @@ func _check_interactable(act):
 				if (areas[i].get_parent().get_script() == Door):
 					enter_door(areas[i])
 				elif (areas[i].get_parent().get_script() == Valve):
-					valve_interact()
+					valve_interact(areas[i])
 
-func valve_interact():
-	print("valve interaction")
+func valve_interact(area):
+	if (area.get_parent().get_name() == 'Valve1'):
+		if (global.flags['flood_level'] == 'low'):
+			global.flags['flood_level'] = 'none'
+		else:
+			global.flags['flood_level'] = 'low'
+	if (area.get_parent().get_name() == 'Valve2'):
+		if (global.flags['flood_level'] == 'high'):
+			global.flags['flood_level'] = 'none'
+		else:
+			global.flags['flood_level'] = 'high'
 
 func enter_door(area):
 	var door = area.get_parent()
