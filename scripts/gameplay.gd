@@ -17,7 +17,7 @@ func _ready():
 	input.connect('press_reset', self, 'reset')
 	input.connect('press_respawn', self, 'respawn')
 	input.connect('press_action', self, 'on_press_action')
-	input.connect('release_action', self, 'on_press_action')
+	input.connect('release_action', self, 'on_release_action')
 	player = PLAYER.instance()
 	reload_map()
 
