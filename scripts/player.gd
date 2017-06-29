@@ -270,25 +270,26 @@ func _check_interactable(act):
 					lever_interact(areas[i])
 
 func lever_interact(area):
-	if (area.get_parent().get_name() == 'Lever1'):
-		global.flags['door'][0] = not(global.flags['door'][0])
-		global.flags['door'][1] = not(global.flags['door'][1])
-		global.flags['door'][3] = not(global.flags['door'][3])
-		global.flags['door'][4] = not(global.flags['door'][4])
-		get_node('../').door_interaction()
-	elif (area.get_parent().get_name() == 'Lever2'):
-		global.flags['door'][0] = not(global.flags['door'][0])
-		global.flags['door'][4] = not(global.flags['door'][4])
-		get_node('../').door_interaction()
-	elif (area.get_parent().get_name() == 'Lever3'):
-		global.flags['door'][1] = not(global.flags['door'][1])
-		global.flags['door'][2] = not(global.flags['door'][2])
-		global.flags['door'][3] = not(global.flags['door'][3])
-		get_node('../').door_interaction()
-	elif (area.get_parent().get_name() == 'Lever4'):
-		global.flags['door'][0] = not(global.flags['door'][0])
-		global.flags['door'][2] = not(global.flags['door'][2])
-		get_node('../').door_interaction()
+	if (!get_parent().is_door_moving):
+		if (area.get_parent().get_name() == 'Lever1'):
+			global.flags['door'][0] = not(global.flags['door'][0])
+			global.flags['door'][1] = not(global.flags['door'][1])
+			global.flags['door'][3] = not(global.flags['door'][3])
+			global.flags['door'][4] = not(global.flags['door'][4])
+			get_parent().door_interaction()
+		elif (area.get_parent().get_name() == 'Lever2'):
+			global.flags['door'][0] = not(global.flags['door'][0])
+			global.flags['door'][4] = not(global.flags['door'][4])
+			get_parent().door_interaction()
+		elif (area.get_parent().get_name() == 'Lever3'):
+			global.flags['door'][1] = not(global.flags['door'][1])
+			global.flags['door'][2] = not(global.flags['door'][2])
+			global.flags['door'][3] = not(global.flags['door'][3])
+			get_parent().door_interaction()
+		elif (area.get_parent().get_name() == 'Lever4'):
+			global.flags['door'][0] = not(global.flags['door'][0])
+			global.flags['door'][2] = not(global.flags['door'][2])
+			get_parent().door_interaction()
 
 func valve_interact(area):
 	if (area.get_parent().get_name() == 'Valve1'):
