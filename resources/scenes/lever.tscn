@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://scripts/lever.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -12,6 +13,7 @@ extents = Vector2( 10, 10 )
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 modulate = Color( 1, 0, 0, 1 )
+script/script = ExtResource( 2 )
 
 [node name="LeverArea" type="Area2D" parent="."]
 
