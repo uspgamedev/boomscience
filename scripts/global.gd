@@ -5,6 +5,9 @@ const WATER_PUZZLE = 1
 const VALVE_ROOM = 2
 const LEVER_PUZZLE = 3
 
+const OPEN = 0
+const CLOSED = 1
+
 var stage
 var death_count
 var chronometer
@@ -48,13 +51,14 @@ func reset():
 	set_fixed_process(true)
 
 func init():
-	stage = WATER_PUZZLE
+	stage = LEVER_PUZZLE
 	death_count = 1
 	chronometer = 0
 	minute = 0
 	second = 0
 	flags = {}
 	flags['flood_level'] = 'low'
+	#flags['door'] = {OPEN, OPEN, OPEN, OPEN, CLOSED}
 
 func get_current_stage():
 	return STAGES[stage]

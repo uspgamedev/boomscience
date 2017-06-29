@@ -2,6 +2,7 @@ extends 'res://scripts/body.gd'
 
 const Door = preload("res://scripts/door.gd")
 const Valve = preload("res://scripts/valve.gd")
+const Lever = preload("res://scripts/lever.gd")
 
 const ACT = preload('actions.gd')
 var bombs = [
@@ -265,6 +266,18 @@ func _check_interactable(act):
 					enter_door(areas[i])
 				elif (areas[i].get_parent().get_script() == Valve):
 					valve_interact(areas[i])
+				elif (areas[i].get_parent().get_script() == Lever):
+					lever_interact(areas[i])
+
+func lever_interact(area):
+	if (area.get_parent().get_name() == 'Lever1'):
+		pass
+	elif (area.get_parent().get_name() == 'Lever2'):
+		pass
+	elif (area.get_parent().get_name() == 'Lever3'):
+		pass
+	elif (area.get_parent().get_name() == 'Lever4'):
+		pass
 
 func valve_interact(area):
 	if (area.get_parent().get_name() == 'Valve1'):
@@ -272,7 +285,7 @@ func valve_interact(area):
 			global.flags['flood_level'] = 'none'
 		else:
 			global.flags['flood_level'] = 'low'
-	if (area.get_parent().get_name() == 'Valve2'):
+	elif (area.get_parent().get_name() == 'Valve2'):
 		if (global.flags['flood_level'] == 'high'):
 			global.flags['flood_level'] = 'none'
 		else:
