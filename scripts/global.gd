@@ -58,7 +58,8 @@ func init():
 	second = 0
 	flags = {}
 	flags['flood_level'] = 'low'
-	#flags['door'] = {OPEN, OPEN, OPEN, OPEN, CLOSED}
+	flags['door'] = [OPEN, OPEN, OPEN, OPEN, CLOSED]
+	
 
 func get_current_stage():
 	return STAGES[stage]
