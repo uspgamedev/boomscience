@@ -30,6 +30,7 @@ var climbing = false
 var can_climb = true
 
 signal equipped_bomb(texture)
+signal lever_interaction()
 
 func _ready():
 	set_fixed_process(true)
@@ -290,6 +291,7 @@ func lever_interact(area):
 			global.flags['door'][0] = not(global.flags['door'][0])
 			global.flags['door'][2] = not(global.flags['door'][2])
 			get_parent().door_interaction()
+		emit_signal('lever_interaction')
 
 func valve_interact(area):
 	if (area.get_parent().get_name() == 'Valve1'):
