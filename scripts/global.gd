@@ -51,7 +51,7 @@ func reset():
 	set_fixed_process(true)
 
 func init():
-	stage = ENTRANCE
+	stage = LEVER_PUZZLE
 	death_count = 1
 	chronometer = 0
 	minute = 0
@@ -59,7 +59,6 @@ func init():
 	flags = {}
 	flags['flood_level'] = 'low'
 	flags['door'] = [OPEN, OPEN, OPEN, OPEN, CLOSED]
-	
 
 func get_current_stage():
 	return STAGES[stage]
