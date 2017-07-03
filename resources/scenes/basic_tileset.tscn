@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=1]
+[gd_scene load_steps=27 format=1]
 
 [ext_resource path="res://resources/assets/tilesets/sewer.tex" type="Texture" id=1]
 [ext_resource path="res://resources/assets/images/platformer_tileset_template.png" type="Texture" id=2]
@@ -79,6 +79,12 @@ points = Vector2Array( 16, 0, 32, 0, 32, 32, 16, 32 )
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=27]
+
+closed = true
+cull_mode = 0
+polygon = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=16]
 
@@ -507,7 +513,6 @@ trigger = false
 
 [node name="MidCenter" type="Sprite" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 40, 80 )
 texture = ExtResource( 1 )
 centered = false
@@ -536,6 +541,11 @@ build_mode = 0
 polygon = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 shape_range = Vector2( 0, 0 )
 trigger = false
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="MidCenter"]
+
+occluder = SubResource( 27 )
+light_mask = 1
 
 [node name="MidRight" type="Sprite" parent="."]
 
@@ -961,6 +971,9 @@ texture = ExtResource( 1 )
 centered = false
 region = true
 region_rect = Rect2( 96, 192, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BGHoleTop" type="Sprite" parent="."]
 
@@ -969,6 +982,9 @@ texture = ExtResource( 1 )
 centered = false
 region = true
 region_rect = Rect2( 128, 192, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BGHoleTopRight" type="Sprite" parent="."]
 
@@ -977,6 +993,9 @@ texture = ExtResource( 1 )
 centered = false
 region = true
 region_rect = Rect2( 160, 192, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BGHoleMidLeft" type="Sprite" parent="."]
 
@@ -985,6 +1004,9 @@ texture = ExtResource( 1 )
 centered = false
 region = true
 region_rect = Rect2( 96, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BGHoleMid" type="Sprite" parent="."]
 
@@ -993,6 +1015,9 @@ texture = ExtResource( 1 )
 centered = false
 region = true
 region_rect = Rect2( 128, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BGHoleMidRight" type="Sprite" parent="."]
 
@@ -1001,6 +1026,9 @@ texture = ExtResource( 1 )
 centered = false
 region = true
 region_rect = Rect2( 160, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BGHoleBottomLeft" type="Sprite" parent="."]
 
@@ -1009,6 +1037,9 @@ texture = ExtResource( 1 )
 centered = false
 region = true
 region_rect = Rect2( 96, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BGHoleBottom" type="Sprite" parent="."]
 
@@ -1017,6 +1048,9 @@ texture = ExtResource( 1 )
 centered = false
 region = true
 region_rect = Rect2( 128, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BGHoleBottomRight" type="Sprite" parent="."]
 
@@ -1025,5 +1059,8 @@ texture = ExtResource( 1 )
 centered = false
 region = true
 region_rect = Rect2( 160, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 

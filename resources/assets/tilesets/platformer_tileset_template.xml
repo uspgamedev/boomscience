@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="TileSet" subresource_count="30" version="2.1" version_name="Godot Engine v2.1.3.stable.official">
+<resource_file type="TileSet" subresource_count="31" version="2.1" version_name="Godot Engine v2.1.3.stable.official">
 	<ext_resource path="res://resources/assets/images/stairs.png" type="Texture" index="3"></ext_resource>
 	<ext_resource path="res://resources/assets/images/breakable_block.png" type="Texture" index="2"></ext_resource>
 	<ext_resource path="res://resources/assets/images/platformer_tileset_template.png" type="Texture" index="0"></ext_resource>
@@ -27,6 +27,12 @@
 	<resource type="ConvexPolygonShape2D" path="local://14">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2_array name="points" len="4"> 			16, 0, 32, 0, 32, 32, 16, 32 </vector2_array>
+
+	</resource>
+	<resource type="OccluderPolygon2D" path="local://27">
+		<bool name="closed"> True </bool>
+		<int name="cull_mode"> 0 </int>
+		<vector2_array name="polygon" len="4"> 			0, 0, 32, 0, 32, 32, 0, 32 </vector2_array>
 
 	</resource>
 	<resource type="ConvexPolygonShape2D" path="local://15">
@@ -124,9 +130,9 @@
 		<vector2_array name="points" len="4"> 			0, 0, 16, 0, 16, 16, 0, 16 </vector2_array>
 
 	</resource>
-	<resource type="ConvexPolygonShape2D" path="local://27">
+	<resource type="ConvexPolygonShape2D" path="local://28">
 		<real name="custom_solver_bias"> 0 </real>
-		<vector2_array name="points" len="4"> 			0, 0, 24, 0, 24, 32, 0, 32 </vector2_array>
+		<vector2_array name="points" len="4"> 			0, 32, 0, 0, 16, 16, 16, 32 </vector2_array>
 
 	</resource>
 	<main_resource>
@@ -235,7 +241,7 @@
 		<resource name="9/occluder"></resource>		<vector2 name="9/navigation_offset"> -0, -0 </vector2>
 		<resource name="9/navigation"></resource>		<vector2 name="9/shape_offset"> -0, -0 </vector2>
 		<array name="9/shapes" len="1" shared="false">
-			<resource  resource_type="Shape2D" path="local://27">  </resource>
+			<resource  resource_type="Shape2D" path="local://28">  </resource>
 		</array>
 		<string name="10/name"> "CornerTopRightUpper" </string>
 		<resource name="10/texture" external="0">  </resource>
@@ -288,7 +294,8 @@
 		<resource name="14/material"></resource>		<color name="14/modulate"> 1, 1, 1, 1 </color>
 		<rect2 name="14/region"> 32, 128, 32, 32 </rect2>
 		<vector2 name="14/occluder_offset"> -0, -0 </vector2>
-		<resource name="14/occluder"></resource>		<vector2 name="14/navigation_offset"> -0, -0 </vector2>
+		<resource name="14/occluder" resource_type="OccluderPolygon2D" path="local://27">  </resource>
+		<vector2 name="14/navigation_offset"> -0, -0 </vector2>
 		<resource name="14/navigation"></resource>		<vector2 name="14/shape_offset"> -0, -0 </vector2>
 		<array name="14/shapes" len="1" shared="false">
 			<resource  resource_type="Shape2D" path="local://15">  </resource>
