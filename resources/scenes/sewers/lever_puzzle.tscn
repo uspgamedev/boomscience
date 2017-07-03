@@ -102,8 +102,8 @@ target = "Door4"
 [node name="Door2" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 1199.19, 45.1778 )
-scene = 3
-target = "Door2"
+scene = 4
+target = "Door1"
 
 [node name="Lever1" parent="." instance=ExtResource( 7 )]
 
