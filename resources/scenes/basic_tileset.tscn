@@ -5,107 +5,107 @@
 [ext_resource path="res://resources/assets/images/breakable_block.png" type="Texture" id=3]
 [ext_resource path="res://resources/assets/images/stairs.png" type="Texture" id=4]
 
-[sub_resource type="ConvexPolygonShape2D" id=17]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 16, 16, 32, 16, 32, 32, 16, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=16]
+[sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 16, 32, 16, 32, 32, 0, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=15]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 16, 16, 16, 16, 32, 0, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=20]
+[sub_resource type="ConvexPolygonShape2D" id=4]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 32, 16, 16, 16, 16, 0, 32, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=21]
+[sub_resource type="ConvexPolygonShape2D" id=5]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 16, 0, 0, 32, 0, 32, 16 )
 
-[sub_resource type="ConvexPolygonShape2D" id=22]
+[sub_resource type="ConvexPolygonShape2D" id=6]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
-[sub_resource type="ConvexPolygonShape2D" id=26]
+[sub_resource type="ConvexPolygonShape2D" id=7]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, 32, 0, 32, 16, 16, 16 )
 
-[sub_resource type="ConvexPolygonShape2D" id=27]
+[sub_resource type="ConvexPolygonShape2D" id=26]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 32, 0, 0, 16, 16, 16, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=28]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 16, 0, 0, 32, 0, 16, 16 )
 
-[sub_resource type="ConvexPolygonShape2D" id=29]
+[sub_resource type="ConvexPolygonShape2D" id=10]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 16, 16, 32, 0, 32, 32, 16, 32 )
 
-[sub_resource type="ConcavePolygonShape2D" id=23]
+[sub_resource type="ConcavePolygonShape2D" id=11]
 
 custom_solver_bias = 0.0
 segments = Vector2Array( 0, 0, 16, 0, 16, 0, 16, 16, 16, 16, 32, 16, 32, 16, 32, 32, 32, 32, 0, 32, 0, 32, 0, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=24]
+[sub_resource type="ConvexPolygonShape2D" id=12]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 32, 0, 16, 16, 16, 32, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=25]
+[sub_resource type="ConvexPolygonShape2D" id=13]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 32, 0, 32, 32, 16, 16, 16, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=18]
+[sub_resource type="ConvexPolygonShape2D" id=14]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 16, 0, 32, 0, 32, 32, 16, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="ConvexPolygonShape2D" id=15]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=19]
+[sub_resource type="ConvexPolygonShape2D" id=16]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, 16, 0, 16, 32, 0, 32 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=17]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="ConvexPolygonShape2D" id=11]
+[sub_resource type="ConvexPolygonShape2D" id=18]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 32, 32, 16, 32, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=12]
+[sub_resource type="ConvexPolygonShape2D" id=19]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 16, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=13]
+[sub_resource type="ConvexPolygonShape2D" id=20]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 16, 32, 32, 0, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=14]
+[sub_resource type="ConvexPolygonShape2D" id=21]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, 32, 16, 32, 32, 0, 32 )
@@ -159,7 +159,7 @@ __meta__ = {
 [node name="TopLeftLowerBody" type="StaticBody2D" parent="TopLeftLower"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 17 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -191,7 +191,7 @@ __meta__ = {
 [node name="TopCenterLowerBody" type="StaticBody2D" parent="TopCenterLower"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 16 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -223,7 +223,7 @@ __meta__ = {
 [node name="TopRightLowerBody" type="StaticBody2D" parent="TopRightLower"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 15 )
+shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -255,7 +255,7 @@ __meta__ = {
 [node name="BottomLeftBody" type="StaticBody2D" parent="BottomLeft"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 20 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -287,7 +287,7 @@ __meta__ = {
 [node name="BottomCenterBody" type="StaticBody2D" parent="BottomCenter"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 21 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -319,7 +319,7 @@ __meta__ = {
 [node name="BottomRightBody" type="StaticBody2D" parent="BottomRight"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 22 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -338,6 +338,7 @@ trigger = false
 
 [node name="CornerTopLeft" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 136.889, 4.05128 )
 texture = ExtResource( 1 )
 centered = false
@@ -350,10 +351,10 @@ __meta__ = {
 [node name="CornerTopRightLeftBody" type="StaticBody2D" parent="CornerTopLeft"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 26 )
+shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 27 )
+shapes/1/shape = SubResource( 26 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
 collision/layers = 1
@@ -372,6 +373,7 @@ trigger = false
 
 [node name="CornerTopRight" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 207.096, 2.43362 )
 texture = ExtResource( 1 )
 centered = false
@@ -384,10 +386,10 @@ __meta__ = {
 [node name="CornerTopRightUpperBody" type="StaticBody2D" parent="CornerTopRight"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 28 )
+shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 29 )
+shapes/1/shape = SubResource( 10 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
 collision/layers = 1
@@ -419,7 +421,7 @@ __meta__ = {
 [node name="CornerTopLeftLowerBody" type="StaticBody2D" parent="CornerBottomLeft"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 23 )
+shapes/0/shape = SubResource( 11 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -451,10 +453,10 @@ __meta__ = {
 [node name="CornerTopLeftLowerBody" type="StaticBody2D" parent="CornerBottomRight"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 24 )
+shapes/0/shape = SubResource( 12 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 25 )
+shapes/1/shape = SubResource( 13 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
 collision/layers = 1
@@ -486,7 +488,7 @@ __meta__ = {
 [node name="TopLeftLowerBody" type="StaticBody2D" parent="MidLeft"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 18 )
+shapes/0/shape = SubResource( 14 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -518,7 +520,7 @@ __meta__ = {
 [node name="TopCenterLowerBody" type="StaticBody2D" parent="MidCenter"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 15 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -550,7 +552,7 @@ __meta__ = {
 [node name="TopRightLowerBody" type="StaticBody2D" parent="MidRight"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 19 )
+shapes/0/shape = SubResource( 16 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -582,7 +584,7 @@ __meta__ = {
 [node name="TopCenterLowerBody" type="StaticBody2D" parent="BreakableBlock"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 15 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -617,7 +619,7 @@ __meta__ = {
 [node name="StairsArea" type="Area2D" parent="Stairs"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 10 )
+shapes/0/shape = SubResource( 17 )
 shapes/0/transform = Matrix32( 1.6, 0, 0, 1.6, 0, 1.2517e-06 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -632,7 +634,7 @@ __meta__ = {
 
 transform/pos = Vector2( 0, 1.2517e-06 )
 transform/scale = Vector2( 1.6, 1.6 )
-shape = SubResource( 10 )
+shape = SubResource( 17 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -654,7 +656,7 @@ __meta__ = {
 [node name="TopCenterLowerBody" type="StaticBody2D" parent="MidSlopeRightBottom"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 15 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -686,7 +688,7 @@ __meta__ = {
 [node name="TopCenterLowerBody" type="StaticBody2D" parent="TopSlopeRightBottom"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 11 )
+shapes/0/shape = SubResource( 18 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -718,7 +720,7 @@ __meta__ = {
 [node name="TopCenterLowerBody" type="StaticBody2D" parent="MidSlopeRightTop"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 12 )
+shapes/0/shape = SubResource( 19 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -754,11 +756,14 @@ texture = ExtResource( 2 )
 centered = false
 region = true
 region_rect = Rect2( 160, 288, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TopCenterLowerBody" type="StaticBody2D" parent="MidSlopeLeftBottom"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 15 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -783,11 +788,14 @@ texture = ExtResource( 2 )
 centered = false
 region = true
 region_rect = Rect2( 160, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TopCenterLowerBody" type="StaticBody2D" parent="TopSlopeLeftBottom"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 13 )
+shapes/0/shape = SubResource( 20 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -812,11 +820,14 @@ texture = ExtResource( 2 )
 centered = false
 region = true
 region_rect = Rect2( 128, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TopCenterLowerBody" type="StaticBody2D" parent="MidSlopeLeftTop"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 14 )
+shapes/0/shape = SubResource( 21 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -840,5 +851,179 @@ texture = ExtResource( 2 )
 centered = false
 region = true
 region_rect = Rect2( 128, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallTopLeft" type="Sprite" parent="."]
+
+transform/pos = Vector2( 136, 128 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 192, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallTop" type="Sprite" parent="."]
+
+transform/pos = Vector2( 176, 128 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 32, 192, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallTopRight" type="Sprite" parent="."]
+
+transform/pos = Vector2( 216, 128 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 64, 192, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallMidLeft" type="Sprite" parent="."]
+
+transform/pos = Vector2( 136, 168 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallMid" type="Sprite" parent="."]
+
+transform/pos = Vector2( 176, 168 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 32, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallMidRight" type="Sprite" parent="."]
+
+transform/pos = Vector2( 216, 168 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 64, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallBottomLeft" type="Sprite" parent="."]
+
+transform/pos = Vector2( 136, 208 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallBottom" type="Sprite" parent="."]
+
+transform/pos = Vector2( 176, 208 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 32, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallBottomRight" type="Sprite" parent="."]
+
+transform/pos = Vector2( 216, 208 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 64, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGHoleTopLeft" type="Sprite" parent="."]
+
+transform/pos = Vector2( 272, 128 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 96, 192, 32, 32 )
+
+[node name="BGHoleTop" type="Sprite" parent="."]
+
+transform/pos = Vector2( 312, 128 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 128, 192, 32, 32 )
+
+[node name="BGHoleTopRight" type="Sprite" parent="."]
+
+transform/pos = Vector2( 352, 128 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 160, 192, 32, 32 )
+
+[node name="BGHoleMidLeft" type="Sprite" parent="."]
+
+transform/pos = Vector2( 272, 168 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 96, 224, 32, 32 )
+
+[node name="BGHoleMid" type="Sprite" parent="."]
+
+transform/pos = Vector2( 312, 168 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 128, 224, 32, 32 )
+
+[node name="BGHoleMidRight" type="Sprite" parent="."]
+
+transform/pos = Vector2( 352, 168 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 160, 224, 32, 32 )
+
+[node name="BGHoleBottomLeft" type="Sprite" parent="."]
+
+transform/pos = Vector2( 272, 208 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 96, 256, 32, 32 )
+
+[node name="BGHoleBottom" type="Sprite" parent="."]
+
+transform/pos = Vector2( 312, 208 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 128, 256, 32, 32 )
+
+[node name="BGHoleBottomRight" type="Sprite" parent="."]
+
+transform/pos = Vector2( 352, 208 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 160, 256, 32, 32 )
 
 
