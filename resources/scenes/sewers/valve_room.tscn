@@ -84,9 +84,15 @@ target = "Door3"
 [node name="Valve1" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 304, 16 )
+flag_name = "flood_level"
+initial_state = "low"
+alternate_state = "none"
 
 [node name="Valve2" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 304, 944 )
+flag_name = "flood_level"
+initial_state = "none"
+alternate_state = "high"
 
 

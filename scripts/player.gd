@@ -263,12 +263,13 @@ func _check_interactable(act):
 	if (act == ACT.INTERACT):
 		if (areas != null):
 			for i in range (0, areas.size()):
-				if (areas[i].get_parent().get_script() == Door):
+				var interactable = areas[i].get_parent()
+				if (interactable.get_script() == Door):
 					enter_door(areas[i])
-				elif (areas[i].get_parent().get_script() == Valve):
-					valve_interact(areas[i])
-				elif (areas[i].get_parent().get_script() == Lever):
+				elif (interactable.get_script() == Lever):
 					lever_interact(areas[i])
+				elif (interactable extends preload("res://scripts/toggle_interactable.gd")):
+					interactable.toggle()
 
 func lever_interact(area):
 	if (!get_parent().is_door_moving):
