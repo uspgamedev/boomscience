@@ -685,6 +685,17 @@
 		<resource name="51/navigation"></resource>		<vector2 name="51/shape_offset"> 0, 0 </vector2>
 		<array name="51/shapes" len="0" shared="false">
 		</array>
+		<string name="52/name"> "Gate" </string>
+		<resource name="52/texture" external="2">  </resource>
+		<vector2 name="52/tex_offset"> 0, 0 </vector2>
+		<resource name="52/material"></resource>		<color name="52/modulate"> 0.177383, 0.344604, 0.605469, 1 </color>
+		<rect2 name="52/region"> 0, 0, 32, 32 </rect2>
+		<vector2 name="52/occluder_offset"> -0, -0 </vector2>
+		<resource name="52/occluder"></resource>		<vector2 name="52/navigation_offset"> -0, -0 </vector2>
+		<resource name="52/navigation"></resource>		<vector2 name="52/shape_offset"> -0, -0 </vector2>
+		<array name="52/shapes" len="1" shared="false">
+			<resource  resource_type="Shape2D" path="local://15">  </resource>
+		</array>
 
 	</main_resource>
 </resource_file>
