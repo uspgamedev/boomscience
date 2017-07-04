@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://resources/scenes/basic_stage.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/assets/tilesets/platformer_tileset_template.xml" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://resources/assets/bgm/sewer_.ogg" type="AudioStream" id=4]
 [ext_resource path="res://scripts/stream_player.gd" type="Script" id=5]
 [ext_resource path="res://resources/scenes/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://resources/scenes/sewers/ceiling_lamp.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -45,6 +46,7 @@ __meta__ = {
 
 [node name="Death" type="Area2D" parent="."]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -192,5 +194,18 @@ target = "Door2"
 transform/pos = Vector2( 2001, 61 )
 scene = 3
 target = "Door1"
+
+[node name="CeilingLamp1" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 595.846, -40.6491 )
+
+[node name="CeilingLamp2" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 1729.55, -40.4974 )
+
+[node name="CeilingLamp3" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 1880.56, -456.702 )
+z/z = -1
 
 
