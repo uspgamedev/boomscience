@@ -267,44 +267,33 @@ func _check_interactable(act):
 				if (interactable.get_script() == Door):
 					enter_door(areas[i])
 				elif (interactable.get_script() == Lever):
-					lever_interact(areas[i])
+					lever_interact(interactable)
 				elif (interactable extends preload("res://scripts/toggle_interactable.gd")):
 					interactable.toggle()
 
-func lever_interact(area):
+func lever_interact(lever):
+	lever.pull()
 	if (!get_parent().is_door_moving):
-		if (area.get_parent().get_name() == 'Lever1'):
+		if (lever.get_name() == 'Lever1'):
 			global.flags['door'][0] = not(global.flags['door'][0])
 			global.flags['door'][1] = not(global.flags['door'][1])
 			global.flags['door'][3] = not(global.flags['door'][3])
 			global.flags['door'][4] = not(global.flags['door'][4])
 			get_parent().door_interaction()
-		elif (area.get_parent().get_name() == 'Lever2'):
+		elif (lever.get_name() == 'Lever2'):
 			global.flags['door'][0] = not(global.flags['door'][0])
 			global.flags['door'][4] = not(global.flags['door'][4])
 			get_parent().door_interaction()
-		elif (area.get_parent().get_name() == 'Lever3'):
+		elif (lever.get_name() == 'Lever3'):
 			global.flags['door'][1] = not(global.flags['door'][1])
 			global.flags['door'][2] = not(global.flags['door'][2])
 			global.flags['door'][3] = not(global.flags['door'][3])
 			get_parent().door_interaction()
-		elif (area.get_parent().get_name() == 'Lever4'):
+		elif (lever.get_name() == 'Lever4'):
 			global.flags['door'][0] = not(global.flags['door'][0])
 			global.flags['door'][2] = not(global.flags['door'][2])
 			get_parent().door_interaction()
 		emit_signal('lever_interaction')
-
-func valve_interact(area):
-	if (area.get_parent().get_name() == 'Valve1'):
-		if (global.flags['flood_level'] == 'low'):
-			global.flags['flood_level'] = 'none'
-		else:
-			global.flags['flood_level'] = 'low'
-	elif (area.get_parent().get_name() == 'Valve2'):
-		if (global.flags['flood_level'] == 'high'):
-			global.flags['flood_level'] = 'none'
-		else:
-			global.flags['flood_level'] = 'high'
 
 func enter_door(area):
 	var door = area.get_parent()
