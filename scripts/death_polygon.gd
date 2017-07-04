@@ -10,8 +10,8 @@ func _ready():
 	stick = get_node('../Stick')
 	death_collision = get_node('DeathCollision')
 	high_flood = death_collision.get_pos()
-	low_flood = high_flood + Vector2(0, 200)
-	no_flood = low_flood + Vector2(0, 200)
+	low_flood = high_flood + Vector2(0, 216)
+	no_flood = low_flood + Vector2(0, 216)
 	if (global.flags['flood_level'] == 'low'):
 		set_low_flood()
 	elif (global.flags['flood_level'] == 'high'):
