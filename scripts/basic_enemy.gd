@@ -6,6 +6,10 @@ var max_speed = 100
 var dir = -1
 var timer = 2
 var temp = 0
+onready var area_polygon_left = Vector2Array([Vector2(0,0), Vector2(-100,30), Vector2(-100, -30)])
+onready var area_polygon_right = Vector2Array([Vector2(0,0), Vector2(100,30), Vector2(100, -30)])
+
+onready var area_detection = get_node("AreaDetection")
 
 func _ready():
 	sprite = get_node('BasicEnemySprite')
@@ -33,6 +37,13 @@ func routine(delta):
 		temp = 0
 		dir *= -1
 		sprite.set_flip_h(max(dir, 0))
+		if (area_detection.get_node("Polygon2D").get_polygon() == area_polygon_left):
+			area_detection.get_node("Polygon2D").set_polygon(area_polygon_right)
+			#area_detection.get_shape(
+			
+		else:
+			area_detection.get_node("Polygon2D").set_polygon(area_polygon_left)
+		#print(area_detection.get_polygon())
 
 func take_damage(damage):
 	get_node('LifeBar').change_life(hp, -damage)
