@@ -42,3 +42,13 @@ func take_damage(damage):
 
 func die():
 	self.queue_free()
+
+
+func _on_AreaDetection_area_enter( area ):
+	if (area.get_name() == "PlayerAreaDetection"):
+		print("enter")
+
+
+func _on_AreaDetection_area_exit( area ):
+	if (area.get_name() == "PlayerAreaDetection"):
+		print("exit")
