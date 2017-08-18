@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://scripts/basic_enemy.gd" type="Script" id=1]
 [ext_resource path="res://resources/assets/images/dog-scientist.png" type="Texture" id=2]
@@ -64,10 +64,15 @@ draw_bg = true
 custom_solver_bias = 0.0
 radius = 30.0
 
-[sub_resource type="ConvexPolygonShape2D" id=7]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, -100, 30, -100, -30 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 0, 100, 30, 100, -30 )
 
 [node name="BasicEnemy" type="KinematicBody2D" groups=[
 "enemy",
@@ -165,10 +170,27 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="AreaDetection" type="Area2D" parent="."]
+[node name="CircleAreaDetection" type="Area2D" parent="."]
 
 input/pickable = true
 shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CircleAreaDetection"]
+
+shape = SubResource( 6 )
+trigger = false
+_update_shape_index = 0
+
+[node name="TriangleAreaDetection" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 shapes/1/shape = SubResource( 7 )
@@ -179,34 +201,24 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetection"]
+[node name="ShapeLeft" type="CollisionShape2D" parent="TriangleAreaDetection"]
 
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 trigger = false
 _update_shape_index = 0
 
-[node name="CollisionShape2D 2" type="CollisionShape2D" parent="AreaDetection"]
+[node name="ShapeRight" type="CollisionShape2D" parent="TriangleAreaDetection"]
 
 shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 1
 
-[node name="Polygon2D" type="Polygon2D" parent="AreaDetection"]
+[connection signal="area_enter" from="CircleAreaDetection" to="." method="_on_CircleAreaDetection_area_enter"]
 
-polygon = Vector2Array( 0, 0, -100, 30, -100, -30 )
-uv = Vector2Array(  )
-color = Color( 1, 1, 1, 0.15302 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
+[connection signal="area_exit" from="CircleAreaDetection" to="." method="_on_CircleAreaDetection_area_exit"]
 
-[connection signal="area_enter" from="AreaDetection" to="." method="_on_AreaDetection_area_enter"]
+[connection signal="area_enter" from="TriangleAreaDetection" to="." method="_on_TriangleAreaDetection_area_enter"]
 
-[connection signal="area_exit" from="AreaDetection" to="." method="_on_AreaDetection_area_exit"]
+[connection signal="area_exit" from="TriangleAreaDetection" to="." method="_on_TriangleAreaDetection_area_exit"]
 
 
