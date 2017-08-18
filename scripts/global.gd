@@ -54,7 +54,7 @@ func reset():
 	set_fixed_process(true)
 
 func init():
-	stage = ENTRANCE
+	stage = LEVER_PUZZLE
 	death_count = 1
 	chronometer = 0
 	minute = 0

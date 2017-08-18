@@ -59,20 +59,20 @@ border_size = 2
 border_blend = true
 draw_bg = true
 
-[sub_resource type="CircleShape2D" id=6]
-
-custom_solver_bias = 0.0
-radius = 30.0
-
 [sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0, 0, -100, 30, -100, -30 )
+points = Vector2Array( 0, 0, -150, 30, -150, -30 )
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0, 0, 100, 30, 100, -30 )
+points = Vector2Array( 0, 0, 150, 30, 150, -30 )
+
+[sub_resource type="CircleShape2D" id=6]
+
+custom_solver_bias = 0.0
+radius = 50.0
 
 [node name="BasicEnemy" type="KinematicBody2D" groups=[
 "enemy",
@@ -170,24 +170,7 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="CircleAreaDetection" type="Area2D" parent="."]
-
-input/pickable = true
-shapes/0/shape = SubResource( 6 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CircleAreaDetection"]
-
-shape = SubResource( 6 )
-trigger = false
-_update_shape_index = 0
-
-[node name="TriangleAreaDetection" type="Area2D" parent="."]
+[node name="AreaDetection" type="Area2D" parent="."]
 
 input/pickable = true
 shapes/0/shape = SubResource( 8 )
@@ -196,29 +179,34 @@ shapes/0/trigger = false
 shapes/1/shape = SubResource( 7 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
+shapes/2/shape = SubResource( 6 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 
-[node name="ShapeLeft" type="CollisionShape2D" parent="TriangleAreaDetection"]
+[node name="ShapeLeft" type="CollisionShape2D" parent="AreaDetection"]
 
 shape = SubResource( 8 )
 trigger = false
 _update_shape_index = 0
 
-[node name="ShapeRight" type="CollisionShape2D" parent="TriangleAreaDetection"]
+[node name="ShapeRight" type="CollisionShape2D" parent="AreaDetection"]
 
 shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 1
 
-[connection signal="area_enter" from="CircleAreaDetection" to="." method="_on_CircleAreaDetection_area_enter"]
+[node name="CircleShape" type="CollisionShape2D" parent="AreaDetection"]
 
-[connection signal="area_exit" from="CircleAreaDetection" to="." method="_on_CircleAreaDetection_area_exit"]
+shape = SubResource( 6 )
+trigger = false
+_update_shape_index = 2
 
-[connection signal="area_enter" from="TriangleAreaDetection" to="." method="_on_TriangleAreaDetection_area_enter"]
+[connection signal="area_enter" from="AreaDetection" to="." method="_on_AreaDetection_area_enter"]
 
-[connection signal="area_exit" from="TriangleAreaDetection" to="." method="_on_TriangleAreaDetection_area_exit"]
+[connection signal="area_exit" from="AreaDetection" to="." method="_on_AreaDetection_area_exit"]
 
 
