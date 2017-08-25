@@ -29,7 +29,6 @@ func _fixed_process(delta):
 	check_detection(delta)
 
 func check_detection(delta):
-	print(detected)
 	if (!detected):
 		passive(delta)
 	else:
@@ -46,6 +45,7 @@ func check_animation():
 
 func aggressive(delta):
 	var vector = player.get_pos() - self.get_pos()
+	temp = 0
 	if (vector.x > 0):
 		dir = 1
 	else:

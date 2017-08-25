@@ -59,7 +59,7 @@ border_size = 2
 border_blend = true
 draw_bg = true
 
-[sub_resource type="ConvexPolygonShape2D" id=8]
+[sub_resource type="ConvexPolygonShape2D" id=6]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, -150, 30, -150, -30 )
@@ -69,10 +69,10 @@ points = Vector2Array( 0, 0, -150, 30, -150, -30 )
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, 150, 30, 150, -30 )
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=8]
 
 custom_solver_bias = 0.0
-radius = 50.0
+radius = 70.0
 
 [node name="BasicEnemy" type="KinematicBody2D" groups=[
 "enemy",
@@ -173,13 +173,13 @@ playback/speed = 1.0
 [node name="AreaDetection" type="Area2D" parent="."]
 
 input/pickable = true
-shapes/0/shape = SubResource( 8 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 shapes/1/shape = SubResource( 7 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
-shapes/2/shape = SubResource( 6 )
+shapes/2/shape = SubResource( 8 )
 shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/2/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -189,7 +189,7 @@ angular_damp = 1.0
 
 [node name="ShapeLeft" type="CollisionShape2D" parent="AreaDetection"]
 
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 0
 
@@ -201,7 +201,7 @@ _update_shape_index = 1
 
 [node name="CircleShape" type="CollisionShape2D" parent="AreaDetection"]
 
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 trigger = false
 _update_shape_index = 2
 
