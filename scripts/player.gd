@@ -245,15 +245,15 @@ func _on_Area2D_area_enter(area):
 	check_damage(area)
 
 func check_damage(area):
-	var area_node = area.get_node('../')
-	if (area_node.is_in_group('enemy')):
+	if (area.is_in_group('enemy_area')):
 		hud.get_node('CharInfo/LifeBar').change_life(hp, -100)
 		hp -= 100
-		knockback(area_node)
+		knockback(area)
 	if (hp <= 0):
 		die()
 
-func knockback(area_node):
+func knockback(area):
+	var area_node = area.get_node('../')
 	var vector = self.get_pos() - area_node.get_pos()
 	speed.x += .5 * ACC * vector.x
 	speed.y -= 5 * ACC - 20 * vector.y

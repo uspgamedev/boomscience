@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://resources/scenes/basic_stage.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/lever_puzzle.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://resources/scenes/door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/scenes/lever.tscn" type="PackedScene" id=7]
 [ext_resource path="res://resources/scenes/lever_puzzle_light_display.tscn" type="PackedScene" id=8]
+[ext_resource path="res://resources/scenes/basic_enemy.tscn" type="PackedScene" id=9]
 
 [node name="Lever_Puzzle" instance=ExtResource( 1 )]
 
@@ -168,5 +169,9 @@ transform/pos = Vector2( -560, -596 )
 [node name="LeverPuzzleLightDisplay" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 49.5564, -656.267 )
+
+[node name="BasicEnemy" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 376, 48 )
 
 
