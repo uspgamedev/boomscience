@@ -1,86 +1,154 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=27 format=1]
 
-[ext_resource path="res://resources/assets/images/platformer_tileset_template.png" type="Texture" id=1]
-[ext_resource path="res://resources/assets/images/breakable_block.png" type="Texture" id=2]
-[ext_resource path="res://resources/assets/images/stairs.png" type="Texture" id=3]
+[ext_resource path="res://resources/assets/tilesets/sewer.tex" type="Texture" id=1]
+[ext_resource path="res://resources/assets/images/platformer_tileset_template.png" type="Texture" id=2]
+[ext_resource path="res://resources/assets/images/breakable_block.png" type="Texture" id=3]
+[ext_resource path="res://resources/assets/images/stairs.png" type="Texture" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 8, 0, 32, 0, 32, 32, 8, 32 )
+points = Vector2Array( 16, 16, 32, 16, 32, 32, 16, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+points = Vector2Array( 0, 16, 32, 16, 32, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0, 0, 24, 0, 24, 32, 0, 32 )
+points = Vector2Array( 0, 16, 16, 16, 16, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 32, 24, 8, 24, 8, 0, 32, 0 )
+points = Vector2Array( 32, 16, 16, 16, 16, 0, 32, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0, 24, 0, 0, 32, 0, 32, 24 )
+points = Vector2Array( 0, 16, 0, 0, 32, 0, 32, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0, 0, 24, 0, 24, 24, 0, 24 )
+points = Vector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0, 0, 24, 0, 24, 32, 0, 32 )
+points = Vector2Array( 0, 0, 32, 0, 32, 16, 16, 16 )
 
-[sub_resource type="ConvexPolygonShape2D" id=8]
+[sub_resource type="ConvexPolygonShape2D" id=29]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 8, 0, 32, 0, 32, 32, 8, 32 )
+points = Vector2Array( 0, 32, 0, 0, 16, 16, 16, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
+points = Vector2Array( 0, 16, 0, 0, 32, 0, 16, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 16, 16, 32, 0, 32, 32, 16, 32 )
+
+[sub_resource type="ConcavePolygonShape2D" id=11]
+
+custom_solver_bias = 0.0
+segments = Vector2Array( 0, 0, 16, 0, 16, 0, 16, 16, 16, 16, 32, 16, 32, 16, 32, 32, 32, 32, 0, 32, 0, 32, 0, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 32, 0, 16, 16, 16, 32, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 32, 0, 32, 32, 16, 16, 16, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=14]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 16, 0, 32, 0, 32, 32, 16, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=15]
+
+custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="OccluderPolygon2D" id=16]
+
+closed = true
+cull_mode = 0
+polygon = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=17]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 0, 16, 0, 16, 32, 0, 32 )
+
+[sub_resource type="RectangleShape2D" id=18]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
+[sub_resource type="ConvexPolygonShape2D" id=19]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 32, 32, 16, 32, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=20]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 16, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=21]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 16, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=22]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 0, 32, 16, 32, 32, 0, 32 )
+
 [node name="BasicTileset" type="Node"]
 
-[node name="TopLeftUpper" type="Sprite" parent="."]
+[node name="BGWall" type="Sprite" parent="."]
 
 texture = ExtResource( 1 )
 centered = false
 region = true
-region_rect = Rect2( 0, 0, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+region_rect = Rect2( 0, 32, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TopCenterUpper" type="Sprite" parent="."]
 
 transform/pos = Vector2( 40, 0 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 centered = false
 region = true
 region_rect = Rect2( 32, 0, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TopRightUpper" type="Sprite" parent="."]
 
 transform/pos = Vector2( 80, 0 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 centered = false
 region = true
 region_rect = Rect2( 96, 0, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TopLeftLower" type="Sprite" parent="."]
 
@@ -89,8 +157,10 @@ transform/pos = Vector2( 0, 40 )
 texture = ExtResource( 1 )
 centered = false
 region = true
-region_rect = Rect2( 0, 32, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+region_rect = Rect2( 0, 96, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TopLeftLowerBody" type="StaticBody2D" parent="TopLeftLower"]
 
@@ -108,7 +178,7 @@ bounce = 0.0
 [node name="TopLeftLowerHitbox" type="CollisionPolygon2D" parent="TopLeftLower/TopLeftLowerBody"]
 
 build_mode = 0
-polygon = Vector2Array( 8, 0, 32, 0, 32, 32, 8, 32 )
+polygon = Vector2Array( 16, 16, 32, 16, 32, 32, 16, 32 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
@@ -119,8 +189,10 @@ transform/pos = Vector2( 40, 40 )
 texture = ExtResource( 1 )
 centered = false
 region = true
-region_rect = Rect2( 32, 32, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+region_rect = Rect2( 32, 96, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TopCenterLowerBody" type="StaticBody2D" parent="TopCenterLower"]
 
@@ -138,7 +210,7 @@ bounce = 0.0
 [node name="TopCenterLowerHitbox" type="CollisionPolygon2D" parent="TopCenterLower/TopCenterLowerBody"]
 
 build_mode = 0
-polygon = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+polygon = Vector2Array( 0, 16, 32, 16, 32, 32, 0, 32 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
@@ -149,8 +221,10 @@ transform/pos = Vector2( 80, 40 )
 texture = ExtResource( 1 )
 centered = false
 region = true
-region_rect = Rect2( 96, 32, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+region_rect = Rect2( 64, 96, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TopRightLowerBody" type="StaticBody2D" parent="TopRightLower"]
 
@@ -168,7 +242,7 @@ bounce = 0.0
 [node name="TopRightLowerHitbox" type="CollisionPolygon2D" parent="TopRightLower/TopRightLowerBody"]
 
 build_mode = 0
-polygon = Vector2Array( 0, 0, 24, 0, 24, 32, 0, 32 )
+polygon = Vector2Array( 0, 16, 16, 16, 16, 32, 0, 32 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
@@ -179,8 +253,10 @@ transform/pos = Vector2( 0, 120 )
 texture = ExtResource( 1 )
 centered = false
 region = true
-region_rect = Rect2( 0, 128, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+region_rect = Rect2( 0, 160, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BottomLeftBody" type="StaticBody2D" parent="BottomLeft"]
 
@@ -198,7 +274,7 @@ bounce = 0.0
 [node name="BottomLeftHitbox" type="CollisionPolygon2D" parent="BottomLeft/BottomLeftBody"]
 
 build_mode = 0
-polygon = Vector2Array( 32, 0, 8, 0, 8, 24, 32, 24 )
+polygon = Vector2Array( 32, 0, 16, 0, 16, 16, 32, 16 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
@@ -209,8 +285,10 @@ transform/pos = Vector2( 40, 120 )
 texture = ExtResource( 1 )
 centered = false
 region = true
-region_rect = Rect2( 32, 128, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+region_rect = Rect2( 32, 160, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BottomCenterBody" type="StaticBody2D" parent="BottomCenter"]
 
@@ -228,7 +306,7 @@ bounce = 0.0
 [node name="BottomCenterHitbox" type="CollisionPolygon2D" parent="BottomCenter/BottomCenterBody"]
 
 build_mode = 0
-polygon = Vector2Array( 0, 24, 0, 0, 32, 0, 32, 24 )
+polygon = Vector2Array( 0, 16, 0, 0, 32, 0, 32, 16 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
@@ -239,8 +317,10 @@ transform/pos = Vector2( 80, 120 )
 texture = ExtResource( 1 )
 centered = false
 region = true
-region_rect = Rect2( 96, 128, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+region_rect = Rect2( 64, 160, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BottomRightBody" type="StaticBody2D" parent="BottomRight"]
 
@@ -258,26 +338,31 @@ bounce = 0.0
 [node name="BottomRightHitbox" type="CollisionPolygon2D" parent="BottomRight/BottomRightBody"]
 
 build_mode = 0
-polygon = Vector2Array( 0, 0, 24, 0, 24, 24, 0, 24 )
+polygon = Vector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
-[node name="CornerTopLeftUpper" type="Sprite" parent="."]
+[node name="CornerTopLeft" type="Sprite" parent="."]
 
 editor/display_folded = true
 transform/pos = Vector2( 136.889, 4.05128 )
 texture = ExtResource( 1 )
 centered = false
 region = true
-region_rect = Rect2( 128, 32, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+region_rect = Rect2( 96, 0, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="CornerTopRightLeftBody" type="StaticBody2D" parent="CornerTopLeftUpper"]
+[node name="CornerTopRightLeftBody" type="StaticBody2D" parent="CornerTopLeft"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
+shapes/1/shape = SubResource( 29 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
 collision/layers = 1
 collision/mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
@@ -285,29 +370,34 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CornerTopLeftUpper/CornerTopRightLeftBody"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CornerTopLeft/CornerTopRightLeftBody"]
 
 build_mode = 0
-polygon = Vector2Array( 0, 0, 24, 0, 24, 32, 0, 32 )
-shape_range = Vector2( 0, 0 )
+polygon = Vector2Array( 0, 0, 32, 0, 32, 16, 16, 16, 16, 32, 0, 32 )
+shape_range = Vector2( 0, 1 )
 trigger = false
 
-[node name="CornerTopRightUpper" type="Sprite" parent="."]
+[node name="CornerTopRight" type="Sprite" parent="."]
 
 editor/display_folded = true
 transform/pos = Vector2( 207.096, 2.43362 )
 texture = ExtResource( 1 )
 centered = false
 region = true
-region_rect = Rect2( 160, 32, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+region_rect = Rect2( 160, 0, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="CornerTopRightUpperBody" type="StaticBody2D" parent="CornerTopRightUpper"]
+[node name="CornerTopRightUpperBody" type="StaticBody2D" parent="CornerTopRight"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 8 )
+shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
+shapes/1/shape = SubResource( 10 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
 collision/layers = 1
 collision/mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
@@ -315,27 +405,29 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CornerTopRightUpper/CornerTopRightUpperBody"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CornerTopRight/CornerTopRightUpperBody"]
 
 build_mode = 0
-polygon = Vector2Array( 8, 0, 32, 0, 32, 32, 8, 32 )
-shape_range = Vector2( 0, 0 )
+polygon = Vector2Array( 0, 0, 32, 0, 32, 32, 16, 32, 16, 16, 0, 16 )
+shape_range = Vector2( 0, 1 )
 trigger = false
 
-[node name="CornerTopLeftLower" type="Sprite" parent="."]
+[node name="CornerBottomLeft" type="Sprite" parent="."]
 
 editor/display_folded = true
 transform/pos = Vector2( 137.536, 43.8459 )
 texture = ExtResource( 1 )
 centered = false
 region = true
-region_rect = Rect2( 128, 64, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+region_rect = Rect2( 96, 64, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="CornerTopLeftLowerBody" type="StaticBody2D" parent="CornerTopLeftLower"]
+[node name="CornerTopLeftLowerBody" type="StaticBody2D" parent="CornerBottomLeft"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 9 )
+shapes/0/shape = SubResource( 11 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -345,14 +437,14 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CornerTopLeftLower/CornerTopLeftLowerBody"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CornerBottomLeft/CornerTopLeftLowerBody"]
 
-build_mode = 0
-polygon = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+build_mode = 1
+polygon = Vector2Array( 0, 0, 16, 0, 16, 16, 32, 16, 32, 32, 0, 32 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
-[node name="CornerTopRightLower" type="Sprite" parent="."]
+[node name="CornerBottomRight" type="Sprite" parent="."]
 
 editor/display_folded = true
 transform/pos = Vector2( 208.39, 42.2282 )
@@ -360,14 +452,19 @@ texture = ExtResource( 1 )
 centered = false
 region = true
 region_rect = Rect2( 160, 64, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="CornerTopLeftLowerBody" type="StaticBody2D" parent="CornerTopRightLower"]
+[node name="CornerTopLeftLowerBody" type="StaticBody2D" parent="CornerBottomRight"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 9 )
+shapes/0/shape = SubResource( 12 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
+shapes/1/shape = SubResource( 13 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
 collision/layers = 1
 collision/mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
@@ -375,11 +472,11 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CornerTopRightLower/CornerTopLeftLowerBody"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CornerBottomRight/CornerTopLeftLowerBody"]
 
 build_mode = 0
-polygon = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
-shape_range = Vector2( 0, 0 )
+polygon = Vector2Array( 0, 16, 16, 16, 16, 0, 32, 0, 32, 32, 0, 32 )
+shape_range = Vector2( 0, 1 )
 trigger = false
 
 [node name="MidLeft" type="Sprite" parent="."]
@@ -389,13 +486,15 @@ transform/pos = Vector2( 0, 80 )
 texture = ExtResource( 1 )
 centered = false
 region = true
-region_rect = Rect2( 0, 64, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+region_rect = Rect2( 0, 128, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TopLeftLowerBody" type="StaticBody2D" parent="MidLeft"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 14 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -408,7 +507,7 @@ bounce = 0.0
 [node name="TopLeftLowerHitbox" type="CollisionPolygon2D" parent="MidLeft/TopLeftLowerBody"]
 
 build_mode = 0
-polygon = Vector2Array( 8, 0, 32, 0, 32, 32, 8, 32 )
+polygon = Vector2Array( 16, 0, 32, 0, 32, 32, 16, 32 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
@@ -419,13 +518,15 @@ transform/pos = Vector2( 40, 80 )
 texture = ExtResource( 1 )
 centered = false
 region = true
-region_rect = Rect2( 32, 64, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+region_rect = Rect2( 32, 128, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TopCenterLowerBody" type="StaticBody2D" parent="MidCenter"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 15 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -442,6 +543,11 @@ polygon = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="MidCenter"]
+
+occluder = SubResource( 16 )
+light_mask = 1
+
 [node name="MidRight" type="Sprite" parent="."]
 
 editor/display_folded = true
@@ -449,13 +555,15 @@ transform/pos = Vector2( 80, 80 )
 texture = ExtResource( 1 )
 centered = false
 region = true
-region_rect = Rect2( 96, 64, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+region_rect = Rect2( 64, 128, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TopRightLowerBody" type="StaticBody2D" parent="MidRight"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 3 )
+shapes/0/shape = SubResource( 17 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -468,7 +576,7 @@ bounce = 0.0
 [node name="TopRightLowerHitbox" type="CollisionPolygon2D" parent="MidRight/TopRightLowerBody"]
 
 build_mode = 0
-polygon = Vector2Array( 0, 0, 24, 0, 24, 32, 0, 32 )
+polygon = Vector2Array( 0, 0, 16, 0, 16, 32, 0, 32 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
@@ -476,16 +584,18 @@ trigger = false
 
 editor/display_folded = true
 transform/pos = Vector2( 136, 88 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 centered = false
 region = true
 region_rect = Rect2( 0, 0, 32, 32 )
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TopCenterLowerBody" type="StaticBody2D" parent="BreakableBlock"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 15 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -494,7 +604,9 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TopCenterLowerHitbox" type="CollisionPolygon2D" parent="BreakableBlock/TopCenterLowerBody"]
 
@@ -502,34 +614,514 @@ build_mode = 0
 polygon = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 shape_range = Vector2( 0, 0 )
 trigger = false
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Stairs" type="Sprite" parent="."]
 
 editor/display_folded = true
 transform/pos = Vector2( 224, 104 )
-texture = ExtResource( 3 )
-__meta__ = { "_edit_lock_":true }
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StairsArea" type="Area2D" parent="Stairs"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 10 )
+shapes/0/shape = SubResource( 18 )
 shapes/0/transform = Matrix32( 1.6, 0, 0, 1.6, 0, 1.2517e-06 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StairsCollision" type="CollisionShape2D" parent="Stairs/StairsArea"]
 
 transform/pos = Vector2( 0, 1.2517e-06 )
 transform/scale = Vector2( 1.6, 1.6 )
-shape = SubResource( 10 )
+shape = SubResource( 18 )
 trigger = false
 _update_shape_index = 0
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MidSlopeRightBottom" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 288, 48 )
+texture = ExtResource( 2 )
+centered = false
+region = true
+region_rect = Rect2( 64, 288, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TopCenterLowerBody" type="StaticBody2D" parent="MidSlopeRightBottom"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 15 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="TopCenterLowerHitbox" type="CollisionPolygon2D" parent="MidSlopeRightBottom/TopCenterLowerBody"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="TopSlopeRightBottom" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 288, 0 )
+texture = ExtResource( 2 )
+centered = false
+region = true
+region_rect = Rect2( 64, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TopCenterLowerBody" type="StaticBody2D" parent="TopSlopeRightBottom"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 19 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="TopCenterLowerHitbox" type="CollisionPolygon2D" parent="TopSlopeRightBottom/TopCenterLowerBody"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 32, 32, 16, 32, 32 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="MidSlopeRightTop" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 336, 0 )
+texture = ExtResource( 2 )
+centered = false
+region = true
+region_rect = Rect2( 96, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TopCenterLowerBody" type="StaticBody2D" parent="MidSlopeRightTop"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 20 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="TopCenterLowerHitbox" type="CollisionPolygon2D" parent="MidSlopeRightTop/TopCenterLowerBody"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 16, 32, 0, 32, 32, 0, 32 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="TopSlopeRightTop" type="Sprite" parent="."]
+
+transform/pos = Vector2( 336, -48 )
+texture = ExtResource( 2 )
+centered = false
+region = true
+region_rect = Rect2( 96, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MidSlopeLeftBottom" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 432, 48 )
+texture = ExtResource( 2 )
+centered = false
+region = true
+region_rect = Rect2( 160, 288, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TopCenterLowerBody" type="StaticBody2D" parent="MidSlopeLeftBottom"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 15 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="TopCenterLowerHitbox" type="CollisionPolygon2D" parent="MidSlopeLeftBottom/TopCenterLowerBody"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="TopSlopeLeftBottom" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 432, 0 )
+texture = ExtResource( 2 )
+centered = false
+region = true
+region_rect = Rect2( 160, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TopCenterLowerBody" type="StaticBody2D" parent="TopSlopeLeftBottom"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 21 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="TopCenterLowerHitbox" type="CollisionPolygon2D" parent="TopSlopeLeftBottom/TopCenterLowerBody"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 16, 32, 32, 0, 32 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="MidSlopeLeftTop" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 384, 0 )
+texture = ExtResource( 2 )
+centered = false
+region = true
+region_rect = Rect2( 128, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TopCenterLowerBody" type="StaticBody2D" parent="MidSlopeLeftTop"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 22 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="TopCenterLowerHitbox" type="CollisionPolygon2D" parent="MidSlopeLeftTop/TopCenterLowerBody"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 0, 32, 16, 32, 32, 0, 32 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="TopSlopeLeftTop" type="Sprite" parent="."]
+
+transform/pos = Vector2( 384, -48 )
+texture = ExtResource( 2 )
+centered = false
+region = true
+region_rect = Rect2( 128, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallTopLeft" type="Sprite" parent="."]
+
+transform/pos = Vector2( 136, 128 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 192, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallTop" type="Sprite" parent="."]
+
+transform/pos = Vector2( 176, 128 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 32, 192, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallTopRight" type="Sprite" parent="."]
+
+transform/pos = Vector2( 216, 128 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 64, 192, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallMidLeft" type="Sprite" parent="."]
+
+transform/pos = Vector2( 136, 168 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallMid" type="Sprite" parent="."]
+
+transform/pos = Vector2( 176, 168 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 32, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallMidRight" type="Sprite" parent="."]
+
+transform/pos = Vector2( 216, 168 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 64, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallBottomLeft" type="Sprite" parent="."]
+
+transform/pos = Vector2( 136, 208 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallBottom" type="Sprite" parent="."]
+
+transform/pos = Vector2( 176, 208 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 32, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGWallBottomRight" type="Sprite" parent="."]
+
+transform/pos = Vector2( 216, 208 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 64, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGHoleTopLeft" type="Sprite" parent="."]
+
+transform/pos = Vector2( 272, 128 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 96, 192, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGHoleTop" type="Sprite" parent="."]
+
+transform/pos = Vector2( 312, 128 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 128, 192, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGHoleTopRight" type="Sprite" parent="."]
+
+transform/pos = Vector2( 352, 128 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 160, 192, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGHoleMidLeft" type="Sprite" parent="."]
+
+transform/pos = Vector2( 272, 168 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 96, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGHoleMid" type="Sprite" parent="."]
+
+transform/pos = Vector2( 312, 168 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 128, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGHoleMidRight" type="Sprite" parent="."]
+
+transform/pos = Vector2( 352, 168 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 160, 224, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGHoleBottomLeft" type="Sprite" parent="."]
+
+transform/pos = Vector2( 272, 208 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 96, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGHoleBottom" type="Sprite" parent="."]
+
+transform/pos = Vector2( 312, 208 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 128, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BGHoleBottomRight" type="Sprite" parent="."]
+
+transform/pos = Vector2( 352, 208 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 160, 256, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Water" type="Sprite" parent="."]
+
+transform/pos = Vector2( 8, 208 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 32, 32, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WaterTop" type="Sprite" parent="."]
+
+transform/pos = Vector2( 8, 168 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 32, 0, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Gate" type="Sprite" parent="."]
+
+transform/pos = Vector2( 48, 208 )
+texture = ExtResource( 3 )
+centered = false
+modulate = Color( 0.177383, 0.344604, 0.605469, 1 )
+region = true
+region_rect = Rect2( 0, 0, 32, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TopCenterLowerBody" type="StaticBody2D" parent="Gate"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 15 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TopCenterLowerHitbox" type="CollisionPolygon2D" parent="Gate/TopCenterLowerBody"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 

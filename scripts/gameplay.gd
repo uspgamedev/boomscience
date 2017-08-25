@@ -17,7 +17,7 @@ func _ready():
 	input.connect('press_reset', self, 'reset')
 	input.connect('press_respawn', self, 'respawn')
 	input.connect('press_action', self, 'on_press_action')
-	input.connect('release_action', self, 'on_press_action')
+	input.connect('release_action', self, 'on_release_action')
 	player = PLAYER.instance()
 	reload_map()
 
@@ -39,7 +39,27 @@ func reload_map():
 		yield(get_tree(), 'fixed_frame')
 	var tmp = global.get_current_stage().instance()
 	tmp.set_name('Stage')
-	player.set_pos(global.respawn)
+	player.set_pos(global.get_current_stage_respawn())
+	tmp.add_child(player)
+	self.add_child(tmp)
+
+func change_map(scene, target):
+	var current_stage = get_node('Stage')
+	var flag = false
+	if (current_stage != null):
+		current_stage.remove_child(player)
+		current_stage.queue_free()
+		yield(get_tree(), 'fixed_frame')
+		yield(get_tree(), 'fixed_frame')
+	global.stage = scene
+	var tmp = global.get_current_stage().instance()
+	tmp.set_name('Stage')
+	for i in tmp.get_children():
+		if (i.get_name() == target):
+			player.set_pos(i.get_pos())
+			flag = true
+	if (flag == false):
+		player.set_pos(global.get_current_stage_respawn())
 	tmp.add_child(player)
 	self.add_child(tmp)
 
@@ -63,4 +83,3 @@ func hide_instructions():
 	hud.hide()
 	background.hide()
 	objective.hide()
-

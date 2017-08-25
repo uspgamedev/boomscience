@@ -1,14 +1,33 @@
 extends Node
 
-var respawn = Vector2(0, 0)
+const ENTRANCE = 0
+const WATER_PUZZLE = 1
+const VALVE_ROOM = 2
+const LEVER_PUZZLE = 3
+const FINAL_PUZZLE = 4
+
+const OPEN = 0
+const CLOSED = 1
+
 var stage
 var death_count
 var chronometer
 var minute
 var second
+var flags
 const STAGES = [
-	preload('res://resources/scenes/stage01.tscn'),
-	preload('res://resources/scenes/stage02.tscn')
+	preload('res://resources/scenes/sewers/entrance.tscn'),
+	preload('res://resources/scenes/sewers/water-puzzle.tscn'),
+	preload('res://resources/scenes/sewers/valve_room.tscn'),
+	preload('res://resources/scenes/sewers/lever_puzzle.tscn'),
+	preload('res://resources/scenes/sewers/final_puzzle.tscn'),
+]
+const RESPAWN = [
+	Vector2(-800, -600), 
+	Vector2(0, 0), 
+	Vector2(0, 0), 
+	Vector2(0, 0), 
+	Vector2(0, 0), 
 ]
 
 func _ready():
@@ -17,10 +36,10 @@ func _ready():
 
 func _fixed_process(delta):
 	check_chronometer(delta)
-	
+
 func stop_chronometer():
 	set_fixed_process(false)
-	
+
 func check_chronometer(delta):
 	chronometer += delta
 	if (chronometer >= 1):
@@ -29,18 +48,23 @@ func check_chronometer(delta):
 	if (second >= 60):
 		minute += 1
 		second = 0
-	
+
 func reset():
 	init()
 	set_fixed_process(true)
-	
+
 func init():
-	respawn = Vector2(0, 0)
-	stage = 0
+	stage = LEVER_PUZZLE
 	death_count = 1
 	chronometer = 0
 	minute = 0
 	second = 0
+	flags = {}
+	flags['flood_level'] = 'low'
+	flags['door'] = [OPEN, OPEN, OPEN, OPEN, CLOSED]
 
 func get_current_stage():
 	return STAGES[stage]
+
+func get_current_stage_respawn():
+	return RESPAWN[stage]

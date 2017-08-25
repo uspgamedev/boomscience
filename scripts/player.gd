@@ -1,6 +1,8 @@
 extends 'res://scripts/body.gd'
 
 const Door = preload("res://scripts/door.gd")
+const Valve = preload("res://scripts/valve.gd")
+const Lever = preload("res://scripts/lever.gd")
 
 const ACT = preload('actions.gd')
 var bombs = [
@@ -17,7 +19,6 @@ onready var climb_cooldown = get_node('ClimbCooldown')
 onready var ground = get_node("Ground")
 onready var hud = get_node('../../Hud')
 onready var invslot_view = hud.get_node('CharInfo/InventorySlot')
-var key = [0, 0, 0, 0]
 
 var anim = 'idle'
 var anim_new
@@ -29,6 +30,7 @@ var climbing = false
 var can_climb = true
 
 signal equipped_bomb(texture)
+signal lever_interaction()
 
 func _ready():
 	set_fixed_process(true)
@@ -36,6 +38,7 @@ func _ready():
 	input.connect('press_action', self, '_interact')
 	input.connect('press_bomb_throw', self, '_bomb_throw')
 	input.connect('press_action', self, '_switch_bomb')
+	input.connect('press_action', self, '_check_interactable')
 	input.connect('hold_action', self, '_add_jump_height')
 	input.connect('hold_direction', self, '_add_speed')
 	input.connect('hold_direction', self, '_flip_sprite')
@@ -211,6 +214,7 @@ func check_animation():
 	elif (climbing):
 		anim_new = 'climb'
 	elif (!can_jump):
+		yield(get_tree(), 'fixed_frame')
 		anim_new = 'jump'
 	elif (speed.x):
 		anim_new = 'walk'
@@ -237,50 +241,63 @@ func _bomb_throw(throw):
 			get_parent().add_child(bomb)
 
 func _on_Area2D_area_enter(area):
-	check_keys(area)
-	check_doors(area)
 	check_death(area)
 	check_damage(area)
 
 func check_damage(area):
-	var area_node = area.get_node('../')
-	if (area_node.is_in_group('enemy')):
+	if (area.is_in_group('enemy_area')):
 		hud.get_node('CharInfo/LifeBar').change_life(hp, -100)
 		hp -= 100
-		knockback(area_node)
+		knockback(area)
 	if (hp <= 0):
 		die()
 
-func knockback(area_node):
+func knockback(area):
+	var area_node = area.get_node('../')
 	var vector = self.get_pos() - area_node.get_pos()
 	speed.x += .5 * ACC * vector.x
 	speed.y -= 5 * ACC - 20 * vector.y
 
-func check_keys(area):
-	check_key_name(area, 'Key1', 0)
-	check_key_name(area, 'Key2', 1)
+func _check_interactable(act):
+	var areas = get_node('PlayerAreaDetection').get_overlapping_areas()
+	if (act == ACT.INTERACT):
+		if (areas != null):
+			for i in range (0, areas.size()):
+				var interactable = areas[i].get_parent()
+				if (interactable.get_script() == Door):
+					enter_door(areas[i])
+				elif (interactable.get_script() == Lever):
+					lever_interact(interactable)
+				elif (interactable extends preload("res://scripts/toggle_interactable.gd")):
+					interactable.toggle()
 
-func check_key_name(area, key_name, key_index):
-	if (area.get_node('../').get_name() == key_name):
-		key[key_index] = 1
-		fx.play_confirmation()
-		area.get_node('../').queue_free()
+func lever_interact(lever):
+	lever.pull()
+	if (!get_parent().is_door_moving):
+		if (lever.get_name() == 'Lever1'):
+			global.flags['door'][0] = not(global.flags['door'][0])
+			global.flags['door'][1] = not(global.flags['door'][1])
+			global.flags['door'][3] = not(global.flags['door'][3])
+			global.flags['door'][4] = not(global.flags['door'][4])
+			get_parent().door_interaction()
+		elif (lever.get_name() == 'Lever2'):
+			global.flags['door'][0] = not(global.flags['door'][0])
+			global.flags['door'][4] = not(global.flags['door'][4])
+			get_parent().door_interaction()
+		elif (lever.get_name() == 'Lever3'):
+			global.flags['door'][1] = not(global.flags['door'][1])
+			global.flags['door'][2] = not(global.flags['door'][2])
+			global.flags['door'][3] = not(global.flags['door'][3])
+			get_parent().door_interaction()
+		elif (lever.get_name() == 'Lever4'):
+			global.flags['door'][0] = not(global.flags['door'][0])
+			global.flags['door'][2] = not(global.flags['door'][2])
+			get_parent().door_interaction()
+		emit_signal('lever_interaction')
 
-func check_doors(area):
+func enter_door(area):
 	var door = area.get_parent()
-	if ((global.stage == 0 and key[0] == 1) or \
-		(global.stage == 1 and key[1] == 1)):
-		if (door.get_script() == Door):
-			if (global.stage == 0):
-				fx.play('confirmation')
-				global.stage += 1
-				self.set_pos(global.respawn)
-				get_node('../..').reload_map()
-			elif (global.stage == 1):
-				if (get_node('Congratulations').is_hidden()):
-					fx.play('confirmation')
-				global.stop_chronometer()
-				get_node('Congratulations').show()
+	get_node('../..').change_map(door.scene, door.target)
 
 func check_death(area):
 	if (area.get_name() == 'Death'):
