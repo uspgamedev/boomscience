@@ -51,7 +51,6 @@ func _ready():
 	lifebar.set_max(500)
 	lifebar.change_life(hp, 0)
 	sprite = get_node('PlayerSprite')
-	get_node('Congratulations').hide()
 	speed = Vector2(0, 0)
 
 func _fixed_process(delta):
