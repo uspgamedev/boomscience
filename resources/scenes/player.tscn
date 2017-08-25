@@ -206,25 +206,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Congratulations" type="Label" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = -50.0
-margin/top = -58.0
-margin/right = 62.0
-margin/bottom = -27.0
-text = "    Such game
-Much awesome"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="SamplePlayer" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
