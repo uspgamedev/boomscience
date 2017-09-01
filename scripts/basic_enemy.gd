@@ -9,10 +9,12 @@ var temp = 0
 var shape_right
 var shape_left
 var circle_shape
+onready var attacking = false
 onready var player = null
 onready var detected = false
 
 onready var area_detection = get_node("AreaDetection")
+onready var enemy_animation = get_node('BasicEnemySprite/BasicEnemyAnimation')
 
 func _ready():
 	sprite = get_node('BasicEnemySprite')
@@ -23,6 +25,7 @@ func _ready():
 	circle_shape = area_detection.get_shape(2)
 	area_detection.remove_shape(1)
 	change_animation('walk')
+	enemy_animation.connect('finished', self, '_end_attack')
 	set_fixed_process(true)
 
 func _fixed_process(delta):
@@ -35,10 +38,11 @@ func check_detection(delta):
 		aggressive(delta)
 
 func change_animation(animation):
-	anim_new = animation
-	if (anim != anim_new):
-		anim = anim_new
-		get_node('BasicEnemySprite/BasicEnemyAnimation').play(anim)
+	if (!attacking):
+		anim_new = animation
+		if (anim != anim_new):
+			anim = anim_new
+			enemy_animation.play(anim)
 
 func aggressive(delta):
 	var vector = player.get_pos() - self.get_pos()
@@ -58,22 +62,24 @@ func aggressive(delta):
 
 func passive(delta):
 	change_animation('walk')
-	speed.x = dir * max_speed/2
+	if (!attacking):
+		speed.x = dir * max_speed/2
 	temp += delta
 	if (temp >= timer):
 		change_animation('idle')
 		speed.x = 0
 	if (temp >= 2*timer):
-		speed.x = dir * max_speed/2
+		if (!attacking):
+			speed.x = dir * max_speed/2
 		temp = 0
 		dir *= -1
 		sprite.set_flip_h(max(dir, 0))
 		check_vision()
 
 func flip_vision(shape):
-	if (area_detection.get_shape(1) != circle_shape):
+	if (area_detection.get_shape_count() > 1 and area_detection.get_shape(1) != circle_shape):
 		area_detection.remove_shape(1)
-	if (area_detection.get_shape(2) != circle_shape):
+	if (area_detection.get_shape_count() > 2 and area_detection.get_shape(2) != circle_shape):
 		area_detection.remove_shape(2)
 	area_detection.set_shape(0, shape)
 
@@ -100,3 +106,16 @@ func _on_AreaDetection_area_enter(area):
 func _on_AreaDetection_area_exit(area):
 	if (area.get_name() == "PlayerAreaDetection"):
 		detected = false
+
+func _on_BasicEnemyArea_area_enter(area):
+	if (area.is_in_group('player_area')):
+		attacking = true
+		speed.x = 0
+		change_animation('attack')
+
+func _end_attack():
+	attacking = false
+	if (enemy_animation.get_current_animation() == 'attack'):
+		enemy_animation.set_current_animation('run')
+		change_animation('run')
+		speed.x = dir * max_speed

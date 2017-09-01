@@ -182,7 +182,9 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="PlayerAreaDetection" type="Area2D" parent="."]
+[node name="PlayerAreaDetection" type="Area2D" parent="." groups=[
+"player_area",
+]]
 
 input/pickable = true
 shapes/0/shape = SubResource( 6 )
