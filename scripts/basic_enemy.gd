@@ -44,36 +44,44 @@ func aggressive(delta):
 	var vector = player.get_pos() - self.get_pos()
 	change_animation('run')
 	temp = 0
-	if (vector.x > 0):
-		dir = 1
-	else:
-		dir = -1
-	sprite.set_flip_h(max(dir, 0))
 	speed.x = dir * max_speed
+	if (vector.x > 10):
+		dir = 1
+		flip_vision(shape_right)
+	elif (vector.x < -10):
+		dir = -1
+		flip_vision(shape_left)
+	else:
+		change_animation('idle')
+		speed.x = 0
+	sprite.set_flip_h(max(dir, 0))
 
 func passive(delta):
 	change_animation('walk')
 	speed.x = dir * max_speed/2
 	temp += delta
 	if (temp >= timer):
+		change_animation('idle')
+		speed.x = 0
+	if (temp >= 2*timer):
+		speed.x = dir * max_speed/2
 		temp = 0
 		dir *= -1
 		sprite.set_flip_h(max(dir, 0))
 		check_vision()
 
+func flip_vision(shape):
+	if (area_detection.get_shape(1) != circle_shape):
+		area_detection.remove_shape(1)
+	if (area_detection.get_shape(2) != circle_shape):
+		area_detection.remove_shape(2)
+	area_detection.set_shape(0, shape)
+
 func check_vision():
 	if (area_detection.get_shape(0) == shape_left):
-		if (area_detection.get_shape(1) != circle_shape):
-			area_detection.remove_shape(1)
-		if (area_detection.get_shape(2) != circle_shape):
-			area_detection.remove_shape(2)
-		area_detection.set_shape(0, shape_right)
+		flip_vision(shape_right)
 	else:
-		if (area_detection.get_shape(1) != circle_shape):
-			area_detection.remove_shape(1)
-		if (area_detection.get_shape(2) != circle_shape):
-			area_detection.remove_shape(2)
-		area_detection.set_shape(0, shape_left)
+		flip_vision(shape_left)
 
 func take_damage(damage):
 	get_node('LifeBar').change_life(hp, -damage)
