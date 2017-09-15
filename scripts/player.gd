@@ -60,6 +60,7 @@ func _fixed_process(delta):
 	check_stealth()
 	check_animation()
 	check_stairs()
+	check_damage()
 
 func _interact(act):
 	var text = hud.get_node('DialogReader/TextPanel/Text')
@@ -240,15 +241,16 @@ func _bomb_throw(throw):
 
 func _on_Area2D_area_enter(area):
 	check_death(area)
-	check_damage(area)
 
-func check_damage(area):
-	if (!damage_cooldown.get_time_left() and area.is_in_group('enemy_area')):
-		hud.get_node('CharInfo/LifeBar').change_life(hp, -100)
-		hp -= 100
-		knockback(area)
-		damage_cooldown.start()
-		player_flickering()
+func check_damage():
+	if (!damage_cooldown.get_time_left()):
+		for i in area.get_overlapping_areas():
+			if (i.is_in_group('enemy_area')):
+				hud.get_node('CharInfo/LifeBar').change_life(hp, -100)
+				hp -= 100
+				knockback(i)
+				damage_cooldown.start()
+				player_flickering()
 	if (hp <= 0):
 		damage_cooldown.stop()
 		die()
