@@ -255,6 +255,7 @@ func knockback(area):
 	var area_node = area.get_node('../')
 	var vector = self.get_pos() - area_node.get_pos()
 	speed.x += .5 * ACC * vector.x
+	jump_height = -1
 	speed.y -= 5 * ACC - 20 * vector.y
 
 func _check_interactable(act):

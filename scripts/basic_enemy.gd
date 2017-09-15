@@ -24,7 +24,7 @@ func _ready():
 	shape_right = area_detection.get_shape(1)
 	circle_shape = area_detection.get_shape(2)
 	area_detection.remove_shape(1)
-	change_animation('walk')
+	change_animation('idle')
 	enemy_animation.connect('finished', self, '_end_attack')
 	set_fixed_process(true)
 
@@ -46,7 +46,7 @@ func change_animation(animation):
 
 func aggressive(delta):
 	var vector = player.get_pos() - self.get_pos()
-	change_animation('run')
+	#change_animation('run')
 	temp = 0
 	speed.x = dir * max_speed
 	if (vector.x > 10):
@@ -56,17 +56,17 @@ func aggressive(delta):
 		dir = -1
 		flip_vision(shape_left)
 	else:
-		change_animation('idle')
+		#change_animation('idle')
 		speed.x = 0
 	sprite.set_flip_h(max(dir, 0))
 
 func passive(delta):
-	change_animation('walk')
+	#change_animation('walk')
 	if (!attacking):
 		speed.x = dir * max_speed/2
 	temp += delta
 	if (temp >= timer):
-		change_animation('idle')
+		#change_animation('idle')
 		speed.x = 0
 	if (temp >= 2*timer):
 		if (!attacking):
@@ -111,11 +111,11 @@ func _on_BasicEnemyArea_area_enter(area):
 	if (area.is_in_group('player_area')):
 		attacking = true
 		speed.x = 0
-		change_animation('attack')
+		#change_animation('attack')
 
 func _end_attack():
 	attacking = false
 	if (enemy_animation.get_current_animation() == 'attack'):
 		enemy_animation.set_current_animation('run')
-		change_animation('run')
+		#change_animation('run')
 		speed.x = dir * max_speed
