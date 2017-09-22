@@ -97,12 +97,12 @@ func die():
 	self.queue_free()
 
 func _on_AreaDetection_area_enter(area):
-	if (area.get_name() == "PlayerAreaDetection"):
+	if (area.is_in_group('player_area')):
 		player = area.get_parent()
 		detected = true
 
 func _on_AreaDetection_area_exit(area):
-	if (area.get_name() == "PlayerAreaDetection"):
+	if (area.is_in_group('player_area')):
 		detected = false
 
 # This function is called in player.gd

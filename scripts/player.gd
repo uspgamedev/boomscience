@@ -13,7 +13,8 @@ var bomb_scn = null
 
 onready var input = get_node('/root/input')
 onready var global = get_node('/root/global')
-onready var area = get_node('PlayerAreaDetection')
+onready var area_detection = get_node('PlayerAreaDetection')
+onready var hitbox_area = get_node('PlayerHitboxArea')
 onready var fx = get_node('SamplePlayer')
 onready var climb_cooldown = get_node('ClimbCooldown')
 onready var damage_cooldown = get_node('DamageCooldown')
@@ -44,8 +45,8 @@ func _ready():
 	input.connect('hold_action', self, '_add_jump_height')
 	input.connect('hold_direction', self, '_add_speed')
 	input.connect('hold_direction', self, '_flip_sprite')
-	area.connect('area_enter', self, '_on_Area2D_area_enter')
-	area.connect('area_exit',self,'_on_Area2D_area_exit')
+	area_detection.connect('area_enter', self, '_on_Area2D_area_enter')
+	area_detection.connect('area_exit',self,'_on_Area2D_area_exit')
 	self.connect('equipped_bomb', invslot_view, '_change_icon')
 	hp = 500
 	equip_bomb(0)
@@ -201,13 +202,13 @@ func check_camera():
 
 func check_stealth():
 	if input.is_action_held(ACT.STEALTH):
-		area.set_scale(Vector2(.3, .3))
+		area_detection.set_scale(Vector2(.1, .1))
 		sprite_alpha = .5
 		if (!damage_cooldown.get_time_left()):
 			sprite.set_modulate(Color(1, 1, 1, sprite_alpha))
 		acc = .5 * ACC
 	else:
-		area.set_scale(Vector2(1, 1))
+		area_detection.set_scale(Vector2(1, 1))
 		sprite_alpha = 1
 		if (!damage_cooldown.get_time_left()):
 			sprite.set_modulate(Color(1, 1, 1, sprite_alpha))
@@ -244,7 +245,7 @@ func _on_Area2D_area_enter(area):
 
 func check_damage():
 	if (!damage_cooldown.get_time_left()):
-		for i in area.get_overlapping_areas():
+		for i in hitbox_area.get_overlapping_areas():
 			if (i.is_in_group('enemy_area')):
 				i.get_parent().attack()
 				hud.get_node('CharInfo/LifeBar').change_life(hp, -100)
@@ -266,14 +267,13 @@ func player_flickering():
 		player_flickering()
 
 func knockback(area):
-	var area_node = area.get_node('../')
-	var vector = self.get_pos() - area_node.get_pos()
+	var vector = self.get_pos() - area.get_parent().get_pos()
 	speed.x += .5 * ACC * vector.x
 	jump_height = -1
 	speed.y -= 5 * ACC - 20 * vector.y
 
 func _check_interactable(act):
-	var areas = get_node('PlayerAreaDetection').get_overlapping_areas()
+	var areas = hitbox_area.get_overlapping_areas()
 	if (act == ACT.INTERACT):
 		if (areas != null):
 			for i in range (0, areas.size()):

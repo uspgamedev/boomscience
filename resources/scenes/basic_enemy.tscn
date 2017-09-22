@@ -13,16 +13,16 @@ extents = Vector2( 18, 14 )
 
 resource/name = "attack"
 length = 0.3
-loop = true
+loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.3 ),
+"times": FloatArray( 0, 0.1, 0.2 ),
 "transitions": FloatArray( 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ 2, 3, 4 ]
 }
 
@@ -50,13 +50,13 @@ loop = true
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 5, 6, 7, 8 ]
+"times": FloatArray( 0, 0.1, 0.2 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -66,13 +66,13 @@ loop = true
 step = 0.15
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 0, 0.15, 0.3, 0.45 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 5, 6, 7, 8 ]
+"times": FloatArray( 0, 0.15, 0.3 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7 ]
 }
 
 [sub_resource type="StyleBoxFlat" id=6]
@@ -104,17 +104,17 @@ draw_bg = true
 [sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0, 0, -200, 50, -200, -50 )
+points = Vector2Array( 0, 0, -100, 20, -100, -20 )
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0, 0, 200, 50, 200, -50 )
+points = Vector2Array( 0, 0, 100, 20, 100, -20 )
 
 [sub_resource type="CircleShape2D" id=10]
 
 custom_solver_bias = 0.0
-radius = 90.0
+radius = 20.0
 
 [node name="BasicEnemy" type="KinematicBody2D" groups=[
 "enemy",
@@ -137,7 +137,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 5
-frame = 2
+frame = 4
 __meta__ = {
 "_edit_lock_": true
 }
@@ -171,6 +171,7 @@ __meta__ = {
 "enemy_area",
 ]]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 2 )
@@ -179,6 +180,9 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BasicEnemtAreaHitbox" type="CollisionShape2D" parent="BasicEnemyArea"]
 
@@ -208,6 +212,9 @@ range/exp_edit = false
 range/rounded = false
 percent/visible = false
 script/script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ChangeStatus" type="Tween" parent="LifeBar"]
 
@@ -218,7 +225,6 @@ playback/speed = 1.0
 
 [node name="AreaDetection" type="Area2D" parent="."]
 
-visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -233,24 +239,36 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ShapeLeft" type="CollisionShape2D" parent="AreaDetection"]
 
 shape = SubResource( 8 )
 trigger = false
 _update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ShapeRight" type="CollisionShape2D" parent="AreaDetection"]
 
 shape = SubResource( 9 )
 trigger = false
 _update_shape_index = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CircleShape" type="CollisionShape2D" parent="AreaDetection"]
 
 shape = SubResource( 10 )
 trigger = false
 _update_shape_index = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AttackTimer" type="Timer" parent="."]
 

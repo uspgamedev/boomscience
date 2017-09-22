@@ -10,7 +10,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 22 )
+extents = Vector2( 8, 18 )
 
 [sub_resource type="Animation" id=2]
 
@@ -80,7 +80,7 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=6]
 
 custom_solver_bias = 0.0
-radius = 10.0
+radius = 80.0
 
 [sub_resource type="SampleLibrary" id=7]
 
@@ -151,6 +151,50 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="PlayerHitboxArea" type="Area2D" parent="."]
+
+visibility/visible = false
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 2 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="PlayerHitbox" type="CollisionShape2D" parent="PlayerHitboxArea"]
+
+transform/pos = Vector2( 0, 2 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="PlayerAreaDetection" type="Area2D" parent="." groups=[
+"player_area",
+]]
+
+input/pickable = true
+shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PlayerCollisionDetection" type="CollisionShape2D" parent="PlayerAreaDetection"]
+
+shape = SubResource( 6 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Camera" type="Camera2D" parent="."]
 
 offset = Vector2( -320, -256 )
@@ -181,32 +225,6 @@ playback/process_mode = 1
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
-
-[node name="PlayerAreaDetection" type="Area2D" parent="." groups=[
-"player_area",
-]]
-
-input/pickable = true
-shapes/0/shape = SubResource( 6 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="PlayerCollisionDetection" type="CollisionShape2D" parent="PlayerAreaDetection"]
-
-visibility/visible = false
-shape = SubResource( 6 )
-trigger = false
-_update_shape_index = 0
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="SamplePlayer" type="SamplePlayer" parent="."]
 
@@ -249,6 +267,7 @@ autostart = false
 
 [node name="Ground" type="Area2D" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( 0, 24 )
 input/pickable = true
 shapes/0/shape = SubResource( 8 )
@@ -260,11 +279,17 @@ linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 0
 collision/mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 
 shape = SubResource( 8 )
 trigger = false
 _update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 
