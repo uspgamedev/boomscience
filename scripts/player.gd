@@ -246,6 +246,7 @@ func check_damage():
 	if (!damage_cooldown.get_time_left()):
 		for i in area.get_overlapping_areas():
 			if (i.is_in_group('enemy_area')):
+				i.get_parent().attack()
 				hud.get_node('CharInfo/LifeBar').change_life(hp, -100)
 				hp -= 100
 				knockback(i)
