@@ -9,6 +9,7 @@ var temp = 0
 var shape_right
 var shape_left
 var circle_shape
+onready var collider = null
 onready var player = null
 onready var detected = false
 
@@ -29,26 +30,59 @@ func _ready():
 
 func _fixed_process(delta):
 	check_detection(delta)
+	check_surrondings()
 
-func check_detection(delta):
-	if (!detected):
-		passive(delta)
+func check_surrondings():
+	var space_state = get_world_2d().get_direct_space_state()
+	var result = space_state.intersect_ray(self.get_pos() + Vector2(30, 0), \
+			self.get_pos() + Vector2(-30, 0), [self])
+	if (!result.empty()):
+		if (result.collider != collider and result.collider extends TileMap):
+			collider = result.collider
+			temp = timer
+		return result
 	else:
-		aggressive(delta)
+		collider = null
+		return null
 
 func change_animation(animation):
 	if (attack_timer.get_time_left() == 0):
 		anim_new = animation
 		if (anim != anim_new):
 			anim = anim_new
+			print(anim)
 			enemy_animation.play(anim)
 
-func aggressive(delta):
-	var vector = player.get_pos() - self.get_pos()
+func run():
 	change_animation('run')
-	temp = 0
-	if (attack_timer.get_time_left() == 0):
-		speed.x = dir * max_speed
+	speed.x = dir * max_speed
+
+func stop():
+	change_animation('idle')
+	speed.x = 0
+
+func walk():
+	change_animation('walk')
+	speed.x = dir * max_speed/2
+
+func check_detection(delta):
+	temp += delta
+	if (!detected):
+		passive()
+	else:
+		aggressive()
+
+func aggressive():
+	var vector = player.get_pos() - self.get_pos()
+	var result = check_surrondings()
+	if (result != null):
+		if ((result.position.x < self.get_pos().x and vector.x > 0) or \
+		    (result.position.x > self.get_pos().x and vector.x < 0)):
+			run()
+	elif (attack_timer.get_time_left() == 0 and collider == null):
+		run()
+	elif (temp >= timer and temp < 2*timer):
+		stop()
 	if (vector.x > 10):
 		dir = 1
 		flip_vision(shape_right)
@@ -56,19 +90,16 @@ func aggressive(delta):
 		dir = -1
 		flip_vision(shape_left)
 	else:
-		change_animation('idle')
-		speed.x = 0
+		stop()
 	sprite.set_flip_h(max(dir, 0))
 
-func passive(delta):
-	change_animation('walk')
-	speed.x = dir * max_speed/2
-	temp += delta
-	if (temp >= timer):
-		change_animation('idle')
-		speed.x = 0
-	if (temp >= 2*timer):
-		speed.x = dir * max_speed/2
+func passive():
+	if (temp < timer):
+		walk()
+		#collider = null
+	elif (temp >= timer and temp < 2*timer):
+		stop()
+	else:
 		temp = 0
 		dir *= -1
 		sprite.set_flip_h(max(dir, 0))
