@@ -25,6 +25,7 @@ A demo was released on March 24th, 2017.
 * Vitor Kei Taira Tamada
 * Gabriel Oliveira
 * Ricardo Lira da Fonseca
+* Lucas Dário
 ### Visual Art
 * Willian Akira Mizutani
 * André Victor dos Santos Nakazawa
