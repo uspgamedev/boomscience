@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://scripts/basic_enemy.gd" type="Script" id=1]
 [ext_resource path="res://resources/assets/images/cat_enemy.png" type="Texture" id=2]
@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 18, 14 )
+extents = Vector2( 16, 14 )
 
 [sub_resource type="Animation" id=2]
 
@@ -74,6 +74,11 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 5, 6, 7 ]
 }
+
+[sub_resource type="RectangleShape2D" id=11]
+
+custom_solver_bias = 0.0
+extents = Vector2( 18, 14 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 
@@ -173,8 +178,8 @@ __meta__ = {
 
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 2 )
+shapes/0/shape = SubResource( 11 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 6 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -184,10 +189,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BasicEnemtAreaHitbox" type="CollisionShape2D" parent="BasicEnemyArea"]
+[node name="BasicEnemyAreaHitbox" type="CollisionShape2D" parent="BasicEnemyArea"]
 
-transform/pos = Vector2( 0, 2 )
-shape = SubResource( 1 )
+transform/pos = Vector2( 0, 6 )
+shape = SubResource( 11 )
 trigger = false
 _update_shape_index = 0
 
@@ -225,6 +230,7 @@ playback/speed = 1.0
 
 [node name="AreaDetection" type="Area2D" parent="."]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )

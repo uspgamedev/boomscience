@@ -202,7 +202,7 @@ func check_camera():
 
 func check_stealth():
 	if input.is_action_held(ACT.STEALTH):
-		area_detection.set_scale(Vector2(.1, .1))
+		area_detection.set_scale(Vector2(.3, .3))
 		sprite_alpha = .5
 		if (!damage_cooldown.get_time_left()):
 			sprite.set_modulate(Color(1, 1, 1, sprite_alpha))
@@ -248,8 +248,8 @@ func check_damage():
 		for i in hitbox_area.get_overlapping_areas():
 			if (i.is_in_group('enemy_area')):
 				i.get_parent().attack()
-				hud.get_node('CharInfo/LifeBar').change_life(hp, -100)
-				hp -= 100
+				hud.get_node('CharInfo/LifeBar').change_life(hp, -10)
+				hp -= 10
 				knockback(i)
 				damage_cooldown.start()
 				player_flickering()
