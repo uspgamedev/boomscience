@@ -111,8 +111,12 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BasicEnemy" parent="." instance=ExtResource( 5 )]
+[node name="BasicEnemy1" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 320, 0 )
+transform/pos = Vector2( -312, 0 )
+
+[node name="BasicEnemy2" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 304, 0 )
 
 

@@ -50,7 +50,6 @@ func change_animation(animation):
 		anim_new = animation
 		if (anim != anim_new):
 			anim = anim_new
-			print(anim)
 			enemy_animation.play(anim)
 
 func run():
@@ -81,6 +80,8 @@ func aggressive():
 			run()
 		elif(result.collider extends TileMap):
 			stop()
+		else:
+			run()
 	elif (attack_timer.get_time_left() == 0 and collider == null):
 		run()
 	elif (temp >= timer and temp < 2*timer):
