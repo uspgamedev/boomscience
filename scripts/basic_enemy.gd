@@ -9,7 +9,8 @@ var temp = 0
 var shape_right
 var shape_left
 var circle_shape
-onready var collider = null
+onready var wall_collider = null
+onready var pit = false
 onready var player = null
 onready var detected = false
 
@@ -30,19 +31,33 @@ func _ready():
 
 func _fixed_process(delta):
 	check_detection(delta)
-	check_surrondings()
+	check_walls()
+	check_pits()
 
-func check_surrondings():
+func check_pits():
+	var space_state = get_world_2d().get_direct_space_state()
+	var result_right = space_state.intersect_ray(self.get_pos() + Vector2(20, 0), \
+			self.get_pos() + Vector2(20, 30), [self])
+	var result_left = space_state.intersect_ray(self.get_pos() + Vector2(-20, 0), \
+			self.get_pos() + Vector2(-20, 30), [self])
+	if (pit == false and (result_left.empty() or result_right.empty())):
+		pit = true
+		temp = timer
+	elif (!result_left.empty() and !result_right.empty()):
+		pit = false
+	return pit
+
+func check_walls():
 	var space_state = get_world_2d().get_direct_space_state()
 	var result = space_state.intersect_ray(self.get_pos() + Vector2(20, 0), \
 			self.get_pos() + Vector2(-20, 0), [self])
 	if (!result.empty()):
-		if (result.collider != collider and result.collider extends TileMap):
-			collider = result.collider
+		if (result.collider != wall_collider and result.collider extends TileMap):
+			wall_collider = result.collider
 			temp = timer
 		return result
 	else:
-		collider = null
+		wall_collider = null
 		return null
 
 func change_animation(animation):
@@ -73,16 +88,19 @@ func check_detection(delta):
 
 func aggressive():
 	var vector = player.get_pos() - self.get_pos()
-	var result = check_surrondings()
-	if (result != null):
-		if ((result.position.x < self.get_pos().x and vector.x >= 0) or \
-		    (result.position.x >= self.get_pos().x and vector.x < 0)):
+	var result_walls = check_walls()
+	var result_pits = check_pits()
+	if (result_walls != null):
+		if ((result_walls.position.x < self.get_pos().x and vector.x >= 0) or \
+		    (result_walls.position.x >= self.get_pos().x and vector.x < 0)):
 			run()
-		elif(result.collider extends TileMap):
+		elif(result_walls.collider extends TileMap):
 			stop()
 		else:
 			run()
-	elif (attack_timer.get_time_left() == 0 and collider == null):
+	elif (result_pits == true):
+		stop()
+	elif (attack_timer.get_time_left() == 0 and wall_collider == null):
 		run()
 	elif (temp >= timer and temp < 2*timer):
 		stop()
@@ -92,7 +110,7 @@ func aggressive():
 	elif (vector.x < -10):
 		change_dir(-1)
 		flip_vision(shape_left)
-	else:
+	elif (vector.y < 10):
 		stop()
 	sprite.set_flip_h(max(dir, 0))
 
