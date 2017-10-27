@@ -9,17 +9,22 @@ onready var input = get_node('/root/input')
 onready var hud = get_node('Hud/Instructions')
 onready var background = get_node('Hud/Background')
 onready var objective = get_node('Hud/Objective')
+onready var restart_cooldown = get_node('RestartCooldown')
 
 var player
 
 func _ready():
 	input.connect('press_quit', self, 'quit')
-	input.connect('press_reset', self, 'reset')
-	input.connect('press_respawn', self, 'respawn')
 	input.connect('press_action', self, 'on_press_action')
 	input.connect('release_action', self, 'on_release_action')
+	restart_cooldown.connect('timeout', self, 'enable_restart')
+	restart_cooldown.start()
 	player = PLAYER.instance()
 	reload_map()
+
+func enable_restart():
+	input.connect('press_reset', self, 'reset')
+	input.connect('press_respawn', self, 'respawn')
 
 func reset():
 	global.reset()
@@ -42,6 +47,9 @@ func reload_map():
 	player.set_pos(global.get_current_stage_respawn())
 	tmp.add_child(player)
 	self.add_child(tmp)
+	input.disconnect('press_reset', self, 'reset')
+	input.disconnect('press_respawn', self, 'respawn')
+	restart_cooldown.start()
 
 func change_map(scene, target):
 	var current_stage = get_node('Stage')

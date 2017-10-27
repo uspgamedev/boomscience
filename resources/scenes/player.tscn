@@ -77,17 +77,17 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7, 8, 9, 10, 11 ]
 }
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 20 )
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=7]
 
 custom_solver_bias = 0.0
 radius = 80.0
 
-[sub_resource type="SampleLibrary" id=7]
+[sub_resource type="SampleLibrary" id=8]
 
 samples/confirmation = {
 "db": 0.0,
@@ -102,7 +102,7 @@ samples/throw = {
 "sample": ExtResource( 5 )
 }
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 2 )
@@ -159,7 +159,7 @@ __meta__ = {
 
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 9 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 2 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -170,7 +170,7 @@ angular_damp = 1.0
 [node name="PlayerHitbox" type="CollisionShape2D" parent="PlayerHitboxArea"]
 
 transform/pos = Vector2( 0, 2 )
-shape = SubResource( 9 )
+shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 0
 
@@ -180,7 +180,7 @@ _update_shape_index = 0
 
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -193,7 +193,7 @@ __meta__ = {
 
 [node name="PlayerCollisionDetection" type="CollisionShape2D" parent="PlayerAreaDetection"]
 
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -234,7 +234,7 @@ playback/speed = 1.0
 [node name="SamplePlayer" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
-config/samples = SubResource( 7 )
+config/samples = SubResource( 8 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -275,7 +275,7 @@ autostart = false
 visibility/visible = false
 transform/pos = Vector2( 0, 24 )
 input/pickable = true
-shapes/0/shape = SubResource( 8 )
+shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -290,7 +290,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
