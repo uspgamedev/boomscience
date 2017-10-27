@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://resources/assets/images/gecko.png" type="Texture" id=2]
@@ -10,7 +10,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 22 )
+extents = Vector2( 8, 20 )
 
 [sub_resource type="Animation" id=2]
 
@@ -77,10 +77,15 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7, 8, 9, 10, 11 ]
 }
 
+[sub_resource type="RectangleShape2D" id=9]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 20 )
+
 [sub_resource type="CircleShape2D" id=6]
 
 custom_solver_bias = 0.0
-radius = 10.0
+radius = 80.0
 
 [sub_resource type="SampleLibrary" id=7]
 
@@ -120,7 +125,6 @@ __meta__ = {
 
 texture = ExtResource( 2 )
 hframes = 15
-frame = 4
 region_rect = Rect2( 148, 19, 29, 52 )
 __meta__ = {
 "_edit_lock_": true
@@ -145,6 +149,51 @@ autoplay = ""
 visibility/visible = false
 transform/pos = Vector2( 0, 2 )
 shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PlayerHitboxArea" type="Area2D" parent="."]
+
+visibility/visible = false
+input/pickable = true
+shapes/0/shape = SubResource( 9 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 2 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="PlayerHitbox" type="CollisionShape2D" parent="PlayerHitboxArea"]
+
+transform/pos = Vector2( 0, 2 )
+shape = SubResource( 9 )
+trigger = false
+_update_shape_index = 0
+
+[node name="PlayerAreaDetection" type="Area2D" parent="." groups=[
+"player_area",
+]]
+
+visibility/visible = false
+input/pickable = true
+shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PlayerCollisionDetection" type="CollisionShape2D" parent="PlayerAreaDetection"]
+
+shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -182,49 +231,6 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="PlayerAreaDetection" type="Area2D" parent="."]
-
-input/pickable = true
-shapes/0/shape = SubResource( 6 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="PlayerCollisionDetection" type="CollisionShape2D" parent="PlayerAreaDetection"]
-
-visibility/visible = false
-shape = SubResource( 6 )
-trigger = false
-_update_shape_index = 0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Congratulations" type="Label" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = -50.0
-margin/top = -58.0
-margin/right = 62.0
-margin/bottom = -27.0
-text = "    Such game
-Much awesome"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="SamplePlayer" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
@@ -250,8 +256,23 @@ wait_time = 0.12
 one_shot = true
 autostart = false
 
+[node name="DamageCooldown" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="BombCooldown" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.4
+one_shot = true
+autostart = false
+
 [node name="Ground" type="Area2D" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( 0, 24 )
 input/pickable = true
 shapes/0/shape = SubResource( 8 )
@@ -263,11 +284,17 @@ linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 0
 collision/mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 
 shape = SubResource( 8 )
 trigger = false
 _update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 

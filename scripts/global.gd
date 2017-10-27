@@ -5,6 +5,7 @@ const WATER_PUZZLE = 1
 const VALVE_ROOM = 2
 const LEVER_PUZZLE = 3
 const FINAL_PUZZLE = 4
+const TEST = 5
 
 const OPEN = 0
 const CLOSED = 1
@@ -21,6 +22,7 @@ const STAGES = [
 	preload('res://resources/scenes/sewers/valve_room.tscn'),
 	preload('res://resources/scenes/sewers/lever_puzzle.tscn'),
 	preload('res://resources/scenes/sewers/final_puzzle.tscn'),
+	preload('res://resources/scenes/sewers/test.tscn')
 ]
 const RESPAWN = [
 	Vector2(-800, -600), 
@@ -28,6 +30,7 @@ const RESPAWN = [
 	Vector2(0, 0), 
 	Vector2(0, 0), 
 	Vector2(0, 0), 
+	Vector2(0, 0)
 ]
 
 func _ready():
@@ -54,7 +57,7 @@ func reset():
 	set_fixed_process(true)
 
 func init():
-	stage = LEVER_PUZZLE
+	stage = TEST
 	death_count = 1
 	chronometer = 0
 	minute = 0

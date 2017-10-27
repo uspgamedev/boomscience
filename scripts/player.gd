@@ -13,21 +13,24 @@ var bomb_scn = null
 
 onready var input = get_node('/root/input')
 onready var global = get_node('/root/global')
-onready var area = get_node('PlayerAreaDetection')
+onready var area_detection = get_node('PlayerAreaDetection')
+onready var hitbox_area = get_node('PlayerHitboxArea')
 onready var fx = get_node('SamplePlayer')
 onready var climb_cooldown = get_node('ClimbCooldown')
+onready var damage_cooldown = get_node('DamageCooldown')
+onready var bomb_cooldown = get_node('BombCooldown')
 onready var ground = get_node("Ground")
 onready var hud = get_node('../../Hud')
 onready var invslot_view = hud.get_node('CharInfo/InventorySlot')
 
 var anim = 'idle'
 var anim_new
-var bomb_cooldown = 0
 var bomb_direction
 var nearby_npc
 var equipped_bomb = 0
 var climbing = false
 var can_climb = true
+var sprite_alpha = 1
 
 signal equipped_bomb(texture)
 signal lever_interaction()
@@ -42,8 +45,8 @@ func _ready():
 	input.connect('hold_action', self, '_add_jump_height')
 	input.connect('hold_direction', self, '_add_speed')
 	input.connect('hold_direction', self, '_flip_sprite')
-	area.connect('area_enter', self, '_on_Area2D_area_enter')
-	area.connect('area_exit',self,'_on_Area2D_area_exit')
+	area_detection.connect('area_enter', self, '_on_Area2D_area_enter')
+	area_detection.connect('area_exit',self,'_on_Area2D_area_exit')
 	self.connect('equipped_bomb', invslot_view, '_change_icon')
 	hp = 500
 	equip_bomb(0)
@@ -51,7 +54,6 @@ func _ready():
 	lifebar.set_max(500)
 	lifebar.change_life(hp, 0)
 	sprite = get_node('PlayerSprite')
-	get_node('Congratulations').hide()
 	speed = Vector2(0, 0)
 
 func _fixed_process(delta):
@@ -59,7 +61,7 @@ func _fixed_process(delta):
 	check_stealth()
 	check_animation()
 	check_stairs()
-	update_bomb_cooldown()
+	check_damage()
 
 func _interact(act):
 	var text = hud.get_node('DialogReader/TextPanel/Text')
@@ -200,12 +202,16 @@ func check_camera():
 
 func check_stealth():
 	if input.is_action_held(ACT.STEALTH):
-		area.set_scale(Vector2(.3, .3))
-		sprite.set_modulate(Color(1, 1, 1, .5))
+		area_detection.set_scale(Vector2(.3, .3))
+		sprite_alpha = .5
+		if (!damage_cooldown.get_time_left()):
+			sprite.set_modulate(Color(1, 1, 1, sprite_alpha))
 		acc = .5 * ACC
 	else:
-		area.set_scale(Vector2(1, 1))
-		sprite.set_modulate(Color(1, 1, 1, 1))
+		area_detection.set_scale(Vector2(1, 1))
+		sprite_alpha = 1
+		if (!damage_cooldown.get_time_left()):
+			sprite.set_modulate(Color(1, 1, 1, sprite_alpha))
 		acc = ACC
 
 func check_animation():
@@ -222,16 +228,9 @@ func check_animation():
 		anim = anim_new
 		get_node('PlayerSprite/PlayerAnimation').play(anim)
 
-func update_bomb_cooldown():
-	if (bomb_cooldown >= 1):
-		bomb_cooldown += 1
-		if (bomb_cooldown > 20):
-			bomb_cooldown = 0
-
 func _bomb_throw(throw):
-	if (bomb_cooldown == 0):
+	if (!bomb_cooldown.get_time_left()):
 		if (throw == ACT.THROW):
-			bomb_cooldown = 1
 			var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
 			var mouse_dir = get_viewport().get_mouse_pos() - screen_center
 			var offset = get_pos() - get_node('Camera').get_camera_pos()
@@ -239,27 +238,42 @@ func _bomb_throw(throw):
 			var bomb = bomb_scn.instance()
 			bomb.set_pos(self.get_pos())
 			get_parent().add_child(bomb)
+			bomb_cooldown.start()
 
 func _on_Area2D_area_enter(area):
 	check_death(area)
-	check_damage(area)
 
-func check_damage(area):
-	if (area.is_in_group('enemy_area')):
-		hud.get_node('CharInfo/LifeBar').change_life(hp, -100)
-		hp -= 100
-		knockback(area)
+func check_damage():
+	if (!damage_cooldown.get_time_left()):
+		for i in hitbox_area.get_overlapping_areas():
+			if (i.is_in_group('enemy_area')):
+				i.get_parent().attack()
+				hud.get_node('CharInfo/LifeBar').change_life(hp, -10)
+				hp -= 10
+				knockback(i)
+				damage_cooldown.start()
+				player_flickering()
 	if (hp <= 0):
+		damage_cooldown.stop()
 		die()
 
+func player_flickering():
+	if(damage_cooldown.get_time_left()):
+		if (int(damage_cooldown.get_time_left() * 10) % 2 == 0):
+			sprite.set_modulate(Color(1, 1, 1, sprite_alpha))
+		else:
+			sprite.set_modulate(Color(1, 1, 1, 0))
+		yield(get_tree(), 'fixed_frame')
+		player_flickering()
+
 func knockback(area):
-	var area_node = area.get_node('../')
-	var vector = self.get_pos() - area_node.get_pos()
+	var vector = self.get_pos() - area.get_parent().get_pos()
 	speed.x += .5 * ACC * vector.x
+	jump_height = -1
 	speed.y -= 5 * ACC - 20 * vector.y
 
 func _check_interactable(act):
-	var areas = get_node('PlayerAreaDetection').get_overlapping_areas()
+	var areas = hitbox_area.get_overlapping_areas()
 	if (act == ACT.INTERACT):
 		if (areas != null):
 			for i in range (0, areas.size()):
