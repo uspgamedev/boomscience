@@ -10,7 +10,7 @@ var shape_right
 var shape_left
 var circle_shape
 onready var wall_collider = null
-onready var pit = false
+onready var pit = Vector2(0, 0)
 onready var player = null
 onready var detected = false
 
@@ -36,15 +36,20 @@ func _fixed_process(delta):
 
 func check_pits():
 	var space_state = get_world_2d().get_direct_space_state()
-	var result_right = space_state.intersect_ray(self.get_pos() + Vector2(20, 0), \
-			self.get_pos() + Vector2(20, 30), [self])
 	var result_left = space_state.intersect_ray(self.get_pos() + Vector2(-20, 0), \
-			self.get_pos() + Vector2(-20, 30), [self])
-	if (pit == false and (result_left.empty() or result_right.empty())):
-		pit = true
+	                  self.get_pos() + Vector2(-20, 30), [self])
+	var result_right = space_state.intersect_ray(self.get_pos() + Vector2(20, 0), \
+	                   self.get_pos() + Vector2(20, 30), [self])
+	if ((pit.x == 0 and result_left.empty()) or (pit.y == 0 and result_right.empty())):
 		temp = timer
-	elif (!result_left.empty() and !result_right.empty()):
-		pit = false
+	if (!result_left.empty()):
+		pit.x = 0
+	else:
+		pit.x = 1
+	if (!result_right.empty()):
+		pit.y = 0
+	else:
+		pit.y = 1
 	return pit
 
 func check_walls():
@@ -98,8 +103,12 @@ func aggressive():
 			stop()
 		else:
 			run()
-	elif (result_pits == true):
-		stop()
+	elif (result_pits != Vector2(0, 0)):
+		if ((result_pits.x and vector.x >= 0) or \
+		    (result_pits.y and vector.x < 0)):
+			run()
+		else:
+			stop()
 	elif (attack_timer.get_time_left() == 0 and wall_collider == null):
 		run()
 	elif (temp >= timer and temp < 2*timer):

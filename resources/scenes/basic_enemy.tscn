@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 14 )
+extents = Vector2( 14, 14 )
 
 [sub_resource type="Animation" id=2]
 
@@ -75,12 +75,12 @@ tracks/0/keys = {
 "values": [ 5, 6, 7 ]
 }
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 18, 14 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=7]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -93,7 +93,7 @@ border_size = 3
 border_blend = true
 draw_bg = true
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=8]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -106,17 +106,17 @@ border_size = 2
 border_blend = true
 draw_bg = true
 
-[sub_resource type="ConvexPolygonShape2D" id=8]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, -100, 20, -100, -20 )
 
-[sub_resource type="ConvexPolygonShape2D" id=9]
+[sub_resource type="ConvexPolygonShape2D" id=10]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, 0, 100, 20, 100, -20 )
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=11]
 
 custom_solver_bias = 0.0
 radius = 20.0
@@ -178,7 +178,7 @@ __meta__ = {
 
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 11 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 6 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -192,7 +192,7 @@ __meta__ = {
 [node name="BasicEnemyAreaHitbox" type="CollisionShape2D" parent="BasicEnemyArea"]
 
 transform/pos = Vector2( 0, 6 )
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 0
 
@@ -206,8 +206,8 @@ margin/left = -32.0
 margin/top = -35.0
 margin/right = 32.0
 margin/bottom = -27.0
-custom_styles/fg = SubResource( 6 )
-custom_styles/bg = SubResource( 7 )
+custom_styles/fg = SubResource( 7 )
+custom_styles/bg = SubResource( 8 )
 range/min = 0.0
 range/max = 100.0
 range/step = 1.0
@@ -232,13 +232,13 @@ playback/speed = 1.0
 
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 8 )
+shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 9 )
+shapes/1/shape = SubResource( 10 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
-shapes/2/shape = SubResource( 10 )
+shapes/2/shape = SubResource( 11 )
 shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/2/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -251,7 +251,7 @@ __meta__ = {
 
 [node name="ShapeLeft" type="CollisionShape2D" parent="AreaDetection"]
 
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -260,7 +260,7 @@ __meta__ = {
 
 [node name="ShapeRight" type="CollisionShape2D" parent="AreaDetection"]
 
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 trigger = false
 _update_shape_index = 1
 __meta__ = {
@@ -269,7 +269,7 @@ __meta__ = {
 
 [node name="CircleShape" type="CollisionShape2D" parent="AreaDetection"]
 
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 trigger = false
 _update_shape_index = 2
 __meta__ = {
