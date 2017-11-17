@@ -1,0 +1,113 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://scripts/smoke_particles.gd" type="Script" id=1]
+[ext_resource path="res://resources/assets/images/light.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[node name="SmokeParticles" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, -1 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+modulate = Color( 0.339844, 0.339844, 0.339844, 1 )
+
+[node name="BigParticles" type="Particles2D" parent="."]
+
+transform/scale = Vector2( 4, 4 )
+config/amount = 10
+config/lifetime = 5.0
+config/time_scale = 3.0
+config/process_mode = 1
+params/direction = 180.0
+params/spread = 180.0
+params/linear_velocity = 4.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 180.0
+params/gravity_strength = 0.5
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.8
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 10.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 0.0
+params/anim_initial_pos = 0.0
+color/color = Color( 0.359375, 0.359375, 0.359375, 0.392157 )
+
+[node name="SmallParticles" type="Particles2D" parent="."]
+
+transform/scale = Vector2( 16, 16 )
+config/amount = 200
+config/lifetime = 5.0
+config/time_scale = 3.0
+config/preprocess = 0.1
+config/process_mode = 1
+config/explosiveness = 0.8
+params/direction = 180.0
+params/spread = 180.0
+params/linear_velocity = 1.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.02
+params/initial_angle = 0.0
+params/initial_size = 0.2
+params/final_size = 0.05
+params/hue_variation = 0.0
+params/anim_speed_scale = 0.0
+params/anim_initial_pos = 0.0
+color/color = Color( 0.378906, 0.378906, 0.378906, 0.392157 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+input/pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="ParticlesHitbox" type="CollisionShape2D" parent="Area2D"]
+
+transform/scale = Vector2( 8.2, 8.2 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="ActiveTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = false
+autostart = false
+
+[node name="FadeOut" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = false
+
+[node name="Tween" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+

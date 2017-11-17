@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const G = 1000
 onready var player = get_parent().get_node('Player')
-onready var particles_scn = preload('../../resources/scenes/bomb_particles.tscn')
+var particles_scn
 var rotation
 var cur_rotation
 
@@ -35,11 +35,6 @@ func apply_gravity(delta):
 
 func apply_speed(delta):
 	var motion = move(self.speed * delta)
-	if (is_colliding()):
-		var particles = particles_scn.instance()
-		get_parent().add_child(particles)
-		particles.set_pos(get_pos())
-		self.queue_free()
 
 func apply_rotation(delta):
 	cur_rotation += rotation * .3

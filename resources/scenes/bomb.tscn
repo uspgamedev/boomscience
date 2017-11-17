@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=1]
 
-[ext_resource path="res://scripts/bomb.gd" type="Script" id=1]
+[ext_resource path="res://scripts/he_bomb.gd" type="Script" id=1]
 [ext_resource path="res://resources/assets/images/bomb.png" type="Texture" id=2]
 [ext_resource path="res://resources/assets/sfx/samples/confirmation.smp" type="Sample" id=3]
 [ext_resource path="res://resources/assets/sfx/samples/throw.smp" type="Sample" id=4]

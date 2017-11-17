@@ -170,7 +170,7 @@ func _on_AreaDetection_area_exit(area):
 	if (area.is_in_group('player_area')):
 		detected = false
 
-# This function is called in player.gd
+# This method is called in player.gd
 func attack():
 	speed.x = 0
 	change_animation('attack')

@@ -7,7 +7,7 @@ const Lever = preload("res://scripts/lever.gd")
 const ACT = preload('actions.gd')
 var bombs = [
 	preload('../resources/scenes/bomb.tscn'),
-	preload('../resources/scenes/projectiles/gem_bomb.tscn')
+	preload('../resources/scenes/projectiles/smoke_bomb.tscn')
 ]
 var bomb_scn = null
 
