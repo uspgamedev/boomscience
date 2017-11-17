@@ -15,6 +15,7 @@ onready var player = null
 onready var detected = false
 
 onready var area_detection = get_node("AreaDetection")
+onready var enemy_area = get_node('BasicEnemyArea')
 onready var enemy_animation = get_node('BasicEnemySprite/BasicEnemyAnimation')
 onready var attack_timer = get_node('AttackTimer')
 
@@ -30,6 +31,9 @@ func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
+	for i in enemy_area.get_overlapping_areas():
+		if (i.is_in_group('smoke_particles')):
+			print('in smoke')
 	check_detection(delta)
 	check_walls()
 	check_pits()

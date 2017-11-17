@@ -12,7 +12,8 @@ radius = 10.0
 
 script/script = ExtResource( 1 )
 __meta__ = {
-"__editor_plugin_screen__": "2D"
+"__editor_plugin_screen__": "2D",
+"_edit_lock_": true
 }
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -21,6 +22,9 @@ transform/pos = Vector2( 0, -1 )
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 modulate = Color( 0.339844, 0.339844, 0.339844, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BigParticles" type="Particles2D" parent="."]
 
@@ -46,6 +50,9 @@ params/hue_variation = 0.0
 params/anim_speed_scale = 0.0
 params/anim_initial_pos = 0.0
 color/color = Color( 0.359375, 0.359375, 0.359375, 0.392157 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="SmallParticles" type="Particles2D" parent="."]
 
@@ -73,33 +80,44 @@ params/hue_variation = 0.0
 params/anim_speed_scale = 0.0
 params/anim_initial_pos = 0.0
 color/color = Color( 0.378906, 0.378906, 0.378906, 0.392157 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="SmokeArea" type="Area2D" parent="." groups=[
+"smoke_particles",
+]]
 
 input/pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="ParticlesHitbox" type="CollisionShape2D" parent="Area2D"]
+[node name="ParticlesHitbox" type="CollisionShape2D" parent="SmokeArea"]
 
 transform/scale = Vector2( 8.2, 8.2 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ActiveTimer" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 5.0
+wait_time = 7.0
 one_shot = false
 autostart = false
 
 [node name="FadeOut" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 2.0
+wait_time = 3.0
 one_shot = false
 autostart = false
 

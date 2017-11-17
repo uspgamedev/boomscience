@@ -5,6 +5,8 @@ const Valve = preload("res://scripts/valve.gd")
 const Lever = preload("res://scripts/lever.gd")
 
 const ACT = preload('actions.gd')
+const HE_BOMB = 0
+const SMOKE_BOMB = 1
 var bombs = [
 	preload('../resources/scenes/bomb.tscn'),
 	preload('../resources/scenes/projectiles/smoke_bomb.tscn')
@@ -18,7 +20,8 @@ onready var hitbox_area = get_node('PlayerHitboxArea')
 onready var fx = get_node('SamplePlayer')
 onready var climb_cooldown = get_node('ClimbCooldown')
 onready var damage_cooldown = get_node('DamageCooldown')
-onready var bomb_cooldown = get_node('BombCooldown')
+onready var he_bomb_cooldown = get_node('HEBombCooldown')
+onready var smoke_bomb_cooldown = get_node('SmokeBombCooldown')
 onready var ground = get_node("Ground")
 onready var hud = get_node('../../Hud')
 onready var invslot_view = hud.get_node('CharInfo/InventorySlot')
@@ -39,7 +42,7 @@ func _ready():
 	set_fixed_process(true)
 	input.connect('press_action', self, '_jump')
 	input.connect('press_action', self, '_interact')
-	input.connect('press_bomb_throw', self, '_bomb_throw')
+	input.connect('press_bomb_throw', self, '_check_bomb_throw')
 	input.connect('press_action', self, '_switch_bomb')
 	input.connect('press_action', self, '_check_interactable')
 	input.connect('hold_action', self, '_add_jump_height')
@@ -183,16 +186,16 @@ func player_freeze():
 		input.disconnect('hold_direction', self, '_add_speed')
 	if (input.is_connected('press_action', self, '_jump')):
 		input.disconnect('press_action', self, '_jump')
-	if (input.is_connected('press_bomb_throw', self, '_bomb_throw')):
-		input.disconnect('press_bomb_throw', self, '_bomb_throw')
+	if (input.is_connected('press_bomb_throw', self, '_check_bomb_throw')):
+		input.disconnect('press_bomb_throw', self, '_check_bomb_throw')
 
 func player_unfreeze():
 	if (!input.is_connected('hold_direction', self, '_add_speed')):
 		input.connect('hold_direction', self, '_add_speed')
 	if (!input.is_connected('press_action', self, '_jump')):
 		input.connect('press_action', self, '_jump')
-	if (!input.is_connected('press_bomb_throw', self, '_bomb_throw')):
-		input.connect('press_bomb_throw', self, '_bomb_throw')
+	if (!input.is_connected('press_bomb_throw', self, '_check_bomb_throw')):
+		input.connect('press_bomb_throw', self, '_check_bomb_throw')
 
 func check_camera():
 	if input.is_action_held(ACT.CAMERA):
@@ -228,17 +231,23 @@ func check_animation():
 		anim = anim_new
 		get_node('PlayerSprite/PlayerAnimation').play(anim)
 
-func _bomb_throw(throw):
-	if (!bomb_cooldown.get_time_left()):
-		if (throw == ACT.THROW):
-			var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
-			var mouse_dir = get_viewport().get_mouse_pos() - screen_center
-			var offset = get_pos() - get_node('Camera').get_camera_pos()
-			bomb_direction = mouse_dir - offset
-			var bomb = bomb_scn.instance()
-			bomb.set_pos(self.get_pos())
-			get_parent().add_child(bomb)
-			bomb_cooldown.start()
+func _check_bomb_throw(throw):
+	if (throw == ACT.THROW):
+		if (!he_bomb_cooldown.get_time_left() and equipped_bomb == HE_BOMB):
+			bomb_throw()
+			he_bomb_cooldown.start()
+		elif (!smoke_bomb_cooldown.get_time_left() and equipped_bomb == SMOKE_BOMB):
+			bomb_throw()
+			smoke_bomb_cooldown.start()
+
+func bomb_throw():
+		var screen_center = Vector2(get_viewport_rect().size.width, get_viewport_rect().size.height)/2
+		var mouse_dir = get_viewport().get_mouse_pos() - screen_center
+		var offset = get_pos() - get_node('Camera').get_camera_pos()
+		bomb_direction = mouse_dir - offset
+		var bomb = bomb_scn.instance()
+		bomb.set_pos(self.get_pos())
+		get_parent().add_child(bomb)
 
 func _on_Area2D_area_enter(area):
 	check_death(area)
