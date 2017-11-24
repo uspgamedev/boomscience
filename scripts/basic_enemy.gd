@@ -11,13 +11,13 @@ var shape_left
 var circle_shape
 onready var wall_collider = null
 onready var pit = Vector2(0, 0)
-onready var player = null
 onready var detected = false
 
 onready var area_detection = get_node("AreaDetection")
 onready var enemy_area = get_node('BasicEnemyArea')
 onready var enemy_animation = get_node('BasicEnemySprite/BasicEnemyAnimation')
 onready var attack_timer = get_node('AttackTimer')
+onready var player = get_parent().get_node('Player')
 
 func _ready():
 	sprite = get_node('BasicEnemySprite')
@@ -31,12 +31,16 @@ func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
-	for i in enemy_area.get_overlapping_areas():
-		if (i.is_in_group('smoke_particles')):
-			print('in smoke')
 	check_detection(delta)
+	check_smoke()
 	check_walls()
 	check_pits()
+
+func check_smoke():
+	var smoke = get_parent().get_node('SmokeParticles')
+	if (smoke != null):
+		var space_state = get_world_2d().get_direct_space_state()
+		var result = space_state.intersect_ray(self.get_pos(), player.get_pos(), [self])
 
 func check_pits():
 	var space_state = get_world_2d().get_direct_space_state()
@@ -167,7 +171,6 @@ func die():
 
 func _on_AreaDetection_area_enter(area):
 	if (area.is_in_group('player_area')):
-		player = area.get_parent()
 		detected = true
 
 func _on_AreaDetection_area_exit(area):

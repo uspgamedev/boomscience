@@ -8,12 +8,6 @@ onready var area = get_node('SmokeArea')
 func _ready():
 	active_timer.connect('timeout', self, '_start_fade')
 	fade_out.connect('timeout', self, '_free')
-	set_fixed_process(true)
-
-func _fixed_process(delta):
-	for i in area.get_overlapping_areas():
-		if (i.is_in_group('enemy_area')):
-			print('in smoke')
 
 func _start_fade():
 	tween.interpolate_property(self, 'visibility/opacity', \
